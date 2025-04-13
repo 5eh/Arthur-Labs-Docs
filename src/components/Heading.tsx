@@ -7,6 +7,13 @@ import { useInView } from 'framer-motion'
 import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
 import { remToPx } from '@/lib/remToPx'
+import { Unbounded } from 'next/font/google'
+
+const unboundedFont = Unbounded({
+  subsets: ['latin'],
+  weight: ['700'],
+  display: 'swap',
+})
 
 function AnchorIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -101,7 +108,7 @@ export function Heading<Level extends 2 | 3>({
       <Eyebrow tag={tag} label={label} />
       <Component
         ref={ref}
-        className={tag || label ? 'mt-2 scroll-mt-32' : 'scroll-mt-24'}
+        className={`${unboundedFont.className} ${tag || label ? 'mt-2 scroll-mt-32' : 'scroll-mt-24'}`}
         {...props}
       >
         {anchor ? (

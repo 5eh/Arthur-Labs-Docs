@@ -1,10 +1,18 @@
 import Link from 'next/link'
 import clsx from 'clsx'
+import { Unbounded } from 'next/font/google'
 
 import { Feedback } from '@/components/Feedback'
 import { Heading } from '@/components/Heading'
 import { Prose } from '@/components/Prose'
 
+const unboundedFont = Unbounded({
+  subsets: ['latin'],
+  weight: ['700'],
+  display: 'swap',
+})
+
+// Dark blue color: #0480AA
 export const a = Link
 export { Button } from '@/components/Button'
 export { CodeGroup, Code as code, Pre as pre } from '@/components/Code'
@@ -26,6 +34,12 @@ export const h2 = function H2(
   return <Heading level={2} {...props} />
 }
 
+export const h3 = function H3(
+  props: Omit<React.ComponentPropsWithoutRef<typeof Heading>, 'level'>,
+) {
+  return <Heading level={3} {...props} />
+}
+
 function InfoIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 16 16" aria-hidden="true" {...props}>
@@ -44,8 +58,8 @@ function InfoIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function Note({ children }: { children: React.ReactNode }) {
   return (
-    <div className="my-6 flex gap-2.5 rounded-2xl border border-emerald-500/20 bg-emerald-50/50 p-4 text-sm/6 text-emerald-900 dark:border-emerald-500/30 dark:bg-emerald-500/5 dark:text-emerald-200 dark:[--tw-prose-links-hover:var(--color-emerald-300)] dark:[--tw-prose-links:var(--color-white)]">
-      <InfoIcon className="mt-1 h-4 w-4 flex-none fill-emerald-500 stroke-white dark:fill-emerald-200/20 dark:stroke-emerald-200" />
+    <div className="my-6 flex gap-2.5 rounded-2xl border border-[#0480AA]/20 bg-[#0480AA]/5 p-4 text-sm/6 text-[#0480AA] dark:border-[#0480AA]/30 dark:bg-[#0480AA]/5 dark:text-[#79d2ff] dark:[--tw-prose-links-hover:theme(colors.sky.300)] dark:[--tw-prose-links:theme(colors.white)]">
+      <InfoIcon className="mt-1 h-4 w-4 flex-none fill-[#0480AA] stroke-white dark:fill-[#0480AA]/20 dark:stroke-[#79d2ff]" />
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}
       </div>
@@ -150,7 +164,7 @@ export function Card({ children, href, className, target }: CardProps) {
       <Link
         href={href}
         target={target}
-        className="absolute inset-0 rounded-2xl ring-offset-2 ring-offset-zinc-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:ring-offset-zinc-900"
+        className="absolute inset-0 rounded-2xl ring-offset-2 ring-offset-zinc-50 focus:outline-none focus:ring-2 focus:ring-[#0480AA] dark:ring-offset-zinc-900"
         aria-hidden="true"
       />
     </div>
@@ -159,7 +173,7 @@ export function Card({ children, href, className, target }: CardProps) {
 
 Card.Title = function CardTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-base font-semibold leading-6 text-zinc-900 dark:text-white">
+    <h3 className={`${unboundedFont.className} text-base font-semibold leading-6 text-zinc-900 dark:text-white`}>
       {children}
     </h3>
   )
@@ -176,7 +190,7 @@ Card.Description = function CardDescription({ children }: { children: React.Reac
 Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
   return (
     <div className="mt-4">
-      <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-300">
+      <span className="text-sm font-medium text-[#0480AA] dark:text-[#79d2ff] group-hover:text-[#036990] dark:group-hover:text-[#a7e3ff]">
         {children} <span aria-hidden="true">→</span>
       </span>
     </div>
