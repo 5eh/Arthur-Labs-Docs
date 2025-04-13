@@ -10,6 +10,7 @@ import { type Section, SectionProvider } from '@/components/SectionProvider'
 import { Unbounded } from 'next/font/google'
 import LogoImage from '@/app/public/logo.png'
 import Head from 'next/head'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const unboundedFont = Unbounded({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export function Layout({
       <Head>
         <link rel="icon" href="/favicon.png" />
       </Head>
+      <SpeedInsights />
       <div className="h-full lg:ml-72 xl:ml-80">
         <motion.header
           layoutScroll
