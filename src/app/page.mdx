@@ -1,0 +1,68 @@
+import { Socials } from '@/components/Socials'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Arthur Labs',
+  description:
+    'Arthur Labs builds world changing systems that enable entrepreneurship, growing Web2 into Web3.',
+}
+
+export const sections = [
+  { title: 'Overview', id: 'overview' },
+  { title: 'Systems', id: 'systems' },
+  { title: 'Resources', id: 'resources' },
+]
+
+<HeroPattern />
+
+# Arthur Labs
+
+Arthur Labs builds world changing systems that enable entrepreneurship. We rapidly produce Web2 marketplaces through the DEAN system and enable Web3 functionality through the ROSE system. {{ className: 'lead' }}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/docs" arrow="right">
+    <>Documentation</>
+  </Button>
+  <Button href="/blogs" variant="outline">
+    <>Read Our Blog</>
+  </Button>
+</div>
+
+## Systems {{ anchor: false }}
+
+Arthur Labs is developing a suite of interoperable systems that help entrepreneurs build, deploy, and scale their businesses. Our systems work both independently and together to provide comprehensive solutions. {{ className: 'lead' }}
+
+### DEAN - Digital Bazaar Factory
+
+DEAN is Arthur Labs' Digital Bazaar Factory, a groundbreaking system designed to revolutionize how entrepreneurs build and launch Web3-enabled marketplaces. By identifying and standardizing essential components common to all marketplaces, DEAN dramatically reduces the development timeline from 6–12 months to less than a week.
+
+<div className="not-prose">
+  <Button href="/docs/internal-systems/dean" variant="text" arrow="right">
+    <>Learn more about DEAN</>
+  </Button>
+</div>
+
+### ROSE - Web3 Integration System
+
+ROSE enables Web3 functionality through smart contracts and blockchain integration. This system makes it easy to transition from Web2 to Web3, providing tools for entrepreneurs to build immutable portfolios of authentic work.
+
+<div className="not-prose">
+  <Button href="/docs/internal-systems/rose" variant="text" arrow="right">
+    <>Learn more about ROSE</>
+  </Button>
+</div>
+
+### QUINN - Marketing Acceleration
+
+QUINN streamlines marketing strategies for entrepreneurs, providing tools and templates to accelerate market engagement and reach.
+
+<div className="not-prose">
+  <Button href="/docs/internal-systems/quinn" variant="text" arrow="right">
+    <>Learn more about QUINN</>
+  </Button>
+</div>
+
+<Socials />
+
+<Resources />

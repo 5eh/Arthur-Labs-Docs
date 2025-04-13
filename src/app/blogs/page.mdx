@@ -1,0 +1,117 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Blog',
+  description: 'News, insights, and updates from Arthur Labs',
+}
+
+export const sections = [
+  { title: 'Featured Posts', id: 'featured' },
+  { title: 'All Categories', id: 'categories' },
+  { title: 'Recent Posts', id: 'recent' },
+]
+
+<HeroPattern />
+
+# Arthur Labs Blog
+
+Stay updated with the latest news, insights, and developments from Arthur Labs. {{ className: 'lead' }}
+
+## Featured Posts {{ anchor: 'featured' }}
+
+<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
+  <Card href="/blogs/ecosystem/introducing-arthur-labs">
+    <Card.Title>Introducing Arthur Labs</Card.Title>
+    <Card.Description>
+      Arthur Labs is building world changing systems that enable entrepreneurship. Learn about our vision and mission.
+    </Card.Description>
+  </Card>
+  <Card href="/blogs/tools/dean-marketplace-factory">
+    <Card.Title>DEAN: The Digital Bazaar Factory</Card.Title>
+    <Card.Description>
+      How DEAN is revolutionizing marketplace development for entrepreneurs.
+    </Card.Description>
+  </Card>
+  <Card href="/blogs/ecosystem/web3-integration-with-rose">
+    <Card.Title>Web3 Integration with ROSE</Card.Title>
+    <Card.Description>
+      Exploring how ROSE enables seamless Web3 functionality for marketplaces.
+    </Card.Description>
+  </Card>
+  <Card href="/blogs/vision/future-of-entrepreneurship">
+    <Card.Title>The Future of Entrepreneurship</Card.Title>
+    <Card.Description>
+      Our vision for how Arthur Labs will transform entrepreneurship in the Web3 era.
+    </Card.Description>
+  </Card>
+</div>
+
+## All Categories {{ anchor: 'categories' }}
+
+<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
+  <Card href="/blogs/ecosystem">
+    <Card.Title>Ecosystem</Card.Title>
+    <Card.Description>
+      Insights about the Arthur Labs ecosystem and how it's growing.
+    </Card.Description>
+    <Card.Cta>Browse Ecosystem Posts</Card.Cta>
+  </Card>
+  <Card href="/blogs/tools">
+    <Card.Title>Tools</Card.Title>
+    <Card.Description>
+      Deep dives into the tools and systems that power Arthur Labs.
+    </Card.Description>
+    <Card.Cta>Browse Tools Posts</Card.Cta>
+  </Card>
+  <Card href="/blogs/vision">
+    <Card.Title>Vision</Card.Title>
+    <Card.Description>
+      Our perspective on the future of entrepreneurship and Web3.
+    </Card.Description>
+    <Card.Cta>Browse Vision Posts</Card.Cta>
+  </Card>
+  <Card href="/blogs/hackathons">
+    <Card.Title>Hackathons</Card.Title>
+    <Card.Description>
+      Stories and updates from hackathons Arthur Labs has participated in.
+    </Card.Description>
+    <Card.Cta>Browse Hackathon Posts</Card.Cta>
+  </Card>
+</div>
+
+## Recent Posts {{ anchor: 'recent' }}
+
+<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
+  <Card href="/blogs/ecosystem/introducing-arthur-labs">
+    <Card.Eyebrow>Ecosystem • Apr 12, 2023</Card.Eyebrow>
+    <Card.Title>Introducing Arthur Labs</Card.Title>
+    <Card.Description>
+      Arthur Labs is building world changing systems that enable entrepreneurship. Learn about our vision and mission.
+    </Card.Description>
+    <Card.Cta>Read post</Card.Cta>
+  </Card>
+  <Card href="/blogs/tools/dean-marketplace-factory">
+    <Card.Eyebrow>Tools • Apr 5, 2023</Card.Eyebrow>
+    <Card.Title>DEAN: The Digital Bazaar Factory</Card.Title>
+    <Card.Description>
+      How DEAN is revolutionizing marketplace development for entrepreneurs.
+    </Card.Description>
+    <Card.Cta>Read post</Card.Cta>
+  </Card>
+  <Card href="/blogs/ecosystem/web3-integration-with-rose">
+    <Card.Eyebrow>Ecosystem • Mar 28, 2023</Card.Eyebrow>
+    <Card.Title>Web3 Integration with ROSE</Card.Title>
+    <Card.Description>
+      Exploring how ROSE enables seamless Web3 functionality for marketplaces.
+    </Card.Description>
+    <Card.Cta>Read post</Card.Cta>
+  </Card>
+  <Card href="/blogs/vision/future-of-entrepreneurship">
+    <Card.Eyebrow>Vision • Mar 21, 2023</Card.Eyebrow>
+    <Card.Title>The Future of Entrepreneurship</Card.Title>
+    <Card.Description>
+      Our vision for how Arthur Labs will transform entrepreneurship in the Web3 era.
+    </Card.Description>
+    <Card.Cta>Read post</Card.Cta>
+  </Card>
+</div>

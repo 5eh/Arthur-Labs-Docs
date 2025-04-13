@@ -1,0 +1,148 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'DEAN - Digital Bazaar Factory',
+  description: 'Documentation for DEAN, Arthur Labs\' Digital Bazaar Factory system for rapidly building customized marketplaces',
+}
+
+export const sections = [
+  { title: 'Overview', id: 'overview' },
+  { title: 'Components', id: 'components' },
+  { title: 'Architecture', id: 'architecture' },
+  { title: 'Tech Stack', id: 'tech-stack' },
+  { title: 'Use Cases', id: 'use-cases' },
+]
+
+<HeroPattern />
+
+# DEAN - Digital Bazaar Factory
+
+DEAN is Arthur Labs' Digital Bazaar Factory, a groundbreaking system designed to revolutionize how entrepreneurs build and launch Web3-enabled marketplaces. {{ className: 'lead' }}
+
+## Overview {{ anchor: 'overview' }}
+
+DEAN (Digital Bazaar Factory) identifies and standardizes approximately 25+ essential components common to all marketplaces—from explore sections and checkout processes to messaging features and user profiles—dramatically reducing the development timeline from 6–12 months to less than a week.
+
+This system enables rapid market testing and iteration, allowing entrepreneurs to quickly validate their marketplace concepts without extensive development resources. By providing pre-built, customizable components, DEAN eliminates the technical barriers that often prevent entrepreneurs from bringing their marketplace ideas to life.
+
+## Components {{ anchor: 'components' }}
+
+DEAN includes the following standardized marketplace components:
+
+1. **User Authentication and Profiles**
+   - User registration and login
+   - Profile management
+   - Reputation and review systems
+   - Identity verification options
+
+2. **Listing Management**
+   - Product/service listing creation
+   - Listing search and discovery
+   - Category and tag systems
+   - Listing moderation tools
+
+3. **Transaction System**
+   - Payment processing
+   - Escrow services
+   - Transaction history
+   - Dispute resolution framework
+
+4. **Communication Tools**
+   - In-platform messaging
+   - Notification systems
+   - Comment and review systems
+   - Community features
+
+5. **Admin Dashboard**
+   - Platform analytics
+   - User management
+   - Content moderation
+   - Settings configuration
+
+Each component is designed to be modular and customizable, allowing marketplace creators to tailor DEAN to their specific needs.
+
+## Architecture {{ anchor: 'architecture' }}
+
+DEAN's architecture is built around a modular component system that allows for rapid assembly and customization of marketplace functionality.
+
+### Frontend Architecture
+
+The frontend uses a component-based architecture with React and TypeScript, providing a responsive and customizable user interface. Components are organized into a hierarchy:
+
+1. **Base Components**: Fundamental UI elements like buttons, inputs, cards
+2. **Compound Components**: Combinations of base components that form functional units
+3. **Page Components**: Full page layouts that implement specific marketplace functionality
+4. **Layout Templates**: Pre-designed page structures for different marketplace types
+
+### Backend Architecture
+
+The backend architecture is built on Node.js with MongoDB, providing:
+
+1. **API Layer**: RESTful endpoints for marketplace functionality
+2. **Service Layer**: Business logic implementation
+3. **Data Access Layer**: Database interactions and model definitions
+4. **Integration Layer**: Connections to external services (payment, shipping, etc.)
+
+### Web3 Integration
+
+DEAN integrates with blockchain technology through:
+
+1. **Smart Contract Factory**: Generates appropriate contracts for marketplace listings
+2. **Blockchain Connectors**: Provides adapters for different blockchain networks
+3. **Wallet Integration**: Allows users to connect Web3 wallets for transactions
+4. **Transaction Monitoring**: Tracks on-chain activity relevant to marketplace operations
+
+## Tech Stack {{ anchor: 'tech-stack' }}
+
+DEAN is built with the following technology stack:
+
+### Frontend
+- TypeScript
+- React
+- JavaScript
+- Tailwind CSS
+- Next.js
+
+### Backend
+- Node.js
+- Express
+- MongoDB
+- RESTful APIs
+
+### Web3 Integration
+- Ethereum JavaScript libraries
+- Smart contract templates (Solidity)
+- Tezos integration (camelLIGO, SmartPy)
+- Polkadot integration
+
+## Use Cases {{ anchor: 'use-cases' }}
+
+DEAN can be used to rapidly build a wide variety of marketplace types:
+
+### Commerce Marketplaces
+- Fashion marketplaces (like LOCALE)
+- T-shirt and apparel marketplaces
+- Jewelry and accessories
+- 3D printing marketplaces
+- Pottery and home goods
+- Books and media
+- Electronics marketplaces
+
+### Service Marketplaces
+- Freelancer platforms
+- Small residential services
+- Pressure washing services
+- Photography and videography
+- Music creation services
+- Developer services
+- Bartender and event staff services
+
+### Delivery Marketplaces
+- Peer-to-peer package delivery
+- Food delivery services
+- Courier services
+- Alcohol delivery
+- Pharmaceutical delivery
+- Emergency delivery services
+
+By providing a flexible, modular system, DEAN enables entrepreneurs to quickly build and launch these marketplace types with minimal technical knowledge, dramatically reducing time to market.
