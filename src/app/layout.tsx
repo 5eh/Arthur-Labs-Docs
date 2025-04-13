@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import glob from 'fast-glob'
+import { Analytics } from '@vercel/analytics/react'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
     template: '%s - Arthur Labs',
     default: 'Arthur Labs - Building World Changing Systems',
   },
-  description: 'Arthur Labs builds world changing systems that enable entrepreneurship, growing Web2 into Web3.',
+  description:
+    'Arthur Labs builds world changing systems that enable entrepreneurship, growing Web2 into Web3.',
 }
 
 export default async function RootLayout({
@@ -32,6 +34,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body className="flex min-h-full bg-white antialiased dark:bg-zinc-900">
+        <Analytics />
         <Providers>
           <div className="w-full">
             <Layout allSections={allSections}>{children}</Layout>
