@@ -1,37 +1,74 @@
+import { Socials } from '@/components/Socials'
+import { Resources } from '@/components/Resources'
 import { HeroPattern } from '@/components/HeroPattern'
+import { Button } from '@/components/Button'
 
 export const metadata = {
-  title: 'Blockchain Blogs',
-  description: 'Understanding blockchain technology and its implications for entrepreneurs.',
+  title: 'Why Do We Need Blockchains? | Arthur Labs',
+  description:
+    'Explore how blockchain technology enables peer-to-peer economies, transparency, and equal global opportunities for entrepreneurs and small players.',
+  keywords: 'blockchain, peer-to-peer economy, transparency, decentralization, global opportunity',
+  author: 'Arthur Labs Team',
+  publishDate: '2025-04-17',
+  category: 'Blockchain',
 }
 
 export const sections = [
-  { title: 'All Blockchain Posts', id: 'posts' },
+  { title: 'Peer-to-Peer Economy', id: 'p2p-economy' },
+  { title: 'Transparency', id: 'transparency' },
+  { title: 'Global Opportunity', id: 'global-opportunity' },
 ]
 
 <HeroPattern />
 
-# Blockchain Blog Posts
+# Why Do We Need Blockchains?
 
-Explore blockchain technology fundamentals, applications, and implications for entrepreneurs and innovative businesses. {{ className: 'lead' }}
+Blockchain technology represents a fundamental shift in how we structure digital systems, enabling true peer-to-peer interaction, unprecedented transparency, and genuinely equal opportunities across the globe. {{className: 'lead text-black dark:text-gray-200'}}
 
-## All Blockchain Posts {{ anchor: 'posts' }}
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
 
-<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
-  <Card href="/blogs/blockchain/what-are-blockchains">
-    <Card.Eyebrow>Blockchain • Apr 16, 2025</Card.Eyebrow>
-    <Card.Title>What Are Blockchains?</Card.Title>
-    <Card.Description>
-      A comprehensive introduction to blockchain technology, its key components, and how it works.
-    </Card.Description>
-    <Card.Cta>Read post</Card.Cta>
-  </Card>
-  <Card href="/blogs/blockchain/blockchain-mania">
-    <Card.Eyebrow>Blockchain • Apr 16, 2025</Card.Eyebrow>
-    <Card.Title>Why Is the World Crazy About Blockchain?</Card.Title>
-    <Card.Description>
-      Exploring the hype, potential, and real-world impact driving global enthusiasm for blockchain technology.
-    </Card.Description>
-    <Card.Cta>Read post</Card.Cta>
-  </Card>
+<h2 id="p2p-economy">The Evolution to a Peer-to-Peer Economy</h2>
+
+Traditional economic systems rely heavily on intermediaries—banks, payment processors, marketplace platforms—that extract value and control the flow of transactions. Blockchains fundamentally reimagine this structure by enabling direct peer-to-peer interaction:
+
+- **Removing Gatekeepers**: Blockchain eliminates the need for third-party verification, allowing two parties to transact directly without intermediaries taking a cut or controlling access.
+
+- **Value Distribution**: In blockchain networks, value flows directly between participants rather than accumulating primarily with platform owners—consider how Uber extracts 25-30% from drivers versus a decentralized rideshare platform where drivers might capture nearly all the value.
+
+- **Community Ownership**: Blockchains enable users to own pieces of the networks they participate in through tokens, aligning incentives between users and platforms for the first time in digital history.
+
+This shift to peer-to-peer infrastructure isn't just incremental improvement—it represents a fundamental realignment of how value moves through digital systems.
+
+<h2 id="transparency">Radical Transparency by Design</h2>
+
+Perhaps blockchain's most revolutionary aspect is its inherent transparency:
+
+- **Immutable Record-Keeping**: Every transaction on a public blockchain is permanently recorded and visible to all participants, creating unprecedented accountability.
+
+- **Auditable Systems**: Rather than trusting companies or governments to report accurately, blockchain systems can be independently verified by anyone with technical knowledge.
+
+- **Open-Source Development**: The core protocols powering major blockchains are open-source, allowing global inspection and improvement rather than being controlled by single entities.
+
+This transparency doesn't just reduce corruption—it fundamentally changes the relationship between institutions and individuals by removing the information asymmetry that has characterized most economic relationships.
+
+<h2 id="global-opportunity">Equal and Global Opportunity</h2>
+
+The most transformative aspect of blockchain may be its ability to create truly global systems that offer equal opportunity regardless of location:
+
+- **Borderless Access**: Anyone with internet access can participate in blockchain networks, regardless of nationality, banking access, or local currency stability.
+
+- **Permissionless Innovation**: Unlike traditional finance where starting a bank requires extensive licensing, anyone can build applications on blockchain infrastructure without needing special permissions.
+
+- **Small Player Empowerment**: Blockchains create more level playing fields where small entrepreneurs can access the same infrastructure as large corporations—the code doesn't discriminate based on size or connections.
+
+As traditional banking leaves approximately 1.4 billion adults unbanked worldwide, blockchain offers an alternative path to financial inclusion that doesn't depend on building traditional banking infrastructure.
+
+The promise of blockchain isn't just technological—it's about fundamentally restructuring digital systems to be more equitable, transparent, and accessible. While challenges remain in scalability, user experience, and regulatory clarity, the core innovation of trustless peer-to-peer systems represents a profound shift in how we can structure the digital economy.
+
+<div className="mt-16">
+  <Socials />
 </div>

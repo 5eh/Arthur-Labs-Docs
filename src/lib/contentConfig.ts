@@ -71,16 +71,40 @@ export const contentConfig: Record<string, ContentType> = {
         path: '/blogs/ecosystem',
       },
       {
-        id: 'tools',
-        title: 'Tools',
-        description: 'Blog posts about Arthur Labs tools and technologies',
-        path: '/blogs/tools',
-      },
-      {
         id: 'blockchain',
         title: 'Blockchain',
         description: 'Understanding blockchain technology and its implications for entrepreneurs',
         path: '/blogs/blockchain',
+      },
+      {
+        id: 'decom',
+        title: 'DeCom',
+        description: 'Exploring decentralized commerce and transparent supply chains',
+        path: '/blogs/decom',
+      },
+      {
+        id: 'leaders',
+        title: 'Industry Leaders',
+        description: 'Profiles of key innovators in DePIN, DeCom, and RWA',
+        path: '/blogs/leaders',
+      },
+      {
+        id: 'finance',
+        title: 'Finance',
+        description: 'Analysis of traditional financial systems and blockchain alternatives',
+        path: '/blogs/finance',
+      },
+      {
+        id: 'remote',
+        title: 'Remote Work',
+        description: 'Insights for remote developers and digital nomads',
+        path: '/blogs/remote',
+      },
+      {
+        id: 'tools',
+        title: 'Tools',
+        description: 'Blog posts about Arthur Labs tools and technologies',
+        path: '/blogs/tools',
       },
       {
         id: 'smart-contracts',

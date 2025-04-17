@@ -28,10 +28,10 @@ interface Resource {
 
 const resources: Array<Resource> = [
   {
-    href: '/contacts',
-    name: 'Contacts',
+    href: 'https://demo.arthurlabs.net/',
+    name: 'DEAN',
     description:
-      'Learn about the contact model and how to create, retrieve, update, delete, and list contacts.',
+      'A configuration based bazaar factory line to deploy commerce related marketplaces to over 7,500 different EVM chains.',
     icon: UserIcon,
     pattern: {
       y: 16,
@@ -42,10 +42,10 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/conversations',
-    name: 'Conversations',
+    href: '/rose',
+    name: 'ROSE',
     description:
-      'Learn about the conversation model and how to create, retrieve, update, delete, and list conversations.',
+      'Our centralized version of DEAN, specialized for traditional payments and data storage.',
     icon: ChatBubbleIcon,
     pattern: {
       y: -6,
@@ -56,10 +56,10 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/messages',
-    name: 'Messages',
+    href: '/quinn',
+    name: 'QUINN',
     description:
-      'Learn about the message model and how to create, retrieve, update, delete, and list messages.',
+      'A cross-platform social media generation tool to greatly accelerate marketing efforts to various networks.',
     icon: EnvelopeIcon,
     pattern: {
       y: 32,
@@ -70,10 +70,10 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/groups',
-    name: 'Groups',
+    href: 'https://susan.arthurlabs.net/',
+    name: 'SUSAN',
     description:
-      'Learn about the group model and how to create, retrieve, update, delete, and list groups.',
+      'A progressively autonomous application generation tool, using MCPs and revision auditing from our developers.',
     icon: UsersIcon,
     pattern: {
       y: 22,
@@ -103,7 +103,7 @@ function ResourcePattern({
 
   return (
     <div className="pointer-events-none">
-      <div className="absolute inset-0 rounded-2xl transition duration-300 [mask-image:linear-gradient(white,transparent)] group-hover:opacity-50">
+      <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] transition duration-300 group-hover:opacity-50">
         <GridPattern
           width={72}
           height={56}
@@ -173,8 +173,8 @@ function Resource({ resource }: { resource: Resource }) {
 export function Resources() {
   return (
     <div className="my-16 xl:max-w-none">
-      <Heading level={2} id="resources">
-        Resources
+      <Heading level={2} id="systems">
+        Systems
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 sm:grid-cols-2 xl:grid-cols-4 dark:border-white/5">
         {resources.map((resource) => (

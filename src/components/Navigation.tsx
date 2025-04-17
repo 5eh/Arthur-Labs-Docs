@@ -232,26 +232,14 @@ export const navigation: Array<NavGroup> = [
     links: [{ title: 'Home', href: '/' }],
   },
   {
-    title: 'Documentation',
-    links: [
-      { title: 'Overview', href: '/docs' },
-      { title: 'Internal Systems', href: '/docs/internal-systems' },
-      { title: 'Tools', href: '/docs/tools' },
-      { title: 'Ecosystem', href: '/docs/ecosystem' },
-      { title: 'Smart Contracts', href: '/docs/smart-contracts' },
-      { title: 'Code Stacks', href: '/docs/code-stacks' },
-      { title: 'Hackathons', href: '/docs/hackathons' },
-      { title: 'Vision', href: '/docs/vision' },
-    ],
-  },
-  {
     title: 'Blogs',
     links: [
       { title: 'All Posts', href: '/blogs' },
-      { title: 'Ecosystem', href: '/blogs/ecosystem' },
-      { title: 'Tools', href: '/blogs/tools' },
-      { title: 'Vision', href: '/blogs/vision' },
-      { title: 'Hackathons', href: '/blogs/hackathons' },
+      { title: 'Blockchain', href: '/blogs/blockchain' },
+      { title: 'DeCom', href: '/blogs/decom' },
+      { title: 'Industry Leaders', href: '/blogs/leaders' },
+      { title: 'Finance', href: '/blogs/finance' },
+      { title: 'Remote Work', href: '/blogs/remote' },
     ],
   },
   {
@@ -259,17 +247,6 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'Overview', href: '/guides' },
       { title: 'Internal Systems', href: '/guides/internal-systems' },
-      { title: 'Smart Contracts', href: '/guides/smart-contracts' },
-      { title: 'Code Stacks', href: '/guides/code-stacks' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { title: 'Overview', href: '/resources' },
-      { title: 'Ecosystem', href: '/resources/ecosystem' },
-      { title: 'Tools', href: '/resources/tools' },
-      { title: 'Social Media', href: '/resources/social-media' },
     ],
   },
 ]

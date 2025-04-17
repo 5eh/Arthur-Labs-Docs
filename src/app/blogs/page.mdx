@@ -1,131 +1,27 @@
+import { Socials } from '@/components/Socials'
+import { Resources } from '@/components/Resources'
 import { HeroPattern } from '@/components/HeroPattern'
+import { Button } from '@/components/Button'
 
 export const metadata = {
-  title: 'Blog',
-  description: 'News, insights, and updates from Arthur Labs',
+  title: 'Arthur Labs Blogs',
+  description:
+    'Arthur Labs builds world changing systems that enable entrepreneurship, growing Web2 into Web3.',
 }
 
 export const sections = [
-  { title: 'Featured Posts', id: 'featured' },
-  { title: 'All Categories', id: 'categories' },
-  { title: 'Recent Posts', id: 'recent' },
+  { title: 'Socials', id: 'socials' },
+  { title: 'Tools', id: 'tools' },
 ]
 
 <HeroPattern />
 
-# Arthur Labs Blog
+# Our Blogs
 
-Stay updated with the latest news, insights, and developments from Arthur Labs. {{ className: 'lead' }}
+All of our blogs will be accessible to read and view here, these are primarily introducing you, newcomers, or experts into the years of research or analysis our team can summarize. {{className: 'lead text-black dark:text-gray-200'}}
 
-## Featured Posts {{ anchor: 'featured' }}
-
-<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
-  <Card href="/blogs/smart-contracts/what-are-smart-contracts">
-    <Card.Title>What Are Smart Contracts?</Card.Title>
-    <Card.Description>
-      An introduction to smart contracts, their functionality, and their impact on digital transactions.
-    </Card.Description>
-  </Card>
-  <Card href="/blogs/blockchain/what-are-blockchains">
-    <Card.Title>What Are Blockchains?</Card.Title>
-    <Card.Description>
-      A comprehensive introduction to blockchain technology, its key components, and how it works.
-    </Card.Description>
-  </Card>
-  <Card href="/blogs/blockchain/blockchain-mania">
-    <Card.Title>Why Is the World Crazy About Blockchain?</Card.Title>
-    <Card.Description>
-      Exploring the hype, potential, and real-world impact driving global enthusiasm for blockchain technology.
-    </Card.Description>
-  </Card>
-  <Card href="/blogs/ecosystem/introducing-arthur-labs">
-    <Card.Title>Introducing Arthur Labs</Card.Title>
-    <Card.Description>
-      Arthur Labs is building world changing systems that enable entrepreneurship. Learn about our vision and mission.
-    </Card.Description>
-  </Card>
-</div>
-
-## All Categories {{ anchor: 'categories' }}
-
-<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
-  <Card href="/blogs/ecosystem">
-    <Card.Title>Ecosystem</Card.Title>
-    <Card.Description>
-      Insights about the Arthur Labs ecosystem and how it's growing.
-    </Card.Description>
-    <Card.Cta>Browse Ecosystem Posts</Card.Cta>
-  </Card>
-  <Card href="/blogs/tools">
-    <Card.Title>Tools</Card.Title>
-    <Card.Description>
-      Deep dives into the tools and systems that power Arthur Labs.
-    </Card.Description>
-    <Card.Cta>Browse Tools Posts</Card.Cta>
-  </Card>
-  <Card href="/blogs/vision">
-    <Card.Title>Vision</Card.Title>
-    <Card.Description>
-      Our perspective on the future of entrepreneurship and Web3.
-    </Card.Description>
-    <Card.Cta>Browse Vision Posts</Card.Cta>
-  </Card>
-  <Card href="/blogs/blockchain">
-    <Card.Title>Blockchain</Card.Title>
-    <Card.Description>
-      Understanding blockchain technology and its implications for entrepreneurs.
-    </Card.Description>
-    <Card.Cta>Browse Blockchain Posts</Card.Cta>
-  </Card>
-  <Card href="/blogs/smart-contracts">
-    <Card.Title>Smart Contracts</Card.Title>
-    <Card.Description>
-      Exploring the potential and applications of self-executing digital agreements.
-    </Card.Description>
-    <Card.Cta>Browse Smart Contract Posts</Card.Cta>
-  </Card>
-  <Card href="/blogs/hackathons">
-    <Card.Title>Hackathons</Card.Title>
-    <Card.Description>
-      Stories and updates from hackathons Arthur Labs has participated in.
-    </Card.Description>
-    <Card.Cta>Browse Hackathon Posts</Card.Cta>
-  </Card>
-</div>
-
-## Recent Posts {{ anchor: 'recent' }}
-
-<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
-  <Card href="/blogs/smart-contracts/what-are-smart-contracts">
-    <Card.Eyebrow>Smart Contracts • Apr 16, 2025</Card.Eyebrow>
-    <Card.Title>What Are Smart Contracts?</Card.Title>
-    <Card.Description>
-      An introduction to smart contracts, their functionality, and their impact on digital transactions.
-    </Card.Description>
-    <Card.Cta>Read post</Card.Cta>
-  </Card>
-  <Card href="/blogs/blockchain/what-are-blockchains">
-    <Card.Eyebrow>Blockchain • Apr 16, 2025</Card.Eyebrow>
-    <Card.Title>What Are Blockchains?</Card.Title>
-    <Card.Description>
-      A comprehensive introduction to blockchain technology, its key components, and how it works.
-    </Card.Description>
-    <Card.Cta>Read post</Card.Cta>
-  </Card>
-  <Card href="/blogs/blockchain/blockchain-mania">
-    <Card.Eyebrow>Blockchain • Apr 16, 2025</Card.Eyebrow>
-    <Card.Title>Why Is the World Crazy About Blockchain?</Card.Title>
-    <Card.Description>
-      Exploring the hype, potential, and real-world impact driving global enthusiasm for blockchain technology.
-    </Card.Description>
-    <Card.Cta>Read post</Card.Cta>
-  </Card>
-  <Card href="/blogs/ecosystem/introducing-arthur-labs">
-    <Card.Eyebrow>Ecosystem • Apr 12, 2023</Card.Eyebrow>
-    <Card.Title>Introducing Arthur Labs</Card.Title>
-    <Card.Description>
-      Arthur Labs is building world changing systems that enable entrepreneurship. Learn about our vision and mission.
-    </Card.Description>
-    <Card.Cta>Read post</Card.Cta>
-  </Card>
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/" arrow="right">
+    <>Newest Post</>
+  </Button>
 </div>
