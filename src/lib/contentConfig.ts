@@ -77,6 +77,18 @@ export const contentConfig: Record<string, ContentType> = {
         path: '/blogs/tools',
       },
       {
+        id: 'blockchain',
+        title: 'Blockchain',
+        description: 'Understanding blockchain technology and its implications for entrepreneurs',
+        path: '/blogs/blockchain',
+      },
+      {
+        id: 'smart-contracts',
+        title: 'Smart Contracts',
+        description: 'Exploring the potential and applications of self-executing digital agreements',
+        path: '/blogs/smart-contracts',
+      },
+      {
         id: 'vision',
         title: 'Vision',
         description: 'Blog posts about Arthur Labs vision and future plans',

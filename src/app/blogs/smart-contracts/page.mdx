@@ -1,0 +1,29 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Smart Contracts Blogs',
+  description: 'Exploring the potential and applications of self-executing digital agreements.',
+}
+
+export const sections = [
+  { title: 'All Smart Contracts Posts', id: 'posts' },
+]
+
+<HeroPattern />
+
+# Smart Contracts Blog Posts
+
+Understand smart contracts, their implementations, and how they're revolutionizing digital agreements and transactions. {{ className: 'lead' }}
+
+## All Smart Contracts Posts {{ anchor: 'posts' }}
+
+<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
+  <Card href="/blogs/smart-contracts/what-are-smart-contracts">
+    <Card.Eyebrow>Smart Contracts • Apr 16, 2025</Card.Eyebrow>
+    <Card.Title>What Are Smart Contracts?</Card.Title>
+    <Card.Description>
+      An introduction to smart contracts, their functionality, and their impact on digital transactions.
+    </Card.Description>
+    <Card.Cta>Read post</Card.Cta>
+  </Card>
+</div>

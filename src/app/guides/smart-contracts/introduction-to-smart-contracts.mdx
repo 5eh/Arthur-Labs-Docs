@@ -1,0 +1,323 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Introduction to Smart Contracts',
+  description: 'A beginner-friendly guide to understanding and implementing smart contracts',
+}
+
+export const sections = [
+  { title: 'Understanding Smart Contracts', id: 'understanding' },
+  { title: 'Smart Contract Platforms', id: 'platforms' },
+  { title: 'Creating Your First Smart Contract', id: 'first-contract' },
+  { title: 'Best Practices', id: 'best-practices' },
+  { title: 'Integration with Arthur Labs', id: 'integration' },
+]
+
+<HeroPattern />
+
+# Introduction to Smart Contracts
+
+A beginner-friendly guide to understand, create, and implement smart contracts in your projects. {{ className: 'lead' }}
+
+<Note>
+  This guide assumes basic familiarity with programming concepts but does not require prior blockchain experience.
+</Note>
+
+## Understanding Smart Contracts {{ anchor: 'understanding' }}
+
+Smart contracts are self-executing digital agreements with the terms directly written into code. They run on blockchain networks and automatically execute when predetermined conditions are met, without requiring intermediaries.
+
+### Key Characteristics
+
+- **Autonomous**: Once deployed, smart contracts operate without further involvement from their creators
+- **Transparent**: All participants can view the contract's code and execution
+- **Immutable**: Once deployed, the contract's code cannot be changed (though upgradeable patterns exist)
+- **Deterministic**: Given the same inputs, a smart contract will always produce the same outputs
+- **Trustless**: Parties don't need to trust each other since the contract enforces the agreement
+
+### How Smart Contracts Work
+
+Smart contracts function on a simple "if/when...then..." logic:
+
+1. Conditions for execution are encoded in the contract
+2. When these conditions are met, the contract automatically executes
+3. The execution is verified by all nodes in the blockchain network
+4. The results are recorded on the blockchain
+
+This process removes the need for trusted intermediaries, reduces counterparty risk, and increases efficiency.
+
+## Smart Contract Platforms {{ anchor: 'platforms' }}
+
+While Ethereum pioneered practical smart contract implementation, several platforms now support this functionality:
+
+### Ethereum
+
+The first and most widely used smart contract platform, using the Solidity programming language.
+
+**Pros:**
+- Largest developer ecosystem
+- Most mature tooling
+- Extensive documentation
+
+**Cons:**
+- Higher gas (transaction) fees
+- Scalability challenges (though Layer 2 solutions help)
+
+### Solana
+
+Known for high performance and low transaction costs.
+
+**Pros:**
+- Very high transaction throughput
+- Low fees
+- Energy efficient
+
+**Cons:**
+- More centralized than Ethereum
+- Less mature developer ecosystem
+
+### Polkadot
+
+A "blockchain of blockchains" that enables cross-chain interoperability.
+
+**Pros:**
+- Interoperability with other blockchains
+- Shared security model
+- Customizable blockchains (parachains)
+
+**Cons:**
+- More complex architecture
+- Still developing ecosystem
+
+### Tezos
+
+Features on-chain governance and formal verification.
+
+**Pros:**
+- Self-amending (can be upgraded without hard forks)
+- Formal verification for enhanced security
+- Energy efficient proof-of-stake
+
+**Cons:**
+- Smaller developer community
+- Fewer production applications
+
+### Choosing a Platform
+
+When selecting a platform for your smart contracts, consider:
+
+1. **Ecosystem Size**: Larger ecosystems provide better tooling, libraries, and support
+2. **Security**: More mature networks have been battle-tested
+3. **Cost**: Transaction fees vary significantly between platforms
+4. **Performance Needs**: Consider throughput and finality time requirements
+5. **Language Preference**: Different platforms use different programming languages
+
+At Arthur Labs, we primarily use Ethereum for established applications and experiment with alternative platforms for specific use cases.
+
+## Creating Your First Smart Contract {{ anchor: 'first-contract' }}
+
+Let's create a simple smart contract on Ethereum using Solidity. This example will be a basic escrow service that holds funds until both parties agree to release them.
+
+### Setting Up Your Environment
+
+1. Install [Node.js](https://nodejs.org/)
+2. Install [Truffle Suite](https://trufflesuite.com/):
+   ```bash
+   npm install -g truffle
+   ```
+3. Create a new project:
+   ```bash
+   mkdir my-first-contract
+   cd my-first-contract
+   truffle init
+   ```
+
+### Writing the Contract
+
+Create a new file called `Escrow.sol` in the `contracts` directory:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Escrow {
+    address payable public buyer;
+    address payable public seller;
+    address public arbiter;
+    
+    bool public buyerApproved;
+    bool public sellerApproved;
+    
+    constructor(address payable _seller, address _arbiter) payable {
+        buyer = payable(msg.sender);
+        seller = _seller;
+        arbiter = _arbiter;
+    }
+    
+    function approveBySeller() external {
+        require(msg.sender == seller, "Only seller can call this");
+        sellerApproved = true;
+        tryRelease();
+    }
+    
+    function approveByBuyer() external {
+        require(msg.sender == buyer, "Only buyer can call this");
+        buyerApproved = true;
+        tryRelease();
+    }
+    
+    function resolveDispute(address payable recipient) external {
+        require(msg.sender == arbiter, "Only arbiter can resolve disputes");
+        recipient.transfer(address(this).balance);
+    }
+    
+    function tryRelease() internal {
+        if (buyerApproved && sellerApproved) {
+            seller.transfer(address(this).balance);
+        }
+    }
+}
+```
+
+### Testing the Contract
+
+Create a test file in the `test` directory:
+
+```javascript
+const Escrow = artifacts.require("Escrow");
+
+contract("Escrow", accounts => {
+  const [buyer, seller, arbiter] = accounts;
+  const deposit = web3.utils.toWei("1", "ether");
+  
+  it("should allow funds release when both parties approve", async () => {
+    // Deploy contract with 1 ETH
+    const escrow = await Escrow.new(seller, arbiter, { from: buyer, value: deposit });
+    
+    // Get seller's initial balance
+    const initialBalance = await web3.eth.getBalance(seller);
+    
+    // Both approve
+    await escrow.approveByBuyer({ from: buyer });
+    await escrow.approveBySeller({ from: seller });
+    
+    // Check that seller received funds
+    const newBalance = await web3.eth.getBalance(seller);
+    assert(
+      Number(newBalance) > Number(initialBalance),
+      "Seller did not receive funds"
+    );
+  });
+});
+```
+
+### Deploying the Contract
+
+1. Create a migration file in the `migrations` directory:
+   ```javascript
+   const Escrow = artifacts.require("Escrow");
+   
+   module.exports = function(deployer, network, accounts) {
+     const seller = accounts[1];
+     const arbiter = accounts[2];
+     
+     deployer.deploy(Escrow, seller, arbiter, { value: web3.utils.toWei("1", "ether") });
+   };
+   ```
+
+2. Deploy to a local blockchain:
+   ```bash
+   truffle develop
+   truffle(develop)> migrate
+   ```
+
+### Interacting with the Contract
+
+After deployment, you can interact with your contract using the Truffle console:
+
+```javascript
+// Get the deployed contract
+const escrow = await Escrow.deployed();
+
+// Check the current state
+const seller = await escrow.seller();
+const buyerApproved = await escrow.buyerApproved();
+
+// Approve as buyer
+await escrow.approveByBuyer({ from: accounts[0] });
+
+// Approve as seller
+await escrow.approveBySeller({ from: accounts[1] });
+```
+
+## Best Practices {{ anchor: 'best-practices' }}
+
+Smart contract development requires a security-first mindset since deployed code cannot be modified and often controls valuable assets.
+
+### Security Considerations
+
+1. **Audit Your Code**: Always have smart contracts audited by security professionals before deploying with real value.
+
+2. **Test Thoroughly**: Create comprehensive tests including edge cases and potential attack vectors.
+
+3. **Start Small**: Deploy with minimal value and gradually increase as confidence grows.
+
+4. **Use Established Patterns**: Don't reinvent the wheel. Use battle-tested libraries like OpenZeppelin.
+
+5. **Consider Upgradability**: For complex contracts, implement upgradeability patterns.
+
+6. **Minimize Complexity**: Complex code leads to more potential vulnerabilities.
+
+### Common Vulnerabilities
+
+Be aware of these common smart contract vulnerabilities:
+
+1. **Reentrancy Attacks**: Always update state before making external calls.
+
+2. **Integer Overflow/Underflow**: Use SafeMath or Solidity 0.8.0+ (which has built-in overflow checks).
+
+3. **Timestamp Dependence**: Don't rely on block timestamps for critical logic.
+
+4. **Front-Running**: Consider that transactions are visible in the mempool before confirmation.
+
+5. **Access Control Issues**: Carefully implement and test access restrictions.
+
+## Integration with Arthur Labs {{ anchor: 'integration' }}
+
+Arthur Labs systems are designed to work seamlessly with smart contracts to provide Web3 functionality without requiring deep technical expertise.
+
+### DEAN and Smart Contracts
+
+Our DEAN (Digital Bazaar Factory) system incorporates smart contract standards for:
+
+1. **Commerce**: Enabling secure transactions with automatic escrow and release mechanisms.
+
+2. **Services**: Creating verifiable records of service delivery and payment.
+
+3. **Deliveries**: Tracking and confirming physical deliveries with blockchain validation.
+
+### ROSE Integration
+
+ROSE provides the bridge between traditional marketplaces and blockchain functionality:
+
+1. **Simplified Integration**: ROSE abstracts the complexity of blockchain interaction.
+
+2. **User-Friendly Interfaces**: End users don't need technical knowledge to benefit from smart contracts.
+
+3. **Multi-Chain Support**: ROSE enables integration with multiple blockchain networks.
+
+### Getting Started
+
+To integrate smart contracts with Arthur Labs systems:
+
+1. Explore our [smart contract templates](/guides/smart-contracts/commerce-contract)
+
+2. Follow our [integration guide](/guides/smart-contracts/integration)
+
+3. Test on our [staging environment](/guides/internal-systems/staging-environment)
+
+<div className="mt-8 border-t border-zinc-900/5 pt-8 dark:border-white/5">
+  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+    Ready to go deeper with smart contracts? Explore our specific guides for commerce, service, and delivery contracts in the Smart Contracts section.
+  </p>
+</div>

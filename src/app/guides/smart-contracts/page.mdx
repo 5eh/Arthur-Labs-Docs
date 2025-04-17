@@ -1,0 +1,102 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Smart Contracts Guides',
+  description: 'Step-by-step guides for implementing and working with smart contracts',
+}
+
+export const sections = [
+  { title: 'Getting Started', id: 'getting-started' },
+  { title: 'Implementation Guides', id: 'implementation' },
+  { title: 'Integration Guides', id: 'integration' },
+]
+
+<HeroPattern />
+
+# Smart Contracts Guides
+
+Comprehensive guides for understanding, implementing, and integrating smart contracts with your applications. {{ className: 'lead' }}
+
+## Getting Started {{ anchor: 'getting-started' }}
+
+New to smart contracts? Start with these introductory guides to build a solid foundation.
+
+<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-3">
+  <Card href="/guides/smart-contracts/introduction-to-smart-contracts">
+    <Card.Title>Introduction to Smart Contracts</Card.Title>
+    <Card.Description>
+      A beginner-friendly guide to understanding and implementing smart contracts.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+  <Card href="/guides/smart-contracts/blockchain-fundamentals">
+    <Card.Title>Blockchain Fundamentals</Card.Title>
+    <Card.Description>
+      Essential blockchain concepts for effective smart contract development.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+  <Card href="/guides/smart-contracts/solidity-basics">
+    <Card.Title>Solidity Basics</Card.Title>
+    <Card.Description>
+      Learn the fundamentals of Solidity, the most popular smart contract programming language.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+</div>
+
+## Implementation Guides {{ anchor: 'implementation' }}
+
+Step-by-step guides for implementing different types of smart contracts.
+
+<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-3">
+  <Card href="/guides/smart-contracts/commerce-contract">
+    <Card.Title>Commerce Contracts</Card.Title>
+    <Card.Description>
+      Implement smart contracts for secure, automated e-commerce transactions.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+  <Card href="/guides/smart-contracts/service-contract">
+    <Card.Title>Service Contracts</Card.Title>
+    <Card.Description>
+      Create smart contracts for service delivery, escrow, and payment release.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+  <Card href="/guides/smart-contracts/delivery-contract">
+    <Card.Title>Delivery Contracts</Card.Title>
+    <Card.Description>
+      Build smart contracts for tracking and verifying physical or digital deliveries.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+</div>
+
+## Integration Guides {{ anchor: 'integration' }}
+
+Learn how to integrate smart contracts with Arthur Labs systems and other platforms.
+
+<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-3">
+  <Card href="/guides/smart-contracts/dean-integration">
+    <Card.Title>DEAN Integration</Card.Title>
+    <Card.Description>
+      Integrate smart contracts with DEAN marketplaces for enhanced functionality.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+  <Card href="/guides/smart-contracts/rose-integration">
+    <Card.Title>ROSE Integration</Card.Title>
+    <Card.Description>
+      Connect your smart contracts to ROSE for Web3 functionality and blockchain interoperability.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+  <Card href="/guides/smart-contracts/web-integration">
+    <Card.Title>Web Integration</Card.Title>
+    <Card.Description>
+      Connect smart contracts to web applications using JavaScript and Web3.js.
+    </Card.Description>
+    <Card.Cta>Read guide</Card.Cta>
+  </Card>
+</div>

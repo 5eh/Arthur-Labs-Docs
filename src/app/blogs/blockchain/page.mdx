@@ -1,0 +1,37 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Blockchain Blogs',
+  description: 'Understanding blockchain technology and its implications for entrepreneurs.',
+}
+
+export const sections = [
+  { title: 'All Blockchain Posts', id: 'posts' },
+]
+
+<HeroPattern />
+
+# Blockchain Blog Posts
+
+Explore blockchain technology fundamentals, applications, and implications for entrepreneurs and innovative businesses. {{ className: 'lead' }}
+
+## All Blockchain Posts {{ anchor: 'posts' }}
+
+<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
+  <Card href="/blogs/blockchain/what-are-blockchains">
+    <Card.Eyebrow>Blockchain • Apr 16, 2025</Card.Eyebrow>
+    <Card.Title>What Are Blockchains?</Card.Title>
+    <Card.Description>
+      A comprehensive introduction to blockchain technology, its key components, and how it works.
+    </Card.Description>
+    <Card.Cta>Read post</Card.Cta>
+  </Card>
+  <Card href="/blogs/blockchain/blockchain-mania">
+    <Card.Eyebrow>Blockchain • Apr 16, 2025</Card.Eyebrow>
+    <Card.Title>Why Is the World Crazy About Blockchain?</Card.Title>
+    <Card.Description>
+      Exploring the hype, potential, and real-world impact driving global enthusiasm for blockchain technology.
+    </Card.Description>
+    <Card.Cta>Read post</Card.Cta>
+  </Card>
+</div>
