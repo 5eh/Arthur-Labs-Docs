@@ -10,18 +10,125 @@ export const metadata = {
 }
 
 export const sections = [
-  { title: 'Socials', id: 'socials' },
-  { title: 'Tools', id: 'tools' },
+  { title: 'Development Guides', id: 'development-guides' },
+  { title: 'Blockchain Technology', id: 'blockchain-technology' },
+  { title: 'Smart Contracts', id: 'smart-contracts' },
+  { title: 'Automation & AI', id: 'automation-ai' },
 ]
 
 <HeroPattern />
 
 # Our Blogs
 
-All of our blogs will be accessible to read and view here, these are primarily introducing you, newcomers, or experts into the years of research or analysis our team can summarize. {{className: 'lead text-black dark:text-gray-200'}}
+All of our blogs are accessible to read and view here, introducing newcomers and experts alike to years of research and analysis our team has distilled. Explore our comprehensive guides on Web3 development, blockchain technology, and innovative approaches to building in the decentralized ecosystem. {{className: 'lead text-black dark:text-gray-200'}}
 
 <div className="not-prose mt-6 mb-16 flex gap-3">
   <Button href="/" arrow="right">
     <>Newest Post</>
   </Button>
+</div>
+
+<h2 id="development-guides">Development Guides</h2>
+
+Comprehensive resources for Web3 developers looking to build robust, scalable decentralized applications.
+
+<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/mastering-web3-development" className="hover:text-cyan-500">Mastering Web3 Development</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Key frameworks, best practices, and community-driven development approaches for Web3 projects.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/model-context-providers" className="hover:text-cyan-500">Model Context Providers</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Building smarter blockchain applications with streamlined development workflows and performance optimization.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/supabase-web3" className="hover:text-cyan-500">Combining Supabase with Web3</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Building secure, scalable backends with database design patterns and RLS security for blockchain applications.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/full-stack-generation" className="hover:text-cyan-500">Full-Stack Application Generation</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Automating frontend and backend development with customizable templates for blockchain use cases.</p>
+  </div>
+</div>
+
+## Blockchain Technology
+
+Explore technical implementations and architectural patterns for blockchain systems and decentralized commerce.
+
+<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/multi-chain-marketplace" className="hover:text-cyan-500">Multi-Chain Marketplace Creation</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Architecture patterns for cross-chain compatibility and performance optimization for decentralized commerce.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/token-gated-commerce" className="hover:text-cyan-500">Token-Gated Commerce</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Technical setup for NFT-based access systems and integration patterns with existing storefronts.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/blockchain" className="hover:text-cyan-500">Why Do We Need Blockchains?</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Exploring peer-to-peer economies, transparency, and global opportunities enabled by blockchain technology.</p>
+  </div>
+</div>
+
+## Smart Contracts
+
+Best practices, security considerations, and implementation strategies for robust smart contract development.
+
+<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/smart-contract-security" className="hover:text-cyan-500">Automated Security Audit Processes</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Setting up continuous security testing pipelines and identifying common vulnerabilities in smart contracts.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/evm-chain-deployment" className="hover:text-cyan-500">EVM Chain Deployment</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Technical considerations, gas optimization strategies, and cross-chain compatibility techniques for smart contracts.</p>
+  </div>
+</div>
+
+## Automation & AI
+
+Leveraging automation and artificial intelligence to enhance blockchain development and community engagement.
+
+<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/content-strategy" className="hover:text-cyan-500">Automated Content Strategy</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">AI-powered content generation and blockchain-specific templates for effective community outreach.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/blogs/claude-blockchain" className="hover:text-cyan-500">Integrating Claude CLI</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Leveraging AI for smart contract generation, documentation automation, and code optimization in blockchain development.</p>
+  </div>
+</div>
+
+<div className="mt-16">
+  <Socials />
 </div>
