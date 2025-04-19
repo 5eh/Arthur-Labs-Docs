@@ -236,10 +236,33 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'All Posts', href: '/blogs' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
+      { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
+      { title: 'Content Strategy', href: '/blogs/content-strategy' },
       { title: 'DeCom', href: '/blogs/decom' },
-      { title: 'Industry Leaders', href: '/blogs/leaders' },
+      { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
+      { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
+      { title: 'Industry Leaders', href: '/blogs/leaders' },
+      {
+        title: 'Mastering Web3 Development',
+        href: '/blogs/mastering-web3-development',
+      },
+      {
+        title: 'Model Context Providers',
+        href: '/blogs/model-context-providers',
+      },
+      {
+        title: 'Multi-Chain Marketplace',
+        href: '/blogs/multi-chain-marketplace',
+      },
       { title: 'Remote Work', href: '/blogs/remote' },
+      { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
+      {
+        title: 'Smart Contract Security',
+        href: '/blogs/smart-contract-security',
+      },
+      { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
+      { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
     ],
   },
   {
@@ -247,6 +270,8 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'Overview', href: '/guides' },
       { title: 'Internal Systems', href: '/guides/internal-systems' },
+      { title: 'Whitepaper Overview', href: '/guides/whitepaper-overview' },
+      { title: 'Web3 Startups in Omaha', href: '/guides/local-web3-startups' },
     ],
   },
 ]

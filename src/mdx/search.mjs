@@ -74,8 +74,6 @@ export default function Search(nextConfig = {}) {
               return { url, sections }
             })
 
-            // When this file is imported within the application
-            // the following module is loaded:
             return `
               import FlexSearch from 'flexsearch'
 
