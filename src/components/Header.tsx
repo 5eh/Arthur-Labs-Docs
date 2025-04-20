@@ -97,7 +97,9 @@ export const Header = forwardRef<
           <ThemeToggle />
         </div>
         <div className="hidden min-[416px]:contents">
-          <Button href="https://arthurlabs.net">Arthur Labs</Button>
+          <Button href="https://arthurlabs.net" className="rounded-none">
+            Arthur Labs
+          </Button>
         </div>
       </div>
     </motion.div>

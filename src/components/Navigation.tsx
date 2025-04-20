@@ -65,7 +65,7 @@ function NavLink({
         'flex justify-between gap-2 py-1 pr-3 text-sm transition',
         isAnchorLink ? 'pl-7' : 'pl-4',
         active
-          ? 'text-zinc-900 dark:text-white'
+          ? 'font-semibold text-zinc-900 dark:text-white'
           : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white',
       )}
     >
@@ -236,6 +236,10 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'All Posts', href: '/blogs' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
+      {
+        title: 'Why you need a beautiful website',
+        href: '/blogs/beautiful-website',
+      },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
       { title: 'DeCom', href: '/blogs/decom' },
