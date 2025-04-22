@@ -1,0 +1,116 @@
+import { Socials } from '@/components/Socials'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+import { Button } from '@/components/Button'
+
+export const metadata = {
+  title: 'Arthur Labs Marketplace',
+  description:
+    'Arthur Labs Marketplace documentation and resources for blockchain-powered commerce platforms.',
+}
+
+export const sections = [
+  { title: 'Documentation', id: 'documentation' },
+  { title: 'Legal', id: 'legal' },
+  { title: 'Smart Contracts', id: 'smart-contracts' },
+  { title: 'Compliance', id: 'compliance' },
+]
+
+<HeroPattern />
+
+# Marketplace
+
+Welcome to Arthur Labs Marketplace documentation. Here you'll find comprehensive guides and resources on how to safely utilize our decentralized marketplace platforms for your business needs. {{className: 'lead text-black dark:text-gray-200'}}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/marketplace/common-questions" arrow="right">
+    <>Common Questions</>
+  </Button>
+  <Button href="#documentation" variant="outline">
+    <>Browse Documentation</>
+  </Button>
+</div>
+
+<h2 id="documentation">Documentation</h2>
+
+Essential resources for understanding and using Arthur Labs marketplace platforms.
+
+<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/marketplace/common-questions" className="hover:text-cyan-500">Common Questions</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Frequently asked questions about using the marketplace, wallets, and transactions.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/marketplace/marketplace-questions" className="hover:text-cyan-500">Marketplace Questions</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Detailed answers about wallet compatibility, smart contracts, dispute resolution, and trust systems.</p>
+  </div>
+</div>
+
+## Legal
+
+Important legal information and structures for Arthur Labs marketplace platforms.
+
+<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/marketplace/legal-structure" className="hover:text-cyan-500">Legal Structure</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Overview of Arthur Labs marketplace organizational structure and roles for participants.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/marketplace/terms" className="hover:text-cyan-500">Terms of Service</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Complete terms of service for using Arthur Labs marketplace platforms.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/marketplace/privacy" className="hover:text-cyan-500">Privacy Policy</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">How we collect, use, and protect your information on our marketplace platforms.</p>
+  </div>
+</div>
+
+## Smart Contracts
+
+Technical information about the smart contracts powering our marketplace platforms.
+
+<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/marketplace/smart-contracts" className="hover:text-cyan-500">Smart Contract Architecture</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Comprehensive overview of the smart contract infrastructure behind Arthur Labs marketplaces.</p>
+  </div>
+</div>
+
+## Compliance
+
+Regulatory compliance and data protection information.
+
+<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/marketplace/data-compliance" className="hover:text-cyan-500">Data Compliance</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">How Arthur Labs marketplaces comply with global data protection regulations.</p>
+  </div>
+
+  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
+    <h3 className="font-semibold text-lg mb-2">
+      <a href="/marketplace/services" className="hover:text-cyan-500">Available Services</a>
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-400">Overview of the services provided through Arthur Labs marketplace platforms.</p>
+  </div>
+</div>
+
+<div className="mt-16">
+  <Socials />
+</div>

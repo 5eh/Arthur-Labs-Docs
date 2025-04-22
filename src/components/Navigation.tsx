@@ -267,6 +267,7 @@ export const navigation: Array<NavGroup> = [
       },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
+      { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
     ],
   },
   {
@@ -276,6 +277,20 @@ export const navigation: Array<NavGroup> = [
       { title: 'Internal Systems', href: '/guides/internal-systems' },
       { title: 'Whitepaper Overview', href: '/guides/whitepaper-overview' },
       { title: 'Web3 Startups in Omaha', href: '/guides/local-web3-startups' },
+    ],
+  },
+  {
+    title: 'Marketplace',
+    links: [
+      { title: 'Home', href: '/marketplace' },
+      { title: 'Common Questions', href: '/marketplace/common-questions' },
+      { title: 'Marketplace Questions', href: '/marketplace/marketplace-questions' },
+      { title: 'Smart Contracts', href: '/marketplace/smart-contracts' },
+      { title: 'Legal Structure', href: '/marketplace/legal-structure' },
+      { title: 'Terms of Service', href: '/marketplace/terms' },
+      { title: 'Privacy Policy', href: '/marketplace/privacy' },
+      { title: 'Data Compliance', href: '/marketplace/data-compliance' },
+      { title: 'Available Services', href: '/marketplace/services' },
     ],
   },
 ]

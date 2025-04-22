@@ -1,0 +1,167 @@
+import { Socials } from '@/components/Socials'
+import { HeroPattern } from '@/components/HeroPattern'
+import { Button } from '@/components/Button'
+
+export const metadata = {
+  title: 'Arthur Labs Marketplace - Smart Contract Architecture',
+  description:
+    'Comprehensive overview of the smart contract infrastructure behind Arthur Labs marketplaces.',
+}
+
+export const sections = [
+  { title: 'Core Contracts', id: 'core-contracts' },
+  { title: 'Contract Factories', id: 'contract-factories' },
+  { title: 'Payment System', id: 'payment-system' },
+  { title: 'Additional Contracts', id: 'additional-contracts' },
+]
+
+<HeroPattern />
+
+# Smart Contract Architecture
+
+This document provides a comprehensive overview of the smart contract infrastructure that powers Arthur Labs marketplace platforms, explaining how our blockchain technology enables secure, transparent, and efficient commerce. {{className: 'lead text-black dark:text-gray-200'}}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/marketplace" arrow="left">
+    <>Back to Marketplace</>
+  </Button>
+</div>
+
+## Core Contracts
+
+### SellContract
+**Purpose**: This contract enables sellers to list physical products or services on the marketplace.
+
+**Key features**:
+- Stores product information including title, description, image, price, quantity, and validity period
+- Supports multiple shipping methods with different pricing
+- Allows optional upcharges that buyers can select
+- Tracks customer information and purchase details while maintaining privacy
+- Includes mechanisms for validating delivery status
+
+**Benefits**:
+- Creates a transparent and immutable record of the listing
+- Provides a framework for secure transactions between parties
+- Enables flexible pricing through upcharges and shipping options
+- Supports time-limited offerings through validity periods
+
+### PurchaseContract
+**Purpose**: This contract represents a buyer's commitment to purchase a product or service.
+
+**Key features**:
+- Stores buyer details including name, delivery address, and special instructions
+- Creates a binding agreement between buyer and seller
+- Manages payment details and escrow
+- Connects to a PaymentProxy for secure fund handling
+- Enables tracking of shipping status
+
+**Benefits**:
+- Creates a legally binding agreement between parties
+- Protects buyer information through encryption mechanisms
+- Separates payment handling from purchase details for security
+- Enables verification of delivery completion
+
+## Contract Factories
+
+### SellContractFactory
+**Purpose**: This factory contract streamlines the creation of SellContracts, making it easier for sellers to list items.
+
+**Key features**:
+- Handles the deployment of new SellContracts
+- Maintains an array of all created contracts
+- Maps contract ownership information
+- Provides methods to query contracts by various parameters
+
+**Benefits**:
+- Simplifies the process of creating listings for sellers
+- Provides marketplace administrators with access to all listings
+- Enables efficient organization and retrieval of contract information
+- Reduces gas costs compared to manual contract creation
+
+### PurchaseContractFactory
+**Purpose**: This factory streamlines the purchase process and manages buyer transactions.
+
+**Key features**:
+- Calculates total prices including base price, upcharges, and shipping
+- Creates new purchase contracts when buyers commit to a transaction
+- Manages the connection to payment proxies
+- Stores purchase history for buyers
+
+**Benefits**:
+- Provides price transparency for buyers before purchase
+- Automates the creation of purchase agreements
+- Maintains organized records of all transactions
+- Handles the complex pricing calculations based on buyer selections
+
+## Payment System
+
+### PaymentProxy
+**Purpose**: This contract handles the secure transfer of funds between buyers and sellers.
+
+**Key features**:
+- Holds payment in escrow until delivery is confirmed
+- Requires proof of shipping before release of funds
+- Enables secure payment release to sellers
+- Stores shipping details and proof of delivery
+
+**Benefits**:
+- Provides security for both buyers and sellers
+- Ensures sellers only receive payment after providing delivery proof
+- Creates transparency in the payment process
+- Reduces the risk of fraud in transactions
+
+### PaymentProxyFactory
+**Purpose**: This factory creates and manages payment proxies for transactions.
+
+**Key features**:
+- Creates new payment proxy contracts
+- Maps proxies to their associated purchase contracts
+- Tracks proxy relationships for buyers and sellers
+- Provides methods to query proxy information
+
+**Benefits**:
+- Automates the creation of secure payment channels
+- Maintains organized records of payment relationships
+- Enables efficient retrieval of payment information
+- Separates payment concerns from other contract functionalities
+
+## Additional Contracts
+
+Arthur Labs is developing additional contracts to enhance the marketplace ecosystem:
+
+### Oracle Validator Contracts
+These contracts facilitate third-party verification of real-world exchanges:
+- Authenticate product deliveries
+- Verify service completion
+- Confirm physical exchanges
+- Reward validators for honest participation
+
+### Insurance Model Contracts
+These contracts provide protection for marketplace transactions:
+- Offer consumer protection for marketplace transactions
+- Create financial safety nets for transaction failures
+- Enable compensation for delivery issues
+- Facilitate dispute resolution through validated third parties
+- Process claims based on predefined conditions
+
+### DAO Governance Contracts
+Supporting the Wyoming DAO LLC structure with:
+- Voting contracts for token holders
+- Proposal submission and review mechanisms
+- Treasury management for ecosystem funding
+- Delegation systems for voting power
+- Reward distribution for community contributions
+
+### Account Abstraction Contracts
+Improving user experience through:
+- User-friendly account creation via email/password
+- Sharded wallet fragments for enhanced security
+- Transaction batching to reduce fees
+- Guest account functionality for new users
+- Recovery mechanisms for lost credentials
+
+Together, these smart contracts create a comprehensive marketplace infrastructure that enables secure, transparent, and efficient commerce for physical goods and services.
+
+<div className="mt-16">
+  <Socials />
+</div>

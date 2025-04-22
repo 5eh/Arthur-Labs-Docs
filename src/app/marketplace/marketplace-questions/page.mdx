@@ -1,0 +1,115 @@
+import { Socials } from '@/components/Socials'
+import { HeroPattern } from '@/components/HeroPattern'
+import { Button } from '@/components/Button'
+
+export const metadata = {
+  title: 'Arthur Labs Marketplace - Marketplace Questions',
+  description:
+    'Detailed answers about Arthur Labs marketplace functionality, wallets, and transaction process.',
+}
+
+export const sections = [
+  { title: 'Wallet Information', id: 'wallet-information' },
+  { title: 'Smart Contracts', id: 'smart-contracts' },
+  { title: 'Dispute Management', id: 'dispute-management' },
+  { title: 'Trust Systems', id: 'trust-systems' },
+]
+
+<HeroPattern />
+
+# Marketplace Questions
+
+Detailed answers to frequently asked questions about the technical aspects and functionality of Arthur Labs marketplace platforms. {{className: 'lead text-black dark:text-gray-200'}}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/marketplace" arrow="left">
+    <>Back to Marketplace</>
+  </Button>
+</div>
+
+## Wallet Information
+
+### What kind of wallet do I need to begin?
+You can use any EVM compatible wallet. Alchemy provides a nice list of around 60 Ethereum wallet providers at [their dApps directory](https://www.alchemy.com/dapps/list-of/software-wallets-on-ethereum). We have initially developed on MetaMask and Talisman, which offer excellent compatibility with our platform.
+
+### How do I set up a wallet?
+Setting up a wallet typically involves these steps:
+1. Download a compatible wallet application
+2. Create a new wallet and securely save your recovery phrase
+3. Add the appropriate blockchain network to your wallet
+4. Fund your wallet with the necessary cryptocurrency
+5. Connect your wallet to our marketplace
+
+### Can I use multiple wallets?
+Yes, you can use different wallets with our platform. However, each wallet address creates a separate identity on the marketplace, so your reputation and transaction history will not transfer between wallets.
+
+## Smart Contracts
+
+### What smart contracts am I signing?
+Our marketplace uses six primary smart contracts, though users typically interact with only 3-4 of them:
+
+As a buyer, you would interact with:
+- Product listing contract: Obtains overall information about the product and references the seller's wallet address
+- Purchase contract factory: Provides your purchase information on-chain (with future ZK encryption for privacy)
+- Payment proxy contract: Handles the secure transfer of funds between buyer and seller
+
+As a seller, you would interact with:
+- Product creation contract: Determines quantity, types, title, and description of products
+- Purchase agreement contract: Created by buyers and accepted by sellers, establishing terms of sale
+- Payment proxy contract: Verifies shipping information and manages payment release
+
+### Are the smart contracts audited?
+Yes, all smart contracts used in our marketplace undergo rigorous security audits by independent third-party firms. Audit reports are made publicly available, ensuring transparency and security for all users.
+
+## Dispute Management
+
+### What happens if there is a dispute?
+We're implementing a comprehensive dispute management system that includes:
+
+- An escrow system that holds payment until delivery is confirmed
+- Third-party verification of delivery when requested
+- Marketplace authority oversight for dispute resolution
+- Optional insurance for lost, stolen, or misdelivered packages
+
+The marketplace authority acts as the final arbiter in case of unresolved disputes, ensuring fair outcomes for all parties.
+
+### How does the insurance model work?
+Our insurance model:
+- Charges a small optional fee for transaction coverage
+- Creates a financial safety net for both buyers and sellers
+- Provides compensation for package loss, damage, or delivery issues
+- Is managed through smart contracts for transparent operation
+- Processes claims based on predefined conditions and verification
+
+## Trust Systems
+
+### How do I know I can trust a seller?
+Our platform includes several mechanisms to verify seller trustworthiness:
+
+1. Direct verification from marketplace authorities
+2. Comprehensive profile information
+3. Transaction history and marketplace reputation
+4. Overall blockchain activity analysis
+5. Account age measurement from initial transaction
+6. Token holdings as stake in the ecosystem
+
+### How do I know I can trust a buyer?
+We provide similar trust metrics for buyers:
+
+1. Previous purchase and sales history
+2. Profile completeness and verification level
+3. Optional manual verification for a small fee
+4. Direct messaging for pre-transaction communication
+5. Reputation scoring based on transaction behavior
+
+### What can I buy and sell?
+You can purchase and sell products that comply with:
+- Your country's and state's regulations
+- Marketplace terms of service
+- Community standards
+
+The marketplace reserves the right to report suspicious activity and prohibit transactions of illegal or prohibited items.
+
+<div className="mt-16">
+  <Socials />
+</div>
