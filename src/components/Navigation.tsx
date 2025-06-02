@@ -234,7 +234,6 @@ export const navigation: Array<NavGroup> = [
     title: 'Blogs',
     links: [
       { title: 'All Posts', href: '/blogs' },
-
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
@@ -245,6 +244,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
+      { title: 'React vs. Vue: The Ultimate Web Development Comparison Guide', href: '/blogs/react-vue-web' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
