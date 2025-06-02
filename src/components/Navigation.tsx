@@ -247,6 +247,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
+      { title: 'The Evolution of AI: From Rule-Based Systems to Deep Learnin', href: '/blogs/the-evolution-of-ai-from-rule-based-systems-to-deep-learning' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
     ],
   },
