@@ -235,6 +235,7 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'All Posts', href: '/blogs' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
+      { title: 'A Guide to Optimizing Next.js Applications', href: '/blogs/a-guide-to-optimizing-nextjs-applications' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
