@@ -244,6 +244,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'How to Successfully Onboard Decentralized Commerce (DeCom) S', href: '/blogs/blog-1748900652042' },
+      { title: 'How to Successfully Onboard Decentralized Marketplaces to Yo', href: '/blogs/blog-1748900748417' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
