@@ -236,6 +236,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'All Posts', href: '/blogs' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
       { title: '5 Compelling Reasons to Utilize Arthur Labs\', href: '/blogs/5-compelling-reasons-to-utilize-arthur-labs-blockchain-infrastructure-for-your-business' },
+      { title: '5 Upcoming Trends in Blockchain & Web3 That Will Shape 2025', href: '/blogs/blog-1748898754894' },
       { title: 'A Guide to Optimizing Next.js Applications', href: '/blogs/a-guide-to-optimizing-nextjs-applications' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
