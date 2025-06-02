@@ -235,8 +235,14 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'All Posts', href: '/blogs' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
-      { title: 'Accelerate Your Web3 Marketplace Launch with the DEAN System', href: '/blogs/blog-1748906869248' },
-      { title: 'Accelerating Marketplace Development: How Arthur Labs', href: '/blogs/blog-1748907114218' },
+      {
+        title: 'Accelerate Your Web3 Marketplace Launch with the DEAN System',
+        href: '/blogs/blog-1748906869248',
+      },
+      {
+        title: 'Accelerating Marketplace Development: How Arthur Labs',
+        href: '/blogs/blog-1748907114218',
+      },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
@@ -246,10 +252,22 @@ export const navigation: Array<NavGroup> = [
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
-      { title: 'Launch Web3 Marketplaces in Days, Not Months: Inside Arthur ', href: '/blogs/blog-1748907335087' },
-      { title: 'Launch Your Niche Web3 Marketplace in Days with Arthur Labs\', href: '/blogs/blog-1748908171671' },
-      { title: 'Launch Your Web3 Marketplace in Days: A Deep Dive into the D', href: '/blogs/blog-1748907665284' },
-      { title: 'Leveraging Blockchain Infrastructure for Next-Generation Mar', href: '/blogs/blog-1748907777663' },
+      {
+        title: 'Launch Web3 Marketplaces in Days, Not Months: Inside Arthur ',
+        href: '/blogs/blog-1748907335087',
+      },
+      {
+        title: 'Launch Your Niche Web3 Marketplace in Days with Arthur Labs',
+        href: '/blogs/blog-1748908171671',
+      },
+      {
+        title: 'Launch Your Web3 Marketplace in Days: A Deep Dive into the D',
+        href: '/blogs/blog-1748907665284',
+      },
+      {
+        title: 'Leveraging Blockchain Infrastructure for Next-Generation Mar',
+        href: '/blogs/blog-1748907777663',
+      },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
