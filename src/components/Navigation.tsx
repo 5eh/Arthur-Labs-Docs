@@ -248,6 +248,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Industry Leaders', href: '/blogs/leaders' },
       { title: 'Launch Web3 Marketplaces in Days, Not Months: Inside Arthur ', href: '/blogs/blog-1748907335087' },
       { title: 'Launch Your Web3 Marketplace in Days: A Deep Dive into the D', href: '/blogs/blog-1748907665284' },
+      { title: 'Leveraging Blockchain Infrastructure for Next-Generation Mar', href: '/blogs/blog-1748907777663' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
