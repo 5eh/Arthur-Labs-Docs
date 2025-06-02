@@ -235,6 +235,7 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'All Posts', href: '/blogs' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
+      { title: 'Accelerate Your Web3 Marketplace Launch with the DEAN System', href: '/blogs/blog-1748906869248' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
@@ -243,10 +244,6 @@ export const navigation: Array<NavGroup> = [
       { title: 'Finance', href: '/blogs/finance' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
-      {
-        title: 'How to Successfully Onboard Decentralized Commerce (DeCom)',
-        href: '/blogs/blog-1748900652042',
-      },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
