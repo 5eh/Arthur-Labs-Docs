@@ -235,7 +235,6 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'All Posts', href: '/blogs' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
-      { title: '5 Upcoming Trends in Blockchain & Web3 That Will Shape 2025', href: '/blogs/blockchain-web' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
