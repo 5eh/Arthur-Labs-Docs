@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
 
-import { Button } from '@/components/Button'
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
@@ -235,7 +234,7 @@ export const navigation: Array<NavGroup> = [
     title: 'Blogs',
     links: [
       { title: 'All Posts', href: '/blogs' },
-      { title: '"Express.js vs. NestJS: The Ultimate Comparison Guide for No', href: '/blogs/expressjs-nestjs-iy0r' },
+
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
@@ -266,7 +265,10 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'Home', href: '/marketplace' },
       { title: 'Common Questions', href: '/marketplace/common-questions' },
-      { title: 'Marketplace Questions', href: '/marketplace/marketplace-questions' },
+      {
+        title: 'Marketplace Questions',
+        href: '/marketplace/marketplace-questions',
+      },
       { title: 'Smart Contracts', href: '/marketplace/smart-contracts' },
       { title: 'Legal Structure', href: '/marketplace/legal-structure' },
       { title: 'Terms of Service', href: '/marketplace/terms' },
