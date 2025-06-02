@@ -244,7 +244,10 @@ export const navigation: Array<NavGroup> = [
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
-      { title: 'React vs. Vue: The Ultimate Web Development Comparison Guide', href: '/blogs/react-vue-web' },
+      {
+        title: 'React vs. Vue: The Ultimate Web Development Comparison Guide',
+        href: '/blogs/react-vue-web',
+      },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },

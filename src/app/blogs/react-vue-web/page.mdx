@@ -1,5 +1,7 @@
-import Button from '../../../components/Blog/Button';
-import Socials from '../../../components/Blog/Socials';
+import { Button } from '@/components/Button'
+import { Socials } from '@/components/Socials'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
 
 export const metadata = {
   title: "React vs. Vue: The Ultimate Web Development Comparison Guide | Arthur Labs",
@@ -16,13 +18,15 @@ export const sections = [
   { title: "State Management, Tooling, and Community Support", id: "state-management-community-support" },
 ];
 
-# React vs. Vue: The Ultimate Web Development Comparison Guide
+<HeroPattern />
+
+<h1> React vs. Vue: The Ultimate Web Development Comparison Guide </h1>
 
 Choosing the right frontend framework is a critical decision in web development, significantly impacting project timelines, performance, and scalability. React and Vue.js consistently rank among the most popular and powerful JavaScript libraries/frameworks. This guide provides an ultimate comparison to help you understand their key differences, strengths, and ideal use cases, enabling an informed choice for your next project. {{className: "lead text-black dark:text-gray-200"}}
 
 <Button href="/blogs" arrow="left">All Blogs</Button>
 
-## Core Philosophy and Learning Curve {id: "core-philosophy-learning-curve"}
+<h2 id="core-philosophy-learning-curve">Core Philosophy and Learning Curve </h2>
 React and Vue, while both component-based, have distinct approaches and learning experiences.
 
 **React:**
@@ -39,7 +43,7 @@ React and Vue, while both component-based, have distinct approaches and learning
 *   **Flexibility vs. Opinionation:** React is less opinionated, giving more freedom but requiring more decisions. Vue is more opinionated with its core libraries (Vue Router, Vuex/Pinia) integrating seamlessly, offering a smoother "out-of-the-box" experience.
 *   **Initial Setup:** Vue CLI is often praised for its ease of use in scaffolding projects compared to Create React App, though both are effective.
 
-## Performance and Ecosystem {id: "performance-ecosystem"}
+<h2 id="state-management-community-support"> Performance and Ecosystem </h2>
 Performance and the richness of the surrounding ecosystem are vital for long-term project success.
 
 **Performance:**
@@ -58,7 +62,7 @@ Performance and the richness of the surrounding ecosystem are vital for long-ter
     *   **UI Component Libraries:** Vuetify, Quasar Framework, Element Plus.
 *   **Mobile Development:** React Native is a dominant force for cross-platform mobile development. Vue has solutions like NativeScript-Vue or integration with Capacitor/Ionic, but React Native is more established.
 
-## State Management, Tooling, and Community Support {id: "state-management-community-support"}
+<h2 id="state-management-community-support"> State Management, Tooling, and Community Support </h2>
 Effective state management, developer tooling, and community backing are crucial for development efficiency and problem-solving.
 
 **State Management:**
