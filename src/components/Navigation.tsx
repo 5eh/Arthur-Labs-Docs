@@ -242,6 +242,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'DeCom', href: '/blogs/decom' },
       { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
+      { title: 'From Proof-of-Concept to Production: Scaling AI Solutions', href: '/blogs/from-proof-of-concept-to-production-scaling-ai-solutions' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
