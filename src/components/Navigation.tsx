@@ -235,6 +235,7 @@ export const navigation: Array<NavGroup> = [
     title: 'Blogs',
     links: [
       { title: 'All Posts', href: '/blogs' },
+      { title: '"Express.js vs. NestJS: The Ultimate Comparison Guide for No', href: '/blogs/expressjs-nestjs-iy0r' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
