@@ -245,6 +245,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
+      { title: 'Onboarding E-commerce Businesses to Web3: A Complete Migrati', href: '/blogs/blog-1748899938601' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
