@@ -235,7 +235,10 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'All Posts', href: '/blogs' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
-      { title: '5 Upcoming Trends in Blockchain & Web3 That Will Shape 2025', href: '/blogs/blog-1748899245353' },
+      {
+        title: '5 Upcoming Trends in Blockchain & Web3 That Will Shape 2025',
+        href: '/blogs/blog-1748899245353',
+      },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
@@ -245,7 +248,6 @@ export const navigation: Array<NavGroup> = [
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
-      { title: 'Onboarding E-commerce Businesses to Web3: A Complete Migrati', href: '/blogs/blog-1748899938601' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
