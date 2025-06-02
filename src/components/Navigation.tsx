@@ -235,39 +235,20 @@ export const navigation: Array<NavGroup> = [
     title: 'Blogs',
     links: [
       { title: 'All Posts', href: '/blogs' },
+      { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
-      {
-        title: 'Why you need a beautiful website',
-        href: '/blogs/beautiful-website',
-      },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
       { title: 'DeCom', href: '/blogs/decom' },
       { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
+      { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
-      {
-        title: 'Mastering Web3 Development',
-        href: '/blogs/mastering-web3-development',
-      },
-      {
-        title: 'Model Context Providers',
-        href: '/blogs/model-context-providers',
-      },
-      {
-        title: 'Multi-Chain Marketplace',
-        href: '/blogs/multi-chain-marketplace',
-      },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
-      {
-        title: 'Smart Contract Security',
-        href: '/blogs/smart-contract-security',
-      },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
-      { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
     ],
   },
   {
