@@ -251,6 +251,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'The DEAN System: Slashing Marketplace Development from Month', href: '/blogs/blog-1748963266852' },
+      { title: 'The DEAN System: Slashing Marketplace Development from Month', href: '/blogs/blog-1748963670364' },
       { title: 'The DEAN System: Slashing Marketplace Development Time from ', href: '/blogs/blog-1748962878993' },
       { title: 'The DEAN System: Slashing Marketplace Development Time from ', href: '/blogs/blog-1748963148851' },
       { title: 'The DEAN System: Slashing Web3 Marketplace Development from ', href: '/blogs/blog-1748962657192' },
