@@ -250,6 +250,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
+      { title: 'The DEAN System: Slashing Web3 Marketplace Development from ', href: '/blogs/blog-1748962657192' },
       { title: 'The Evolving Landscape of Web3: Key Trends Shaping the Futur', href: '/blogs/blog-1748908285221' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
     ],
