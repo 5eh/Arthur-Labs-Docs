@@ -254,6 +254,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'The DEAN System: Slashing Marketplace Development from Month', href: '/blogs/blog-1748963670364' },
       { title: 'The DEAN System: Slashing Marketplace Development Time from ', href: '/blogs/blog-1748962878993' },
       { title: 'The DEAN System: Slashing Marketplace Development Time from ', href: '/blogs/blog-1748963148851' },
+      { title: 'The DEAN System: Slashing Marketplace Development Time from ', href: '/blogs/blog-1748964023070' },
       { title: 'The DEAN System: Slashing Web3 Marketplace Development from ', href: '/blogs/blog-1748962657192' },
       { title: 'The Evolving Landscape of Web3: Key Trends Shaping the Futur', href: '/blogs/blog-1748908285221' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
