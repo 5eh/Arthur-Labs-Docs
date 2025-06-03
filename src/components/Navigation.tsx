@@ -248,6 +248,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Launch Your Marketplace in Days: A Use Case for Arthur Labs', href: '/blogs/blog-1748962282507' },
       { title: 'Rapidly Deploy Web3 Marketplaces with the DEAN System', href: '/blogs/blog-1748962041924' },
       { title: 'Remote Work', href: '/blogs/remote' },
+      { title: 'Smart Contract Factories: Automating Commerce Contract Deplo', href: '/blogs/blog-1748965488490' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'The DEAN System: Revolutionizing Marketplace Development – F', href: '/blogs/blog-1748964532967' },
