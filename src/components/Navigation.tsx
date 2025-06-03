@@ -251,6 +251,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'The DEAN System: Revolutionizing Marketplace Development – F', href: '/blogs/blog-1748964532967' },
+      { title: 'The DEAN System: Revolutionizing Marketplace Development fro', href: '/blogs/blog-1748964812939' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
     ],
   },
