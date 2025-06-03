@@ -239,7 +239,6 @@ export const navigation: Array<NavGroup> = [
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
       { title: 'DeCom', href: '/blogs/decom' },
-      { title: 'Empowering Web3 Entrepreneurs: Use Cases for Arthur Labs\', href: '/blogs/blog-1748923871867' },
       { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
