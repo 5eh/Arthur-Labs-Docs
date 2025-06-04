@@ -237,6 +237,7 @@ export const navigation: Array<NavGroup> = [
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
       { title: 'Accelerating Web3 Marketplace Development with Arthur Labs', href: '/blogs/blog-1748925980994' },
       { title: 'Affordable Marketplace Development: Leveraging Ethereum Laye', href: '/blogs/blog-1748966515127' },
+      { title: 'Affordable Web3 Marketplaces: How Layer 2s Empower Nebraska ', href: '/blogs/blog-1749016890791' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
