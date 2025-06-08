@@ -247,6 +247,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Finance', href: '/blogs/finance' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
+      { title: 'How Ethereum Layer 2s Boost Nebraska', href: '/blogs/blog-1749362510463' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
       { title: 'L2s for Nebraska: Affordable Marketplaces with Optimism & Ar', href: '/blogs/blog-1748965683508' },
       { title: 'Launch Your Marketplace in Days: A Use Case for Arthur Labs', href: '/blogs/blog-1748962282507' },
