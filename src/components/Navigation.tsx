@@ -256,6 +256,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Rapidly Deploy Web3 Marketplaces with the DEAN System', href: '/blogs/blog-1748962041924' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'ROI Analysis: Web3 Marketplace Development vs. Traditional E', href: '/blogs/blog-1749189706678' },
+      { title: 'ROI Analysis: Web3 Marketplaces vs. Traditional E-commerce', href: '/blogs/blog-1749708119774' },
       { title: 'Smart Contract Factories: Automating Commerce Contract Deplo', href: '/blogs/blog-1748965488490' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
