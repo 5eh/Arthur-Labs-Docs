@@ -241,6 +241,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Affordable Web3 Marketplaces: How Ethereum L2s Empower Nebra', href: '/blogs/blog-1749059011548' },
       { title: 'Affordable Web3 Marketplaces: How Layer 2s Empower Nebraska ', href: '/blogs/blog-1749016890791' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
+      { title: 'Building Blockchain Marketplaces for Nebraska', href: '/blogs/blog-1749836350670' },
       { title: 'Building EVM-Compatible Smart Contracts for Commerce: A Deve', href: '/blogs/blog-1749535318893' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
