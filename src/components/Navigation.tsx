@@ -247,6 +247,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
       { title: 'DeCom', href: '/blogs/decom' },
+      { title: 'Ethereum L2s: Affordable Marketplace Development for Nebrask', href: '/blogs/blog-1750226502428' },
       { title: 'Ethereum Layer 2s: Powering Affordable Marketplace Developme', href: '/blogs/blog-1750053718589' },
       { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
