@@ -244,6 +244,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Building Blockchain Marketplaces for Nebraska', href: '/blogs/blog-1749836350670' },
       { title: 'Building EVM-Compatible Smart Contracts for Commerce: A Deve', href: '/blogs/blog-1749535318893' },
+      { title: 'Building Trust in Peer-to-Peer Commerce: The Power of Oracle', href: '/blogs/blog-1750399323276' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
       { title: 'DeCom', href: '/blogs/decom' },
