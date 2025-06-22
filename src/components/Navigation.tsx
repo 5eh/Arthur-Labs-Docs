@@ -253,6 +253,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
+      { title: 'Gas-less Transactions: Removing Barriers to Web3 Adoption', href: '/blogs/blog-1750572137098' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'How Ethereum Layer 2s Boost Nebraska', href: '/blogs/blog-1749362510463' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
