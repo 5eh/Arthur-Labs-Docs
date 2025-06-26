@@ -265,6 +265,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'ROI Analysis: Web3 Marketplace Development vs. Traditional E', href: '/blogs/blog-1749189706678' },
       { title: 'ROI Analysis: Web3 Marketplaces vs. Traditional E-commerce', href: '/blogs/blog-1749708119774' },
       { title: 'Smart Contract Factories: Automating Commerce Contract Deplo', href: '/blogs/blog-1748965488490' },
+      { title: 'Smart Contract Factories: Automating Commerce Contract Deplo', href: '/blogs/blog-1750917728782' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'The DEAN System: Revolutionizing Marketplace Development – F', href: '/blogs/blog-1748964532967' },
