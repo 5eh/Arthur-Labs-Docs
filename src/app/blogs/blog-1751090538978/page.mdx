@@ -1,0 +1,118 @@
+import { Socials } from '@/components/Socials'
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Migrating from Shopify to a Decentralized Marketplace: A Practical Guide | Arthur Labs',
+  description: 'Learn the key steps, benefits, and technical considerations for migrating your e-commerce store from a centralized platform like Shopify to a decentralized, blockchain-powered marketplace with Arthur Labs.',
+  keywords: 'Web3 migration, Shopify to Web3, decentralized commerce, blockchain marketplace, smart contracts, EVM, payment proxy, DeCom, e-commerce migration, Arthur Labs, Polygon, account abstraction',
+  author: 'Arthur Labs Team',
+  publishDate: '2024-05-21',
+  category: 'Web3 Implementation',
+}
+
+export const sections = [
+  { title: 'Why Migrate? The Case for Decentralized Commerce', id: 'why-migrate' },
+  { title: 'The Migration Blueprint: A Phased Approach', id: 'migration-blueprint' },
+  { title: 'Core Technical Components for Your New Bazaar', id: 'technical-components' },
+]
+
+<HeroPattern />
+
+# Migrating from Shopify to a Decentralized Marketplace: A Practical Guide
+
+Centralized platforms like Shopify have empowered millions of entrepreneurs to launch online businesses. However, this convenience comes with trade-offs: high transaction fees, platform risk, and a lack of true ownership over your data and customer relationships. For businesses ready to take the next step in their evolution, migrating to a decentralized marketplace on the blockchain offers a future of unparalleled control, transparency, and global reach. This guide provides a practical roadmap for making that transition.
+
+<p className="lead-paragraph">
+  At Arthur Labs, we specialize in building the foundational infrastructure for this new era of Decentralized Commerce (DeCom). We believe that migrating from a Web2 platform isn't just a technical shift—it's a strategic move towards a more resilient, equitable, and efficient business model.
+</p>
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+<h2 id="why-migrate">Why Migrate? The Case for Decentralized Commerce</h2>
+
+Before diving into the "how," it's crucial to understand the "why." Moving away from a familiar ecosystem is a significant decision. The benefits of a decentralized approach, however, directly address the inherent limitations of traditional e-commerce.
+
+- **True Digital Ownership:** On a decentralized platform, you own the infrastructure. Your store's operational logic is governed by immutable smart contracts, not by a corporation's terms of service. This eliminates the risk of de-platforming or sudden policy changes that can cripple your business.
+
+- **Drastically Reduced Fees:** Shopify's fees can range from 2.4% to 2.9% plus a fixed fee per transaction. In a decentralized model, you eliminate the intermediary. Transactions occur peer-to-peer, with costs limited to network gas fees—which on Layer 2 solutions like Polygon or opBNB are mere fractions of a cent.
+
+- **Global, Borderless Payments:** Accept payments from anyone, anywhere in the world, using stablecoins or other digital assets. This bypasses complex international payment gateways, currency conversion fees, and the risk of frozen funds, opening your business to a truly global customer base.
+
+- **Enhanced Trust & Transparency:** All marketplace rules, from listing fees to dispute resolution, are encoded in publicly verifiable smart contracts. This creates a trustless environment where both buyers and sellers can operate with confidence, knowing the rules of engagement are transparent and cannot be arbitrarily changed.
+
+- **Direct Customer Relationships:** Build your community and engage with customers directly without a platform intermediary controlling the communication channels and data. Your customer list is your own asset.
+
+<h2 id="migration-blueprint">The Migration Blueprint: A Phased Approach</h2>
+
+Migrating from Shopify to a decentralized bazaar is a structured process. We recommend a phased approach to ensure a smooth and successful transition.
+
+### Phase 1: Strategy and Blockchain Selection
+Your first step is strategic planning. Define what you want to achieve: lower costs, new markets, or unique digital products? Analyze your existing product catalog. Are you selling physical goods, digital downloads, or services? This will inform your technical requirements.
+
+Next, select your blockchain. For most commerce applications, an EVM-compatible Layer 2 network is the ideal choice.
+- **Polygon (PoS):** Offers extremely low fees, high transaction speeds, and a mature developer ecosystem.
+- **Arbitrum/Optimism:** Provide robust security inherited from Ethereum with significantly lower operational costs.
+- **opBNB:** An optimistic rollup on the Binance Smart Chain, designed for high-volume applications with minimal transaction fees.
+
+### Phase 2: Data Export and Asset Tokenization
+Export your product data from Shopify, typically as a CSV file. This data—including titles, descriptions, images, and pricing—needs a new home in the Web3 ecosystem.
+
+- **For Metadata:** Product descriptions and images are best stored on decentralized storage solutions like IPFS (InterPlanetary File System) to ensure they are censorship-resistant and perpetually available. The on-chain smart contract will store a hash pointing to this off-chain data.
+- **For Products:** Represent your products on-chain.
+  - **NFTs (ERC-721):** Perfect for unique, one-of-a-kind items like art, collectibles, or high-value physical goods.
+  - **Semi-Fungible Tokens (ERC-1155):** Ideal for products with limited stock, like a run of 100 special edition t-shirts. Each shirt is part of a collection but individually ownable.
+
+### Phase 3: Smart Contract Architecture
+This is the core of your new marketplace. You will need a suite of smart contracts to replicate and improve upon Shopify's functionality.
+- **Marketplace Core Contract:** The central hub that governs listings, sales, and fees.
+- **Factory Contract:** An essential Arthur Labs pattern that allows for the automated, gas-efficient deployment of new contracts for each vendor or product listing.
+- **Payment Proxy/Escrow Contract:** A critical component for building trust, especially with physical goods. It holds a buyer's funds securely until delivery is confirmed.
+- **Governance Contract (Optional):** For mature marketplaces, a DAO structure can allow your community of vendors and customers to vote on platform upgrades and fee structures.
+
+### Phase 4: Frontend Development and User Onboarding
+Your decentralized backend needs a user-friendly frontend. This is the dApp (decentralized application) your customers will interact with.
+- **Wallet Integration:** Integrate with browser wallets like MetaMask or mobile-first solutions.
+- **Account Abstraction (ERC-4337):** This is a game-changer for mainstream adoption. Account abstraction allows you to create user experiences that feel like traditional Web2 logins, enabling features like social recovery and gas-less transactions for your customers, removing major friction points of Web3.
+
+<h2 id="technical-components">Core Technical Components for Your New Bazaar</h2>
+
+Let's zoom in on the essential smart contracts that power a decentralized marketplace. Arthur Labs provides standardized, audited contract frameworks to accelerate this process from months to days.
+
+### Factory Contracts for Scalable Listings
+Instead of a single, monolithic contract that manages all products, a factory contract deploys a new, lightweight contract for each new listing or vendor. This pattern is more scalable, gas-efficient, and modular.
+
+Here is a simplified example of a factory contract in Solidity:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "./ListingContract.sol";
+
+contract ListingFactory {
+    address[] public deployedListings;
+
+    event ListingCreated(address newListingAddress, address seller, uint256 price);
+
+    function createListing(uint256 _price, string memory _item) public {
+        // Deploys a new, separate contract for the item
+        ListingContract newListing = new ListingContract(msg.sender, _price, _item);
+        
+        // Store the address of the newly created contract
+        deployedListings.push(address(newListing));
+        
+        emit ListingCreated(address(newListing), msg.sender, _price);
+    }
+}
+```
+
+### Payment Proxy and Escrow Contracts
+To buil
+
+
+<div className="mt-16"><Socials /></div>
