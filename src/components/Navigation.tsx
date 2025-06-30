@@ -235,82 +235,19 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'All Posts', href: '/blogs' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
-      {
-        title: 'Accelerating Web3 Marketplace Development with Arthur Labs',
-        href: '/blogs/blog-1748925980994',
-      },
-      {
-        title: 'Affordable Marketplace Development: Leveraging Ethereum Laye',
-        href: '/blogs/blog-1749880953828',
-      },
-      {
-        title: 'Affordable Web3 Marketplaces: How Ethereum L2s Empower Nebra',
-        href: '/blogs/blog-1749059011548',
-      },
       { title: 'Blockchain', href: '/blogs/blockchain' },
-      {
-        title: 'Building Blockchain Marketplaces for Nebraska',
-        href: '/blogs/blog-1749836350670',
-      },
-      {
-        title: 'Building EVM-Compatible Smart Contracts for Commerce: A Deve',
-        href: '/blogs/blog-1749535318893',
-      },
-      {
-        title: 'Building Trust in Peer-to-Peer Commerce: The Power of Oracle',
-        href: '/blogs/blog-1750399323276',
-      },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
       { title: 'DeCom', href: '/blogs/decom' },
-      {
-        title: 'Ethereum L2s: Affordable Marketplace Development',
-        href: '/blogs/blog-1750226502428',
-      },
       { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
-      {
-        title: 'Gas-less Transactions: Removing Barriers to Web3 Adoption',
-        href: '/blogs/blog-1750572137098',
-      },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
-      {
-        title: 'How Ethereum Layer 2s Boost Nebraska',
-        href: '/blogs/blog-1749362510463',
-      },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
-      {
-        title: 'L2s for Nebraska: Affordable Marketplaces with Optimism & Ar',
-        href: '/blogs/blog-1748965683508',
-      },
-      {
-        title: 'Launch Your Marketplace in Days: A Use Case for Arthur Labs',
-        href: '/blogs/blog-1748962282507',
-      },
-      {
-        title: 'Migrating from Shopify to a Decentralized Marketplace: A Pra',
-        href: '/blogs/blog-1751090538978',
-      },
-      {
-        title: 'Rapidly Deploy Web3 Marketplaces with the DEAN System',
-        href: '/blogs/blog-1748962041924',
-      },
       { title: 'Remote Work', href: '/blogs/remote' },
-      {
-        title: 'ROI Analysis: Web3 Marketplaces vs. Traditional E-commerce',
-        href: '/blogs/blog-1749708119774',
-      },
-      {
-        title: 'Smart Contract Factories: Automating Commerce Contract Deplo',
-        href: '/blogs/blog-1750917728782',
-      },
+      { title: 'Secure Escrow for Decentralized Commerce: A Deep Dive into P', href: '/blogs/blog-1751303253949' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
-      {
-        title: 'The DEAN System: Revolutionizing Marketplace Development fro',
-        href: '/blogs/blog-1748964812939',
-      },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
     ],
   },
