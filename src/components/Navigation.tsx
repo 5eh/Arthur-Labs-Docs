@@ -261,6 +261,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'L2s for Nebraska: Affordable Marketplaces with Optimism & Ar', href: '/blogs/blog-1748965683508' },
       { title: 'Launch Your Marketplace in Days: A Use Case for Arthur Labs', href: '/blogs/blog-1748962282507' },
       { title: 'Migrating from Shopify to a Decentralized Marketplace: A Pra', href: '/blogs/blog-1751090538978' },
+      { title: 'Payment Proxy Contracts: Building Trust with Secure Escrow f', href: '/blogs/blog-1751301429439' },
       { title: 'Rapidly Deploy Web3 Marketplaces with the DEAN System', href: '/blogs/blog-1748962041924' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'ROI Analysis: Web3 Marketplace Development vs. Traditional E', href: '/blogs/blog-1749189706678' },
