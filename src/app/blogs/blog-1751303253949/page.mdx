@@ -1,0 +1,142 @@
+import { Socials } from '@/components/Socials'
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Secure Escrow for Decentralized Commerce: A Deep Dive into Payment Proxy Contracts | Arthur Labs',
+  description: "Learn how Arthur Labs utilizes payment proxy contracts to create secure, trustless escrow systems for Web3 marketplaces, protecting both buyers and sellers in peer-to-peer transactions.",
+  keywords: 'payment proxy contract, smart contract escrow, decentralized commerce, Web3 security, Solidity, EVM, blockchain marketplace, secure transactions, Arthur Labs, trustless systems',
+  author: 'Arthur Labs Team',
+  publishDate: '2024-10-26',
+  category: 'Smart Contracts',
+}
+
+export const sections = [
+  { title: 'The Trust Gap in Decentralized Marketplaces', id: 'trust-gap' },
+  { title: 'The Solution: Payment Proxy Contracts as Digital Escrow', id: 'payment-proxy-solution' },
+  { title: 'Technical Deep Dive: Anatomy of a Payment Proxy', id: 'technical-deep-dive' },
+]
+
+<HeroPattern />
+
+# Secure Escrow for Decentralized Commerce: A Deep Dive into Payment Proxy Contracts
+
+In the world of peer-to-peer commerce, trust is the most valuable and fragile commodity. How can a buyer and seller, often pseudonymous strangers, transact with confidence? Arthur Labs leverages a powerful and elegant solution rooted in smart contract architecture: the Payment Proxy Contract. This pattern creates a decentralized, automated escrow system that ensures fairness and security without relying on costly intermediaries.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+<h2 id="trust-gap">The Trust Gap in Decentralized Marketplaces</h2>
+
+Traditional e-commerce platforms like eBay and Etsy have spent decades and billions of dollars building trust. They act as centralized intermediaries, holding funds, mediating disputes, and managing reputation systems. While effective, this model introduces its own problems: high fees, censorship, and a single point of failure.
+
+In a Web3 marketplace, the goal is to remove these central authorities. However, this reintroduces a fundamental problem: the counterparty risk.
+
+- A buyer won't send payment without assurance of receiving the goods or services.
+- A seller won't deliver goods or services without assurance of receiving payment.
+
+This chicken-and-egg dilemma can stifle commerce. Without a trustless mechanism to bridge this gap, decentralized marketplaces cannot achieve mainstream adoption. This is precisely the problem Payment Proxy Contracts are designed to solve.
+
+<h2 id="payment-proxy-solution">The Solution: Payment Proxy Contracts as Digital Escrow</h2>
+
+A Payment Proxy Contract is a specialized smart contract that acts as an autonomous, on-chain escrow agent. It's programmed to hold a buyer's funds securely and release them to the seller only when predefined conditions are met. Think of it as a digital safe with a transparent, unbreakable set of rules that all parties agree to beforehand.
+
+The typical transaction lifecycle using a payment proxy looks like this:
+
+1. **Agreement:** A buyer and seller agree on the terms of a sale (e.g., price, deliverables) off-chain or via a marketplace interface.
+2. **Deployment & Deposit:** A unique Payment Proxy Contract is created for the transaction. The buyer deposits the agreed-upon amount of cryptocurrency (e.g., ETH, USDC) into this contract. The funds are now locked and controlled by the contract's logic, not by the buyer or the seller.
+3. **Fulfillment:** Seeing the funds are secured in escrow, the seller confidently proceeds with delivering the product or service.
+4. **Confirmation & Release:** Once the buyer receives the goods/services, they signal their approval to the contract. The contract verifies the signal and automatically releases the funds to the seller.
+5. **Dispute Resolution:** If the buyer does not confirm receipt or is unsatisfied, the contract can enter a dispute phase. This can involve a pre-programmed resolution mechanism or an integration with an external oracle or arbiter to verify the facts and decide on the fund's destination.
+
+This process removes the need for either party to trust the other. They only need to trust the immutable code of the smart contract, which is publicly verifiable on the blockchain.
+
+<h2 id="technical-deep-dive">Technical Deep Dive: Anatomy of a Payment Proxy</h2>
+
+Let's explore a simplified implementation of a Payment Proxy Contract in Solidity. This example demonstrates the core logic for a basic transaction involving a buyer, a seller, and an ERC-20 token payment.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+contract PaymentProxy {
+    enum State { AwaitingPayment, AwaitingFulfillment, Complete, Disputed }
+
+    address public buyer;
+    address public seller;
+    address public arbiter; // Optional for disputes
+    IERC20 public token;
+    uint256 public amount;
+    State public currentState;
+
+    event FundsDeposited(address indexed buyer, uint256 amount);
+    event OrderConfirmed(address indexed buyer);
+    event FundsReleased(address indexed seller, uint256 amount);
+    event DisputeRaised(address indexed party);
+
+    modifier onlyBuyer() {
+        require(msg.sender == buyer, "Only buyer can call this function");
+        _;
+    }
+
+    modifier onlySeller() {
+        require(msg.sender == seller, "Only seller can call this function");
+        _;
+    }
+
+    constructor(
+        address _buyer,
+        address _seller,
+        address _arbiter,
+        address _tokenAddress,
+        uint256 _amount
+    ) {
+        buyer = _buyer;
+        seller = _seller;
+        arbiter = _arbiter;
+        token = IERC20(_tokenAddress);
+        amount = _amount;
+        currentState = State.AwaitingPayment;
+    }
+
+    function deposit() external onlyBuyer {
+        require(currentState == State.AwaitingPayment, "Not awaiting payment");
+        
+        // Transfer funds from buyer to this contract
+        uint256 initialBalance = token.balanceOf(address(this));
+        require(token.transferFrom(msg.sender, address(this), amount), "Token transfer failed");
+        require(token.balanceOf(address(this)) == initialBalance + amount, "Incorrect amount transferred");
+        
+        currentState = State.AwaitingFulfillment;
+        emit FundsDeposited(buyer, amount);
+    }
+
+    function confirmFulfillment() external onlyBuyer {
+        require(currentState == State.AwaitingFulfillment, "Not awaiting fulfillment");
+        
+        currentState = State.Complete;
+        
+        // Release funds to seller
+        require(token.transfer(seller, amount), "Fund release failed");
+        
+        emit OrderConfirmed(buyer);
+        emit FundsReleased(seller, amount);
+    }
+
+    function raiseDispute() external {
+        require(msg.sender == buyer || msg.sender == seller, "Only parties can dispute");
+        require(currentState == State.AwaitingFulfillment, "Can only dispute while awaiting fulfillment");
+        
+        currentState = State.Disputed;
+        emit DisputeRaised(msg.sender);
+        // Further logic would involve the arbiter to resolve the dispute
+    }
+}
+```
+
+<div className="mt-16"><Socials /></div>
