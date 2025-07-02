@@ -80,29 +80,5 @@ Bob now owns not just an NFT, but an NFT that carries a cryptographically secure
 
 Building this system requires a few key smart contracts working in concert. While the Arthur Labs marketplace factory automates the generation and deployment of these complex systems, understanding the underlying architecture is crucial.
 
-Here's a simplified look at the core components.
-
-### 1. The NFT Contract (ERC-721)
-
-This contract needs to be more than a standard ERC-721. It must include a state machine and permissions for the oracle.
-
-
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
-
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-
-contract RealWorldAssetNFT is ERC721 {
-    // ... constructor, etc.
-
-    enum Status { Unverified, AwaitingVerification, Verified, Shipped, Delivered }
-
-    struct Asset {
-        Status status;
-        string physicalAssetID; // e.g., serial number
-    }
-
-    mapping(uint256 => Asset) public assets;
-
 
 <div className="mt-16"><Socials /></div>
