@@ -243,6 +243,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'DeCom', href: '/blogs/decom' },
       { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
+      { title: 'From Clicks to Chains: How Account Abstraction is Revolution', href: '/blogs/blog-1751476897361' },
       { title: 'From Farm to Fork: A Technical Guide to Oracle-Validated Sup', href: '/blogs/blog-1751476558690' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
