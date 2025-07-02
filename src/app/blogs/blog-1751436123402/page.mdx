@@ -72,19 +72,6 @@ A Nebraska-based manufacturer could build a transparent supply chain marketplace
 
 At Arthur Labs, we provide the foundational infrastructure to make this happen. Our factory contract patterns allow for the rapid and secure deployment of these marketplaces, configured specifically for the needs of your business and deployed to the EVM-compatible L2 of your choice.
 
-// Example: Deploying a marketplace via our factory
-// Our system handles the complexities of targeting the right chain.
-function deployMarketplace(
-    address _owner,
-    string memory _name,
-    uint256 _listingFee
-) public {
-    // Chain-specific configurations are handled by the deployment script.
-    // For Arbitrum, we'd use an address resolver for key contracts.
-    bazaar = new Bazaar(_owner, _name, _listingFee);
-    emit MarketplaceCreated(address(bazaar), msg.sender);
-}
-
 
 <h2 id="future-of-midwest-commerce">Building the Future of Midwest Commerce</h2>
 
