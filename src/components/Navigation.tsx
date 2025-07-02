@@ -252,6 +252,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Secure Escrow for Decentralized Commerce: A Deep Dive into P', href: '/blogs/blog-1751303253949' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
+      { title: 'The Factory Pattern: Automating Smart Contract Deployment fo', href: '/blogs/blog-1751479157721' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
     ],
   },
