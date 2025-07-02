@@ -253,6 +253,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'The Factory Pattern: Automating Smart Contract Deployment fo', href: '/blogs/blog-1751479157721' },
+      { title: 'The Holy Grail of DeCom: Combining Account Abstraction and O', href: '/blogs/blog-1751494071557' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
     ],
   },
