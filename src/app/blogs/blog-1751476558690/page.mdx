@@ -1,0 +1,139 @@
+import { Socials } from '@/components/Socials'
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'From Farm to Fork: A Technical Guide to Oracle-Validated Supply Chains | Arthur Labs',
+  description: 'Discover how to build a transparent, oracle-validated agricultural supply chain on the blockchain. A deep dive into smart contracts, IoT integration, and real-world asset verification.',
+  keywords: 'blockchain supply chain, oracle validation, smart contracts, agricultural technology, DeCom, real-world assets, IoT blockchain, decentralized commerce, supply chain transparency, solidity tutorial, Arthur Labs DEAN',
+  author: 'Arthur Labs Team',
+  publishDate: '2024-10-26',
+  category: 'Technical',
+}
+
+export const sections = [
+  { title: 'Introduction', id: 'introduction' },
+  { title: 'The Physical-Digital Divide', id: 'the-physical-digital-divide' },
+  { title: 'Architecting the Oracle-Validated Supply Chain', id: 'system-architecture' },
+  { title: 'Smart Contract Deep Dive', id: 'smart-contract-deep-dive' },
+  { title: 'Scaling with Smart Contract Factories', id: 'scaling-with-dean' },
+  { title: 'Conclusion', id: 'conclusion' },
+]
+
+<HeroPattern />
+
+# From Farm to Fork: A Technical Guide to Oracle-Validated Supply Chains
+
+The journey of our food from a farm to our fork is often a black box. Consumers demand transparency, while producers struggle to prove the authenticity and quality of their products. This opacity leads to food fraud, waste, and a loss of trust. While blockchain offers an immutable ledger to track this journey, it faces a fundamental challenge: how can a digital system reliably record events happening in the physical world?
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+This is where oracle validation becomes a game-changer for Real-World Commerce (RWC). By creating a secure bridge between on-chain smart contracts and off-chain data sources like IoT sensors and human validators, we can build supply chains that are not just transparent, but verifiably authentic.
+
+This article provides a technical guide for developers and entrepreneurs looking to build oracle-validated supply chains. We will explore a complete system architecture, dive into the Solidity smart contracts that power it, and discuss how Arthur Labs' **DEAN marketplace factory** can scale these complex systems from a single proof-of-concept to a global network, reducing development time from months to mere days.
+
+<img
+  src="/img/blog/oracle-supply-chain-banner.png"
+  alt="A diagram showing produce moving from a farm, through a truck, to a store, with blockchain and oracle icons securing each step."
+  className="my-6"
+/>
+
+<h2 id="the-physical-digital-divide">The Physical-Digital Divide</h2>
+
+Blockchains are deterministic, closed systems. They cannot natively access external data like a shipment's GPS coordinates or the temperature inside a refrigerated truck. This creates the "oracle problem." Without a trusted data source, a smart contract is blind to the real world. The principle of "Garbage In, Garbage Out" is paramount; if fraudulent data is fed to the blockchain, the resulting record, though immutable, is worthless.
+
+Traditional oracles often rely on a single, centralized data feed, reintroducing a single point of failure and manipulation that blockchain technology is designed to eliminate. For high-stakes applications like agricultural supply chains, we need a more robust solution: a **decentralized oracle network**.
+
+This network combines data from multiple sources to achieve consensus before writing to the smart contract:
+- **IoT Sensors**: GPS trackers, temperature/humidity sensors, and NFC/QR scanners provide automated, real-time data.
+- **Human Validators**: Authorized personnel (e.g., farmers, logistics staff, quality inspectors) use a mobile app to scan items at key checkpoints, confirming custody and condition.
+- **Cross-Referencing**: Data from different sources is compared. For example, a validator's scan location can be cross-referenced with the shipment's GPS data.
+
+By requiring multiple, independent confirmations, we create a resilient system that makes it economically and logistically infeasible to compromise the integrity of the supply chain record.
+
+<h2 id="system-architecture">Architecting the Oracle-Validated Supply Chain</h2>
+
+A robust oracle-validated supply chain consists of several interconnected components, both on-chain and off-chain. This architecture ensures data integrity from the physical asset all the way to the smart contract ledger.
+
+#### Off-Chain Components
+1.  **Physical Asset Tagging**: Each product or crate is assigned a unique identity via an NFC chip or a secure QR code. This ID is the anchor for its entire digital history.
+2.  **IoT Device Fleet**: A network of sensors travels with the goods, continuously streaming encrypted data (location, temperature, etc.) to a secure off-chain data aggregator.
+3.  **Validator Mobile App**: A simple application allowing authorized users to scan asset tags, record observations (e.g., "Package sealed," "Visual inspection passed"), and sign the data packet with their private key.
+4.  **Oracle Middleware**: This is the off-chain "brain." It collects data from IoT devices and validators, aggregates it, checks for anomalies, and formats it for submission to the on-chain oracle contract.
+
+#### On-Chain Components
+1.  **Supply Chain Contract**: The primary smart contract that represents the digital twin of the physical asset. It maintains the asset's state, ownership, and a log of all validated checkpoints. This is the "source of truth."
+2.  **Oracle Contract**: An on-chain contract that receives data requests from the Supply Chain Contract. It fetches validated information from the off-chain oracle network and delivers it securely. It acts as a gatekeeper, ensuring only verified data updates the main contract.
+3.  **Registry Contract**: An access control contract that manages the list of authorized validator addresses and IoT device identities. This prevents unauthorized parties from submitting data.
+
+This separation of concerns—state management in the Supply Chain Contract and data verification in the Oracle Contract—creates a modular and secure system that is easier to audit and upgrade.
+
+<h2 id="smart-contract-deep-dive">Smart Contract Deep Dive</h2>
+
+Let's translate the architecture into Solidity code. Below are simplified examples of the core smart contracts.
+
+### The Registry Contract
+
+First, we need a way to manage who can validate transactions. The `RegistryContract` holds the addresses of trusted oracles and validators.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract RegistryContract is Ownable {
+    mapping(address => bool) public isValidator;
+    mapping(address => bool) public isOracle;
+
+    event ValidatorAdded(address indexed validator);
+    event ValidatorRemoved(address indexed validator);
+    event OracleAdded(address indexed oracle);
+    event OracleRemoved(address indexed oracle);
+
+    modifier onlyValidator() {
+        require(isValidator[msg.sender], "Not an authorized validator");
+        _;
+    }
+
+    modifier onlyOracle() {
+        require(isOracle[msg.sender], "Not an authorized oracle");
+        _;
+    }
+
+    function addValidator(address _validator) public onlyOwner {
+        isValidator[_validator] = true;
+        emit ValidatorAdded(_validator);
+    }
+
+    function removeValidator(address _validator) public onlyOwner {
+        isValidator[_validator] = false;
+        emit ValidatorRemoved(_validator);
+    }
+
+    function addOracle(address _oracle) public onlyOwner {
+        isOracle[_oracle] = true;
+        emit OracleAdded(_oracle);
+    }
+
+    function removeOracle(address _oracle) public onlyOwner {
+        isOracle[_oracle] = false;
+        emit OracleRemoved(_oracle);
+    }
+}
+```
+
+This contract uses OpenZeppelin's `Ownable` for simple access control. In a production system, this would likely be managed by a DAO or a multi-sig wallet for decentralized governance.
+
+### The Supply Chain Contract
+
+This is the heart of our system. It tracks each item, its state, and its history. It relies on the `RegistryContract` to authorize state changes.
+
+
+<div className="mt-16"><Socials /></div>
