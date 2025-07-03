@@ -41,23 +41,6 @@ This article provides a technical deep dive into the architecture of a DeDe syst
 
 A robust Decentralized Delivery system is built on four interconnected components that work in concert to ensure a secure and transparent process from checkout to delivery confirmation. This architecture is designed to be modular and can be implemented on any EVM-compatible chain using Arthur Labs' marketplace factory systems.
 
-<div className="not-prose">
-  <QuickLinks>
-    <QuickLink title="Marketplace Contract" href="#marketplace-contract">
-      The central hub for product listings and order creation.
-    </QuickLink>
-    <QuickLink title="Delivery Escrow Contract" href="#escrow-contract">
-      A specialized smart contract that holds funds securely until delivery is verified.
-    </QuickLink>
-    <QuickLink title="Oracle Validation Network" href="#oracle-network">
-       A decentralized network of trusted entities that report real-world events to the blockchain.
-    </QuickLink>
-    <QuickLink title="Participant Interfaces" href="#participant-interfaces">
-      Web or mobile applications for buyers, sellers, and delivery agents to interact with the system.
-    </QuickLink>
-  </QuickLinks>
-</div>
-
 <div id="marketplace-contract" className="scroll-mt-32"></div>
 ### 1. The Marketplace Contract
 This is the foundational smart contract that governs the marketplace itself. Its primary roles in the DeDe context are to manage product listings and initiate the order process. When a buyer makes a purchase, this contract is responsible for triggering the creation of a dedicated Delivery Escrow Contract for that specific order. It acts as the "factory" for secure delivery transactions.
