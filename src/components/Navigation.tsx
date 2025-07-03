@@ -240,6 +240,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
+      { title: 'Decentralized Delivery (DeDe): Building Trust in the Last Mi', href: '/blogs/blog-1751518302533' },
       { title: 'DeCom', href: '/blogs/decom' },
       { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
       { title: 'Finance', href: '/blogs/finance' },
