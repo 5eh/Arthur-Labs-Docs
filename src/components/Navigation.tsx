@@ -254,6 +254,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Secure Escrow for Decentralized Commerce: A Deep Dive into P', href: '/blogs/blog-1751303253949' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
+      { title: 'Smarter Than a Contract: How AI is Revolutionizing Smart Con', href: '/blogs/blog-1751781730748' },
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'The Factory Pattern: Automating Smart Contract Deployment fo', href: '/blogs/blog-1751479157721' },
       { title: 'The Holy Grail of DeCom: Combining Account Abstraction and O', href: '/blogs/blog-1751494071557' },
