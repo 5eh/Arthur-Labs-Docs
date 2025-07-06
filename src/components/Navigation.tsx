@@ -236,6 +236,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'All Posts', href: '/blogs' },
       { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
       { title: 'Affordable DeCom: How Layer 2s Like Arbitrum & Optimism Empo', href: '/blogs/blog-1751436123402' },
+      { title: 'Beyond Single-Chain Limits: Architecting a Multi-Chain DeCom', href: '/blogs/blog-1751778267343' },
       { title: 'Beyond the Build: A Guide to DAO Governance for DeCom Market', href: '/blogs/blog-1751608928020' },
       { title: 'Beyond the Metaverse: Securing Real-World Commerce with Orac', href: '/blogs/blog-1751476079720' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
