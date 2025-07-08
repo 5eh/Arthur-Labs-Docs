@@ -240,6 +240,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Beyond the Build: A Guide to DAO Governance for DeCom Market', href: '/blogs/blog-1751608928020' },
       { title: 'Beyond the Metaverse: Securing Real-World Commerce with Orac', href: '/blogs/blog-1751476079720' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
+      { title: 'Bridging Two Worlds: A Technical Blueprint for Hybrid Web2/W', href: '/blogs/blog-1751954530727' },
       { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
       { title: 'Decentralized Delivery (DeDe): Building Trust in the Last Mi', href: '/blogs/blog-1751518302533' },
