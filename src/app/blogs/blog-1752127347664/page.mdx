@@ -1,0 +1,135 @@
+import { Socials } from '@/components/Socials'
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'From Gigs to Chains: Architecting a Decentralized Service Marketplace (DeServ) | Arthur Labs',
+  description: 'A technical guide to building trust-based service marketplaces on the blockchain. Explore smart contract escrow, milestone payments, and on-chain reputation systems for the future of work.',
+  keywords: 'Decentralized Services, DeServ, blockchain marketplace, smart contract escrow, on-chain reputation, Web3 freelancers, peer-to-peer services, Arthur Labs, multi-chain marketplaces, oracle validation, Solidity examples',
+  author: 'Arthur Labs Staff Writer',
+  publishDate: '2025-06-02',
+  category: 'Technical Implementation',
+}
+
+export const sections = [
+  { title: 'The Problem with Centralized Gig Economies', id: 'introduction' },
+  { title: 'The Core Architecture of a DeServ Platform', id: 'core-architecture' },
+  { title: 'The Smart Contract Engine: Trust as Code', id: 'smart-contract-engine' },
+  { title: 'Building Verifiable Trust: Beyond 5-Star Ratings', id: 'building-trust-on-chain' },
+  { title: 'From Blueprint to Launch: Accelerating DeServ Development', id: 'accelerating-development' },
+  { title: 'Conclusion: Building the Future of Work', id: 'conclusion' },
+]
+
+<HeroPattern />
+
+# From Gigs to Chains: Architecting a Decentralized Service Marketplace (DeServ)
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+<h2 id="introduction">The Problem with Centralized Gig Economies</h2>
+
+The gig economy has revolutionized how professionals offer their skills and how businesses procure talent. Platforms like Upwork, Fiverr, and Toptal have created massive, global marketplaces. Yet, for all their convenience, they operate on a centralized model that introduces significant friction: exorbitant fees often reaching 20% or more, opaque dispute resolution processes, censorship, and delayed payouts.
+
+What if we could rebuild this model on a foundation of transparency, efficiency, and user ownership? This is the promise of **Decentralized Services (DeServ)**—peer-to-peer marketplaces built on blockchain infrastructure. By replacing centralized intermediaries with smart contracts, we can create platforms where freelancers keep more of their earnings, clients have transparent and automated payment terms, and trust is programmatically enforced.
+
+This article provides a technical blueprint for architecting a DeServ marketplace. We'll explore the core components, dive into the smart contract logic for secure escrow, and discuss how to build robust, on-chain reputation systems. This isn't just a theoretical exercise; it's a practical guide for entrepreneurs and developers in Nebraska and beyond who are ready to build the next generation of service economies.
+
+<h2 id="core-architecture">The Core Architecture of a DeServ Platform</h2>
+
+A robust DeServ platform rests on three fundamental pillars. While the frontend can be a familiar Web2-style interface, the backend logic is powered by a decentralized stack.
+
+### 1. Identity and Service Profiles
+Users need a way to represent themselves and their offerings. In Web3, this is handled through wallet addresses.
+*   **Decentralized Identifiers (DIDs):** A user's wallet address (e.g., an Ethereum address) serves as their core identity.
+*   **Profile Metadata:** Professional information (skills, bio, portfolio links) can be stored either on-chain (for critical data) or, more cost-effectively, on decentralized storage solutions like IPFS. The hash of this IPFS data is then stored on-chain, linking it immutably to the user's DID.
+*   **Account Abstraction:** To attract mainstream users unfamiliar with seed phrases, implementing Account Abstraction (ERC-4337) is crucial. This allows for social logins (Google, email) and gas-less transactions, creating a user experience that rivals Web2 platforms while retaining the benefits of self-custody.
+
+### 2. The Service Agreement Engine
+This is the heart of the marketplace, where smart contracts replace traditional legal agreements and payment processors.
+*   **Factory Contract:** A single factory contract is deployed to create new, unique escrow contracts for each service agreement. This pattern is gas-efficient and ensures that each "gig" is a self-contained, isolated smart contract. Arthur Labs specializes in these factory systems to rapidly deploy and scale marketplaces.
+*   **Escrow Contract:** This contract holds the client's funds in escrow upon agreement. It defines the terms: scope of work (linked via IPFS hash), payment amount, and release conditions.
+*   **Milestone Payments:** For larger projects, the escrow contract can be configured to release funds in stages as specific milestones are met and approved by the client.
+
+### 3. Reputation and Dispute Resolution System
+Trust is the currency of any marketplace. On the blockchain, we can create a verifiable and tamper-proof reputation.
+*   **On-Chain Reviews:** Upon successful completion of a gig, both parties can submit reviews that are permanently recorded on the blockchain.
+*   **Verifiable Credentials (Soul-Bound Tokens):** Instead of just a star rating, imagine a non-transferable NFT (a Soul-Bound Token or SBT) being awarded to a freelancer's wallet for completing a high-value project or earning a certification. This becomes a permanent, verifiable part of their professional identity.
+*   **Oracle-Based Dispute Resolution:** In case of a dispute, a decentralized oracle network can be used to bring in pre-selected, neutral arbitrators to review off-chain evidence and vote on the outcome, triggering the release of funds from the escrow contract.
+
+<h2 id="smart-contract-engine">The Smart Contract Engine: Trust as Code</h2>
+
+The core of the DeServ platform is the escrow smart contract. Let's look at a simplified example in Solidity to understand the mechanics. This contract would be generated by a factory for each new service agreement.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.ERC20";
+
+contract ServiceEscrow {
+    address public client;
+    address public freelancer;
+    IERC20 public token;
+    uint256 public paymentAmount;
+
+    enum State { Created, Funded, Completed, Disputed }
+    State public currentState;
+
+    event AgreementFunded(uint256 amount);
+    event FundsReleased(address indexed to, uint256 amount);
+    event Disputed();
+
+    constructor(
+        address _client,
+        address _freelancer,
+        address _tokenAddress,
+        uint256 _paymentAmount
+    ) {
+        client = _client;
+        freelancer = _freelancer;
+        token = IERC20(_tokenAddress);
+        paymentAmount = _paymentAmount;
+        currentState = State.Created;
+    }
+
+    modifier onlyClient() {
+        require(msg.sender == client, "Only the client can call this function.");
+        _;
+    }
+
+    modifier onlyFreelancer() {
+        require(msg.sender == freelancer, "Only the freelancer can call this function.");
+        _;
+    }
+
+    // Client funds the escrow contract
+    function fundEscrow() external onlyClient {
+        require(currentState == State.Created, "Escrow is not in the Created state.");
+        
+        // Transfer the payment token from the client to this contract
+        uint256 initialBalance = token.balanceOf(address(this));
+        require(token.transferFrom(msg.sender, address(this), paymentAmount), "Token transfer failed.");
+        uint256 finalBalance = token.balanceOf(address(this));
+
+        require(finalBalance - initialBalance == paymentAmount, "Incorrect amount transferred.");
+
+        currentState = State.Funded;
+        emit AgreementFunded(paymentAmount);
+    }
+
+    // Client confirms work is complete and releases funds
+    function releaseFunds() external onlyClient {
+        require(currentState == State.Funded, "Escrow is not in the Funded state.");
+        currentState = State.Completed;
+
+
+    }
+}
+
+```
+
+<div className="mt-16"><Socials /></div>
