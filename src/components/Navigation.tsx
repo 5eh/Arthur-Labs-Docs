@@ -261,6 +261,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'The Factory Pattern: Automating Smart Contract Deployment fo', href: '/blogs/blog-1751479157721' },
       { title: 'The Holy Grail of DeCom: Combining Account Abstraction and O', href: '/blogs/blog-1751494071557' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
+      { title: 'Transforming Midwest Manufacturing: A Blockchain Blueprint f', href: '/blogs/blog-1752300156026' },
     ],
   },
   {
