@@ -253,6 +253,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
+      { title: 'Private by Design: Leveraging Zero-Knowledge Proofs in DeCom', href: '/blogs/blog-1752472937114' },
       { title: 'Remote Work', href: '/blogs/remote' },
       { title: 'Secure Escrow for Decentralized Commerce: A Deep Dive into P', href: '/blogs/blog-1751303253949' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
