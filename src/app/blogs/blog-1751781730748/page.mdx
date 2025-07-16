@@ -58,18 +58,6 @@ Consider a peer-to-peer marketplace for handcrafted goods, a classic DeCom use c
 4.  Funds are released to the seller upon delivery confirmation, minus a 2.5% platform fee.
 5.  A dispute resolution period of 7 days is initiated if the buyer reports an issue.
 
-An advanced, domain-specific AI model can parse these requirements and generate a set of interconnected, factory-ready smart contracts.
-
-// AI PROMPT:
-// Generate a set of Solidity contracts for a peer-to-peer marketplace.
-// Key Features:
-// 1. Contract Factory: Use the factory pattern to create a unique contract for each seller.
-// 2. Escrow Logic: Implement a payment proxy for secure fund holding.
-// 3. Fee Mechanism: A 2.5% platform fee should be sent to the treasury address (0x...).
-// 4. Oracle Integration: Include a placeholder function for an external oracle to call to confirm delivery.
-// 5. State Machine: The order should progress through states: 'Created', 'Funded', 'Shipped', 'Completed', 'Disputed'.
-// 6. Gas Optimization: Prioritize gas efficiency for all state-changing functions.
-
 
 The AI's output would not be a single monolithic contract but a structured, upgradeable, and gas-efficient system. This is how we compress a 6-month development timeline into days. The AI handles the complex architecture, allowing developers to focus on customization and integration.
 
@@ -86,6 +74,7 @@ AI-powered auditing tools work by combining several techniques:
 
 Here's a simplified example of how an AI might flag a classic re-entrancy vulnerability that a human might overlook in a complex function.
 
+```
 contract VulnerableAuction {
     mapping(address => uint) public bids;
 
@@ -100,16 +89,6 @@ contract VulnerableAuction {
         bids[msg.sender] = 0;
     }
 }
-
-// AI SECURITY ALERT:
-// File: VulnerableAuction.sol
-// Line: 7: (bool success, ) = msg.sender.call{value: amount}("");
-//
-// CRITICAL VULNERABILITY DETECTED: Re-entrancy Risk
-//
-// Description: An external call is made to 'msg.sender' before the user's balance ('bids[msg.sender]') is set to 0. A malicious contract at 'msg.sender' could call back into the 'withdraw()' function repeatedly, draining the contract's funds.
-//
-// Recommended Fix: Adopt the 'Checks-Effects-Interactions' pattern. Update the state (bids[msg.sender] = 0) *before* making the external
-
+```
 
 <div className="mt-16"><Socials /></div>

@@ -58,6 +58,7 @@ Every physical asset—a batch of raw steel, a CNC-machined part, a finished ass
 
 We can use standards like ERC-721 (for unique, non-fungible assets like a specific turbine blade) or ERC-1155 (for batches of fungible components). The on-chain record for a component might look something like this:
 
+```
 struct TrackedComponent {
   uint256 componentId;
   string partNumber;
@@ -73,6 +74,7 @@ struct HistoryEntry {
   address validator; // The address that verified this step
   string dataHash; // Hash of off-chain documents (e.g., QA report PDF)
 }
+```
 
 This structure creates an unchangeable birth certificate and passport for every single part.
 
@@ -90,6 +92,7 @@ This process provides a cryptographically secure, auditable link between a physi
 
 With trusted data on-chain, we can automate key business processes using smart contracts. This moves your supply chain from a reactive to a proactive model.
 
+```
 // Simplified example of an automated payment function
 function receiveAndVerifyShipment(uint256 componentId) public {
   // 1. Get the component's digital twin from storage
@@ -109,6 +112,7 @@ function receiveAndVerifyShipment(uint256 componentId) public {
   // 4. Update the component's status
   updateHistory(componentId, "PAYMENT_RELEASED", address(this));
 }
+```
 
 This simple function eliminates invoicing delays, removes ambiguity, and ensures suppliers are paid instantly upon verified delivery, strengthening partnerships.
 
