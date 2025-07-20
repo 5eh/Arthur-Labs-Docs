@@ -261,6 +261,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
       { title: 'The Factory Pattern: Automating Smart Contract Deployment fo', href: '/blogs/blog-1751479157721' },
       { title: 'The Holy Grail of DeCom: Combining Account Abstraction and O', href: '/blogs/blog-1751494071557' },
+      { title: 'The Unsung Hero of DeCom: A Deep Dive into Upgradeable Payme', href: '/blogs/blog-1752991340056' },
       { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
       { title: 'Tokenizing Real-World Assets: A Blueprint for Nebraska', href: '/blogs/blog-1752645746910' },
       { title: 'Transforming Midwest Manufacturing: A Blockchain Blueprint f', href: '/blogs/blog-1752300156026' },
