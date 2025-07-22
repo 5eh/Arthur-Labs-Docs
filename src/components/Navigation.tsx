@@ -251,6 +251,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'From Farm to Fork: A Technical Guide to Oracle-Validated Sup', href: '/blogs/blog-1751476558690' },
       { title: 'From Gigs to Chains: Architecting a Decentralized Service Ma', href: '/blogs/blog-1752127347664' },
       { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
+      { title: 'Gas-Efficient Solidity: Cost-Saving Patterns for High-Volume', href: '/blogs/blog-1753164159787' },
       { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
       { title: 'Industry Leaders', href: '/blogs/leaders' },
       { title: 'Private by Design: Leveraging Zero-Knowledge Proofs in DeCom', href: '/blogs/blog-1752472937114' },
