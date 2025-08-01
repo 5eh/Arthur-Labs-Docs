@@ -57,6 +57,7 @@ Evidence is the lifeblood of any dispute. Storing large files like photos or vid
 - **On-Chain Hashing:** The hash of the evidence file is submitted to the dispute contract on-chain. This creates an immutable, timestamped proof that the evidence existed in a specific state at a specific time.
 - **Oracle Validation:** For certain types of evidence, oracles are indispensable. An Arthur Labs oracle can connect to a logistics partner's API (e.g., FedEx, UPS) to verify a delivery status, pull a quality report from a trusted agricultural inspector's database, or confirm a software commit on GitHub. This brings objective, real-world data directly into the dispute process.
 
+```
 // Simplified example of an evidence submission struct
 struct Evidence {
     address party; // The submitting party (buyer or seller)
@@ -78,6 +79,7 @@ function submitEvidence(uint256 _disputeId, string memory _evidenceHash) public 
         })
     );
 }
+```
 
 ### 3. The Staked Juror Pool
 To ensure impartiality, human judgment is often required. A decentralized juror pool, inspired by platforms like Kleros, provides this.

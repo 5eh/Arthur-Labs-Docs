@@ -54,6 +54,7 @@ The EVM processes data in 32-byte (256-bit) chunks. When you define a struct, So
 
 Consider a `Listing` struct for a marketplace:
 
+```
 // Inefficient Ordering - Uses 3 storage slots
 struct ListingInefficient {
     uint256 price;      // 32 bytes
@@ -70,12 +71,15 @@ struct ListingEfficient {
     // Solidity packs seller (20 bytes) and categoryId (2 bytes)
     // into a single 32-byte slot.
 }
+```
+
 
 By simply reordering the struct fields, you can save an entire `SSTORE` operation (at least 20,000 gas) upon creation, a saving that multiplies across every new listing on your platform.
 
 ### Pattern 2: Use Events for "Cold" Data
 Not all data needs to persist in the contract's state forever. Historical data, like price change history or past offers, is often read infrequently. Storing this on-chain is incredibly expensive. A better approach is to emit this data as an `event`.
 
+```
 event PriceUpdated(uint256 indexed listingId, uint256 newPrice, uint256 timestamp);
 
 function updatePrice(uint256 _listingId, uint256 _newPrice) external {
@@ -85,6 +89,7 @@ function updatePrice(uint256 _listingId, uint256 _newPrice) external {
     // Emit an event for the historical record instead of writing to a storage array
     emit PriceUpdated(_listingId, _newPrice, block.timestamp);
 }
+```
 
 Events are stored in the transaction logs, a much cheaper location. Off-chain services like The Graph can index these events, allowing your dApp's frontend to query a complete history without costly on-chain reads.
 
@@ -95,6 +100,7 @@ After storage, computational opcodes are the next major source of gas consumptio
 ### Pattern 1: Caching State Variables in Memory
 Reading from storage (`SLOAD`) inside a loop is a common gas trap. Each read costs gas. If you need to access the same storage variable multiple times within a function, load it into a `memory` variable once.
 
+```
 // Inefficient: 3 SLOADs
 function calculateFeesInefficient(uint256[] memory amounts) external view returns (uint256) {
     uint256 totalFee = 0;
@@ -115,12 +121,14 @@ function calculateFeesEfficient(uint256[] memory amounts) external view returns 
     }
     return totalFee;
 }
+```
 
 This simple change saves thousands of gas in functions that process arrays, such as calculating payouts for multiple items or distributing royalties.
 
 ### Pattern 2: `unchecked` Math for Safe Operations
 Since Solidity 0.8.0, all arithmetic operations are checked for overflow and underflow by default. This is a crucial security feature, but it adds gas cost to every calculation. In situations where you can mathematically guarantee an operation will not overflow or underflow, you can use an `unchecked` block to save gas. A classic example is decrementing a counter in a `for` loop.
 
+```
 function sumArray(uint256[] memory arr) public pure returns (uint256) {
     uint256 total = 0;
     // The loop counter 'i' is guaranteed not to underflow.
@@ -131,6 +139,7 @@ function sumArray(uint256[] memory arr) public pure returns (uint256) {
     }
     return total;
 }
+```
 
 
 <div className="mt-16"><Socials /></div>
