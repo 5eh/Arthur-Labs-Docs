@@ -88,6 +88,21 @@ Focus: General blockchain knowledge, technical deep-dives
 
 ---
 
+### Crypto Tax Service Features (Based on crypto.arthurlabs.net)
+- [ ] $7.50 Per Wallet Pricing: How Arthur Labs Makes Crypto Taxes Affordable
+- [ ] 12+ Blockchain Support: Complete Coverage for Multi-Chain Tax Reports
+- [ ] 18,000+ Token Resolution: Beyond Top 20 - Full ERC-20 Support
+- [ ] DeFi Protocol Recognition: Aave, Lido, Compound Integration
+- [ ] Stablecoin Tax Treatment: USDC, USDT, DAI Pricing at $1.00
+- [ ] Exchange Deposit Classification: Coinbase, Binance, Kraken Detection
+- [ ] Dust Transaction Filtering: $0.05 Threshold Explained
+- [ ] FIFO Cost Basis: IRS-Defensible Lot Tracking
+- [ ] 1099-DA Automatic Generation: No Return Visit Required
+- [ ] Per-Transaction Historical Pricing: Accurate USD Valuation
+- [ ] Bridge & Exchange Transfer Detection: Preserving Cost Basis
+
+---
+
 ### 4. Business & Entrepreneurship
 Focus: Web3 business guidance, SEO for commercial terms
 
