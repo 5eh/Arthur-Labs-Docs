@@ -238,69 +238,73 @@ Based on Arthur Labs ecosystem analysis (DEAN, ROSE, QUINN, SUSAN, Crypto Tax), 
 
 ### 📈 Lead Generation Strategies (Not Currently Implemented)
 
-#### 1. **Competitor Comparison Landing Pages**
-- [ ] "CoinLedger vs Arthur Labs" - Crypto tax comparison
-- [ ] "Koinly vs Arthur Labs" - Feature comparison
-- [ ] "Shopify vs DEAN" - Marketplace platform comparison
-- [ ] "Bubble vs SUSAN" - No-code platform comparison
+#### 1. **Value-First CTA Pages**
+- [ ] "Get Your Crypto Tax Report in 5 Minutes" - Time-based CTA
+- [ ] "Deploy a Marketplace on 7,500 Chains" - Scale-based CTA
+- [ ] "Generate a Full App in Under an Hour" - Speed-based CTA
+- [ ] "No Credit Card Required - Start Free" - Low-friction CTA
 
-**Why:** High-intent keywords, captures users actively researching alternatives
+**Focus:** Lead with time/money saved, not features
 
-#### 2. **ROI Calculators & Tools**
-- [ ] Crypto Tax Savings Calculator - "Calculate how much you could save"
-- [ ] Marketplace Fee Calculator - "DEAN vs Shopify fees"
-- [ ] App Development Cost Calculator - "SUSAN vs traditional development"
+#### 2. **Technical Clarity Content**
+- [ ] "How Our Wallet Scanner Works: Step-by-Step"
+- [ ] "The Architecture Behind Multi-Chain Marketplaces"
+- [ ] "Understanding Cost Basis: FIFO Explained Simply"
+- [ ] "Why 12 Chains Matter for Tax Compliance"
+- [ ] "Smart Contract Fees Explained: What You're Actually Paying"
 
-**Why:** Lead magnets that capture email addresses
+**Focus:** Demystify the tech - explain HOW it works clearly
 
-#### 3. **Industry-Specific Landing Pages**
-- [ ] Crypto Tax for NFT Artists
-- [ ] Crypto Tax for DeFi Yield Farmers
-- [ ] Crypto Tax for DAO Contributors
-- [ ] Marketplace for Crypto Artists
-- [ ] Marketplace for Local Businesses
-- [ ] Marketplace for SaaS Products
+#### 3. **ROI & Efficiency Content**
+- [ ] "Stop Spending Hours on Crypto Taxes"
+- [ ] "Manual Crypto Tax Tracking vs Our Scanner: A Breakdown"
+- [ ] "Building a Marketplace Without Coding: The Real Cost"
+- [ ] "Why Cross-Chain Reach Matters for Sales"
+- [ ] "The True Cost of Traditional App Development vs SUSAN"
 
-**Why:** Niche-specific content converts better
+**Focus:** Quantifiable efficiency gains (time saved, money saved, reach expanded)
 
-#### 4. **Case Studies & Success Stories**
-- [ ] "How [Business] increased sales 300% with DEAN"
-- [ ] "Reducing crypto tax prep time by 90%"
-- [ ] "Building a multi-chain marketplace in 24 hours"
-- [ ] Client testimonials with specific metrics
+#### 4. **Problem-Solution Content**
+- [ ] "Crypto Taxes Are Due - Here's the Fastest Way"
+- [ ] "Your Exchange Doesn't Support Your Chain? We Do."
+- [ ] "Worried About IRS Audits? Here's How We Help"
+- [ ] "Too Many Wallets to Track? One Scanner Does All"
+- [ ] "Need to Sell Globally? 7,500 Chains Says Yes."
 
-**Why:** Social proof drives B2B conversions
+**Focus:** Lead with the pain point, solution second
 
-#### 5. **Free Tools & Resources (Lead Magnets)**
-- [ ] Free Crypto Tax Estimator (basic version)
-- [ ] Free Wallet Scanner (preview of tax service)
-- [ ] Free Marketplace Template (DEAN trial)
-- [ ] Free SEO Audit Checklist for Web3 Projects
-- [ ] Free Smart Contract Checklist
+#### 5. **Trust & Credibility Content**
+- [ ] "How We Calculate Your Tax Liability (Full Transparency)"
+- [ ] "Our Security Practices: What Happens to Your Data"
+- [ ] "IRS Compliance: How We Stay Updated"
+- [ ] "What Happens If Your Scan Fails: Our Guarantee"
+- [ ] "Privacy-First: Why We Don't Store Your Data"
 
-**Why:** Exchange value for email/list building
+**Focus:** Remove objections before they arise
 
-#### 6. **Partnership & Affiliate Pages**
-- [ ] Partner with crypto exchanges ( Coinbase, Binance)
-- [ ] Affiliate program for tax professionals
-- [ ] White-label DEAN for agencies
-- [ ] Integration partnerships (QuickBooks, Xero)
+#### 6. **How-To Guides (High Intent)**
+- [ ] "How to Prepare for Crypto Tax Season in 2026"
+- [ ] "How to Launch a Multi-Chain Marketplace in 2026"
+- [ ] "How to Build Your First Web3 App"
+- [ ] "How to Accept Crypto Payments on Your Site"
 
-**Why:** Passive lead flow through partnerships
+**Focus:** Action-oriented, positions us as the guide
 
-#### 7. **Web3 Project Directory**
-- [ ] Create a directory of projects using Arthur Labs
-- [ ] "Built with DEAN" badge/listing
-- [ ] Project showcase with logos and descriptions
+#### 7. **Resource Libraries (Lead Magnets)**
+- [ ] Crypto Tax Checklist 2026 (PDF download)
+- [ ] Marketplace Launch Checklist
+- [ ] Web3 Security Best Practices Guide
+- [ ] Smart Contract Templates Library
 
-**Why:** Network effects and social proof
+**Focus:** Exchange value for email signups
 
-#### 8. **Educational Certification**
-- [ ] "Arthur Labs Certified Developer" program
-- [ ] Free mini-courses leading to certification
-- [ ] Partner with coding bootcamps
+#### 8. **Integration Documentation**
+- [ ] "Connect Your Wallet: Supported Chains List"
+- [ ] "Export to QuickBooks: Step-by-Step"
+- [ ] "API Documentation for Developers"
+- [ ] "WordPress Plugin for DEAN"
 
-**Why:** Creates brand advocates and talent pipeline
+**Focus:** Show extensibility, capture developer leads
 
 ---
 
@@ -318,6 +322,73 @@ Based on Arthur Labs ecosystem analysis (DEAN, ROSE, QUINN, SUSAN, Crypto Tax), 
 | "no-code app builder" | SUSAN |
 | "AI app generator" | SUSAN |
 | "automate social media crypto" | QUINN |
+
+---
+
+### 💡 CTA Optimization Opportunities
+
+#### Current Issues to Fix
+- [ ] Homepage CTAs are generic - make time-specific ("Start Your Tax Report Now")
+- [ ] No visible guarantees on pricing page
+- [ ] "How it works" buried - bring to above the fold
+- [ ] Missing comparison: "Our 12 chains vs their 3"
+- [ ] No urgency signals (tax deadlines, limited features)
+
+#### Value Proposition Improvements
+- [ ] Replace "We scan wallets" → "We find every taxable event across 12 chains"
+- [ ] Replace "Multi-chain support" → "Reach buyers on 7,500+ chains"
+- [ ] Replace "Generate reports" → "Get IRS-ready documents in your inbox"
+- [ ] Replace "No subscription" → "Pay $7.50 once - no subscription, ever"
+- [ ] Replace "Secure" → "Your data is deleted after report delivery"
+
+#### Technical Clarity Improvements
+- [ ] Add "What happens after you submit" visual flow
+- [ ] Explain FIFO in one sentence with example
+- [ ] Show supported chains with logos (not just a list)
+- [ ] Include sample PDF screenshots in descriptions
+- [ ] Add "What we can't do" section for honesty
+
+---
+
+### 📐 Content Templates
+
+#### Template A: Problem → Solution → CTA
+```
+[Pain Point Header]
+Many crypto investors spend [X hours] manually tracking...
+
+[Our Solution]
+Our scanner processes [X chains] automatically...
+
+[Call to Action]
+Start your free scan →
+```
+
+#### Template B: How-To Guide
+```
+[What You'll Learn]
+In this guide, you'll learn to [outcome]...
+
+[Step-by-Step]
+1. [First step with our tool]
+2. [Second step]
+3. [Third step]
+
+[CTA]
+Ready to [benefit]? [Start button]
+```
+
+#### Template C: Transparency/Trust
+```
+[Common Concern]
+You might worry about [objection]...
+
+[How We Address It]
+[Explain the technical/operational solution]...
+
+[Guarantee]
+If [specific scenario], we [resolution]...
+```
 
 ---
 
