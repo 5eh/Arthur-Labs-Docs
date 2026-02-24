@@ -64,7 +64,8 @@ Focus: General blockchain knowledge, technical deep-dives
 
 **Blockchain Fundamentals:**
 - [ ] How Blockchain Technology Works: A Comprehensive Guide
-- [ ] Layer 1 vs Layer 2 Blockchains: What's the Difference?
+- [ ] Layer 1 vs Layer 2 vs Layer 3: The Complete Breakdown
+- [ ] Difference Between Blockchain Chains: A Practical Guide
 - [ ] Consensus Mechanisms: PoW, PoS, and Beyond
 - [ ] Smart Contracts Explained: From Basics to Advanced
 
@@ -72,6 +73,8 @@ Focus: General blockchain knowledge, technical deep-dives
 - [ ] Ethereum Virtual Machine (EVM): Technical Architecture
 - [ ] Gas Optimization Techniques for Smart Contracts
 - [ ] EVM-Compatible Chains: Arbitrum, Optimism, Base, BSC
+- [ ] All ERC-20 Tokens Explained: Complete Reference Guide
+- [ ] ERC-20 vs BEP-20 vs SPL: Token Standards Compared
 
 **DeFi Education:**
 - [ ] Decentralized Finance (DeFi): Complete Beginner's Guide
@@ -101,7 +104,29 @@ Focus: Web3 business guidance, SEO for commercial terms
 
 ---
 
-### 5. SEO & Marketing for Web3
+### 5. Federal Regulations & Compliance
+Focus: Legal/regulatory content for crypto businesses
+
+**Federal Regulations:**
+- [ ] Complete Guide to Existing US Federal Crypto Regulations
+- [ ] SEC vs CFTC: Who Regulates Crypto in the US?
+- [ ] The Howey Test and Cryptocurrency: What It Means for You
+- [ ] AML/BSA Requirements for Crypto Businesses
+- [ ] FinCEN Guidance on Cryptocurrency: Compliance Guide
+- [ ] Travel Rule for Crypto: What Transactions Need to Report
+- [ ] IRS Crypto Reporting Requirements: 2026 Update
+- [ ] State Money Transmitter Licenses: Which Ones Do You Need?
+- [ ] Crypto Exchanger Regulations: Federal Requirements
+- [ ] Token Classification: Security vs Commodity vs Currency
+
+**Compliance Checklists:**
+- [ ] Crypto Business Compliance Checklist (2026)
+- [ ] AML/KYC Requirements for Crypto Companies
+- [ ] Crypto Tax Compliance for Businesses
+
+---
+
+### 6. SEO & Marketing for Web3
 Focus: Digital marketing for crypto/Web3 projects
 
 **Content Marketing:**
