@@ -228,23 +228,26 @@ function NavigationGroup({
 export const navigation: Array<NavGroup> = [
   {
     title: 'Main',
-    links: [{ title: 'Home', href: '/' }],
+    links: [
+      { title: 'Home', href: '/' },
+      { title: 'All Blogs (72)', href: '/blogs' },
+    ],
   },
   {
-    title: 'Blog Categories',
+    title: 'Featured',
     links: [
-      { title: 'All Posts', href: '/blogs' },
       { title: 'Blockchain', href: '/blogs/blockchain' },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
       { title: 'DeCom', href: '/blogs/decom' },
-      { title: 'DeFi & Finance', href: '/blogs/finance' },
+      { title: 'Finance / DeFi', href: '/blogs/finance' },
+      { title: 'Multi-Chain', href: '/blogs/multi-chain-marketplace' },
       { title: 'Content Strategy', href: '/blogs/content-strategy' },
     ],
   },
   {
-    title: 'DEAN (Marketplace)',
+    title: 'DEAN System',
     links: [
-      { title: 'DEAN Overview', href: '/blogs/dean-system-revolution' },
+      { title: 'Overview', href: '/blogs/dean-system-revolution' },
       { title: 'Launch Guide', href: '/blogs/dean-system-launch-guide' },
       { title: 'Deep Dive', href: '/blogs/dean-system-deep-dive' },
       { title: 'Entrepreneurs', href: '/blogs/dean-entrepreneurs-guide' },
@@ -253,30 +256,30 @@ export const navigation: Array<NavGroup> = [
     ],
   },
   {
-    title: 'Blockchain & Web3',
+    title: 'Web3 Tech',
     links: [
-      { title: 'Web3 Trends 2025', href: '/blogs/blockchain-web3-trends-2025' },
+      { title: 'Trends 2025', href: '/blogs/blockchain-web3-trends-2025' },
       { title: 'Web3 Future', href: '/blogs/web3-future-trends' },
-      { title: 'EVM Smart Contracts', href: '/blogs/evm-smart-contracts-commerce' },
+      { title: 'EVM Contracts', href: '/blogs/evm-smart-contracts-commerce' },
       { title: 'Gas Optimization', href: '/blogs/gasless-transactions-web3' },
-      { title: 'Smart Contract Factories', href: '/blogs/smart-contract-factories' },
+      { title: 'Contract Factories', href: '/blogs/smart-contract-factories' },
     ],
   },
   {
-    title: 'Layer 2 Solutions',
+    title: 'Layer 2',
     links: [
       { title: 'L2 Nebraska', href: '/blogs/l2-nebraska-marketplaces' },
-      { title: 'Ethereum L2 Business', href: '/blogs/ethereum-l2-nebraska-business' },
+      { title: 'Ethereum L2', href: '/blogs/ethereum-l2-nebraska' },
+      { title: 'L2 Business', href: '/blogs/ethereum-l2-nebraska-business' },
       { title: 'Affordable L2', href: '/blogs/affordable-l2-nebraska-business' },
-      { title: 'Rapid Deployment', href: '/blogs/rapid-web3-marketplace-deployment' },
     ],
   },
   {
-    title: 'DeFi Guides',
+    title: 'DeFi',
     links: [
       { title: 'Passive Income', href: '/blogs/defi-passive-income-guide' },
       { title: 'Yield Farming', href: '/blogs/defi-yield-farming-basics' },
-      { title: 'DeFi Beginners', href: '/blogs/defi-investing-beginners' },
+      { title: 'Beginners', href: '/blogs/defi-investing-beginners' },
       { title: 'Risks & Rewards', href: '/blogs/defi-risks-rewards' },
       { title: 'Stablecoins', href: '/blogs/defi-stablecoins-guide' },
       { title: 'Lending', href: '/blogs/defi-lending-platforms' },
@@ -284,22 +287,22 @@ export const navigation: Array<NavGroup> = [
     ],
   },
   {
-    title: 'Business & Strategy',
+    title: 'Business',
     links: [
-      { title: 'Web3 Business Models', href: '/blogs/web3-business-models' },
+      { title: 'Business Models', href: '/blogs/web3-business-models' },
       { title: 'Startup Funding', href: '/blogs/web3-startup-funding' },
-      { title: 'Career Opportunities', href: '/blogs/web3-career-opportunities' },
+      { title: 'Careers', href: '/blogs/web3-career-opportunities' },
       { title: 'ROI Analysis', href: '/blogs/roi-web3-vs-ecommerce' },
-      { title: 'Marketing Strategies', href: '/blogs/web3-marketing-strategies' },
+      { title: 'Marketing', href: '/blogs/web3-marketing-strategies' },
     ],
   },
   {
-    title: 'Technical Guides',
+    title: 'Technical',
     links: [
       { title: 'Oracle Validation', href: '/blogs/oracle-validation-p2p-commerce' },
       { title: 'Secure Escrow', href: '/blogs/secure-escrow-decentralized-commerce' },
       { title: 'NFTs & Gaming', href: '/blogs/blockchain-gaming-nfts' },
-      { title: 'AI + Blockchain', href: '/blogs/ai-web3-development' },
+      { title: 'AI + Web3', href: '/blogs/ai-web3-development' },
       { title: 'AI Automation', href: '/blogs/ai-blockchain-automation' },
     ],
   },

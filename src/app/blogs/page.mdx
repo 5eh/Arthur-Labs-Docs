@@ -1,148 +1,314 @@
 import { Socials } from '@/components/Socials'
-import { Resources } from '@/components/Resources'
 import { HeroPattern } from '@/components/HeroPattern'
-import { Button } from '@/components/Button'
+import Link from 'next/link'
 
 export const metadata = {
-  title: 'Arthur Labs Blogs',
+  title: 'All Blog Posts | Arthur Labs',
   description:
-    'Arthur Labs builds world changing systems that enable entrepreneurship, growing Web2 into Web3.',
+    'Explore all Arthur Labs blog posts on blockchain technology, Web3 development, DeFi, smart contracts, and decentralized commerce. Comprehensive guides for developers and businesses.',
+  keywords: 'blockchain, web3, defi, smart contracts, crypto, ethereum, decentralized commerce, tutorials',
 }
 
 export const sections = [
-  { title: 'Development Guides', id: 'development-guides' },
-  { title: 'Blockchain Technology', id: 'blockchain-technology' },
-  { title: 'Smart Contracts', id: 'smart-contracts' },
-  { title: 'Automation & AI', id: 'automation-ai' },
-  { title: 'Web Development', id: 'web-development' },
+  { title: 'All Posts', id: 'all-posts' },
 ]
 
 <HeroPattern />
 
-# Our Blogs
+# All Blog Posts
 
-All of our blogs are accessible to read and view here, introducing newcomers and experts alike to years of research and analysis our team has distilled. Explore our comprehensive guides on Web3 development, blockchain technology, and innovative approaches to building in the decentralized ecosystem. {{className: 'lead text-black dark:text-gray-200'}}
+Explore our comprehensive collection of articles on blockchain technology, Web3 development, decentralized commerce, and more. {{className: 'lead text-black dark:text-gray-200'}}
 
-<div className="not-prose mt-6 mb-16 flex gap-3">
-  <Button href="/" arrow="right">
-    <>Newest Post</>
-  </Button>
+<div className="not-prose mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<Link href="/blogs/dean-system-revolution" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Dean system revolution</span>
+</Link>
+
+<Link href="/blogs/dean-system-launch-guide" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Dean system launch guide</span>
+</Link>
+
+<Link href="/blogs/dean-system-deep-dive" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Dean system deep dive</span>
+</Link>
+
+<Link href="/blogs/dean-entrepreneurs-guide" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Dean entrepreneurs guide</span>
+</Link>
+
+<Link href="/blogs/dean-use-case-guide" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Dean use case guide</span>
+</Link>
+
+<Link href="/blogs/dean-marketplace-development" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Dean marketplace development</span>
+</Link>
+
+<Link href="/blogs/blockchain-web3-trends-2025" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Blockchain web3 trends 2025</span>
+</Link>
+
+<Link href="/blogs/web3-future-trends" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Web3 future trends</span>
+</Link>
+
+<Link href="/blogs/blockchain" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Blockchain</span>
+</Link>
+
+<Link href="/blogs/smart-contracts" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Smart contracts</span>
+</Link>
+
+<Link href="/blogs/smart-contract-security" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Smart contract security</span>
+</Link>
+
+<Link href="/blogs/smart-contract-factories" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Smart contract factories</span>
+</Link>
+
+<Link href="/blogs/evm-chain-deployment" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Evm chain deployment</span>
+</Link>
+
+<Link href="/blogs/evm-smart-contracts-commerce" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Evm smart contracts commerce</span>
+</Link>
+
+<Link href="/blogs/decom" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">DeCom</span>
+</Link>
+
+<Link href="/blogs/decom-blockchain-infrastructure" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">DeCom blockchain infrastructure</span>
+</Link>
+
+<Link href="/blogs/decom-small-business-guide" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">DeCom small business guide</span>
+</Link>
+
+<Link href="/blogs/finance" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Finance</span>
+</Link>
+
+<Link href="/blogs/defi-passive-income-guide" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Defi passive income guide</span>
+</Link>
+
+<Link href="/blogs/defi-yield-farming-basics" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Defi yield farming basics</span>
+</Link>
+
+<Link href="/blogs/defi-investing-beginners" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Defi investing beginners</span>
+</Link>
+
+<Link href="/blogs/defi-risks-rewards" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Defi risks rewards</span>
+</Link>
+
+<Link href="/blogs/defi-stablecoins-guide" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Defi stablecoins guide</span>
+</Link>
+
+<Link href="/blogs/defi-lending-platforms" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Defi lending platforms</span>
+</Link>
+
+<Link href="/blogs/defi-dex-trading" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Defi dex trading</span>
+</Link>
+
+<Link href="/blogs/defi-portfolio-management" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Defi portfolio management</span>
+</Link>
+
+<Link href="/blogs/l2-nebraska-marketplaces" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">L2 nebraska marketplaces</span>
+</Link>
+
+<Link href="/blogs/ethereum-l2-nebraska" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Ethereum l2 nebraska</span>
+</Link>
+
+<Link href="/blogs/ethereum-l2-nebraska-business" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Ethereum l2 nebraska business</span>
+</Link>
+
+<Link href="/blogs/affordable-l2-nebraska-business" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Affordable l2 nebraska business</span>
+</Link>
+
+<Link href="/blogs/gasless-transactions-web3" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Gasless transactions web3</span>
+</Link>
+
+<Link href="/blogs/rapid-web3-marketplace-deployment" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Rapid web3 marketplace deployment</span>
+</Link>
+
+<Link href="/blogs/web3-business-models" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Web3 business models</span>
+</Link>
+
+<Link href="/blogs/web3-startup-funding" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Web3 startup funding</span>
+</Link>
+
+<Link href="/blogs/web3-career-opportunities" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Web3 career opportunities</span>
+</Link>
+
+<Link href="/blogs/roi-web3-vs-ecommerce" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Roi web3 vs ecommerce</span>
+</Link>
+
+<Link href="/blogs/web3-marketing-strategies" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Web3 marketing strategies</span>
+</Link>
+
+<Link href="/blogs/oracle-validation-p2p-commerce" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Oracle validation p2p commerce</span>
+</Link>
+
+<Link href="/blogs/secure-escrow-decentralized-commerce" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Secure escrow decentralized commerce</span>
+</Link>
+
+<Link href="/blogs/blockchain-gaming-nfts" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Blockchain gaming nfts</span>
+</Link>
+
+<Link href="/blogs/ai-web3-development" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Ai web3 development</span>
+</Link>
+
+<Link href="/blogs/ai-blockchain-automation" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Ai blockchain automation</span>
+</Link>
+
+<Link href="/blogs/multi-chain-marketplace" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Multi chain marketplace</span>
+</Link>
+
+<Link href="/blogs/token-gated-commerce" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Token gated commerce</span>
+</Link>
+
+<Link href="/blogs/content-strategy" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Content strategy</span>
+</Link>
+
+<Link href="/blogs/claude-blockchain" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Claude blockchain</span>
+</Link>
+
+<Link href="/blogs/full-stack-generation" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Full stack generation</span>
+</Link>
+
+<Link href="/blogs/mastering-web3-development" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Mastering web3 development</span>
+</Link>
+
+<Link href="/blogs/model-context-providers" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Model context providers</span>
+</Link>
+
+<Link href="/blogs/supabase-web3" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Supabase web3</span>
+</Link>
+
+<Link href="/blogs/beautiful-website" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Beautiful website</span>
+</Link>
+
+<Link href="/blogs/remote" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Remote</span>
+</Link>
+
+<Link href="/blogs/leaders" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Leaders</span>
+</Link>
+
+<Link href="/blogs/10-common-errors" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">10 common errors</span>
+</Link>
+
+<Link href="/blogs/blockchain-nebraska-agriculture" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Blockchain nebraska agriculture</span>
+</Link>
+
+<Link href="/blogs/nebraska-blockchain-opportunities" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Nebraska blockchain opportunities</span>
+</Link>
+
+<Link href="/blogs/crypto-regulatory-updates" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Crypto regulatory updates</span>
+</Link>
+
+<Link href="/blogs/launch-web3-marketplace-days" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Launch web3 marketplace days</span>
+</Link>
+
+<Link href="/blogs/launch-niche-web3-marketplace" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Launch niche web3 marketplace</span>
+</Link>
+
+<Link href="/blogs/shopify-to-decentralized-marketplace" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Shopify to decentralized marketplace</span>
+</Link>
+
+<Link href="/blogs/decentralized-marketplace-benefits" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Decentralized marketplace benefits</span>
+</Link>
+
+<Link href="/blogs/blockchain-infrastructure-marketplaces" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Blockchain infrastructure marketplaces</span>
+</Link>
+
+<Link href="/blogs/marketplace-use-case-arthur-labs" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Marketplace use case arthur labs</span>
+</Link>
+
+<Link href="/blogs/ethereum-l2-nebraska-small-business" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Ethereum l2 nebraska small business</span>
+</Link>
+
+<Link href="/blogs/blockchain-web3-trends-2025-part2" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Blockchain web3 trends 2025 part2</span>
+</Link>
+
+<Link href="/blogs/a-guide-to-optimizing-nextjs-applications" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">A guide to optimizing nextjs applications</span>
+</Link>
+
+<Link href="/blogs/react-vue-web" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">React vue web</span>
+</Link>
+
+<Link href="/blogs/5-compelling-reasons-to-utilize-arthur-labs-blockchain-infrastructure-for-your-business" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">5 compelling reasons arthur labs</span>
+</Link>
+
+<Link href="/blogs/upcoming-ecommerce-trends" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Upcoming ecommerce trends</span>
+</Link>
+
+<Link href="/blogs/the-evolution-of-ai-from-rule-based-systems-to-deep-learning" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Evolution of ai deep learning</span>
+</Link>
+
+<Link href="/blogs/from-proof-of-concept-to-production-scaling-ai-solutions" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Proof to production ai</span>
+</Link>
+
 </div>
 
-<h2 id="development-guides">Development Guides</h2>
-
-Comprehensive resources for Web3 developers looking to build robust, scalable decentralized applications.
-
-<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/mastering-web3-development" className="hover:text-cyan-500">Mastering Web3 Development</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Key frameworks, best practices, and community-driven development approaches for Web3 projects.</p>
-  </div>
-
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/model-context-providers" className="hover:text-cyan-500">Model Context Providers</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Building smarter blockchain applications with streamlined development workflows and performance optimization.</p>
-  </div>
-
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/supabase-web3" className="hover:text-cyan-500">Combining Supabase with Web3</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Building secure, scalable backends with database design patterns and RLS security for blockchain applications.</p>
-  </div>
-
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/full-stack-generation" className="hover:text-cyan-500">Full-Stack Application Generation</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Automating frontend and backend development with customizable templates for blockchain use cases.</p>
-  </div>
+<div className="mt-12 text-center text-sm text-gray-500">
+  Total: 72 blog posts
 </div>
 
-## Blockchain Technology
-
-Explore technical implementations and architectural patterns for blockchain systems and decentralized commerce.
-
-<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/multi-chain-marketplace" className="hover:text-cyan-500">Multi-Chain Marketplace Creation</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Architecture patterns for cross-chain compatibility and performance optimization for decentralized commerce.</p>
-  </div>
-
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/token-gated-commerce" className="hover:text-cyan-500">Token-Gated Commerce</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Technical setup for NFT-based access systems and integration patterns with existing storefronts.</p>
-  </div>
-
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/blockchain" className="hover:text-cyan-500">Why Do We Need Blockchains?</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Exploring peer-to-peer economies, transparency, and global opportunities enabled by blockchain technology.</p>
-  </div>
-</div>
-
-## Smart Contracts
-
-Best practices, security considerations, and implementation strategies for robust smart contract development.
-
-<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/smart-contract-security" className="hover:text-cyan-500">Automated Security Audit Processes</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Setting up continuous security testing pipelines and identifying common vulnerabilities in smart contracts.</p>
-  </div>
-
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/evm-chain-deployment" className="hover:text-cyan-500">EVM Chain Deployment</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Technical considerations, gas optimization strategies, and cross-chain compatibility techniques for smart contracts.</p>
-  </div>
-</div>
-
-## Automation & AI
-
-Leveraging automation and artificial intelligence to enhance blockchain development and community engagement.
-
-<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/content-strategy" className="hover:text-cyan-500">Automated Content Strategy</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">AI-powered content generation and blockchain-specific templates for effective community outreach.</p>
-  </div>
-
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/claude-blockchain" className="hover:text-cyan-500">Integrating Claude CLI</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Leveraging AI for smart contract generation, documentation automation, and code optimization in blockchain development.</p>
-  </div>
-</div>
-
-## Web Development
-
-Best practices and strategic approaches for building effective websites and web applications.
-
-<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-  <div className="border border-gray-100 dark:border-gray-800 p-6 rounded-xl">
-    <h3 className="font-semibold text-lg mb-2">
-      <a href="/blogs/beautiful-website" className="hover:text-cyan-500">Why You Should Make a Beautiful Website</a>
-    </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Strategic business benefits of investing in a well-designed website, from SEO advantages to brand differentiation.</p>
-  </div>
-</div>
-
-<div className="mt-16">
-  <Socials />
-</div>
+<Socials />
