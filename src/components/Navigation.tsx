@@ -231,95 +231,76 @@ export const navigation: Array<NavGroup> = [
     links: [{ title: 'Home', href: '/' }],
   },
   {
-    title: 'Blogs',
+    title: 'Blog Categories',
     links: [
       { title: 'All Posts', href: '/blogs' },
-      { title: '10 Common Design Errors', href: '/blogs/10-common-errors' },
-      {
-        title: 'Affordable DeCom: How Layer 2s Like Arbitrum & Optimism Empo',
-        href: '/blogs/blog-1751436123402',
-      },
-      {
-        title: 'Beyond Escrow: Designing a Complete Decentralized Dispute Re',
-        href: '/blogs/blog-1753336953078',
-      },
-      {
-        title: 'Beyond Single-Chain Limits: Architecting a Multi-Chain DeCom',
-        href: '/blogs/blog-1751778267343',
-      },
-      {
-        title: 'Beyond the Build: A Guide to DAO Governance for DeCom Market',
-        href: '/blogs/blog-1751608928020',
-      },
-      {
-        title: 'Beyond the Metaverse: Securing Real-World Commerce with Orac',
-        href: '/blogs/blog-1751476079720',
-      },
       { title: 'Blockchain', href: '/blogs/blockchain' },
-      {
-        title: 'Bridging Two Worlds: A Technical Blueprint for Hybrid Web2/W',
-        href: '/blogs/blog-1751954530727',
-      },
-      { title: 'Claude Blockchain', href: '/blogs/claude-blockchain' },
-      { title: 'Content Strategy', href: '/blogs/content-strategy' },
-      {
-        title: 'Decentralized Delivery (DeDe): Building Trust in the Last Mi',
-        href: '/blogs/blog-1751518302533',
-      },
-      { title: 'DeCom', href: '/blogs/decom' },
-      { title: 'EVM Chain Deployment', href: '/blogs/evm-chain-deployment' },
-      { title: 'Finance', href: '/blogs/finance' },
-      {
-        title: 'From Clicks to Chains: How Account Abstraction is Revolution',
-        href: '/blogs/blog-1751476897361',
-      },
-      {
-        title: 'From Farm to Fork: A Technical Guide to Oracle-Validated Sup',
-        href: '/blogs/blog-1751476558690',
-      },
-      {
-        title: 'From Gigs to Chains: Architecting a Decentralized Service Ma',
-        href: '/blogs/blog-1752127347664',
-      },
-      { title: 'Full Stack Generation', href: '/blogs/full-stack-generation' },
-      {
-        title: 'Gas-Efficient Solidity: Cost-Saving Patterns for High-Volume',
-        href: '/blogs/blog-1753164159787',
-      },
-      { title: 'Generated Blog Post', href: '/blogs/generated-blog-post' },
-      { title: 'Industry Leaders', href: '/blogs/leaders' },
-      {
-        title: 'Private by Design: Leveraging Zero-Knowledge Proofs in DeCom',
-        href: '/blogs/blog-1752472937114',
-      },
-      { title: 'Remote Work', href: '/blogs/remote' },
-      {
-        title: 'Secure Escrow for Decentralized Commerce: A Deep Dive into P',
-        href: '/blogs/blog-1751303253949',
-      },
       { title: 'Smart Contracts', href: '/blogs/smart-contracts' },
-      {
-        title: 'Smarter Than a Contract: How AI is Revolutionizing Smart Con',
-        href: '/blogs/blog-1751781730748',
-      },
-      { title: 'Supabase Web3', href: '/blogs/supabase-web3' },
-      {
-        title: 'The Factory Pattern: Automating Smart Contract Deployment fo',
-        href: '/blogs/blog-1751479157721',
-      },
-      {
-        title: 'The Holy Grail of DeCom: Combining Account Abstraction and O',
-        href: '/blogs/blog-1751494071557',
-      },
-      { title: 'Token Gated Commerce', href: '/blogs/token-gated-commerce' },
-      {
-        title: 'Tokenizing Real-World Assets: A Blueprint for Nebraska',
-        href: '/blogs/blog-1752645746910',
-      },
-      {
-        title: 'Transforming Midwest Manufacturing: A Blockchain Blueprint f',
-        href: '/blogs/blog-1752300156026',
-      },
+      { title: 'DeCom', href: '/blogs/decom' },
+      { title: 'DeFi & Finance', href: '/blogs/finance' },
+      { title: 'Content Strategy', href: '/blogs/content-strategy' },
+    ],
+  },
+  {
+    title: 'DEAN (Marketplace)',
+    links: [
+      { title: 'DEAN Overview', href: '/blogs/dean-system-revolution' },
+      { title: 'Launch Guide', href: '/blogs/dean-system-launch-guide' },
+      { title: 'Deep Dive', href: '/blogs/dean-system-deep-dive' },
+      { title: 'Entrepreneurs', href: '/blogs/dean-entrepreneurs-guide' },
+      { title: 'Use Cases', href: '/blogs/dean-use-case-guide' },
+      { title: 'Marketplace Dev', href: '/blogs/dean-marketplace-development' },
+    ],
+  },
+  {
+    title: 'Blockchain & Web3',
+    links: [
+      { title: 'Web3 Trends 2025', href: '/blogs/blockchain-web3-trends-2025' },
+      { title: 'Web3 Future', href: '/blogs/web3-future-trends' },
+      { title: 'EVM Smart Contracts', href: '/blogs/evm-smart-contracts-commerce' },
+      { title: 'Gas Optimization', href: '/blogs/gasless-transactions-web3' },
+      { title: 'Smart Contract Factories', href: '/blogs/smart-contract-factories' },
+    ],
+  },
+  {
+    title: 'Layer 2 Solutions',
+    links: [
+      { title: 'L2 Nebraska', href: '/blogs/l2-nebraska-marketplaces' },
+      { title: 'Ethereum L2 Business', href: '/blogs/ethereum-l2-nebraska-business' },
+      { title: 'Affordable L2', href: '/blogs/affordable-l2-nebraska-business' },
+      { title: 'Rapid Deployment', href: '/blogs/rapid-web3-marketplace-deployment' },
+    ],
+  },
+  {
+    title: 'DeFi Guides',
+    links: [
+      { title: 'Passive Income', href: '/blogs/defi-passive-income-guide' },
+      { title: 'Yield Farming', href: '/blogs/defi-yield-farming-basics' },
+      { title: 'DeFi Beginners', href: '/blogs/defi-investing-beginners' },
+      { title: 'Risks & Rewards', href: '/blogs/defi-risks-rewards' },
+      { title: 'Stablecoins', href: '/blogs/defi-stablecoins-guide' },
+      { title: 'Lending', href: '/blogs/defi-lending-platforms' },
+      { title: 'DEX Trading', href: '/blogs/defi-dex-trading' },
+    ],
+  },
+  {
+    title: 'Business & Strategy',
+    links: [
+      { title: 'Web3 Business Models', href: '/blogs/web3-business-models' },
+      { title: 'Startup Funding', href: '/blogs/web3-startup-funding' },
+      { title: 'Career Opportunities', href: '/blogs/web3-career-opportunities' },
+      { title: 'ROI Analysis', href: '/blogs/roi-web3-vs-ecommerce' },
+      { title: 'Marketing Strategies', href: '/blogs/web3-marketing-strategies' },
+    ],
+  },
+  {
+    title: 'Technical Guides',
+    links: [
+      { title: 'Oracle Validation', href: '/blogs/oracle-validation-p2p-commerce' },
+      { title: 'Secure Escrow', href: '/blogs/secure-escrow-decentralized-commerce' },
+      { title: 'NFTs & Gaming', href: '/blogs/blockchain-gaming-nfts' },
+      { title: 'AI + Blockchain', href: '/blogs/ai-web3-development' },
+      { title: 'AI Automation', href: '/blogs/ai-blockchain-automation' },
     ],
   },
   {
