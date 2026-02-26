@@ -1,0 +1,258 @@
+import { HeroPattern } from '@/components/HeroPattern'
+import { Button } from '@/components/Button'
+import { Resources } from '@/components/Resources'
+import { Socials } from '@/components/Socials'
+
+export const metadata = {
+  title: 'Non-Private Credentials: Verifiable Identity Without Exposure | Arthur Labs',
+  description:
+    'Discover how non-private credentials allow blockchain users to prove identity and eligibility without revealing sensitive personal data. The future of privacy-preserving verification.',
+  keywords: 'non-private credentials, zero-knowledge proof, blockchain identity, verifiable credentials, privacy, DID, self-sovereign identity',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-02-26',
+  category: 'Blockchain',
+}
+
+export const sections = [
+  { title: 'The Privacy Paradox', id: 'paradox' },
+  { title: 'What Are Non-Private Credentials?', id: 'definition' },
+  { title: 'How ZK Proofs Enable Privacy', id: 'zk-proofs' },
+  { title: 'Real-World Applications', id: 'applications' },
+  { title: 'Non-Private vs Traditional Identity', id: 'comparison' },
+  { title: 'The Business Case', id: 'business' },
+  { title: 'Future of Verifiable Credentials', id: 'future' },
+]
+
+<HeroPattern />
+
+# Non-Private Credentials: Verifiable Identity Without Exposure
+
+Every time you verify your identity online, you expose more data than necessary. You show your driver's license to prove you're over 21 — and the verifier sees your name, address, date of birth, and license number. You hand over your Social Security number to open a bank account — and hope it's protected.
+
+This is the **privacy paradox** of digital identity: verification requires revealing sensitive information, even when only a single fact needs to be proven.
+
+Non-private credentials solve this. They allow you to prove something about yourself — "I am over 21," "I am a accredited investor," "I am authorized to act for this company" — without revealing anything beyond what's strictly necessary.
+
+{{className: 'lead text-black dark:text-gray-200'}}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+  <Button href="/contact">Get Help</Button>
+</div>
+
+## The Privacy Paradox of Traditional Verification
+
+Every day, millions of people worldwide surrender sensitive personal data to verify simple facts:
+
+- **Age verification** → ID card shows full name, address, DOB, license number
+- **KYC compliance** → SSN, passport, utility bills, biometric data
+- **Credit checks** → Entire financial history exposed
+- **Employment verification** → Full background checks with everything
+
+The problem isn't just privacy — it's **risk**. Every piece of data you share becomes a target:
+
+- Data breaches expose your information
+- Identity theft uses your exposed data
+- Companies monetize your information
+- You have no control once data leaves your hands
+
+### The Cost of Over-Sharing
+
+| Verification Type | Data Required | Data Actually Needed |
+|-------------------|---------------|---------------------|
+| Age > 21 | Full ID | "Yes/No" |
+| Accredited Investor | Tax returns, net worth docs | "Yes/No" |
+| Residency | Passport, utility bill | "Yes/No" |
+| Professional License | Full credentials | License status |
+| Company Authorization | Board minutes, resolutions | Signatory authority |
+
+This is inefficient, risky, and fundamentally flawed.
+
+## What Are Non-Private Credentials?
+
+The term "non-private credentials" sounds counterintuitive — but it's precise. These credentials are **non-private** in the sense that they're publicly verifiable on a blockchain, yet they preserve **privacy** for the holder through cryptographic techniques.
+
+### The Core Concept
+
+Non-private credentials (sometimes called "zero-knowledge credentials" or "selective disclosure credentials") allow holders to:
+
+1. **Prove a statement is true** — without revealing the underlying data
+2. **Verify once, use everywhere** — credentials persist and can be reused
+3. **Control your own data** — you choose what to reveal
+4. **Enable verification offline** — no need to call a central authority
+
+### How It Works in Practice
+
+Instead of showing your driver's license:
+
+```
+Traditional: "Here is my license" → Reveals: Name, Address, DOB, License #, Expiration
+Non-Private: "I am over 21" → Reveals: TRUE
+```
+
+Instead of providing tax returns for accredited investor status:
+
+```
+Traditional: "Here are my tax returns" → Reveals: Income, investments, deductions
+Non-Private: "I meet SEC accredited investor criteria" → Reveals: TRUE
+```
+
+## Zero-Knowledge Proofs: The Technology Behind Privacy
+
+Non-private credentials are made possible by **zero-knowledge proofs (ZKPs)** — a cryptographic method that allows one party to prove to another that a statement is true, without revealing any information beyond the validity of the statement itself.
+
+### The Three Properties of ZK Proofs
+
+1. **Completeness** — If the statement is true, an honest verifier will be convinced
+2. **Soundness** — If the statement is false, no cheating prover can convince the verifier
+3. **Zero-Knowledge** — The verifier learns nothing beyond the truth of the statement
+
+### ZK-SNARKs and ZK-STARKs
+
+Two main types of zero-knowledge proofs power modern credential systems:
+
+- **ZK-SNARKs** (Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge) — Compact, efficient, widely used
+- **ZK-STARKs** (Zero-Knowledge Scalable Transparent Arguments of Knowledge) — No trusted setup, quantum-resistant
+
+Both enable the same core capability: **prove it without revealing it**.
+
+## Real-World Applications
+
+### Decentralized Identity (DID)
+
+Self-sovereign identity systems use non-private credentials to enable:
+
+- **Selective disclosure** — Share only what's needed
+- **Credential reuse** — Verify once, use everywhere
+- **Portable reputation** — Your identity follows you across platforms
+
+### DeFi Compliance
+
+Decentralized finance can use non-private credentials to:
+
+- **KYC without data centralization** — Prove you're authorized without revealing identity
+- **Accredited investor verification** — Access restricted investments without document disclosure
+- **Sanctions screening** — Verify you're not on sanctions lists without exposing wallet history
+
+### AI Agent Authorization
+
+As AI agents begin operating on public ledgers, non-private credentials become essential:
+
+- **Verify AI identity** — Prove an agent is authorized without exposing its codebase
+- **Credential delegation** — Human principals authorize AI agents with specific scopes
+- **Audit trails** — Publicly verify that authorized agents took specific actions
+
+### Business Operations
+
+Companies can leverage non-private credentials for:
+
+- **Vendor verification** — Confirm suppliers meet compliance standards
+- **Board authorization** — Verify signatory authority without document exchange
+- **Professional licenses** — Prove credentials are valid without document disclosure
+
+## Non-Private Credentials vs Traditional Identity Systems
+
+| Feature | Traditional IDs | Non-Private Credentials |
+|---------|-----------------|------------------------|
+| Data Shared | Full document | Single fact |
+| Reusability | Limited | Unlimited |
+| Verification Speed | Days | Seconds |
+| Offline Capability | No | Yes |
+| Holder Control | Issuer controls | Holder controls |
+| Revocation | Difficult | Instant |
+| Privacy | Exposes everything | Selective disclosure |
+
+### The Key Difference
+
+**Traditional identity**: You hand over your documents and the verifier keeps copies.
+
+**Non-private credentials**: You present a cryptographic proof, the verifier confirms it's valid, and no data is retained.
+
+## The Business Case for Non-Private Credentials
+
+### For Businesses
+
+- **Reduced liability** — Less personal data stored means less risk
+- **Faster onboarding** — Seconds instead of days for verification
+- **Regulatory alignment** — Privacy-by-design satisfies GDPR, CCPA
+- **Lower costs** — No document processing, storage, or verification infrastructure
+
+### For Users
+
+- **Privacy preserved** — Share only what you choose
+- **Control** — Your credentials, your rules
+- **Security** — No central database of your data
+- **Convenience** — One verification, everywhere
+
+### For Developers
+
+- **Easy integration** — Open standards and libraries available
+- **Flexible design** — Build custom credential schemas
+- **Future-proof** — Standards-based, not platform-specific
+
+## The Future: Where Non-Private Credentials Are Heading
+
+### Year: Early Adoption
+
+- DeFi protocols implementing ZK-based compliance
+- AI agents using credentials for authorization
+- First government pilots for digital credentials
+
+### Year-2028: Mainstream Growth
+
+- Major platforms adopt credential standards
+- Cross-chain credential portability
+- Integration with traditional identity systems
+
+### Year+: Ubiquitous Infrastructure
+
+- Credentials as fundamental as email
+- AI agents operating with credentialed identities
+- Fully self-sovereign digital economy
+
+### The AI Connection
+
+As artificial intelligence agents begin operating autonomously on blockchains, non-private credentials become critical infrastructure:
+
+- **AI identity** — Prove an AI is authorized to act
+- **Scope limitation** — Credentials define what an AI can do
+- **Accountability** — Publicly verify AI authorization
+- **Human oversight** — Credentials can require human sign-off for certain actions
+
+This is the missing link for autonomous AI agents in business: **how do you verify what an AI is allowed to do without exposing how it works?**
+
+## Conclusion
+
+Non-private credentials represent a fundamental shift in how we think about identity and verification. Instead of the current model — surrender your data and hope for the best — we move to a model where you prove what you need to prove, share nothing you don't choose to share, and maintain control over your digital identity.
+
+For blockchain, this is transformative. It enables:
+
+- Privacy-preserving DeFi
+- Compliant AI agents
+- Verifiable authorization
+- Self-sovereign identity
+
+The future of digital identity isn't about more databases or stricter regulations — it's about cryptographic proofs that let you be known without being exposed.
+
+---
+
+## Continue Learning
+
+<Resources
+  items={[
+    {
+      title: 'Wyoming AI Agents: Autonomous Business Entities',
+      href: '/blogs/wyoming-ai-agents-autonomous-business',
+      description: 'How Wyoming is pioneering legal frameworks for AI agents operating through DAOs.',
+    },
+    {
+      title: 'State-Issued Stablecoins vs Traditional',
+      href: '/blogs/state-issued-stablecoins-vs-traditional',
+      description: 'Compare FRNT, state-issued stablecoins with USDC and USDT.',
+    },
+  ]}
+/>
+
+<Socials />

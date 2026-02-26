@@ -275,6 +275,16 @@ export const navigation: Array<NavGroup> = [
     ],
   },
   {
+    title: 'Wyoming',
+    links: [
+      { title: 'FRNT Stablecoin', href: '/blogs/wyoming-frnt-stablecoin-guide' },
+      { title: 'AI Agents & DAOs', href: '/blogs/wyoming-ai-agents-autonomous-business' },
+      { title: 'State vs Traditional', href: '/blogs/state-issued-stablecoins-vs-traditional' },
+      { title: 'DeFi Lending Tax', href: '/blogs/defi-lending-tax-guide' },
+      { title: 'WY vs Nebraska', href: '/blogs/wyoming-vs-nebraska-crypto-regulation' },
+    ],
+  },
+  {
     title: 'DeFi',
     links: [
       { title: 'Passive Income', href: '/blogs/defi-passive-income-guide' },
