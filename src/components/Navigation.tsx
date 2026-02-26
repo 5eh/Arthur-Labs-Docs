@@ -271,17 +271,28 @@ export const navigation: Array<NavGroup> = [
       { title: 'L2 Nebraska', href: '/blogs/l2-nebraska-marketplaces' },
       { title: 'Ethereum L2', href: '/blogs/ethereum-l2-nebraska' },
       { title: 'L2 Business', href: '/blogs/ethereum-l2-nebraska-business' },
-      { title: 'Affordable L2', href: '/blogs/affordable-l2-nebraska-business' },
+      {
+        title: 'Affordable L2',
+        href: '/blogs/affordable-l2-nebraska-business',
+      },
     ],
   },
   {
     title: 'Wyoming',
     links: [
-      { title: 'FRNT Stablecoin', href: '/blogs/wyoming-frnt-stablecoin-guide' },
-      { title: 'AI Agents & DAOs', href: '/blogs/wyoming-ai-agents-autonomous-business' },
-      { title: 'State vs Traditional', href: '/blogs/state-issued-stablecoins-vs-traditional' },
+      {
+        title: 'AI Agents & DAOs',
+        href: '/blogs/wyoming-ai-agents-autonomous-business',
+      },
+      {
+        title: 'State vs Traditional',
+        href: '/blogs/state-issued-stablecoins-vs-traditional',
+      },
       { title: 'DeFi Lending Tax', href: '/blogs/defi-lending-tax-guide' },
-      { title: 'WY vs Nebraska', href: '/blogs/wyoming-vs-nebraska-crypto-regulation' },
+      {
+        title: 'WY vs Nebraska',
+        href: '/blogs/wyoming-vs-nebraska-crypto-regulation',
+      },
     ],
   },
   {
@@ -309,8 +320,14 @@ export const navigation: Array<NavGroup> = [
   {
     title: 'Technical',
     links: [
-      { title: 'Oracle Validation', href: '/blogs/oracle-validation-p2p-commerce' },
-      { title: 'Secure Escrow', href: '/blogs/secure-escrow-decentralized-commerce' },
+      {
+        title: 'Oracle Validation',
+        href: '/blogs/oracle-validation-p2p-commerce',
+      },
+      {
+        title: 'Secure Escrow',
+        href: '/blogs/secure-escrow-decentralized-commerce',
+      },
       { title: 'NFTs & Gaming', href: '/blogs/blockchain-gaming-nfts' },
       { title: 'AI + Web3', href: '/blogs/ai-web3-development' },
       { title: 'AI Automation', href: '/blogs/ai-blockchain-automation' },
@@ -320,7 +337,6 @@ export const navigation: Array<NavGroup> = [
     title: 'Guides',
     links: [
       { title: 'Overview', href: '/guides' },
-      { title: 'Internal Systems', href: '/guides/internal-systems' },
       { title: 'Whitepaper Overview', href: '/guides/whitepaper-overview' },
       { title: 'Web3 Startups in Omaha', href: '/guides/local-web3-startups' },
     ],
