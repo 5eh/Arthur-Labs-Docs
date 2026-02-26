@@ -1,0 +1,270 @@
+import { HeroPattern } from '@/components/HeroPattern'
+import { Button } from '@/components/Button'
+import { Resources } from '@/components/Resources'
+import { Socials } from '@/components/Socials'
+
+export const metadata = {
+  title: 'DeFi Lending Tax Guide: Wyoming, Fundora, and Stablecoin Yields | Arthur Labs',
+  description:
+    'Learn how to report DeFi lending income, yield farming rewards, and interest from platforms like Fundora. Complete tax guide for 2026.',
+  keywords: 'DeFi lending tax, yield farming tax, crypto interest income, Fundora lending, Wyoming crypto',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-02-26',
+  category: 'Crypto Tax',
+}
+
+export const sections = [
+  { title: 'How DeFi Lending Works', id: 'how-it-works' },
+  { title: 'Tax Treatment Overview', id: 'tax-treatment' },
+  { title: 'Income Reporting', id: 'reporting' },
+  { title: 'Fundora Specifics', id: 'fundora' },
+  { title: 'Wyoming Advantages', id: 'wyoming' },
+  { title: 'Best Practices', id: 'practices' },
+]
+
+<HeroPattern />
+
+# DeFi Lending Tax Guide: Wyoming, Fundora, and Stablecoin Yields
+
+Decentralized Finance (DeFi) lending has transformed how people earn yield on crypto. Platforms like Fundora, Aave, and Compound let anyone become a lender — earning interest directly from borrowers without intermediaries.
+
+But with yield comes taxes. Here's everything you need to know about reporting DeFi lending income in 2026.
+
+{{className: 'lead text-black dark:text-gray-200'}}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+  <Button href="/contact">Get Help</Button>
+</div>
+
+## How DeFi Lending Works
+
+DeFi lending works differently than traditional banking:
+
+### Traditional Lending
+```
+You → Bank → Borrower
+Bank takes a cut, gives you interest
+```
+
+### DeFi Lending
+```
+You → Smart Contract → Borrower
+No bank, you get full yield minus small protocol fee
+```
+
+### Key Platforms
+
+| Platform | Asset Types | Chain | Notes |
+|----------|-------------|-------|-------|
+| **Fundora** | Stablecoins | Solana | WYST pilot participant |
+| **Aave** | ETH, Stablecoins | Multi-chain | Market leading |
+| **Compound** | ETH, Tokens | Ethereum | Institutional grade |
+| **Lido** | stETH | Ethereum | Liquid staking |
+
+### How You Earn
+
+1. **Deposit collateral** — Supply crypto to lending pool
+2. **Earn interest** — Paid in protocol token or same asset
+3. **Withdraw** — Get principal + accrued interest
+
+## Tax Treatment Overview
+
+The IRS treats DeFi lending income as **ordinary income**, not capital gains.
+
+### The Basic Rule
+
+> Every time you receive tokens from a DeFi protocol — whether interest, rewards, or yield — it's taxable income at fair market value.
+
+### Income vs Capital Gains
+
+| Event | Tax Type |
+|-------|----------|
+| **Interest earned** | Ordinary income |
+| **Yield rewards** | Ordinary income |
+| **LP token appreciation** | Capital gains |
+| **Staking rewards** | Ordinary income |
+
+### Example
+
+You supply 1,000 USDC to Fundora for one year:
+
+- **Interest received:** $50 USDC
+- **Tax:** $50 × your income tax rate
+
+If you later sell the 1,000 USDC for $1,050 (original + interest):
+
+- **Cost basis:** $1,000
+- **Sale price:** $1,050
+- **Gain:** $50 — Capital gains
+
+You pay tax twice: income tax on the $50 interest, capital gains on the $50 appreciation.
+
+## Income Reporting
+
+### Form 1099
+
+| Platform Type | Issues 1099? |
+|---------------|---------------|
+| Centralized (Fundora) | Possibly* |
+| Decentralized (Aave) | No |
+| Hybrid | Varies |
+
+*Fundora may issue 1099-INT if interest exceeds $600
+
+### Self-Reporting
+
+Even without a 1099, you're required to report all DeFi income:
+
+**Schedule 1 (Form 1040)**
+- Line 2: Taxable interest
+- Line 8: Other income — includes crypto interest
+
+**Schedule D (Form 1040)**
+- Capital gains from selling DeFi positions
+
+### Tracking Requirements
+
+You need to track:
+
+| Data Point | Why It Matters |
+|------------|---------------|
+| **Cost basis** | Determines capital gains |
+| **Fair market value at receipt** | Calculates income amount |
+| **Date received** | Determines holding period |
+| **Protocol name** | For audit documentation |
+
+## Fundora Specifics
+
+Fundora is a Wyoming-based P2P lending platform with unique characteristics:
+
+### Features
+
+- **P2P Model** — Direct lending, not pooled
+- **WYST Integration** — Accepts Wyoming stablecoin
+- **No Traditional Banking** — Fully decentralized
+- **Bulla Network Powered** — Blockchain-based accounting
+
+### Tax Considerations for Fundora
+
+1. **Interest Income** — Taxed as ordinary income
+2. **Multiple Lenders** — Each interest payment is separate event
+3. **Stablecoin Focus** — Most lending in USDC, USDT, FRNT
+4. **Wyoming Jurisdiction** — State law may affect treatment
+
+### Reporting Fundora Income
+
+```
+Interest Received (USDC) × Fair Market Value (USD) = Taxable Income
+Example: 50 USDC × $1.00 = $50 income
+```
+
+### Record Keeping
+
+For Fundora (and all DeFi):
+
+- [ ] Transaction hashes for each lending/deposit
+- [ ] Screenshots of interest accrual
+- [ ] Token price at time of each reward
+- [ ] Total interest earned per tax year
+
+## Wyoming Advantages
+
+If you're using Wyoming-based platforms, you get specific benefits:
+
+### No State Income Tax
+
+Wyoming doesn't have a state income tax. This means:
+
+| State | DeFi Income Tax |
+|-------|-----------------|
+| California | Up to 13.3% |
+| New York | Up to 10.9% |
+| **Wyoming** | **0%** |
+
+### Business-Friendly Regulation
+
+Wyoming's approach to DeFi:
+
+- Clear DAO legal framework
+- Stablecoin integration (FRNT)
+- Progressive crypto legislation
+- No aggressive enforcement
+
+### Fundora Connection
+
+Fundora participates in Wyoming's stablecoin pilot:
+
+- Accepts WYST (Wyoming Stable Token)
+- Subject to Wyoming law
+- First-mover advantage in compliant DeFi
+
+## Best Practices
+
+### 1. Track Everything In Real-Time
+
+Don't wait until tax season. Record each:
+
+- Deposit transaction
+- Interest payment (often automated)
+- Withdrawal
+- Token swap
+
+### 2. Use Proper Cost Basis
+
+- FIFO (First In, First Out) is safest
+- Specific identification for large positions
+- Keep records of each lot
+
+### 3. Convert Income to USD Promptly
+
+If you receive interest in crypto, value it in USD immediately. This becomes your income basis.
+
+### 4. Consider Tax-Loss Harvesting
+
+DeFi volatility creates opportunities:
+
+- Sell losing positions
+- Offset gains with losses
+- Reinvest after 30 days (wash sale rules apply)
+
+### 5. Consult a Specialist
+
+DeFi tax is complex. A crypto tax professional can:
+
+- Identify all taxable events
+- Maximize deductions
+- Ensure compliance
+
+<div className="not-prose bg-peach-50 dark:bg-peach-900/20 border border-peach-200 dark:border-peach-800 rounded-xl p-6 mt-8">
+  <h3 className="font-bold text-lg mb-2">📊 Arthur Labs Handles DeFi</h3>
+  <p className="mb-4">We track all your DeFi lending, yield farming, and staking rewards across every chain. Know your tax liability with confidence.</p>
+  <Button href="/">Calculate Now</Button>
+</div>
+
+## Summary
+
+DeFi lending offers incredible yield opportunities, but comes with tax obligations:
+
+- **Interest = Ordinary Income** — Report on Schedule 1
+- **Capital Gains** — When you sell appreciated positions
+- **Wyoming Advantage** — No state income tax
+- **Documentation** — Track every transaction in real-time
+- **Platform Matters** — Fundora and compliant DeFi = easier reporting
+
+The future of finance is here. Make sure you're prepared for tax day.
+
+<div className="not-prose mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+  <h2 className="font-bold text-2xl mb-4">Get Started</h2>
+  <p className="text-lg mb-6">Connect your wallets and let Arthur Labs calculate your complete crypto tax liability.</p>
+  <div className="flex gap-4">
+    <Button href="/">Start Free</Button>
+    <Button href="/contact" variant="outline">Contact Us</Button>
+  </div>
+</div>
+
+<Resources />
+
+<Socials />
