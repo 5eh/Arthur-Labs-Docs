@@ -12,7 +12,7 @@ import '@/styles/tailwind.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://docs.arthurlabs.net'),
   title: {
-    template: '%s | Arthur Labs',
+    template: '%s | Arthur Labs Inc.',
     default: 'Arthur Labs - Web3 Development, Blockchain Infrastructure & Digital Marketplaces',
   },
   description:
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://docs.arthurlabs.net',
-    siteName: 'Arthur Labs',
+    siteName: 'Arthur Labs Inc.',
     title: 'Arthur Labs - Web3 Development & Digital Marketplace Factory',
     description:
       'Building world-changing systems that enable entrepreneurship. DEAN, ROSE, QUINN, SUSAN - the Arthur Labs ecosystem.',
@@ -99,6 +99,39 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://arthurlabs.net/#organization",
+                  name: "Arthur Labs Inc.",
+                  url: "https://arthurlabs.net",
+                  logo: "https://arthurlabs.net/favicon.ico",
+                  sameAs: [
+                    "https://x.com/ArthurLabsDAO",
+                    "https://arthurlabs.medium.com",
+                    "https://github.com/Arthur-Labs-DAO",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://docs.arthurlabs.net/#website",
+                  url: "https://docs.arthurlabs.net",
+                  name: "Arthur Labs Documentation",
+                  publisher: {
+                    "@id": "https://arthurlabs.net/#organization",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className="flex min-h-full bg-white antialiased dark:bg-zinc-900">
         <Analytics />
         <SpeedInsights />
