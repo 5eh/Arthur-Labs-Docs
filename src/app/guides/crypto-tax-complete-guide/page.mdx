@@ -1,0 +1,352 @@
+import { Socials } from '@/components/Socials'
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'Crypto Tax Complete Guide: US Cryptocurrency Tax Reporting for 2025-2026 | Arthur Labs',
+  description: 'The definitive guide to US cryptocurrency tax reporting for 2025-2026. Covers IRS Form 1099-DA, FIFO/LIFO/HIFO cost basis methods, DeFi tax events, staking rewards, airdrops, NFT taxation, record keeping, and common mistakes with practical guidance from Arthur Labs.',
+  keywords: 'crypto tax, cryptocurrency tax, IRS 1099-DA, FIFO LIFO HIFO, DeFi tax, staking tax, airdrop tax, NFT tax, crypto tax reporting, cost basis, capital gains crypto, crypto tax guide 2025 2026, Arthur Labs crypto tax',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-03-27',
+  category: 'Guides',
+}
+
+export const sections = [
+  { title: 'Crypto Taxes in 2025-2026', id: 'crypto-taxes-overview' },
+  { title: 'IRS Form 1099-DA', id: 'form-1099-da' },
+  { title: 'Cost Basis Methods', id: 'cost-basis-methods' },
+  { title: 'Taxable Events Explained', id: 'taxable-events' },
+  { title: 'DeFi Tax Events', id: 'defi-tax-events' },
+  { title: 'Staking Rewards', id: 'staking-rewards' },
+  { title: 'Airdrops and Forks', id: 'airdrops-and-forks' },
+  { title: 'NFT Taxation', id: 'nft-taxation' },
+  { title: 'Record Keeping', id: 'record-keeping' },
+  { title: 'Common Mistakes', id: 'common-mistakes' },
+]
+
+<HeroPattern />
+
+# Crypto Tax Complete Guide: US Cryptocurrency Tax Reporting for 2025-2026
+
+Cryptocurrency taxation has entered a new era of enforcement and complexity. The IRS now treats digital assets as property, Form 1099-DA has arrived for the first time, and every swap, stake, airdrop, and DeFi interaction carries potential tax implications. Yet most crypto participants remain dangerously unprepared, either unaware of their obligations or overwhelmed by the complexity of cross-chain, multi-protocol activity. This guide cuts through the confusion. It covers every aspect of US cryptocurrency tax reporting for the 2025-2026 tax years, from the new IRS reporting requirements through cost basis methods, DeFi-specific tax events, staking, airdrops, NFTs, record keeping, and the most common mistakes that trigger audits and penalties. {{className: 'lead text-black dark:text-gray-200'}}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/guides" arrow="left">
+    <>All Guides</>
+  </Button>
+</div>
+
+<h2 id="crypto-taxes-overview">Crypto Taxes in 2025-2026</h2>
+
+The IRS treats cryptocurrency, and all digital assets, as property under Notice 2014-21. This classification has not changed, but the enforcement infrastructure around it has transformed dramatically. Beginning with the 2025 tax year, the IRS has introduced Form 1099-DA for digital asset reporting, mandated per-wallet cost basis tracking, and expanded the definition of "broker" to include custodial exchanges, hosted wallet providers, and certain payment processors.
+
+These changes represent the most significant expansion of cryptocurrency tax reporting since the IRS first issued guidance in 2014. They affect every person who bought, sold, traded, staked, farmed, airdropped, minted, or otherwise transacted in digital assets during 2025 or 2026.
+
+### The Property Classification
+
+Because cryptocurrency is classified as property (not currency), every disposition triggers a potential capital gain or loss. This includes:
+
+- Selling cryptocurrency for USD or other fiat currency
+- Trading one cryptocurrency for another (for example, swapping ETH for USDC)
+- Using cryptocurrency to purchase goods or services
+- Receiving cryptocurrency as payment for services rendered
+
+The gain or loss equals the difference between the fair market value at the time of disposition and the cost basis (what you originally paid for the asset, including fees). If you held the asset for more than one year, the gain is long-term and taxed at preferential rates (0%, 15%, or 20% depending on income). If held for one year or less, the gain is short-term and taxed at your ordinary income rate (10-37%).
+
+### Who Needs to Report
+
+If you engaged in any digital asset transaction during the tax year, you must answer "Yes" to the digital asset question on Form 1040. This includes transactions on centralized exchanges, decentralized exchanges, peer-to-peer trades, DeFi protocol interactions, NFT purchases and sales, staking, airdrops, and any other transfer of digital assets.
+
+The IRS has made clear that the pseudonymous nature of blockchain does not provide anonymity from tax obligations. Blockchain transactions are permanent and auditable, and the IRS has invested heavily in blockchain analytics tools that can trace transactions across wallets, chains, and protocols.
+
+<h2 id="form-1099-da">IRS Form 1099-DA</h2>
+
+Form 1099-DA is the most consequential change to cryptocurrency tax reporting in a decade. It brings digital asset reporting in line with the 1099-B reporting that has applied to stock and securities transactions for decades.
+
+### 2025 Requirements: Phase One
+
+For transactions occurring in calendar year 2025 (reported in early 2026), brokers must report **gross proceeds** on Form 1099-DA. This means your exchange will report the total value of every sale, trade, or disposition you made during the year. However, brokers are **not required** to report cost basis information for 2025 transactions.
+
+This phase-one approach means that the 1099-DA you receive in early 2026 will show how much you received from dispositions but will not calculate your gains or losses. You remain responsible for tracking and reporting your own cost basis and calculating the resulting gains or losses.
+
+The IRS has announced a good-faith compliance safe harbor for 2025: penalties for failure to file or furnish Forms 1099-DA will not be imposed if the broker makes a good-faith effort to file correctly and on time. This reflects the reality that 2025 is the first year of reporting and systems are still being refined.
+
+### 2026 Requirements: Full Reporting
+
+Starting January 1, 2026, the reporting requirements expand significantly. For "covered" digital assets (those acquired and held in the same broker account), brokers must report both gross proceeds **and** adjusted basis. This enables automatic gain/loss calculation, similar to what stock brokerages already provide.
+
+For "noncovered" assets, which include tokens transferred into an account from an external wallet, assets acquired before 2026, and assets moved between wallets, basis reporting remains optional. Brokers may furnish substitute statements with estimated basis, but taxpayers should not rely on these estimates without verification against their own records.
+
+### Who Must File 1099-DA
+
+The final regulations define "broker" broadly to include operators of custodial digital asset trading platforms, certain hosted wallet providers, digital asset kiosks (Bitcoin ATMs), and certain processors of digital asset payments. Notably, decentralized exchanges and non-custodial wallets are not currently classified as brokers, meaning transactions on Uniswap, Aave, or through a MetaMask wallet will not generate a 1099-DA. You must still report these transactions, but you will not receive automated reporting for them.
+
+### What 1099-DA Does Not Cover
+
+Notice 2024-57 carved out certain transaction categories from 1099-DA reporting requirements until further IRS guidance is issued. However, this exemption does not apply to rewards, staking income, or other compensation earned through these transactions. In other words, if you earn income through DeFi protocols, the reporting obligation exists even if the 1099-DA form does not capture it.
+
+<h2 id="cost-basis-methods">Cost Basis Methods</h2>
+
+Your cost basis method determines which specific unit of cryptocurrency is treated as "sold" when you dispose of an asset. This choice directly affects your tax liability because different methods produce different gain and loss calculations.
+
+### FIFO (First In, First Out)
+
+FIFO assumes that the first units you purchased are the first units you sell. If you bought 1 ETH in January at $2,000 and 1 ETH in June at $3,500, and then sell 1 ETH in December, FIFO treats the January purchase as the one sold. Your gain is calculated against the $2,000 cost basis.
+
+FIFO is the IRS default method. If you do not specify a method, the IRS assumes FIFO. It is straightforward, easy to implement, and does not require identifying specific lots. However, in a generally appreciating market, FIFO tends to produce the highest taxable gains because it sells the oldest (and usually cheapest) units first.
+
+Arthur Labs' crypto tax tool at [crypto.arthurlabs.net](https://crypto.arthurlabs.net) generates FIFO-based PDF reports at $7.50 per wallet, providing a straightforward, compliant approach to tax reporting.
+
+### LIFO (Last In, First Out)
+
+LIFO assumes that the most recently purchased units are sold first. Using the same example, LIFO would treat the June purchase ($3,500 cost basis) as the unit sold. In a rising market, LIFO typically produces lower gains (or higher losses) than FIFO because it matches sales against the most recent (and usually highest) cost basis.
+
+LIFO can be advantageous for tax planning, but it requires careful documentation to demonstrate which specific units are being sold.
+
+### HIFO (Highest In, First Out)
+
+HIFO sells the units with the highest cost basis first, regardless of when they were purchased. This method minimizes capital gains in virtually all scenarios because it always matches the sale against the most expensive acquisition.
+
+HIFO is the most tax-efficient method for most taxpayers but requires the most rigorous record keeping. You must be able to identify the specific lot being sold and document that the lot existed in the wallet from which the sale occurred.
+
+### The Per-Wallet Requirement
+
+Starting in 2025, the IRS requires the **per-wallet** (or per-account) method for tracking cost basis. This means that sales of assets must be matched with cost basis from acquisitions in the **same account or wallet**. You can no longer aggregate cost basis across multiple wallets and cherry-pick the most favorable lot.
+
+This change has significant implications. If you bought ETH on Coinbase at $2,000 and also bought ETH on Kraken at $3,500, and you sell from your Coinbase account, only the Coinbase cost basis is available for that sale. The Kraken cost basis cannot be applied.
+
+The practical impact is that moving assets between wallets now requires tracking each wallet's cost basis independently. This adds complexity but is mandatory for compliance.
+
+### Specific Identification
+
+Specific identification allows you to designate exactly which lot of an asset you are selling. This provides the most flexibility but requires contemporaneous documentation, meaning you must identify the specific lot at the time of the sale, not retroactively. Both LIFO and HIFO are forms of specific identification.
+
+For the 2025 tax year and beyond, the accepted cost basis methods for digital assets are FIFO and Specific Identification (which encompasses LIFO, HIFO, and other lot selection methods). Whichever method you choose, apply it consistently and maintain documentation that supports your approach.
+
+<h2 id="taxable-events">Taxable Events Explained</h2>
+
+Understanding which cryptocurrency transactions trigger tax obligations is the foundation of compliant reporting. Not every transaction is taxable, but the list of taxable events is broader than most people expect.
+
+### Taxable Dispositions
+
+The following events trigger capital gains or losses:
+
+- **Selling crypto for fiat**: Selling Bitcoin for USD on any exchange is a taxable disposition. The gain or loss equals the sale price minus your cost basis.
+- **Crypto-to-crypto trades**: Swapping ETH for USDC, or any token for any other token, is a taxable disposition of the token you are selling. The fair market value of the received token at the time of the trade is your sale price.
+- **Purchasing goods or services**: Using Bitcoin to buy a coffee triggers a taxable disposition of the Bitcoin. Your gain is the fair market value of the coffee minus your cost basis in the Bitcoin spent.
+- **Liquidations**: If your DeFi lending position is liquidated, the liquidation constitutes a taxable disposition of the collateral asset.
+
+### Taxable Income Events
+
+The following events generate ordinary income (taxed at your income tax rate, not capital gains rate):
+
+- **Mining rewards**: Cryptocurrency received from mining is ordinary income at the fair market value when received.
+- **Staking rewards**: Cryptocurrency received from staking is ordinary income when you have "dominion and control" over the tokens.
+- **Airdrops**: Tokens received through airdrops are ordinary income at the fair market value when received.
+- **Payment for services**: Cryptocurrency received as compensation for services (freelance work, employment) is ordinary income.
+- **Interest and yield**: DeFi lending interest, yield farming rewards, and liquidity mining tokens are generally ordinary income when received.
+
+### Non-Taxable Events
+
+The following events are generally **not** taxable:
+
+- **Buying cryptocurrency with fiat**: Purchasing Bitcoin with USD is not a taxable event. Your cost basis is the purchase price plus fees.
+- **Transferring between your own wallets**: Moving crypto from your Coinbase account to your MetaMask wallet is not a taxable event (though the per-wallet cost basis tracking requires you to track the basis that moves with the transfer).
+- **Gifting cryptocurrency** (up to the annual exclusion amount, $18,000 for 2025): Gifts below the annual exclusion do not trigger tax for the giver. The recipient inherits the giver's cost basis.
+- **Donating to a qualified charity**: Donating appreciated cryptocurrency to a 501(c)(3) organization may allow you to deduct the fair market value without recognizing the capital gain.
+
+<h2 id="defi-tax-events">DeFi Tax Events</h2>
+
+Decentralized finance introduces layers of tax complexity that go far beyond simple buy-and-sell transactions. Every protocol interaction may have tax implications, and the lack of 1099-DA reporting for DeFi means that taxpayers bear full responsibility for tracking and reporting these events.
+
+### Token Swaps on DEXs
+
+Swapping tokens on a decentralized exchange like Uniswap is a taxable disposition, just like trading on a centralized exchange. The fact that no centralized intermediary processes the trade does not change the tax treatment. The IRS considers each swap a sale of the token you give up and a purchase of the token you receive.
+
+### Liquidity Provision
+
+Adding liquidity to an AMM pool may constitute a taxable event depending on the specific tokens involved. When you deposit Token A and Token B into a pool and receive LP tokens in return, the IRS may treat this as a disposition of Token A and Token B. The tax treatment is not yet definitively settled by IRS guidance, but the conservative approach is to treat LP token receipt as a taxable exchange.
+
+When you remove liquidity, the reverse transaction occurs. You dispose of LP tokens and receive the underlying tokens, which may trigger gains or losses relative to your basis in the LP tokens.
+
+### Yield Farming and Liquidity Mining
+
+Rewards received from yield farming, whether in the form of governance tokens, fee distributions, or incentive tokens, are generally treated as ordinary income at the fair market value when received. If you subsequently sell or trade these reward tokens, the sale triggers a separate capital gains event.
+
+The compounding nature of many yield farming strategies means that income events may occur automatically with every harvest or auto-compound. Tracking the fair market value of each receipt is essential for accurate reporting.
+
+### Lending and Borrowing
+
+Depositing assets into a lending protocol and receiving interest is a taxable income event. The interest earned (often represented by increasing value of receipt tokens like aUSDC) is ordinary income.
+
+Taking a loan is generally not a taxable event. However, if your collateral is liquidated, the liquidation constitutes a taxable disposition of the collateral at its fair market value at the time of liquidation.
+
+### Wrapped Tokens and Bridges
+
+Wrapping ETH into WETH, bridging tokens between chains, and other token transformation events create ambiguity in the tax code. The conservative approach is to treat each as a taxable exchange, though some tax professionals argue that wrapping (which involves a 1:1 conversion with no change in economic value) should be treated as a non-taxable event. Document your position and be prepared to defend it.
+
+For a detailed examination of DeFi-specific tax considerations, our [DeFi lending tax guide](/blogs/defi-lending-tax-guide) covers lending, borrowing, and liquidation tax treatment in depth. Our [DeFi complete guide](/guides/defi-complete-guide) also addresses tax implications as part of a comprehensive DeFi education.
+
+<h2 id="staking-rewards">Staking Rewards</h2>
+
+Staking rewards are one of the most common sources of cryptocurrency income and one of the most frequently misreported. IRS Revenue Ruling 2023-14, which remains the governing guidance in 2025-2026, established that staking rewards are taxable as ordinary income when the taxpayer has "dominion and control" over the rewards.
+
+### When Staking Rewards Are Taxable
+
+Staking rewards are taxable at the moment you gain dominion and control, meaning when you can freely use, sell, or transfer the rewards without permission from any third party. For most proof-of-stake networks and staking platforms, this is the moment the rewards are credited to your account or wallet.
+
+The fair market value of the rewards at the time of receipt becomes your taxable income amount and your cost basis in the received tokens. If you later sell the staking rewards, you calculate capital gains based on the difference between the sale price and this initial fair market value.
+
+### Tax Rates on Staking Income
+
+Staking rewards are taxed as ordinary income at your marginal income tax rate:
+
+- **Federal income tax**: 10-37% based on your total taxable income and filing status
+- **State income tax**: 0-13.3% depending on your state of residence
+- **Self-employment tax**: 15.3% if staking is part of a trade or business (this is a gray area that depends on the scale and nature of your staking activity)
+
+The self-employment tax question is particularly important for professional validators and large-scale stakers. If staking constitutes a trade or business, the 15.3% self-employment tax on top of income tax dramatically increases the effective rate. Casual stakers who stake as part of a passive investment portfolio are generally not subject to self-employment tax.
+
+### Liquid Staking Derivatives
+
+Liquid staking protocols (Lido, Rocket Pool, Coinbase cbETH) add complexity. When you stake ETH and receive stETH, this exchange may or may not be a taxable event. The stETH accrues value over time as staking rewards are distributed, which constitutes taxable income. The exact timing and amount of income recognition depends on whether the protocol distributes rewards through rebasing (increasing your token count) or value accrual (increasing each token's value).
+
+### Revenue Procedure 2025-31
+
+Revenue Procedure 2025-31 introduced a safe harbor for trusts that qualify as investment trusts and grantor trusts to stake their digital assets without jeopardizing their tax status. This is primarily relevant for institutional investors and fund managers, but it signals the IRS's evolving approach to staking as a mainstream investment activity.
+
+<h2 id="airdrops-and-forks">Airdrops and Forks</h2>
+
+Airdrops and hard forks are common occurrences in the cryptocurrency ecosystem, and both have tax implications that catch many taxpayers off guard.
+
+### Airdrop Taxation
+
+The IRS treats airdropped tokens as ordinary income at the fair market value when the taxpayer gains dominion and control over them. This means that simply receiving an airdrop into your wallet creates a taxable income event, even if you did not ask for the tokens and even if you never intend to sell them.
+
+The income amount is the fair market value of the tokens at the time of receipt. This becomes your cost basis. If you later sell the airdropped tokens, you calculate capital gains based on the difference between the sale price and the fair market value at receipt.
+
+For retroactive airdrops (tokens distributed based on past protocol usage), the taxable event occurs when the tokens become claimable and you have dominion and control, not when you eventually claim them. If you fail to claim tokens that are available to you, the IRS may still consider the income realized at the time the claim became available, though this area is not definitively settled.
+
+### Unsolicited Airdrops
+
+Some airdrops arrive in wallets without any action by the recipient. The tax treatment of truly unsolicited airdrops is ambiguous. The conservative position is that they are taxable upon receipt at fair market value. However, if the tokens have no established market value (for example, spam tokens or scam tokens with artificial prices), a reasonable position is that their fair market value is zero.
+
+Document your valuation methodology for any airdrop you report at zero value. If the tokens later gain value and you sell them, the entire sale amount would be capital gain.
+
+### Hard Fork Taxation
+
+When a blockchain undergoes a hard fork that creates a new token (as Bitcoin Cash was created from Bitcoin), the IRS treats the new tokens as ordinary income at the fair market value when the taxpayer gains dominion and control. The tax treatment is essentially identical to airdrops.
+
+Your cost basis in the original chain's tokens is not affected by the fork. The new tokens receive a cost basis equal to their fair market value at the time of receipt.
+
+<h2 id="nft-taxation">NFT Taxation</h2>
+
+NFTs (non-fungible tokens) have their own set of tax considerations that differ in important ways from fungible cryptocurrency.
+
+### Creating and Selling NFTs
+
+If you create an NFT and sell it, the sale proceeds are ordinary income if you created the NFT in the course of a trade or business (as most artists and creators do). The income is the sale price minus any costs of creation (gas fees for minting, platform fees, marketing expenses).
+
+If you create NFTs as a hobby rather than a business, the income is still taxable but may not qualify for business expense deductions. The IRS applies a facts-and-circumstances test to determine whether an activity is a trade or business.
+
+### Buying and Selling NFTs
+
+Purchasing an NFT with cryptocurrency is a two-part transaction. First, you dispose of the cryptocurrency used for payment, triggering capital gains or losses on the crypto. Second, you acquire the NFT with a cost basis equal to the fair market value of the cryptocurrency at the time of purchase (plus any fees).
+
+When you later sell the NFT, you realize capital gains or losses equal to the sale price minus your cost basis. The long-term versus short-term classification depends on your holding period.
+
+### Collectibles Tax Rate
+
+IRS Notice 2023-27 addressed the treatment of certain NFTs as collectibles. If an NFT is classified as a collectible (for example, digital art or virtual trading cards), long-term capital gains are taxed at a maximum rate of 28% rather than the standard 20% maximum for non-collectible capital assets. This higher rate applies to NFTs that represent ownership of, or provide access to, a collectible item.
+
+Not all NFTs are collectibles. NFTs that represent utility (governance rights, access passes, in-game items) may not fall under the collectibles classification. The determination depends on what the NFT represents, not the fact that it is an NFT.
+
+### NFT Royalties
+
+Many NFT platforms implement creator royalties, where the original creator receives a percentage of each secondary sale. These royalties are ordinary income to the creator at the fair market value when received. They are subject to self-employment tax if the creator is engaged in a trade or business.
+
+<h2 id="record-keeping">Record Keeping</h2>
+
+Accurate record keeping is the foundation of crypto tax compliance. The decentralized, multi-chain nature of cryptocurrency transactions makes this both more important and more challenging than traditional investment record keeping.
+
+### What to Track
+
+For every cryptocurrency transaction, maintain records of:
+
+- **Date and time** of the transaction
+- **Type of transaction** (buy, sell, swap, stake, airdrop, transfer, etc.)
+- **Amount of cryptocurrency** involved
+- **Fair market value** in USD at the time of the transaction
+- **Cost basis** of any asset disposed of
+- **Fees paid** (gas fees, platform fees, network fees)
+- **Wallet address and chain** where the transaction occurred
+- **Transaction hash** for on-chain verification
+- **Counterparty information** if applicable (exchange name, DeFi protocol)
+
+### Tools and Automation
+
+Manual tracking across multiple wallets, chains, and protocols is impractical for active crypto users. Automated tax reporting tools can import transaction history from blockchain data and exchange APIs, categorize transactions, apply cost basis methods, and generate tax forms.
+
+Arthur Labs provides crypto tax reporting at [crypto.arthurlabs.net](https://crypto.arthurlabs.net) with a straightforward pricing model of $7.50 per wallet. The tool generates FIFO-based PDF reports that cover trading, staking, airdrops, DeFi interactions, and cross-chain activity. For taxpayers who want a compliant, no-confusion approach to tax reporting, FIFO-based reporting eliminates the record-keeping burden of specific identification methods.
+
+### Reconciliation
+
+Regardless of which tools you use, reconcile your automated reports against your actual on-chain history at least annually. Tools may miss transactions, miscategorize events, or use incorrect price data. Cross-reference key transactions against block explorer data to verify accuracy.
+
+### Retention Period
+
+The IRS recommends retaining tax records for at least three years from the date of filing or two years from the date of payment, whichever is later. For cryptocurrency, extending this to seven years is advisable because the complexity of cross-chain activity and the evolving nature of IRS guidance increase the likelihood of future questions or audits.
+
+<h2 id="common-mistakes">Common Mistakes</h2>
+
+Tax professionals report several recurring mistakes in cryptocurrency tax reporting. Avoiding these errors is critical for compliance and for minimizing the risk of audits, penalties, and interest.
+
+### Mistake 1: Ignoring Crypto-to-Crypto Trades
+
+The single most common mistake is treating crypto-to-crypto trades as non-taxable events. Every swap, whether on a centralized exchange or a DEX, is a taxable disposition. Swapping ETH for USDC, trading Bitcoin for Solana, or providing liquidity by depositing tokens into a pool all trigger capital gains calculations. The absence of fiat currency in the transaction does not eliminate the tax obligation.
+
+### Mistake 2: Failing to Report Staking and Airdrop Income
+
+Staking rewards and airdrops are ordinary income at the time of receipt. Many taxpayers fail to report this income because no 1099 form is issued for DeFi staking or protocol airdrops. The IRS expects you to report this income regardless of whether you receive a 1099.
+
+### Mistake 3: Using the Wrong Cost Basis Method
+
+Inconsistently applying cost basis methods, or switching methods between tax years without proper documentation, creates compliance risk. Choose a method, apply it consistently, and document your choice. If you use specific identification (LIFO or HIFO), maintain contemporaneous records identifying which lots are sold.
+
+### Mistake 4: Ignoring the Per-Wallet Requirement
+
+Starting in 2025, cost basis must be tracked per wallet. Aggregating basis across multiple exchanges and wallets is no longer compliant. If you sold from Coinbase, only Coinbase acquisitions contribute to the cost basis calculation for that sale.
+
+### Mistake 5: Missing DeFi Transactions
+
+DeFi activity generates numerous micro-transactions that are easy to overlook: yield claims, auto-compounding events, dust conversions, failed transactions (which still incur gas costs), and governance token distributions. Each may have tax implications. Use automated tools that scan on-chain data to catch these transactions.
+
+### Mistake 6: Not Reporting Losses
+
+Tax-loss harvesting is one of the most powerful strategies available to crypto taxpayers. Losses offset gains dollar-for-dollar, and up to $3,000 of excess losses can offset ordinary income each year with the remainder carrying forward. Many taxpayers fail to report losses, leaving significant tax savings on the table.
+
+Note that the wash sale rule, which prevents claiming losses on securities repurchased within 30 days, does not currently apply to cryptocurrency under the tax code. However, proposed legislation could extend wash sale rules to digital assets, so monitor this area carefully.
+
+### Mistake 7: Underestimating Gas Fees
+
+Gas fees paid for transactions are part of your cost basis. Gas spent to acquire an asset increases your cost basis (reducing future gains). Gas spent to dispose of an asset reduces your net proceeds (reducing gains on the disposal). Gas spent on failed transactions may be deductible as an investment expense. Track all gas fees as part of your record keeping.
+
+### Getting Professional Help
+
+For complex crypto tax situations, particularly those involving significant DeFi activity, multiple chains, staking operations, or NFT businesses, consulting with a tax professional experienced in cryptocurrency is strongly recommended. The cost of professional guidance is a fraction of the potential penalties, interest, and lost tax savings from incorrect reporting.
+
+### Start Reporting Today
+
+The tools and guidance exist to make cryptocurrency tax reporting manageable. Arthur Labs' crypto tax tool at [crypto.arthurlabs.net](https://crypto.arthurlabs.net) provides affordable, FIFO-based PDF reports at $7.50 per wallet that cover the full range of transaction types. For complex DeFi activity, our [DeFi lending tax guide](/blogs/defi-lending-tax-guide) provides detailed treatment for lending, borrowing, and liquidation events. And for a comprehensive understanding of the DeFi landscape and its tax implications, our [DeFi complete guide](/guides/defi-complete-guide) integrates tax considerations into every protocol category.
+
+Do not wait until tax season to address your crypto reporting. Start tracking now, generate reports regularly, and consult a professional if your situation is complex. Proactive compliance is dramatically less expensive than retroactive reconstruction.
+
+<div className="not-prose mt-8 mb-16 flex gap-3">
+  <Button href="https://crypto.arthurlabs.net" target="_blank">
+    <>Generate Your Crypto Tax Report</>
+  </Button>
+</div>
+
+<div className="mt-16">
+  <Socials />
+</div>

@@ -89,12 +89,20 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   let pages = await glob('**/*.mdx', { cwd: 'src/app' })
-  let allSectionsEntries = (await Promise.all(
-    pages.map(async (filename) => [
-      '/' + filename.replace(/(^|\/)page\.mdx$/, ''),
-      (await import(`./${filename}`)).sections,
-    ]),
-  )) as Array<[string, Array<Section>]>
+  let allSectionsEntries = (
+    await Promise.all(
+      pages.map(async (filename) => {
+        try {
+          return [
+            '/' + filename.replace(/(^|\/)page\.mdx$/, ''),
+            (await import(`./${filename}`)).sections,
+          ]
+        } catch {
+          return null
+        }
+      }),
+    )
+  ).filter(Boolean) as Array<[string, Array<Section>]>
   let allSections = Object.fromEntries(allSectionsEntries)
 
   return (

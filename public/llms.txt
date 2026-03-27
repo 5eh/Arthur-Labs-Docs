@@ -1,0 +1,60 @@
+# Arthur Labs Documentation
+
+> Arthur Labs Documentation (docs.arthurlabs.net) is the central knowledge hub for Arthur Labs Inc. It contains technical documentation for the DEAN marketplace system, educational blog posts on Web3 and blockchain development, comprehensive guides on DeFi, crypto tax, smart contracts, and marketplace operations, and legal/compliance documentation for Arthur Labs services.
+
+## Documentation Sections
+
+- [Home](https://docs.arthurlabs.net/): Documentation landing page with overview of all Arthur Labs systems -- DEAN, ROSE, QUINN, and SUSAN
+- [Marketplace Documentation](https://docs.arthurlabs.net/marketplace): Technical documentation for the DEAN decentralized marketplace factory
+- [Marketplace Services](https://docs.arthurlabs.net/marketplace/services): Service offerings and capabilities
+- [Smart Contracts](https://docs.arthurlabs.net/marketplace/smart-contracts): Smart contract architecture and standards
+- [Legal Structure](https://docs.arthurlabs.net/marketplace/legal-structure): Legal framework for marketplace operations
+- [Terms of Service](https://docs.arthurlabs.net/marketplace/terms): Full terms governing marketplace usage
+- [Privacy Policy](https://docs.arthurlabs.net/marketplace/privacy): Data handling and privacy practices
+- [Data Compliance](https://docs.arthurlabs.net/marketplace/data-compliance): Compliance standards and practices
+- [Common Questions](https://docs.arthurlabs.net/marketplace/common-questions): Frequently asked questions
+- [Marketplace Questions](https://docs.arthurlabs.net/marketplace/marketplace-questions): Technical marketplace FAQ
+
+## Guides
+
+- [Whitepaper Overview](https://docs.arthurlabs.net/guides/whitepaper-overview): Summary and walkthrough of the Arthur Labs whitepaper
+- [Local Web3 Startups](https://docs.arthurlabs.net/guides/local-web3-startups): Guide for starting a Web3 business locally
+
+## Blog Categories
+
+### Web3 & Blockchain Development
+- [Mastering Web3 Development](https://docs.arthurlabs.net/blogs/mastering-web3-development)
+- [Smart Contracts Guide](https://docs.arthurlabs.net/blogs/smart-contracts)
+- [Smart Contract Security](https://docs.arthurlabs.net/blogs/smart-contract-security)
+- [EVM Chain Deployment](https://docs.arthurlabs.net/blogs/evm-chain-deployment)
+- [Blockchain Infrastructure for Marketplaces](https://docs.arthurlabs.net/blogs/blockchain-infrastructure-marketplaces)
+
+### DEAN System
+- [DEAN System Deep Dive](https://docs.arthurlabs.net/blogs/dean-system-deep-dive)
+- [DEAN System Revolution](https://docs.arthurlabs.net/blogs/dean-system-revolution)
+- [DEAN Marketplace Development](https://docs.arthurlabs.net/blogs/dean-marketplace-development)
+- [DEAN Entrepreneurs Guide](https://docs.arthurlabs.net/blogs/dean-entrepreneurs-guide)
+
+### DeFi
+- [DeFi DEX Trading](https://docs.arthurlabs.net/blogs/defi-dex-trading)
+- [DeFi Investing for Beginners](https://docs.arthurlabs.net/blogs/defi-investing-beginners)
+- [DeFi Yield Farming Basics](https://docs.arthurlabs.net/blogs/defi-yield-farming-basics)
+- [DeFi Risks and Rewards](https://docs.arthurlabs.net/blogs/defi-risks-rewards)
+- [DeFi Stablecoins Guide](https://docs.arthurlabs.net/blogs/defi-stablecoins-guide)
+
+### AI & Technology
+- [AI Web3 Development](https://docs.arthurlabs.net/blogs/ai-web3-development)
+- [AI Blockchain Automation](https://docs.arthurlabs.net/blogs/ai-blockchain-automation)
+- [Model Context Providers](https://docs.arthurlabs.net/blogs/model-context-providers)
+- [Full Stack Generation](https://docs.arthurlabs.net/blogs/full-stack-generation)
+
+### Nebraska & Regional
+- [Blockchain Nebraska Agriculture](https://docs.arthurlabs.net/blogs/blockchain-nebraska-agriculture)
+- [Nebraska Blockchain Opportunities](https://docs.arthurlabs.net/blogs/nebraska-blockchain-opportunities)
+- [Ethereum L2 Nebraska Business](https://docs.arthurlabs.net/blogs/ethereum-l2-nebraska-business)
+
+## Parent Company
+
+- Arthur Labs Inc., Wyoming S-Corporation
+- Contact: support@arthurlabs.net
+- Website: https://arthurlabs.net
