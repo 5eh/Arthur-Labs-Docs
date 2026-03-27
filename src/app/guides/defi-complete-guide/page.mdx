@@ -1,0 +1,336 @@
+import { Socials } from '@/components/Socials'
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'DeFi Explained: The Complete Guide to Decentralized Finance in 2026 | Arthur Labs',
+  description: 'The definitive guide to decentralized finance in 2026. Covers DeFi protocols, yield farming, lending, DEX trading, stablecoins, portfolio management, risks, rewards, and tax implications with practical guidance from Arthur Labs.',
+  keywords: 'DeFi, decentralized finance, yield farming, DeFi lending, DEX trading, stablecoins, DeFi portfolio, DeFi risks, DeFi tax, crypto passive income, DeFi 2026, liquidity pools, smart contracts, Ethereum DeFi, Arthur Labs',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-03-27',
+  category: 'Guides',
+}
+
+export const sections = [
+  { title: 'What is DeFi', id: 'what-is-defi' },
+  { title: 'Core Protocols', id: 'core-protocols' },
+  { title: 'Yield Farming Explained', id: 'yield-farming-explained' },
+  { title: 'Lending and Borrowing', id: 'lending-and-borrowing' },
+  { title: 'DEX Trading', id: 'dex-trading' },
+  { title: 'Stablecoins', id: 'stablecoins' },
+  { title: 'Portfolio Management', id: 'portfolio-management' },
+  { title: 'Risks and Rewards', id: 'risks-and-rewards' },
+  { title: 'Tax Implications', id: 'tax-implications' },
+  { title: 'Getting Started', id: 'getting-started' },
+]
+
+<HeroPattern />
+
+# DeFi Explained: The Complete Guide to Decentralized Finance in 2026
+
+Decentralized finance has evolved from an experimental corner of crypto into a parallel financial system managing hundreds of billions of dollars. Yet for many, DeFi remains opaque, intimidating, and difficult to navigate. This guide strips away the complexity. It explains every major DeFi category, maps the opportunities, quantifies the risks, and provides a practical framework for participating in decentralized finance in 2026, whether you are a complete beginner or an experienced investor looking to refine your approach. {{className: 'lead text-black dark:text-gray-200'}}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/guides" arrow="left">
+    <>All Guides</>
+  </Button>
+</div>
+
+<h2 id="what-is-defi">What is DeFi</h2>
+
+DeFi, short for decentralized finance, refers to financial services that operate through smart contracts on blockchain networks rather than through traditional intermediaries like banks, brokerages, or insurance companies. Instead of trusting a bank to hold your deposits or process your loan, you interact directly with code that executes financial logic transparently and automatically.
+
+The core insight behind DeFi is that most financial services, lending, borrowing, trading, insurance, asset management, are fundamentally information processing tasks. They can be expressed as code and executed by smart contracts. When they are, the resulting services are available to anyone with an internet connection, operate 24/7 without holidays or banking hours, and charge fees that reflect actual computational costs rather than institutional overhead.
+
+### How DeFi Differs from Traditional Finance
+
+In traditional finance (often called TradFi in crypto circles), intermediaries hold your assets, set the terms, and control access. You need an account, identity verification, a credit history, and often a minimum balance just to participate. Interest rates are set by institutions based on opaque models. Settlement takes days. And access varies dramatically by geography and socioeconomic status.
+
+DeFi inverts this model entirely. Your assets remain in your wallet until you explicitly commit them to a protocol. The terms are encoded in publicly auditable smart contracts. Anyone can participate regardless of location, credit history, or identity. Interest rates are determined by supply and demand in real time. And settlement is typically instant or near-instant.
+
+This is not to say DeFi is without friction or risk. It introduces new categories of risk (smart contract bugs, oracle manipulation, impermanent loss) that do not exist in traditional finance. But the structural advantages, open access, transparent terms, composability, and efficiency, are genuine and increasingly difficult for traditional finance to match.
+
+For a comprehensive beginner-friendly introduction, our [DeFi investing for beginners guide](/blogs/defi-investing-beginners) walks through the foundational concepts, wallet setup, and first interactions with DeFi protocols.
+
+### The DeFi Stack
+
+DeFi is not a single technology. It is a stack of interdependent layers, each providing specific functionality:
+
+- **Settlement Layer**: The underlying blockchain (Ethereum, Arbitrum, Polygon, etc.) that processes and finalizes transactions
+- **Asset Layer**: The tokens that represent value within DeFi (ETH, stablecoins, governance tokens, LP tokens)
+- **Protocol Layer**: The smart contracts that implement financial logic (lending pools, DEXs, yield aggregators)
+- **Application Layer**: The frontends and interfaces that users interact with (Uniswap app, Aave dashboard, portfolio managers)
+- **Aggregation Layer**: Services that combine multiple protocols for optimal execution (yield aggregators, DEX aggregators)
+
+Understanding this stack helps you evaluate DeFi opportunities. When you deposit funds into a yield farming strategy, you are interacting with multiple layers simultaneously, and risks can emerge at any layer.
+
+<h2 id="core-protocols">Core Protocols</h2>
+
+The DeFi ecosystem is built on a handful of protocol categories that form the foundation for all higher-level financial services. Understanding these categories is essential before diving into specific strategies.
+
+### Automated Market Makers (AMMs)
+
+AMMs are the engines that power decentralized trading. Unlike traditional order books where buyers and sellers match directly, AMMs use mathematical formulas and liquidity pools to facilitate trades. The most common formula is the constant product formula (x * y = k), pioneered by Uniswap, where the product of two token reserves must remain constant after every trade.
+
+Liquidity providers deposit pairs of tokens into pools and earn trading fees proportional to their share of the pool. Traders swap tokens against these pools, paying a small fee (typically 0.3%) on each trade. The price of tokens in the pool adjusts automatically based on the ratio of reserves.
+
+### Lending Protocols
+
+Lending protocols enable users to earn interest by depositing assets or borrow assets by posting collateral. Aave and Compound are the most established lending protocols, collectively managing tens of billions in deposits.
+
+The mechanics are straightforward: depositors supply assets to a pool and receive interest-bearing tokens in return. Borrowers post collateral (typically worth 150-200% of their desired loan) and withdraw their chosen asset. Interest rates adjust dynamically based on pool utilization, the ratio of borrowed assets to supplied assets.
+
+Our detailed guide to [DeFi lending platforms](/blogs/defi-lending-platforms) evaluates the major protocols, compares their interest rates and collateral requirements, and explains the mechanics of liquidation and risk management.
+
+### Yield Aggregators
+
+Yield aggregators are protocols that automatically move capital between DeFi strategies to maximize returns. Rather than manually monitoring rates across dozens of protocols and chains, users deposit into a yield aggregator vault that handles optimization programmatically.
+
+These protocols compound rewards, rebalance allocations, and harvest tokens automatically, saving users gas costs and time while typically achieving higher net yields than manual management.
+
+### Liquid Staking
+
+Liquid staking protocols allow users to stake their ETH (or other proof-of-stake tokens) while receiving a liquid derivative token that can be used elsewhere in DeFi. This solves the fundamental tradeoff between staking rewards and DeFi participation. With liquid staking, you earn staking rewards and use your capital in DeFi simultaneously.
+
+<h2 id="yield-farming-explained">Yield Farming Explained</h2>
+
+Yield farming is the practice of deploying crypto assets across DeFi protocols to maximize returns. It ranges from simple single-asset deposits to complex multi-protocol strategies involving leverage, hedging, and cross-chain arbitrage.
+
+### Basic Yield Farming
+
+The simplest yield farming strategy is depositing a stablecoin into a lending protocol. You deposit USDC into Aave, for example, and earn variable interest that typically ranges from 2-8% APY depending on market conditions. This is the DeFi equivalent of a savings account, with the added benefit that rates are often significantly higher than traditional bank savings rates.
+
+The next level of complexity involves providing liquidity to an AMM. By depositing a pair of tokens (for example, ETH and USDC) into a Uniswap pool, you earn trading fees generated by the pool. The APY varies based on trading volume and pool size, but popular pools commonly generate 5-20% APY from fees alone.
+
+### Advanced Strategies
+
+Advanced yield farming strategies combine multiple protocols to amplify returns:
+
+**Leveraged yield farming** involves borrowing assets to increase your farming position. For example, you deposit ETH as collateral in a lending protocol, borrow stablecoins, use those stablecoins to provide liquidity, and earn more than the borrowing cost. This amplifies returns but also amplifies risk.
+
+**Recursive lending** is a variant where you deposit an asset, borrow against it, deposit the borrowed asset, and repeat. Each loop adds yield from lending incentives but increases your liquidation risk.
+
+**Cross-protocol strategies** combine lending, liquidity provision, and staking in sequence. Deposit ETH into a liquid staking protocol, receive stETH, deposit stETH into a lending protocol, borrow stablecoins, and provide liquidity with those stablecoins. Each step adds a layer of yield and a layer of risk.
+
+For a thorough breakdown of farming strategies ranked by complexity and risk, our [DeFi yield farming basics guide](/blogs/defi-yield-farming-basics) covers everything from starter strategies to intermediate techniques that balance risk and return.
+
+### Evaluating Yield Opportunities
+
+Not all yields are created equal. When evaluating a farming opportunity, consider these factors:
+
+- **Source of yield**: Is the yield coming from trading fees (sustainable), lending interest (sustainable), or token emissions (potentially unsustainable)?
+- **Smart contract risk**: How long has the protocol been live? Has it been audited? What is the TVL trend?
+- **Impermanent loss exposure**: For liquidity provision, how correlated are the paired assets? Highly divergent pairs carry significant impermanent loss risk.
+- **Lock-up periods**: Are your funds accessible at all times, or are they locked for a fixed period?
+- **Gas costs**: Do the yields justify the transaction costs of entering and exiting the position?
+
+Our guide on [DeFi passive income strategies](/blogs/defi-passive-income-guide) provides a practical framework for evaluating and ranking yield opportunities based on these criteria.
+
+<h2 id="lending-and-borrowing">Lending and Borrowing</h2>
+
+DeFi lending is one of the most mature and well-understood sectors. It enables two fundamental financial operations: earning interest on deposits and accessing capital without selling assets.
+
+### How DeFi Lending Works
+
+When you deposit assets into a lending protocol, those assets enter a shared liquidity pool. Borrowers draw from this pool by posting collateral. The interest rate you earn adjusts dynamically based on utilization: when the pool is heavily borrowed, rates rise to attract more deposits and discourage additional borrowing. When utilization is low, rates drop.
+
+Your deposit is represented by an interest-bearing token (like aUSDC in Aave or cDAI in Compound) that appreciates in value relative to the underlying asset as interest accrues. You can withdraw your deposit at any time (assuming sufficient liquidity in the pool) by redeeming your interest-bearing tokens.
+
+### Borrowing Mechanics
+
+Borrowing in DeFi requires overcollateralization. To borrow $1,000 worth of USDC, you might need to deposit $1,500-$2,000 worth of ETH as collateral. This overcollateralization protects lenders in the event that collateral values decline.
+
+If the value of your collateral drops below the required ratio (the liquidation threshold), your position is partially or fully liquidated. A liquidation bot repays part of your debt in exchange for your collateral at a discount, restoring the health of the overall lending pool.
+
+This mechanism means that borrowing in DeFi is primarily used for leverage (borrowing to increase investment exposure), tax optimization (accessing liquidity without triggering a taxable sale event), and capital efficiency (using idle assets productively while maintaining exposure to their price appreciation).
+
+### Choosing a Lending Platform
+
+The major lending platforms differ in their supported assets, interest rate models, governance structures, and risk profiles. Aave is the largest by total value locked (TVL) and supports the widest range of assets. Compound offers a simpler interface and has been a reliable option since its 2020 launch. Newer platforms offer specialized features like undercollateralized lending for institutional borrowers or isolated lending pools for long-tail assets.
+
+Our [DeFi lending platforms guide](/blogs/defi-lending-platforms) provides a detailed comparison of the major platforms, including current rates, supported chains, and risk assessments.
+
+<h2 id="dex-trading">DEX Trading</h2>
+
+Decentralized exchanges (DEXs) enable trustless token trading without intermediaries. Since Uniswap pioneered the AMM model, DEX trading volume has grown to rival centralized exchanges for many token pairs.
+
+### AMM-Based DEXs
+
+AMM-based DEXs like Uniswap, SushiSwap, and Curve Finance use liquidity pools rather than order books. Traders swap tokens against pools, and the price is determined algorithmically by the pool's reserve ratio. This model has proven remarkably effective for most trading use cases and requires no market makers, no counterparty matching, and no centralized infrastructure.
+
+Different AMMs optimize for different use cases. Uniswap's constant product formula works well for volatile token pairs. Curve's stableswap formula is optimized for pairs of similarly-valued assets (like stablecoins), enabling much tighter spreads and lower slippage.
+
+### Order Book DEXs
+
+A newer generation of DEXs implements on-chain or hybrid order books that more closely resemble centralized exchange experiences. These platforms offer limit orders, stop-losses, and advanced order types that AMMs cannot natively support. They are particularly popular on high-throughput chains and L2s where the gas costs of order management are negligible.
+
+### DEX Aggregators
+
+DEX aggregators like 1inch and Paraswap route trades across multiple DEXs and liquidity sources to find the best execution price. Rather than manually checking prices on Uniswap, SushiSwap, and Curve, you submit your trade to an aggregator that splits the order across multiple venues for optimal pricing.
+
+For traders looking to understand DEX mechanics, execution strategies, and platform comparisons, our [DeFi DEX trading guide](/blogs/defi-dex-trading) covers everything from basic swaps to advanced trading techniques.
+
+### Trading Considerations
+
+When trading on DEXs, key considerations include:
+
+- **Slippage**: The difference between the expected price and the execution price. Larger trades relative to pool liquidity experience more slippage.
+- **MEV (Maximal Extractable Value)**: Sophisticated actors can front-run or sandwich your transactions to extract value. Use MEV-protection services or private transaction pools to mitigate this risk.
+- **Gas costs**: Factor transaction costs into your trading decisions, especially for smaller trades where gas can represent a significant percentage of the trade value.
+
+<h2 id="stablecoins">Stablecoins</h2>
+
+Stablecoins are the connective tissue of DeFi. They provide a stable unit of account, a medium of exchange, and a store of value within an otherwise volatile ecosystem. Understanding stablecoins is essential because they are the primary asset you will use for lending, borrowing, and yield farming.
+
+### Types of Stablecoins
+
+**Fiat-backed stablecoins** like USDC and USDT are backed by dollar reserves held by the issuing company. They maintain their peg through the issuer's promise to redeem each token for $1. These are the most liquid and widely used stablecoins, but they carry counterparty risk tied to the issuing entity.
+
+**Crypto-backed stablecoins** like DAI are backed by cryptocurrency collateral locked in smart contracts. DAI maintains its peg through overcollateralization (each DAI is backed by more than $1 worth of crypto) and liquidation mechanisms that maintain the backing ratio. These stablecoins are more decentralized than fiat-backed alternatives but can be affected by severe market downturns.
+
+**Algorithmic stablecoins** attempt to maintain their peg through algorithmic supply and demand mechanisms without direct collateral backing. These have a mixed track record, with several high-profile failures demonstrating the challenges of purely algorithmic stability.
+
+**State-issued stablecoins** represent an emerging category where state governments issue blockchain-based tokens backed by state treasury assets. Wyoming's WYST initiative is a notable example. Our analysis of [state-issued stablecoins vs traditional alternatives](/blogs/state-issued-stablecoins-vs-traditional) examines this new category and its implications for DeFi.
+
+### Stablecoins in DeFi Strategy
+
+Stablecoins serve multiple strategic functions in DeFi:
+
+- **Risk management**: Converting volatile assets to stablecoins during market downturns preserves value without exiting the crypto ecosystem entirely
+- **Yield farming base**: Stablecoin deposits in lending protocols provide the lowest-risk yield in DeFi
+- **Trading pairs**: Most DeFi trading routes through stablecoin pairs, making stablecoin liquidity essential for price discovery
+- **Cross-chain bridge**: Stablecoins are the most commonly bridged assets between chains, facilitating cross-chain DeFi strategies
+
+Our comprehensive [DeFi stablecoins guide](/blogs/defi-stablecoins-guide) evaluates each category, compares specific stablecoins on safety, liquidity, and regulatory outlook, and provides guidance on building a stablecoin allocation strategy.
+
+<h2 id="portfolio-management">Portfolio Management</h2>
+
+Managing a DeFi portfolio requires a different approach than managing a traditional investment portfolio. Positions are spread across multiple protocols, chains, and asset types. Returns accrue in different tokens at different intervals. And the risk profile of each position is unique and dynamic.
+
+### Building a DeFi Portfolio
+
+A well-constructed DeFi portfolio balances three objectives: yield generation, risk management, and capital efficiency.
+
+**Yield generation** involves deploying capital into productive positions: lending, liquidity provision, staking, and farming. The key is diversifying across yield sources so that a failure in one protocol does not destroy your entire portfolio.
+
+**Risk management** involves sizing positions appropriately, maintaining stablecoin reserves for rebalancing, setting liquidation alerts on borrowed positions, and monitoring protocol health metrics. A common rule of thumb is to never allocate more than 20% of your DeFi portfolio to a single protocol, regardless of the yield.
+
+**Capital efficiency** means ensuring your capital is always working. Idle tokens in a wallet earn nothing. Liquid staking derivatives, yield-bearing stablecoins, and auto-compounding vaults keep your capital productive even when you are not actively managing positions.
+
+### Portfolio Tracking and Analytics
+
+The fragmented nature of DeFi makes portfolio tracking challenging. Your positions might span Ethereum, Arbitrum, Polygon, and Base across a dozen protocols. Manual tracking is impractical.
+
+DeFi portfolio trackers like Zapper, DeBank, and Zerion aggregate your positions across chains and protocols into a single dashboard. They show your total portfolio value, individual position performance, claimable rewards, and historical returns.
+
+For a deeper exploration of DeFi portfolio construction and management strategies, our [DeFi portfolio management guide](/blogs/defi-portfolio-management) provides detailed allocation frameworks, rebalancing strategies, and tool recommendations.
+
+### Rebalancing Strategies
+
+DeFi portfolios drift as token prices change and yields shift. Regular rebalancing, moving capital from underperforming positions to better opportunities, is essential for maintaining optimal returns.
+
+The most effective rebalancing approach in DeFi is yield-triggered: when a position's yield drops below a threshold, or when a better opportunity emerges, you reallocate. Calendar-based rebalancing (weekly or monthly) also works but is less responsive to the fast-moving DeFi environment.
+
+<h2 id="risks-and-rewards">Risks and Rewards</h2>
+
+DeFi offers genuinely attractive returns that exceed most traditional financial products. But those returns come with risks that are fundamentally different from traditional finance. Understanding and managing these risks is the difference between sustainable DeFi participation and catastrophic loss.
+
+### Smart Contract Risk
+
+Every DeFi interaction involves trusting smart contract code. If that code contains a bug, an exploit, or a design flaw, funds can be lost irreversibly. Smart contract risk is the single most important risk category in DeFi.
+
+Mitigation strategies include:
+
+- **Protocol maturity**: Older protocols with longer track records are generally safer. Code that has held billions of dollars for years has been extensively tested by the market.
+- **Audit coverage**: Multiple audits from reputable firms reduce (but do not eliminate) smart contract risk.
+- **TVL trajectory**: Increasing TVL suggests growing confidence. Rapidly declining TVL may signal emerging concerns.
+- **Insurance**: DeFi insurance protocols like Nexus Mutual offer coverage against smart contract exploits for a premium.
+
+### Oracle Risk
+
+Many DeFi protocols rely on oracles to provide off-chain data (primarily price feeds). If an oracle is manipulated, lending protocols can be tricked into enabling undercollateralized borrows, DEXs can be exploited through artificial price movements, and liquidations can be triggered on healthy positions.
+
+### Impermanent Loss
+
+Impermanent loss occurs when you provide liquidity to an AMM and the relative prices of the paired tokens change. The AMM's rebalancing mechanism ensures you end up with more of the cheaper token and less of the expensive one, resulting in a lower total value than if you had simply held the tokens.
+
+Impermanent loss is most significant for volatile, uncorrelated pairs and minimal for correlated pairs (like stablecoin pairs). Understanding this risk is essential for evaluating liquidity provision opportunities.
+
+### Regulatory Risk
+
+The regulatory environment for DeFi continues to evolve. Different jurisdictions treat DeFi activities differently for tax and compliance purposes. Protocol interfaces may be restricted in certain regions. And stablecoins face increasing regulatory scrutiny.
+
+Our [DeFi risks and rewards analysis](/blogs/defi-risks-rewards) provides a comprehensive risk framework with quantitative risk scoring for major protocols and strategies.
+
+<h2 id="tax-implications">Tax Implications</h2>
+
+DeFi taxes are among the most complex in all of finance. Every swap, liquidity provision, yield claim, and protocol interaction may have tax implications. Failing to track and report these correctly can result in significant penalties.
+
+### Taxable Events in DeFi
+
+In most jurisdictions, the following DeFi activities are taxable events:
+
+- **Token swaps**: Exchanging one token for another is a disposal event, triggering capital gains or losses
+- **Yield claiming**: Interest earned from lending, staking rewards, and farming rewards are typically taxed as income at the time of receipt
+- **Liquidity provision**: Adding or removing liquidity may trigger taxable events depending on the jurisdiction and the specific tokens involved
+- **Borrowing**: Taking a loan is generally not taxable, but if your collateral is liquidated, the liquidation is a taxable disposal event
+
+### Record Keeping
+
+The decentralized, pseudonymous nature of DeFi does not exempt participants from tax obligations. Blockchain transactions are permanent and auditable. Tax authorities are increasingly sophisticated in their ability to trace on-chain activity to individuals.
+
+Maintaining accurate records requires tracking every transaction: entry price, exit price, fees paid, rewards received, and the fair market value of tokens at the time of each event. DeFi tax software tools can automatically import your on-chain history and generate tax reports.
+
+### Cross-Chain Complexity
+
+Multi-chain DeFi activity adds layers of complexity. Bridging tokens between chains may or may not constitute a taxable event depending on jurisdiction. Different chains use different block explorers and indexing services, making consolidated record keeping essential.
+
+Our detailed [DeFi lending tax guide](/blogs/defi-lending-tax-guide) covers the specific tax treatment of lending, borrowing, and liquidation events, including strategies for tax-efficient DeFi participation.
+
+For comprehensive tax reporting across all your DeFi activity, Arthur Labs provides dedicated tooling at [crypto.arthurlabs.net](https://crypto.arthurlabs.net) that aggregates transactions across chains and protocols into standardized tax reports.
+
+<h2 id="getting-started">Getting Started</h2>
+
+If you have read this far, you have a comprehensive understanding of the DeFi landscape. Now it is time to translate that knowledge into action. This section provides a practical roadmap for beginning your DeFi journey.
+
+### Step 1: Set Up Your Wallet
+
+DeFi requires a self-custody wallet. MetaMask is the most widely supported browser-based wallet. Rabby offers a more user-friendly alternative with built-in security features. For mobile, Rainbow and Coinbase Wallet are strong options. Hardware wallets (Ledger, Trezor) provide the highest security for larger holdings.
+
+Install your chosen wallet, secure your seed phrase (write it down physically, never store it digitally), and fund it with ETH for gas fees and the assets you plan to deploy.
+
+### Step 2: Start with Stablecoins
+
+Your first DeFi position should be low-risk. Deposit USDC or DAI into a major lending protocol like Aave on Ethereum or an L2 network. This earns you a modest yield (3-7% APY) while you learn the mechanics of DeFi transactions: approvals, deposits, withdrawals, and gas management.
+
+### Step 3: Explore Liquidity Provision
+
+Once you are comfortable with basic deposits, try providing liquidity to a stablecoin pair on Curve or Uniswap. Stablecoin pairs have minimal impermanent loss risk and provide a safe environment to learn the mechanics of AMMs and liquidity provision.
+
+### Step 4: Expand Gradually
+
+As your confidence and knowledge grow, explore more complex strategies: volatile pair liquidity provision, leveraged lending, yield farming across multiple protocols, and cross-chain strategies. Increase your exposure incrementally. Never deploy more capital into a single strategy than you can afford to lose.
+
+### Step 5: Implement Portfolio Management
+
+Once you have positions across multiple protocols, implement a portfolio management framework. Set up a tracking dashboard, establish rebalancing triggers, and document your strategy. The [DeFi portfolio management guide](/blogs/defi-portfolio-management) provides detailed frameworks for this stage.
+
+### Step 6: Address Tax Obligations
+
+From day one, maintain records of every DeFi transaction. Use DeFi tax software to track your activity. Consult with a crypto-knowledgeable tax professional if your activity is significant. Proactive tax management is far less painful (and expensive) than retroactive reconstruction.
+
+### Resources for Continued Learning
+
+DeFi evolves rapidly. Staying current requires ongoing education. Our [DeFi passive income guide](/blogs/defi-passive-income-guide) is regularly updated with current strategies and opportunities. The [DeFi yield farming basics](/blogs/defi-yield-farming-basics) article covers foundational strategies that remain relevant regardless of market conditions. And our [DeFi investing for beginners guide](/blogs/defi-investing-beginners) is the best starting point for anyone entering the space for the first time.
+
+For tax reporting and portfolio analytics across your DeFi positions, visit [crypto.arthurlabs.net](https://crypto.arthurlabs.net). Arthur Labs provides tools purpose-built for the complexity of cross-chain, multi-protocol DeFi activity.
+
+<div className="not-prose mt-8 mb-16 flex gap-3">
+  <Button href="https://crypto.arthurlabs.net" target="_blank">
+    <>DeFi Tax Reporting Tools</>
+  </Button>
+</div>
+
+<div className="mt-16">
+  <Socials />
+</div>
