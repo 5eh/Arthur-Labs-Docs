@@ -28,7 +28,7 @@ interface Resource {
 
 const resources: Array<Resource> = [
   {
-    href: 'https://demo.arthurlabs.net/',
+    href: 'https://genesis-market.com/',
     name: 'DEAN',
     description:
       'A configuration based bazaar factory line to deploy commerce related marketplaces to over 7,500 different EVM chains.',
@@ -42,7 +42,7 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/rose',
+    href: '/marketplace',
     name: 'ROSE',
     description:
       'Our centralized version of DEAN, specialized for traditional payments and data storage.',
@@ -56,7 +56,7 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/quinn',
+    href: '/blogs/ai-web3-development',
     name: 'QUINN',
     description:
       'A cross-platform social media generation tool to greatly accelerate marketing efforts to various networks.',
