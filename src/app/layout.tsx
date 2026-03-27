@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
 import { type Section } from '@/components/SectionProvider'
+import EcosystemBar from '@/components/EcosystemBar'
 
 import '@/styles/tailwind.css'
 
@@ -141,6 +142,7 @@ export default async function RootLayout({
         />
       </head>
       <body className="flex min-h-full bg-white antialiased dark:bg-zinc-900">
+        <EcosystemBar />
         <Analytics />
         <SpeedInsights />
 
