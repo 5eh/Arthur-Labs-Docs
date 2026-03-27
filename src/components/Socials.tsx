@@ -14,16 +14,16 @@ const socials = [
       'See the more personal work we do, and the cool people we hang out with!',
   },
   {
-    href: '/errors',
-    name: 'Errors',
+    href: 'https://github.com/Arthur-Labs-DAO',
+    name: 'GitHub',
     description:
-      'Read about the different types of errors returned by the API.',
+      'Explore our open source repositories and contributions.',
   },
   {
-    href: '/webhooks',
-    name: 'Webhooks',
+    href: 'https://links.arthurlabs.net/',
+    name: 'All Links',
     description:
-      'Learn how to programmatically configure webhooks for your app.',
+      'View the full directory of Arthur Labs ecosystem links and resources.',
   },
 ]
 
