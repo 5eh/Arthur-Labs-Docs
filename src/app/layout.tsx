@@ -13,13 +13,18 @@ import '@/styles/tailwind.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://docs.arthurlabs.net'),
   title: {
-    template: '%s | Arthur Labs Inc.',
-    default: 'Arthur Labs - Web3 Development, Blockchain Infrastructure & Digital Marketplaces',
+    // Pages already carry descriptive titles; one clean brand suffix (was double-branding
+    // every page as "X | Arthur Labs | Arthur Labs Inc.").
+    template: '%s | Arthur Labs',
+    default: 'Arthur Labs - Web3 Development, AI Product Engines & Digital Marketplaces',
   },
   description:
-    'Arthur Labs builds world-changing systems that enable entrepreneurship. Explore DEAN (multi-chain marketplace factory), ROSE (centralized commerce), QUINN (social media automation), and SUSAN (app generation).',
+    'Arthur Labs builds world-changing systems that enable entrepreneurship. Explore HIIE (the AI product-to-business engine), DEAN (multi-chain marketplace factory), ROSE (centralized commerce), QUINN (social media automation), and SUSAN (app generation).',
   keywords: [
     'Arthur Labs',
+    'HIIE',
+    'AI product engine',
+    'AI CAD generation',
     'Web3 development',
     'blockchain infrastructure',
     'smart contracts',
@@ -74,12 +79,10 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
     creator: '@ArthurLabsDAO',
   },
-  alternates: {
-    canonical: 'https://docs.arthurlabs.net',
-    languages: {
-      en: 'https://docs.arthurlabs.net',
-    },
-  },
+  // NO site-wide canonical here: a root-layout canonical is INHERITED by every page,
+  // which told search engines all ~110 content pages were duplicates of the homepage
+  // (the site was indexed as ONE page). Each page.mdx now sets its own
+  // `alternates: { canonical: '/<route>/' }`, resolved against metadataBase.
   category: 'technology',
   classification: 'Web3, Blockchain Development, Digital Marketplaces',
 }
@@ -120,11 +123,15 @@ export default async function RootLayout({
                   "@id": "https://arthurlabs.net/#organization",
                   name: "Arthur Labs Inc.",
                   url: "https://arthurlabs.net",
-                  logo: "https://arthurlabs.net/favicon.ico",
+                  logo: "https://docs.arthurlabs.net/logo.png",
+                  // Entity mesh: link the org to its product properties so answer
+                  // engines resolve Arthur Labs + HIIE as one entity graph.
                   sameAs: [
                     "https://x.com/ArthurLabsDAO",
                     "https://arthurlabs.medium.com",
                     "https://github.com/Arthur-Labs-DAO",
+                    "https://hiie.arthurlabs.net",
+                    "https://arthurlabs.net",
                   ],
                 },
                 {

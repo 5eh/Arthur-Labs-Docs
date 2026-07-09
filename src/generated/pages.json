@@ -1,0 +1,954 @@
+[
+  {
+    "route": "/",
+    "section": "main",
+    "title": "Arthur Labs — Web3 Development, AI Product Engines & Digital Marketplaces",
+    "description": "Arthur Labs builds world changing systems that enable entrepreneurship, growing Web2 into Web3.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/blogs/",
+    "section": "main",
+    "title": "All Blog Posts",
+    "description": "Explore all Arthur Labs blog posts on blockchain technology, Web3 development, DeFi, smart contracts, and decentralized commerce. Comprehensive guides for developers and businesses.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/blogs/10-common-errors/",
+    "section": "blog",
+    "title": "10 Common Design Issues Small Businesses Make on Their Websites",
+    "description": "Learn about the most common website design mistakes small businesses make and how to avoid them. Expert insights on navigation, content structure, mobile UX, and more.",
+    "publishDate": "2025-04-21",
+    "category": "Web Design"
+  },
+  {
+    "route": "/blogs/5-compelling-reasons-to-utilize-arthur-labs-blockchain-infrastructure-for-your-business/",
+    "section": "blog",
+    "title": "5 Compelling Reasons to Utilize Arthur Labs' Blockchain Infrastructure for Your Business",
+    "description": "Discover the key benefits of leveraging Arthur Labs' blockchain infrastructure for your business, from enhanced transparency and security to accelerated marketplace deployment and robust smart contract standards.",
+    "publishDate": "2024-07-26",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/a-guide-to-optimizing-nextjs-applications/",
+    "section": "blog",
+    "title": "A Guide to Optimizing Next.js Applications",
+    "description": "Learn essential strategies to enhance the performance of your Next.js applications through advanced optimization techniques including code splitting, image optimization, caching strategies, and server-side optimizations.",
+    "publishDate": "2025-06-02",
+    "category": "Web Development"
+  },
+  {
+    "route": "/blogs/affordable-l2-nebraska-business/",
+    "section": "blog",
+    "title": "Affordable Marketplace Development: Leveraging Ethereum Layer 2s for Nebraska Businesses",
+    "description": "Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum, combined with Arthur Labs' expertise, make Web3 marketplace development accessible and cost-effective for small businesses in Nebraska and the Midwest.",
+    "publishDate": "2024-07-26",
+    "category": "Layer 2 Solutions"
+  },
+  {
+    "route": "/blogs/ai-blockchain-automation/",
+    "section": "blog",
+    "title": "Beyond Single-Chain Limits: Architecting a Multi-Chain DeCom Marketplace",
+    "description": "Learn how to build a unified decentralized commerce (DeCom) experience across multiple EVM chains. A technical guide to state management, user identity, and contract architecture for scalable marketplaces.",
+    "publishDate": "2024-10-27",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/ai-solving-blockchain-scalability/",
+    "section": "blog",
+    "title": "AI Solving Blockchain Scalability: The Missing Puzzle Piece",
+    "description": "How artificial intelligence solves the blockchain trilemma — fee optimization, fraud detection, governance automation, and peer-to-peer payment scalability.",
+    "publishDate": "2026-02-26",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/blogs/ai-text-to-cad-manufacturing/",
+    "section": "blog",
+    "title": "How AI Text-to-CAD Works: From Plain English to Manufacturing-Ready STEP Files",
+    "description": "How AI text-to-CAD turns plain English into dimensioned, manufacturing-ready STEP files: mesh vs parametric B-rep, vision quality loops, and honest limits.",
+    "publishDate": "2026-07-09",
+    "category": "HIIE"
+  },
+  {
+    "route": "/blogs/ai-web3-development/",
+    "section": "blog",
+    "title": "From Gigs to Chains: Architecting a Decentralized Service Marketplace (DeServ)",
+    "description": "A technical guide to building trust-based service marketplaces on the blockchain. Explore smart contract escrow, milestone payments, and on-chain reputation systems for the future of work.",
+    "publishDate": "2025-06-02",
+    "category": "Technical Implementation"
+  },
+  {
+    "route": "/blogs/arthur-labs-ecosystem-2026/",
+    "section": "blog",
+    "title": "The Arthur Labs Ecosystem in 2026: HIIE, DEAN, ROSE, QUINN & SUSAN Explained",
+    "description": "An authoritative map of Arthur Labs products in 2026: the HIIE workflow operating system plus DEAN, ROSE, QUINN, SUSAN, and how every system fits one mission.",
+    "publishDate": "2026-07-09",
+    "category": "Company"
+  },
+  {
+    "route": "/blogs/beautiful-website/",
+    "section": "blog",
+    "title": "Why You Should Make a Beautiful Website: Strategic Business Benefits",
+    "description": "Discover how investing in a beautiful website drives SEO benefits, increases client satisfaction, reduces maintenance, and builds brand credibility.",
+    "publishDate": "2025-04-20",
+    "category": "Web Development"
+  },
+  {
+    "route": "/blogs/blockchain-gaming-nfts/",
+    "section": "blog",
+    "title": "Beyond Escrow: Designing a Complete Decentralized Dispute Resolution System for DeCom Marketplaces",
+    "description": "Explore the architecture of a robust Decentralized Dispute Resolution (DDR) system. Learn how to build trust in your DeCom marketplace by combining multi-sig escrows, oracle-validated evidence, and community-driven juries.",
+    "publishDate": "2024-05-21",
+    "category": "Technical Implementation"
+  },
+  {
+    "route": "/blogs/blockchain-infrastructure-marketplaces/",
+    "section": "blog",
+    "title": "Leveraging Blockchain Infrastructure for Next-Generation Marketplaces",
+    "description": "Discover how robust blockchain infrastructure, exemplified by Arthur Labs' VAULT, is reshaping global commerce through enhanced transparency, security, and innovative smart contract standards for real-world assets and services.",
+    "publishDate": "2025-06-02",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/blockchain-nebraska-agriculture/",
+    "section": "blog",
+    "title": "Building Blockchain Marketplaces for Nebraska's Agricultural Sector",
+    "description": "Discover how Arthur Labs is leveraging blockchain technology to create transparent and efficient marketplaces for Nebraska's vital agricultural industry, enhancing supply chains and empowering local producers.",
+    "publishDate": "2024-03-15",
+    "category": "Agricultural Technology"
+  },
+  {
+    "route": "/blogs/blockchain-web3-trends-2025-part2/",
+    "section": "blog",
+    "title": "5 Upcoming Trends in Blockchain & Web3 That Will Shape 2025",
+    "description": "Discover the top blockchain and Web3 trends poised to revolutionize the digital landscape in 2025, from advanced Layer 2 solutions and RWA tokenization to AI integration and decentralized identity.",
+    "publishDate": "2024-07-31",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/blockchain-web3-trends-2025/",
+    "section": "blog",
+    "title": "5 Upcoming Trends in Blockchain & Web3 That Will Shape 2025",
+    "description": "Explore the top blockchain and Web3 trends poised to reshape 2025: advanced Layer 2s & modularity, the rise of DeCom/DeServ, and mature RWA tokenization with robust oracle validation.",
+    "publishDate": "2024-11-22",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/blockchain/",
+    "section": "blog",
+    "title": "Why Do We Need Blockchains?",
+    "description": "Explore how blockchain technology enables peer-to-peer economies, transparency, and equal global opportunities for entrepreneurs and small players.",
+    "publishDate": "2025-04-17",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/blogs/claude-blockchain/",
+    "section": "blog",
+    "title": "Integrating Claude CLI with Blockchain Development Workflows",
+    "description": "Learn how to leverage AI for smart contract generation, automate technical documentation, and optimize code through AI assistance in blockchain development.",
+    "publishDate": "2025-04-17",
+    "category": "AI"
+  },
+  {
+    "route": "/blogs/content-strategy/",
+    "section": "blog",
+    "title": "Automated Content Strategy for Web3 Projects",
+    "description": "Learn how to set up AI-powered content generation across platforms, create blockchain-specific content templates, and measure engagement to optimize community outreach.",
+    "publishDate": "2025-04-17",
+    "category": "Automation"
+  },
+  {
+    "route": "/blogs/crypto-regulatory-updates/",
+    "section": "blog",
+    "title": "Tokenizing Real-World Assets: A Blueprint for Nebraska's Agricultural Sector",
+    "description": "Discover how blockchain and oracle validation can tokenize real-world agricultural assets in Nebraska, enhancing supply chain transparency, creating new investment opportunities, and boosting the local economy.",
+    "publishDate": "2024-10-27",
+    "category": "Regional Innovation"
+  },
+  {
+    "route": "/blogs/dao-business-voting-governance/",
+    "section": "blog",
+    "title": "DAO Business Voting: On-Chain Governance for Real Decisions",
+    "description": "How DAOs enable decentralized business governance with transparent voting, automated execution, and legal recognition. The future of corporate decision-making on public ledgers.",
+    "publishDate": "2026-02-26",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/blogs/dean-entrepreneurs-guide/",
+    "section": "blog",
+    "title": "Accelerating Marketplace Development: How Arthur Labs' DEAN System Empowers Web3 Entrepreneurs",
+    "description": "Discover how Arthur Labs' DEAN system, a digital bazaar factory, rapidly deploys Web3 marketplaces for real-world goods, services, and deliveries, reducing development time from months to days.",
+    "publishDate": "2024-07-28",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/dean-marketplace-development/",
+    "section": "blog",
+    "title": "Accelerating Web3 Marketplace Development with Arthur Labs' DEAN System",
+    "description": "Discover how the DEAN system by Arthur Labs empowers developers to rapidly build and deploy Web3 marketplaces, reducing development time from months to days. Explore its features and benefits for decentralized commerce.",
+    "publishDate": "2024-07-26",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/dean-system-deep-dive/",
+    "section": "blog",
+    "title": "Launch Your Web3 Marketplace in Days: A Deep Dive into the DEAN System",
+    "description": "Discover how the DEAN System by Arthur Labs revolutionizes Web3 marketplace creation, enabling entrepreneurs and developers to deploy feature-rich, decentralized commerce platforms rapidly. Explore its core functionalities, benefits, and ideal use cases for building Real World Goods (RWG), Services (RWS), and Deliveries (RWD) marketplaces.",
+    "publishDate": "2024-07-29",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/dean-system-launch-guide/",
+    "section": "blog",
+    "title": "Accelerate Your Web3 Marketplace Launch with the DEAN System",
+    "description": "Discover how Arthur Labs' DEAN System, a digital bazaar factory, empowers entrepreneurs to rapidly deploy Web3-compatible marketplaces for commerce, services, or delivery, cutting development time from months to days.",
+    "publishDate": "2024-03-15",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/dean-system-revolution/",
+    "section": "blog",
+    "title": "The DEAN System: Revolutionizing Marketplace Development from Months to Days",
+    "description": "Discover how the DEAN System by Arthur Labs drastically reduces Web3 marketplace development time from months to mere days, empowering entrepreneurs with rapid deployment and configurable solutions for decentralized commerce.",
+    "publishDate": "2024-07-23",
+    "category": "Developer Tools"
+  },
+  {
+    "route": "/blogs/dean-use-case-guide/",
+    "section": "blog",
+    "title": "Launch Your Web3 Marketplace in Days: A DEAN System Use Case",
+    "description": "Discover how Arthur Labs' DEAN system empowers entrepreneurs to rapidly build and deploy custom Web3 marketplaces for goods, services, and deliveries, slashing development time and costs.",
+    "publishDate": "2024-03-10",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/decentralized-marketplace-benefits/",
+    "section": "blog",
+    "title": "5 Compelling Reasons to Utilize Decentralized Marketplace Platforms for Your Business",
+    "description": "Discover why leveraging decentralized marketplace platforms, like those enabled by Arthur Labs, can revolutionize your e-commerce business, offering enhanced transparency, security, and reduced operational costs in the Web3 era.",
+    "publishDate": "2025-06-02",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/decom-blockchain-infrastructure/",
+    "section": "blog",
+    "title": "The Backbone of DeCom: Why Robust Blockchain Infrastructure is Essential for Next-Generation Marketplaces",
+    "description": "Explore the critical role of blockchain infrastructure in building transparent, efficient, and secure decentralized commerce (DeCom) platforms. Learn about smart contracts, oracles, and scalable solutions.",
+    "publishDate": "2024-08-15",
+    "category": "Decentralized Commerce"
+  },
+  {
+    "route": "/blogs/decom-small-business-guide/",
+    "section": "blog",
+    "title": "How to Successfully Onboard Decentralized Commerce (DeCom) Solutions to Your Small Business",
+    "description": "A step-by-step guide for small businesses to integrate decentralized commerce (DeCom) solutions, leveraging blockchain for transparency, security, and reduced costs. Learn how Arthur Labs can help.",
+    "publishDate": "2024-07-26",
+    "category": "E-commerce & Online Business"
+  },
+  {
+    "route": "/blogs/decom/",
+    "section": "blog",
+    "title": "What is Decentralized Commerce (DeCom)?",
+    "description": "Discover how Decentralized Commerce (DeCom) is revolutionizing supply chains with transparency in deliveries, fulfillment, and product authenticity.",
+    "publishDate": "2025-04-17",
+    "category": "Decentralized Commerce"
+  },
+  {
+    "route": "/blogs/defi-dex-trading/",
+    "section": "blog",
+    "title": "Bridging Two Worlds: A Technical Blueprint for Hybrid Web2/Web3 Marketplaces",
+    "description": "Explore the architecture of hybrid marketplaces that merge Web2's ease of use with Web3's trust. This guide covers fiat payment integration, off-chain data validation via oracles, and seamless user onboarding for decentralized commerce.",
+    "publishDate": "2024-05-16",
+    "category": "Technical Implementation"
+  },
+  {
+    "route": "/blogs/defi-investing-beginners/",
+    "section": "blog",
+    "title": "From Clicks to Chains: How Account Abstraction is Revolutionizing Web3 User Experience for Marketplaces",
+    "description": "Discover how Account Abstraction (ERC-4337) removes Web3 friction points like seed phrases and gas fees, enabling seamless, Web2-like user experiences on your decentralized marketplace. A technical guide for developers and entrepreneurs.",
+    "publishDate": "2024-05-21",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/defi-lending-platforms/",
+    "section": "blog",
+    "title": "Beyond the Build: A Guide to DAO Governance for DeCom Marketplaces",
+    "description": "Launching a decentralized marketplace is just the beginning. Learn how to establish robust DAO governance with tokenomics, voting, and treasury management to ensure long-term, community-driven success.",
+    "publishDate": "2024-10-27",
+    "category": "Business Transformation"
+  },
+  {
+    "route": "/blogs/defi-lending-tax-guide/",
+    "section": "blog",
+    "title": "DeFi Lending Tax Guide: Wyoming, Fundora, and Stablecoin Yields",
+    "description": "Learn how to report DeFi lending income, yield farming rewards, and interest from platforms like Fundora. Complete tax guide for 2026.",
+    "publishDate": "2026-02-26",
+    "category": "Crypto Tax"
+  },
+  {
+    "route": "/blogs/defi-passive-income-guide/",
+    "section": "blog",
+    "title": "Beyond the Metaverse: Securing Real-World Commerce with Oracle-Validated NFTs",
+    "description": "Discover how oracle validation systems bridge the gap between blockchain and physical goods, enabling secure, transparent, and automated Real-World Commerce (RWC) marketplaces.",
+    "publishDate": "2023-10-26",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/defi-portfolio-management/",
+    "section": "blog",
+    "title": "The Holy Grail of DeCom: Combining Account Abstraction and Oracles for Seamless Real-World Transactions",
+    "description": "Discover how integrating ERC-4337 Account Abstraction with real-world oracle validation creates a frictionless user experience for decentralized commerce, bridging the gap between Web2 usability and Web3 security.",
+    "publishDate": "2024-05-21",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/defi-risks-rewards/",
+    "section": "blog",
+    "title": "The Factory Pattern: Automating Smart Contract Deployment for Scalable Marketplaces",
+    "description": "Learn how the smart contract factory pattern accelerates marketplace creation from months to days. A technical guide for developers on building scalable, multi-instance Web3 platforms with Arthur Labs' DEAN system.",
+    "publishDate": "2024-10-27",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/defi-stablecoins-guide/",
+    "section": "blog",
+    "title": "Decentralized Delivery (DeDe): Building Trust in the Last Mile with Blockchain Oracles",
+    "description": "Explore how Decentralized Delivery (DeDe) leverages blockchain oracles and smart contracts to create a transparent, secure, and automated last-mile delivery ecosystem. A technical guide for marketplace builders.",
+    "publishDate": "2024-10-27",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/defi-yield-farming-basics/",
+    "section": "blog",
+    "title": "From Farm to Fork: A Technical Guide to Oracle-Validated Supply Chains",
+    "description": "Discover how to build a transparent, oracle-validated agricultural supply chain on the blockchain. A deep dive into smart contracts, IoT integration, and real-world asset verification.",
+    "publishDate": "2024-10-26",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/ethereum-l2-nebraska-business/",
+    "section": "blog",
+    "title": "Affordable Web3 Marketplaces: How Ethereum L2s Empower Nebraska Businesses",
+    "description": "Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum slash costs, making decentralized marketplace development accessible for Nebraska's small businesses. Arthur Labs explains.",
+    "publishDate": "2023-11-15",
+    "category": "Blockchain Development"
+  },
+  {
+    "route": "/blogs/ethereum-l2-nebraska-small-business/",
+    "section": "blog",
+    "title": "How Ethereum Layer 2s Boost Nebraska's Small Business Marketplaces",
+    "description": "Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum are making Web3 marketplace development affordable and accessible for small businesses in Nebraska, driving innovation in the Midwest with Arthur Labs.",
+    "publishDate": "2024-07-27",
+    "category": "Web3 Adoption"
+  },
+  {
+    "route": "/blogs/ethereum-l2-nebraska/",
+    "section": "blog",
+    "title": "Ethereum L2s: Affordable Marketplace Development for Nebraska Businesses",
+    "description": "Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum are making Web3 marketplace development accessible and affordable for small businesses in Nebraska and the Midwest. Learn how Arthur Labs leverages these technologies.",
+    "publishDate": "2024-07-28",
+    "category": "Marketplace Solutions"
+  },
+  {
+    "route": "/blogs/evm-chain-deployment/",
+    "section": "blog",
+    "title": "EVM Chain Deployment: Technical Considerations and Best Practices",
+    "description": "Explore key factors for different EVM environments, gas optimization strategies, and cross-chain compatibility techniques for successful smart contract deployment.",
+    "publishDate": "2025-04-17",
+    "category": "Smart Contracts"
+  },
+  {
+    "route": "/blogs/evm-smart-contracts-commerce/",
+    "section": "blog",
+    "title": "Building EVM-Compatible Smart Contracts for Commerce: A Developer's Guide to Arthur Labs' Contract Standards",
+    "description": "A developer's guide to building secure and efficient EVM-compatible smart contracts for Web3 commerce using Arthur Labs' robust contract standards and patterns, focusing on Solidity, factory contracts, payment proxies, and upgradeability.",
+    "publishDate": "2024-07-26",
+    "category": "Smart Contracts"
+  },
+  {
+    "route": "/blogs/finance/",
+    "section": "blog",
+    "title": "Corruption in Finance: How Blockchain Enables Transparent Governance",
+    "description": "Explore how blockchain technology addresses corruption in financial systems by enforcing transparency in transactions and voting, eliminating closed-door authority, and creating sustainable bureaucratic structures.",
+    "publishDate": "2025-04-17",
+    "category": "Finance"
+  },
+  {
+    "route": "/blogs/form-1099-da-guide-2026/",
+    "section": "blog",
+    "title": "Form 1099-DA in 2026: What Crypto Investors Actually Receive, and What to Do With It",
+    "description": "Learn what IRS Form 1099-DA reports for 2025 and 2026 crypto transactions, who sends it, what each box means, and how to reconcile it with your own records.",
+    "publishDate": "2026-07-09",
+    "category": "Crypto Tax"
+  },
+  {
+    "route": "/blogs/from-proof-of-concept-to-production-scaling-ai-solutions/",
+    "section": "blog",
+    "title": "From Proof-of-Concept to Production: Scaling AI Solutions",
+    "description": "Learn the strategic approach for successfully transitioning AI projects from proof-of-concept to production, including best practices, common challenges, and key considerations for scaling machine learning solutions.",
+    "publishDate": "2025-06-02",
+    "category": "AI Implementation"
+  },
+  {
+    "route": "/blogs/full-stack-generation/",
+    "section": "blog",
+    "title": "Full-Stack Application Generation for Web3 Projects",
+    "description": "Learn techniques for automating frontend and backend development, customizing templates for blockchain use cases, and configuring CI/CD pipelines for dApps.",
+    "publishDate": "2025-04-17",
+    "category": "Automation"
+  },
+  {
+    "route": "/blogs/gasless-transactions-web3/",
+    "section": "blog",
+    "title": "Gas-less Transactions: Removing Barriers to Web3 Adoption",
+    "description": "Discover how gas-less transactions, enabled by account abstraction and meta-transactions, are revolutionizing the Web3 user experience. Learn how Arthur Labs is leveraging these innovations to build more accessible decentralized marketplaces, especially for businesses in Nebraska and the Midwest.",
+    "publishDate": "2024-07-30",
+    "category": "Web3 Adoption"
+  },
+  {
+    "route": "/blogs/get-product-manufactured-2026/",
+    "section": "blog",
+    "title": "From CAD File to Factory: How to Get Your Product Manufactured in 2026",
+    "description": "What factories actually need from you in 2026 — STEP CAD, drawings, tolerances — plus prototyping paths, manufacturer vetting, MOQ math, and real timelines.",
+    "publishDate": "2026-07-09",
+    "category": "Manufacturing"
+  },
+  {
+    "route": "/blogs/l2-nebraska-marketplaces/",
+    "section": "blog",
+    "title": "L2s for Nebraska: Affordable Marketplaces with Optimism & Arbitrum",
+    "description": "Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum make Web3 marketplace development accessible and cost-effective for small businesses in Nebraska.",
+    "publishDate": "2024-07-26",
+    "category": "Blockchain Development"
+  },
+  {
+    "route": "/blogs/launch-niche-web3-marketplace/",
+    "section": "blog",
+    "title": "Launch Your Niche Web3 Marketplace in Days with Arthur Labs' DEAN System",
+    "description": "Discover how entrepreneurs and developers can leverage Arthur Labs' DEAN system to rapidly deploy custom Web3 marketplaces, overcoming traditional development hurdles and tapping into the power of decentralized commerce.",
+    "publishDate": "2023-10-26",
+    "category": "Use Cases"
+  },
+  {
+    "route": "/blogs/launch-web3-marketplace-days/",
+    "section": "blog",
+    "title": "Launch Web3 Marketplaces in Days, Not Months: Inside Arthur Labs' DEAN System",
+    "description": "Discover how Arthur Labs' DEAN System, a digital bazaar factory, drastically reduces Web3 marketplace development time. Build customizable, blockchain-integrated platforms for RWA, RWS, and RWD with unprecedented speed.",
+    "publishDate": "2024-07-26",
+    "category": "Web3 Development"
+  },
+  {
+    "route": "/blogs/leaders/",
+    "section": "blog",
+    "title": "Key Leaders in DePIN, DeCom, and RWA",
+    "description": "Explore the influential projects and innovators building the future of Decentralized Physical Infrastructure Networks, Decentralized Commerce, and Real-World Assets on blockchain.",
+    "publishDate": "2025-04-17",
+    "category": "Industry Leaders"
+  },
+  {
+    "route": "/blogs/marketplace-use-case-arthur-labs/",
+    "section": "blog",
+    "title": "Launch Your Marketplace in Days: A Use Case for Arthur Labs' DEAN System",
+    "description": "Discover how Arthur Labs' DEAN system revolutionizes marketplace creation, enabling entrepreneurs to launch Web3 platforms in days, not months. Explore ideal use cases and customers.",
+    "publishDate": "2025-05-15",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "route": "/blogs/mastering-web3-development/",
+    "section": "blog",
+    "title": "Mastering Web3 Development: A Complete Developer's Guide",
+    "description": "Learn key frameworks, best practices for blockchain integration, and community-driven development approaches for Web3 development.",
+    "publishDate": "2025-04-17",
+    "category": "Web3 Development"
+  },
+  {
+    "route": "/blogs/model-context-providers/",
+    "section": "blog",
+    "title": "Model Context Providers: Building Smarter Blockchain Applications",
+    "description": "Learn how Model Context Providers (MCPs) streamline blockchain development workflows, implementation strategies for different project types, and performance optimization techniques.",
+    "publishDate": "2025-04-17",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/blogs/multi-chain-marketplace/",
+    "section": "blog",
+    "title": "Multi-Chain Marketplace Creation: Technical Implementation Guide",
+    "description": "Learn architecture patterns for cross-chain compatibility, solutions for seamless asset transfers, and performance optimization techniques for decentralized commerce.",
+    "publishDate": "2025-04-17",
+    "category": "Marketplace"
+  },
+  {
+    "route": "/blogs/nebraska-blockchain-opportunities/",
+    "section": "blog",
+    "title": "Affordable DeCom: How Layer 2s Like Arbitrum & Optimism Empower Nebraska's Marketplace Builders",
+    "description": "Discover how Ethereum Layer 2 solutions like Arbitrum and Optimism drastically reduce gas fees, making decentralized commerce (DeCom) marketplaces a viable and affordable option for Nebraska's small businesses and entrepreneurs.",
+    "publishDate": "2024-05-21",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/blogs/non-private-credentials-verifiable-identity/",
+    "section": "blog",
+    "title": "Non-Private Credentials: Verifiable Identity Without Exposure",
+    "description": "Discover how non-private credentials allow blockchain users to prove identity and eligibility without revealing sensitive personal data. The future of privacy-preserving verification.",
+    "publishDate": "2026-02-26",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/blogs/oracle-validation-p2p-commerce/",
+    "section": "blog",
+    "title": "Building Trust in Peer-to-Peer Commerce: The Power of Oracle Validation",
+    "description": "Discover how oracle validation systems bridge the gap between digital agreements and real-world outcomes, fostering trust and reliability in decentralized peer-to-peer commerce platforms.",
+    "publishDate": "2025-06-02",
+    "category": "Decentralized Commerce"
+  },
+  {
+    "route": "/blogs/rapid-web3-marketplace-deployment/",
+    "section": "blog",
+    "title": "Rapidly Deploy Web3 Marketplaces with the DEAN System",
+    "description": "Discover how Arthur Labs' DEAN System empowers entrepreneurs to launch custom Web3 marketplaces in days, not months. Explore its features, benefits, and ideal use cases for decentralized commerce.",
+    "publishDate": "2024-07-26",
+    "category": "Web3 Development"
+  },
+  {
+    "route": "/blogs/react-vue-web/",
+    "section": "blog",
+    "title": "React vs. Vue: The Ultimate Web Development Comparison Guide",
+    "description": "An in-depth comparison of React and Vue.js, two leading frontend JavaScript frameworks, covering performance, learning curve, ecosystem, and use cases to help developers choose the right tool.",
+    "publishDate": "2024-07-27",
+    "category": "Web Development"
+  },
+  {
+    "route": "/blogs/remote/",
+    "section": "blog",
+    "title": "How to Thrive as a Remote Developer",
+    "description": "Discover the opportunities and challenges of remote software development, including global opportunities, cost-saving strategies, travel flexibility, and overcoming isolation as a digital nomad.",
+    "publishDate": "2025-04-17",
+    "category": "Remote Work"
+  },
+  {
+    "route": "/blogs/roi-web3-vs-ecommerce/",
+    "section": "blog",
+    "title": "ROI Analysis: Web3 Marketplaces vs. Traditional E-commerce",
+    "description": "Explore the comprehensive ROI of Web3 marketplace development compared to traditional e-commerce. Discover how blockchain, smart contracts, and EVM-compatible solutions can enhance efficiency, transparency, and profitability for your business. An Arthur Labs analysis for tech-forward entrepreneurs.",
+    "publishDate": "2024-07-26",
+    "category": "Business Utility"
+  },
+  {
+    "route": "/blogs/secure-escrow-decentralized-commerce/",
+    "section": "blog",
+    "title": "Secure Escrow for Decentralized Commerce: A Deep Dive into Payment Proxy Contracts",
+    "description": "Learn how Arthur Labs utilizes payment proxy contracts to create secure, trustless escrow systems for Web3 marketplaces, protecting both buyers and sellers in peer-to-peer transactions.",
+    "publishDate": "2024-10-26",
+    "category": "Smart Contracts"
+  },
+  {
+    "route": "/blogs/shopify-to-decentralized-marketplace/",
+    "section": "blog",
+    "title": "Migrating from Shopify to a Decentralized Marketplace: A Practical Guide",
+    "description": "Learn the key steps, benefits, and technical considerations for migrating your e-commerce store from a centralized platform like Shopify to a decentralized, blockchain-powered marketplace with Arthur Labs.",
+    "publishDate": "2024-05-21",
+    "category": "Web3 Implementation"
+  },
+  {
+    "route": "/blogs/smart-contract-factories/",
+    "section": "blog",
+    "title": "Smart Contract Factories: Automating Commerce Contract Deployment",
+    "description": "Discover how smart contract factories streamline the creation of commerce contracts, reduce gas costs, and enable rapid marketplace deployment. Learn about Arthur Labs' expertise in factory patterns for decentralized commerce.",
+    "publishDate": "2023-10-26",
+    "category": "Smart Contracts"
+  },
+  {
+    "route": "/blogs/smart-contract-security/",
+    "section": "blog",
+    "title": "Automated Security Audit Processes for Smart Contracts",
+    "description": "Learn how to set up continuous security testing pipelines, identify common vulnerabilities, and leverage tools for comprehensive blockchain security checks.",
+    "publishDate": "2025-04-17",
+    "category": "Smart Contracts"
+  },
+  {
+    "route": "/blogs/smart-contracts/",
+    "section": "blog",
+    "title": "Automated Security Audit Processes for Smart Contracts",
+    "description": "Learn how to set up continuous security testing pipelines, identify common vulnerabilities, and leverage tools for comprehensive blockchain security checks.",
+    "publishDate": "2025-04-17",
+    "category": "Smart Contracts"
+  },
+  {
+    "route": "/blogs/state-issued-stablecoins-vs-traditional/",
+    "section": "blog",
+    "title": "State-Issued Stablecoins vs USDC USDT: The Regulatory Divide",
+    "description": "Compare FRNT, state-issued stablecoins with USDC and USDT. Understand the regulatory differences, risk profiles, and why this matters for your crypto strategy.",
+    "publishDate": "2026-02-26",
+    "category": "Crypto Tax"
+  },
+  {
+    "route": "/blogs/supabase-web3/",
+    "section": "blog",
+    "title": "Combining Supabase with Web3: Building Secure, Scalable Backends",
+    "description": "Learn database design patterns for blockchain applications, implementing RLS security for Web3 authentication, and performance optimization strategies for decentralized data.",
+    "publishDate": "2025-04-17",
+    "category": "Backend"
+  },
+  {
+    "route": "/blogs/the-evolution-of-ai-from-rule-based-systems-to-deep-learning/",
+    "section": "blog",
+    "title": "The Evolution of AI: From Rule-Based Systems to Deep Learning",
+    "description": "Explore the fascinating journey of artificial intelligence from its early rule-based beginnings to modern deep learning architectures and their impact on various industries.",
+    "publishDate": "2025-06-02",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "route": "/blogs/token-gated-commerce/",
+    "section": "blog",
+    "title": "Implementing Token-Gated Commerce in Web3 Applications",
+    "description": "Learn the technical setup for NFT-based access systems, integration patterns with existing storefronts, and security considerations for digital ownership verification.",
+    "publishDate": "2025-04-17",
+    "category": "Marketplace"
+  },
+  {
+    "route": "/blogs/web3-business-models/",
+    "section": "blog",
+    "title": "Smarter Than a Contract: How AI is Revolutionizing Smart Contract Development for DeCom",
+    "description": "Explore the intersection of AI and blockchain. Learn how AI-powered tools can accelerate smart contract generation, enhance security auditing, and automate governance for decentralized commerce (DeCom) marketplaces.",
+    "publishDate": "2024-10-27",
+    "category": "Innovation"
+  },
+  {
+    "route": "/blogs/web3-career-opportunities/",
+    "section": "blog",
+    "title": "Private by Design: Leveraging Zero-Knowledge Proofs in DeCom Marketplaces",
+    "description": "Explore the technical implementation of Zero-Knowledge Proofs (ZKPs) to build private and secure decentralized commerce marketplaces, protecting user data without sacrificing on-chain verification.",
+    "publishDate": "2024-05-21",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/web3-future-trends/",
+    "section": "blog",
+    "title": "The Evolving Landscape of Web3: Key Trends Shaping the Future",
+    "description": "Explore the long-term trends in Web3, from DeCom and DeServ to advanced Layer 1 solutions and the rise of decentralized identity, and how these innovations are reshaping digital interaction and commerce.",
+    "publishDate": "2024-07-26",
+    "category": "Web3 Technology"
+  },
+  {
+    "route": "/blogs/web3-marketing-strategies/",
+    "section": "blog",
+    "title": "Gas-Efficient Solidity: Cost-Saving Patterns for High-Volume DeCom Marketplaces",
+    "description": "Learn advanced Solidity patterns to dramatically reduce gas costs in your decentralized commerce marketplace. A technical guide for developers building scalable DeCom platforms on EVM chains.",
+    "publishDate": "2024-10-27",
+    "category": "Technical"
+  },
+  {
+    "route": "/blogs/web3-marketplace-agriculture/",
+    "section": "blog",
+    "title": "Web3 Marketplace for Agriculture: Farm-to-Table Supply Chain on Blockchain",
+    "description": "Learn how blockchain-powered agricultural marketplaces create transparent farm-to-table supply chains, automate crop trading through smart contracts, and unlock new opportunities for Nebraska producers through the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-automotive/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Automotive: Vehicle History on Blockchain & P2P Car Sales",
+    "description": "Learn how blockchain-based vehicle history records, peer-to-peer car sales with smart contract escrow, decentralized parts marketplaces, and tokenized EV charging networks are transforming the automotive industry through the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-education/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Education: Decentralized Learning Platforms & Credential Verification",
+    "description": "Explore how blockchain-powered education marketplaces are transforming credential verification, enabling decentralized tutoring platforms, and creating new models for peer-to-peer learning through smart contract infrastructure like the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-energy/",
+    "section": "blog",
+    "title": "Web3 Marketplace for Energy: Peer-to-Peer Renewable Energy Trading",
+    "description": "Discover how Web3 marketplaces are enabling peer-to-peer solar energy trading, decentralized carbon credit markets, blockchain-powered EV charging networks, and transparent renewable energy certificate systems that bypass utility monopolies.",
+    "publishDate": "2026-03-27",
+    "category": "Decentralized Commerce"
+  },
+  {
+    "route": "/blogs/web3-marketplace-fashion/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Fashion: Authenticity Verification & Sustainable Resale",
+    "description": "Learn how blockchain-powered fashion marketplaces combat counterfeiting through on-chain authenticity verification, enable sustainable resale platforms, support designer-to-consumer direct sales, and unlock the digital fashion economy using DEAN and ROSE infrastructure.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-fitness/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Fitness: Move-to-Earn & Decentralized Personal Training",
+    "description": "Explore how move-to-earn platforms, P2P personal trainer marketplaces, gym membership NFTs, and wellness token economies are reshaping the fitness industry through decentralized infrastructure built on the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-food-delivery/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Food Delivery: Cutting Out Middlemen with Blockchain",
+    "description": "Learn how blockchain-powered food delivery marketplaces are eliminating platform fees, enabling direct restaurant-to-consumer connections, creating delivery driver P2P networks, and building food traceability systems through the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-freelancing/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Freelancing: Decentralized Work Platforms & Smart Contract Escrow",
+    "description": "Explore how blockchain-powered freelancing marketplaces use smart contract escrow for milestone payments, on-chain reputation systems, and decentralized dispute resolution to reduce platform fees and enable borderless payments without intermediaries.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-gaming/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Gaming: In-Game Asset Trading & Play-to-Earn Economies",
+    "description": "Discover how blockchain-powered gaming marketplaces enable true ownership of in-game assets, cross-game item trading, play-to-earn economies, and enforceable secondary market royalties through smart contract infrastructure like the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-healthcare/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Healthcare: Decentralized Medical Supply Chains & Telemedicine",
+    "description": "Discover how blockchain-powered healthcare marketplaces are transforming medical supply chain transparency, telemedicine platforms, patient data ownership, and pharmaceutical verification through decentralized infrastructure like the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-hospitality/",
+    "section": "blog",
+    "title": "Web3 Marketplaces for Hospitality: Decentralized Booking & Tokenized Loyalty Programs",
+    "description": "Discover how decentralized booking platforms and tokenized loyalty programs are eliminating OTA middlemen, reducing commission fees by up to 25%, and transforming hospitality through smart contract reservations and travel DAOs built on the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-marketplace-insurance/",
+    "section": "blog",
+    "title": "Web3 Marketplace for Insurance: Parametric Insurance and Peer-to-Peer Risk Pools",
+    "description": "Learn how blockchain-based insurance marketplaces enable parametric smart contracts, P2P risk pools, and automated claims processing. The insurtech market is projected to exceed $739 billion by 2035 -- Web3 infrastructure is reshaping how risk is pooled, priced, and paid.",
+    "publishDate": "2026-03-27",
+    "category": "Web3 Marketplaces"
+  },
+  {
+    "route": "/blogs/web3-marketplace-legal-services/",
+    "section": "blog",
+    "title": "Web3 Marketplace for Legal Services: Smart Contracts for Legal Agreements and Attorney Matching",
+    "description": "Explore how Web3 marketplaces are transforming the $36 billion legal tech industry with smart contract-based legal agreements, decentralized attorney matching, and blockchain-verified document management using the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Web3 Marketplaces"
+  },
+  {
+    "route": "/blogs/web3-marketplace-logistics/",
+    "section": "blog",
+    "title": "Web3 Marketplace for Logistics: Decentralized Freight and Shipping on Blockchain",
+    "description": "Explore how Web3 marketplace technology is transforming the $11 trillion global logistics industry with decentralized freight matching, smart contract bills of lading, IoT tracking, and cross-border trade finance built on blockchain.",
+    "publishDate": "2026-03-27",
+    "category": "Decentralized Commerce"
+  },
+  {
+    "route": "/blogs/web3-marketplace-real-estate/",
+    "section": "blog",
+    "title": "Web3 Marketplace for Real Estate: How Blockchain Is Transforming Property Transactions",
+    "description": "Explore how blockchain technology and tokenized real estate marketplaces are eliminating escrow delays, reducing agent commissions, and enabling fractional property ownership through smart contract infrastructure like the DEAN System.",
+    "publishDate": "2026-03-27",
+    "category": "Industry Applications"
+  },
+  {
+    "route": "/blogs/web3-startup-funding/",
+    "section": "blog",
+    "title": "Transforming Midwest Manufacturing: A Blockchain Blueprint for Supply Chain Integrity",
+    "description": "Discover how Nebraska and Midwest manufacturers can leverage blockchain and oracle validation to enhance supply chain transparency, combat counterfeiting, and build trust. A practical guide from Arthur Labs.",
+    "publishDate": "2024-10-28",
+    "category": "Manufacturing"
+  },
+  {
+    "route": "/blogs/what-is-hiie/",
+    "section": "blog",
+    "title": "What Is HIIE? The AI Engine That Turns Product Ideas Into Operating Businesses",
+    "description": "What HIIE is: the Arthur Labs AI engine where Camelia and specialist agents turn a plain idea into real CAD, feasibility scores, automations, and a business.",
+    "publishDate": "2026-07-09",
+    "category": "HIIE"
+  },
+  {
+    "route": "/blogs/wyoming-ai-agents-autonomous-business/",
+    "section": "blog",
+    "title": "Wyoming AI Agents: The Dawn of Autonomous Business Entities",
+    "description": "How Wyoming is pioneering the legal framework for AI agents to operate as autonomous business entities through DAOs, smart contracts, and public ledger governance.",
+    "publishDate": "2026-02-26",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/blogs/wyoming-vs-nebraska-crypto-regulation/",
+    "section": "blog",
+    "title": "Wyoming vs Nebraska: Crypto Regulation Comparison 2026",
+    "description": "Compare crypto regulation between Wyoming and Nebraska. Which state offers better opportunities for blockchain business, DAO formation, and crypto tax treatment?",
+    "publishDate": "2026-02-26",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/blogs/wyoming-wyst-fundora-stablecoin-opportunities/",
+    "section": "blog",
+    "title": "Wyoming Stabletoken WYST: The New Stablecoin Economy",
+    "description": "How Fundora, Bulla Network, and the Wyoming Stabletoken are creating a new stablecoin economy with state-backed trust, peer-to-peer lending, and regulatory clarity.",
+    "publishDate": "2026-02-26",
+    "category": "Blockchain"
+  },
+  {
+    "route": "/guides/",
+    "section": "main",
+    "title": "Guides — Definitive Arthur Labs Resources",
+    "description": "Long-form Arthur Labs guides: AI + Web3 integration, crypto tax and Form 1099-DA, DeFi, smart contract development, Web3 marketplaces and business models, and starting a blockchain company in the Midwest.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/guides/ai-web3-integration-guide/",
+    "section": "guide",
+    "title": "AI + Web3: How Artificial Intelligence is Transforming Blockchain Development in 2026",
+    "description": "Comprehensive guide to the convergence of AI and Web3. Explore AI-powered smart contract development, blockchain automation, scalability solutions, and Arthur Labs HIIE and SUSAN systems shaping the future of decentralized technology.",
+    "publishDate": "2026-03-27",
+    "category": "AI & Innovation"
+  },
+  {
+    "route": "/guides/crypto-tax-complete-guide/",
+    "section": "guide",
+    "title": "Crypto Tax Complete Guide: US Cryptocurrency Tax Reporting for 2025-2026",
+    "description": "The definitive guide to US cryptocurrency tax reporting for 2025-2026. Covers IRS Form 1099-DA, FIFO/LIFO/HIFO cost basis methods, DeFi tax events, staking rewards, airdrops, NFT taxation, record keeping, and common mistakes with practical guidance from Arthur Labs.",
+    "publishDate": "2026-03-27",
+    "category": "Guides"
+  },
+  {
+    "route": "/guides/defi-complete-guide/",
+    "section": "guide",
+    "title": "DeFi Explained: The Complete Guide to Decentralized Finance in 2026",
+    "description": "The definitive guide to decentralized finance in 2026. Covers DeFi protocols, yield farming, lending, DEX trading, stablecoins, portfolio management, risks, rewards, and tax implications with practical guidance from Arthur Labs.",
+    "publishDate": "2026-03-27",
+    "category": "Guides"
+  },
+  {
+    "route": "/guides/local-web3-startups/",
+    "section": "guide",
+    "title": "Discover the Arthur Labs Ecosystem: A Comprehensive Whitepaper",
+    "description": "Explore Arthur Labs' innovative ecosystem in blockchain and application development. Learn about our mission, services, and future plans in this comprehensive whitepaper.",
+    "publishDate": "2025-04-18",
+    "category": "Whitepaper"
+  },
+  {
+    "route": "/guides/nebraska-blockchain-business-guide/",
+    "section": "guide",
+    "title": "Nebraska Blockchain Business Guide: Starting a Web3 Company in the Midwest",
+    "description": "The definitive guide to starting a blockchain business in Nebraska. Covers the Financial Innovation Act, LLC formation, tax advantages, the Omaha tech scene, local resources, L2 Nebraska opportunities, comparisons with Wyoming and Delaware, and practical steps for Midwest Web3 entrepreneurs.",
+    "publishDate": "2026-03-27",
+    "category": "Guides"
+  },
+  {
+    "route": "/guides/smart-contract-development-guide/",
+    "section": "guide",
+    "title": "Smart Contract Development: Complete Guide to Building Secure dApps in 2026",
+    "description": "The definitive guide to smart contract development in 2026. Covers Solidity fundamentals, contract factories, security best practices, gas optimization, testing with Foundry and Hardhat, deployment to EVM chains, upgradeable patterns, and oracle integration.",
+    "publishDate": "2026-03-27",
+    "category": "Guides"
+  },
+  {
+    "route": "/guides/web3-business-models-guide/",
+    "section": "guide",
+    "title": "Web3 Business Models: How Entrepreneurs Are Building on Blockchain in 2026",
+    "description": "The definitive guide to Web3 business models in 2026. Explore token economies, DAO treasuries, marketplace models, startup funding, marketing strategies, career paths, and ROI analysis for blockchain-based businesses.",
+    "publishDate": "2026-03-27",
+    "category": "Business & Entrepreneurship"
+  },
+  {
+    "route": "/guides/web3-marketplace-complete-guide/",
+    "section": "guide",
+    "title": "The Complete Guide to Building a Web3 Marketplace in 2026",
+    "description": "The authoritative guide to building, launching, and scaling a Web3 marketplace in 2026. Covers the DEAN System, DeCom infrastructure, multi-chain strategy, smart contract patterns, cost analysis, and real deployment workflows from Arthur Labs.",
+    "publishDate": "2026-03-27",
+    "category": "Guides"
+  },
+  {
+    "route": "/guides/whitepaper-overview/",
+    "section": "guide",
+    "title": "Discover the Arthur Labs Ecosystem: A Comprehensive Whitepaper",
+    "description": "Explore Arthur Labs' innovative ecosystem in blockchain and application development. Learn about our mission, services, and future plans in this comprehensive whitepaper.",
+    "publishDate": "2025-04-18",
+    "category": "Whitepaper"
+  },
+  {
+    "route": "/marketplace/",
+    "section": "main",
+    "title": "Arthur Labs Marketplace",
+    "description": "Arthur Labs Marketplace documentation and resources for blockchain-powered commerce platforms.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/marketplace/common-questions/",
+    "section": "marketplace",
+    "title": "Arthur Labs Marketplace - Common Questions",
+    "description": "Answers to common questions about blockchain technology and Arthur Labs marketplace platforms.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/marketplace/data-compliance/",
+    "section": "marketplace",
+    "title": "Arthur Labs Marketplace - Data Compliance",
+    "description": "How Arthur Labs marketplaces comply with global data protection regulations.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/marketplace/legal-structure/",
+    "section": "marketplace",
+    "title": "Arthur Labs Marketplace - Legal Structure",
+    "description": "Overview of Arthur Labs marketplace organizational structure and roles for participants.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/marketplace/marketplace-questions/",
+    "section": "marketplace",
+    "title": "Arthur Labs Marketplace - Marketplace Questions",
+    "description": "Detailed answers about Arthur Labs marketplace functionality, wallets, and transaction process.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/marketplace/privacy/",
+    "section": "marketplace",
+    "title": "Arthur Labs Marketplace - Privacy Policy",
+    "description": "How we collect, use, and protect your information on Arthur Labs marketplace platforms.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/marketplace/services/",
+    "section": "marketplace",
+    "title": "Arthur Labs Marketplace - Available Services",
+    "description": "Overview of services provided through Arthur Labs marketplace platforms.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/marketplace/smart-contracts/",
+    "section": "marketplace",
+    "title": "Arthur Labs Marketplace - Smart Contract Architecture",
+    "description": "Comprehensive overview of the smart contract infrastructure behind Arthur Labs marketplaces.",
+    "publishDate": "",
+    "category": ""
+  },
+  {
+    "route": "/marketplace/terms/",
+    "section": "marketplace",
+    "title": "Arthur Labs Marketplace - Terms of Service",
+    "description": "Terms of service for using Arthur Labs marketplace platforms.",
+    "publishDate": "",
+    "category": ""
+  }
+]

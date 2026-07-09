@@ -3,7 +3,8 @@ import { HeroPattern } from '@/components/HeroPattern'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'All Blog Posts | Arthur Labs',
+  alternates: { canonical: '/blogs/' },
+  title: 'All Blog Posts',
   description:
     'Explore all Arthur Labs blog posts on blockchain technology, Web3 development, DeFi, smart contracts, and decentralized commerce. Comprehensive guides for developers and businesses.',
   keywords: 'blockchain, web3, defi, smart contracts, crypto, ethereum, decentralized commerce, tutorials',
@@ -20,6 +21,26 @@ export const sections = [
 Explore our comprehensive collection of articles on blockchain technology, Web3 development, decentralized commerce, and more. {{className: 'lead text-black dark:text-gray-200'}}
 
 <div className="not-prose mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<Link href="/blogs/what-is-hiie" className="block p-4 border border-cyan-500/40 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">What Is HIIE? The AI Product Engine</span>
+</Link>
+
+<Link href="/blogs/ai-text-to-cad-manufacturing" className="block p-4 border border-cyan-500/40 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">How AI Text-to-CAD Works</span>
+</Link>
+
+<Link href="/blogs/get-product-manufactured-2026" className="block p-4 border border-cyan-500/40 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">From CAD File to Factory: Get Manufactured in 2026</span>
+</Link>
+
+<Link href="/blogs/arthur-labs-ecosystem-2026" className="block p-4 border border-cyan-500/40 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">The Arthur Labs Ecosystem in 2026</span>
+</Link>
+
+<Link href="/blogs/form-1099-da-guide-2026" className="block p-4 border border-cyan-500/40 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+  <span className="text-sm font-medium text-gray-900 dark:text-white">Form 1099-DA in 2026: The Investor Guide</span>
+</Link>
 
 <Link href="/blogs/dean-system-revolution" className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
   <span className="text-sm font-medium text-gray-900 dark:text-white">Dean system revolution</span>

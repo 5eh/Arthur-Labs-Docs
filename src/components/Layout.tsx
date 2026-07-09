@@ -8,7 +8,7 @@ import { Header } from '@/components/Header'
 import { Navigation } from '@/components/Navigation'
 import { type Section, SectionProvider } from '@/components/SectionProvider'
 import { Unbounded } from 'next/font/google'
-import LogoImage from '@/app/public/logo.png'
+import LogoImage from '../../public/logo.png'
 import Head from 'next/head'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
