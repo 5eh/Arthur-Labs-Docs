@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Unbounded } from 'next/font/google'
-import LogoImage from '@/app/public/logo.png'
+import LogoImage from '../../public/logo.png'
 import { useEffect, useState } from 'react'
 
 const unboundedFont = Unbounded({

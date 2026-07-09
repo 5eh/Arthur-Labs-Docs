@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Arthur Labs Blog</title>
+    <link>https://docs.arthurlabs.net/blogs/</link>
+    <description>Arthur Labs articles on AI product engines (HIIE), Web3 development, digital marketplaces, and crypto compliance.</description>
+    <language>en-us</language>
+    <item>
+      <title>How AI Text-to-CAD Works: From Plain English to Manufacturing-Ready STEP Files</title>
+      <link>https://docs.arthurlabs.net/blogs/ai-text-to-cad-manufacturing/</link>
+      <guid>https://docs.arthurlabs.net/blogs/ai-text-to-cad-manufacturing/</guid>
+      <description>How AI text-to-CAD turns plain English into dimensioned, manufacturing-ready STEP files: mesh vs parametric B-rep, vision quality loops, and honest limits.</description>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Arthur Labs Ecosystem in 2026: HIIE, DEAN, ROSE, QUINN &amp; SUSAN Explained</title>
+      <link>https://docs.arthurlabs.net/blogs/arthur-labs-ecosystem-2026/</link>
+      <guid>https://docs.arthurlabs.net/blogs/arthur-labs-ecosystem-2026/</guid>
+      <description>An authoritative map of Arthur Labs products in 2026: the HIIE workflow operating system plus DEAN, ROSE, QUINN, SUSAN, and how every system fits one mission.</description>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Form 1099-DA in 2026: What Crypto Investors Actually Receive, and What to Do With It</title>
+      <link>https://docs.arthurlabs.net/blogs/form-1099-da-guide-2026/</link>
+      <guid>https://docs.arthurlabs.net/blogs/form-1099-da-guide-2026/</guid>
+      <description>Learn what IRS Form 1099-DA reports for 2025 and 2026 crypto transactions, who sends it, what each box means, and how to reconcile it with your own records.</description>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>From CAD File to Factory: How to Get Your Product Manufactured in 2026</title>
+      <link>https://docs.arthurlabs.net/blogs/get-product-manufactured-2026/</link>
+      <guid>https://docs.arthurlabs.net/blogs/get-product-manufactured-2026/</guid>
+      <description>What factories actually need from you in 2026 — STEP CAD, drawings, tolerances — plus prototyping paths, manufacturer vetting, MOQ math, and real timelines.</description>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>What Is HIIE? The AI Engine That Turns Product Ideas Into Operating Businesses</title>
+      <link>https://docs.arthurlabs.net/blogs/what-is-hiie/</link>
+      <guid>https://docs.arthurlabs.net/blogs/what-is-hiie/</guid>
+      <description>What HIIE is: the Arthur Labs AI engine where Camelia and specialist agents turn a plain idea into real CAD, feasibility scores, automations, and a business.</description>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplace for Agriculture: Farm-to-Table Supply Chain on Blockchain</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-agriculture/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-agriculture/</guid>
+      <description>Learn how blockchain-powered agricultural marketplaces create transparent farm-to-table supply chains, automate crop trading through smart contracts, and unlock new opportunities for Nebraska producers through the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Automotive: Vehicle History on Blockchain &amp; P2P Car Sales</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-automotive/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-automotive/</guid>
+      <description>Learn how blockchain-based vehicle history records, peer-to-peer car sales with smart contract escrow, decentralized parts marketplaces, and tokenized EV charging networks are transforming the automotive industry through the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Education: Decentralized Learning Platforms &amp; Credential Verification</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-education/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-education/</guid>
+      <description>Explore how blockchain-powered education marketplaces are transforming credential verification, enabling decentralized tutoring platforms, and creating new models for peer-to-peer learning through smart contract infrastructure like the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplace for Energy: Peer-to-Peer Renewable Energy Trading</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-energy/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-energy/</guid>
+      <description>Discover how Web3 marketplaces are enabling peer-to-peer solar energy trading, decentralized carbon credit markets, blockchain-powered EV charging networks, and transparent renewable energy certificate systems that bypass utility monopolies.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Fashion: Authenticity Verification &amp; Sustainable Resale</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-fashion/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-fashion/</guid>
+      <description>Learn how blockchain-powered fashion marketplaces combat counterfeiting through on-chain authenticity verification, enable sustainable resale platforms, support designer-to-consumer direct sales, and unlock the digital fashion economy using DEAN and ROSE infrastructure.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Fitness: Move-to-Earn &amp; Decentralized Personal Training</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-fitness/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-fitness/</guid>
+      <description>Explore how move-to-earn platforms, P2P personal trainer marketplaces, gym membership NFTs, and wellness token economies are reshaping the fitness industry through decentralized infrastructure built on the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Food Delivery: Cutting Out Middlemen with Blockchain</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-food-delivery/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-food-delivery/</guid>
+      <description>Learn how blockchain-powered food delivery marketplaces are eliminating platform fees, enabling direct restaurant-to-consumer connections, creating delivery driver P2P networks, and building food traceability systems through the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Freelancing: Decentralized Work Platforms &amp; Smart Contract Escrow</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-freelancing/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-freelancing/</guid>
+      <description>Explore how blockchain-powered freelancing marketplaces use smart contract escrow for milestone payments, on-chain reputation systems, and decentralized dispute resolution to reduce platform fees and enable borderless payments without intermediaries.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Gaming: In-Game Asset Trading &amp; Play-to-Earn Economies</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-gaming/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-gaming/</guid>
+      <description>Discover how blockchain-powered gaming marketplaces enable true ownership of in-game assets, cross-game item trading, play-to-earn economies, and enforceable secondary market royalties through smart contract infrastructure like the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Healthcare: Decentralized Medical Supply Chains &amp; Telemedicine</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-healthcare/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-healthcare/</guid>
+      <description>Discover how blockchain-powered healthcare marketplaces are transforming medical supply chain transparency, telemedicine platforms, patient data ownership, and pharmaceutical verification through decentralized infrastructure like the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplaces for Hospitality: Decentralized Booking &amp; Tokenized Loyalty Programs</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-hospitality/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-hospitality/</guid>
+      <description>Discover how decentralized booking platforms and tokenized loyalty programs are eliminating OTA middlemen, reducing commission fees by up to 25%, and transforming hospitality through smart contract reservations and travel DAOs built on the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplace for Insurance: Parametric Insurance and Peer-to-Peer Risk Pools</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-insurance/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-insurance/</guid>
+      <description>Learn how blockchain-based insurance marketplaces enable parametric smart contracts, P2P risk pools, and automated claims processing. The insurtech market is projected to exceed $739 billion by 2035 -- Web3 infrastructure is reshaping how risk is pooled, priced, and paid.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplace for Legal Services: Smart Contracts for Legal Agreements and Attorney Matching</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-legal-services/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-legal-services/</guid>
+      <description>Explore how Web3 marketplaces are transforming the $36 billion legal tech industry with smart contract-based legal agreements, decentralized attorney matching, and blockchain-verified document management using the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplace for Logistics: Decentralized Freight and Shipping on Blockchain</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-logistics/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-logistics/</guid>
+      <description>Explore how Web3 marketplace technology is transforming the $11 trillion global logistics industry with decentralized freight matching, smart contract bills of lading, IoT tracking, and cross-border trade finance built on blockchain.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web3 Marketplace for Real Estate: How Blockchain Is Transforming Property Transactions</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketplace-real-estate/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketplace-real-estate/</guid>
+      <description>Explore how blockchain technology and tokenized real estate marketplaces are eliminating escrow delays, reducing agent commissions, and enabling fractional property ownership through smart contract infrastructure like the DEAN System.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>AI Solving Blockchain Scalability: The Missing Puzzle Piece</title>
+      <link>https://docs.arthurlabs.net/blogs/ai-solving-blockchain-scalability/</link>
+      <guid>https://docs.arthurlabs.net/blogs/ai-solving-blockchain-scalability/</guid>
+      <description>How artificial intelligence solves the blockchain trilemma — fee optimization, fraud detection, governance automation, and peer-to-peer payment scalability.</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>DAO Business Voting: On-Chain Governance for Real Decisions</title>
+      <link>https://docs.arthurlabs.net/blogs/dao-business-voting-governance/</link>
+      <guid>https://docs.arthurlabs.net/blogs/dao-business-voting-governance/</guid>
+      <description>How DAOs enable decentralized business governance with transparent voting, automated execution, and legal recognition. The future of corporate decision-making on public ledgers.</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>DeFi Lending Tax Guide: Wyoming, Fundora, and Stablecoin Yields</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-lending-tax-guide/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-lending-tax-guide/</guid>
+      <description>Learn how to report DeFi lending income, yield farming rewards, and interest from platforms like Fundora. Complete tax guide for 2026.</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Non-Private Credentials: Verifiable Identity Without Exposure</title>
+      <link>https://docs.arthurlabs.net/blogs/non-private-credentials-verifiable-identity/</link>
+      <guid>https://docs.arthurlabs.net/blogs/non-private-credentials-verifiable-identity/</guid>
+      <description>Discover how non-private credentials allow blockchain users to prove identity and eligibility without revealing sensitive personal data. The future of privacy-preserving verification.</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>State-Issued Stablecoins vs USDC USDT: The Regulatory Divide</title>
+      <link>https://docs.arthurlabs.net/blogs/state-issued-stablecoins-vs-traditional/</link>
+      <guid>https://docs.arthurlabs.net/blogs/state-issued-stablecoins-vs-traditional/</guid>
+      <description>Compare FRNT, state-issued stablecoins with USDC and USDT. Understand the regulatory differences, risk profiles, and why this matters for your crypto strategy.</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wyoming AI Agents: The Dawn of Autonomous Business Entities</title>
+      <link>https://docs.arthurlabs.net/blogs/wyoming-ai-agents-autonomous-business/</link>
+      <guid>https://docs.arthurlabs.net/blogs/wyoming-ai-agents-autonomous-business/</guid>
+      <description>How Wyoming is pioneering the legal framework for AI agents to operate as autonomous business entities through DAOs, smart contracts, and public ledger governance.</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wyoming vs Nebraska: Crypto Regulation Comparison 2026</title>
+      <link>https://docs.arthurlabs.net/blogs/wyoming-vs-nebraska-crypto-regulation/</link>
+      <guid>https://docs.arthurlabs.net/blogs/wyoming-vs-nebraska-crypto-regulation/</guid>
+      <description>Compare crypto regulation between Wyoming and Nebraska. Which state offers better opportunities for blockchain business, DAO formation, and crypto tax treatment?</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wyoming Stabletoken WYST: The New Stablecoin Economy</title>
+      <link>https://docs.arthurlabs.net/blogs/wyoming-wyst-fundora-stablecoin-opportunities/</link>
+      <guid>https://docs.arthurlabs.net/blogs/wyoming-wyst-fundora-stablecoin-opportunities/</guid>
+      <description>How Fundora, Bulla Network, and the Wyoming Stabletoken are creating a new stablecoin economy with state-backed trust, peer-to-peer lending, and regulatory clarity.</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>A Guide to Optimizing Next.js Applications</title>
+      <link>https://docs.arthurlabs.net/blogs/a-guide-to-optimizing-nextjs-applications/</link>
+      <guid>https://docs.arthurlabs.net/blogs/a-guide-to-optimizing-nextjs-applications/</guid>
+      <description>Learn essential strategies to enhance the performance of your Next.js applications through advanced optimization techniques including code splitting, image optimization, caching strategies, and server-side optimizations.</description>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>From Gigs to Chains: Architecting a Decentralized Service Marketplace (DeServ)</title>
+      <link>https://docs.arthurlabs.net/blogs/ai-web3-development/</link>
+      <guid>https://docs.arthurlabs.net/blogs/ai-web3-development/</guid>
+      <description>A technical guide to building trust-based service marketplaces on the blockchain. Explore smart contract escrow, milestone payments, and on-chain reputation systems for the future of work.</description>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Leveraging Blockchain Infrastructure for Next-Generation Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/blockchain-infrastructure-marketplaces/</link>
+      <guid>https://docs.arthurlabs.net/blogs/blockchain-infrastructure-marketplaces/</guid>
+      <description>Discover how robust blockchain infrastructure, exemplified by Arthur Labs' VAULT, is reshaping global commerce through enhanced transparency, security, and innovative smart contract standards for real-world assets and services.</description>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>5 Compelling Reasons to Utilize Decentralized Marketplace Platforms for Your Business</title>
+      <link>https://docs.arthurlabs.net/blogs/decentralized-marketplace-benefits/</link>
+      <guid>https://docs.arthurlabs.net/blogs/decentralized-marketplace-benefits/</guid>
+      <description>Discover why leveraging decentralized marketplace platforms, like those enabled by Arthur Labs, can revolutionize your e-commerce business, offering enhanced transparency, security, and reduced operational costs in the Web3 era.</description>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>From Proof-of-Concept to Production: Scaling AI Solutions</title>
+      <link>https://docs.arthurlabs.net/blogs/from-proof-of-concept-to-production-scaling-ai-solutions/</link>
+      <guid>https://docs.arthurlabs.net/blogs/from-proof-of-concept-to-production-scaling-ai-solutions/</guid>
+      <description>Learn the strategic approach for successfully transitioning AI projects from proof-of-concept to production, including best practices, common challenges, and key considerations for scaling machine learning solutions.</description>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Building Trust in Peer-to-Peer Commerce: The Power of Oracle Validation</title>
+      <link>https://docs.arthurlabs.net/blogs/oracle-validation-p2p-commerce/</link>
+      <guid>https://docs.arthurlabs.net/blogs/oracle-validation-p2p-commerce/</guid>
+      <description>Discover how oracle validation systems bridge the gap between digital agreements and real-world outcomes, fostering trust and reliability in decentralized peer-to-peer commerce platforms.</description>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Evolution of AI: From Rule-Based Systems to Deep Learning</title>
+      <link>https://docs.arthurlabs.net/blogs/the-evolution-of-ai-from-rule-based-systems-to-deep-learning/</link>
+      <guid>https://docs.arthurlabs.net/blogs/the-evolution-of-ai-from-rule-based-systems-to-deep-learning/</guid>
+      <description>Explore the fascinating journey of artificial intelligence from its early rule-based beginnings to modern deep learning architectures and their impact on various industries.</description>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Launch Your Marketplace in Days: A Use Case for Arthur Labs' DEAN System</title>
+      <link>https://docs.arthurlabs.net/blogs/marketplace-use-case-arthur-labs/</link>
+      <guid>https://docs.arthurlabs.net/blogs/marketplace-use-case-arthur-labs/</guid>
+      <description>Discover how Arthur Labs' DEAN system revolutionizes marketplace creation, enabling entrepreneurs to launch Web3 platforms in days, not months. Explore ideal use cases and customers.</description>
+      <pubDate>Thu, 15 May 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>10 Common Design Issues Small Businesses Make on Their Websites</title>
+      <link>https://docs.arthurlabs.net/blogs/10-common-errors/</link>
+      <guid>https://docs.arthurlabs.net/blogs/10-common-errors/</guid>
+      <description>Learn about the most common website design mistakes small businesses make and how to avoid them. Expert insights on navigation, content structure, mobile UX, and more.</description>
+      <pubDate>Mon, 21 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Why You Should Make a Beautiful Website: Strategic Business Benefits</title>
+      <link>https://docs.arthurlabs.net/blogs/beautiful-website/</link>
+      <guid>https://docs.arthurlabs.net/blogs/beautiful-website/</guid>
+      <description>Discover how investing in a beautiful website drives SEO benefits, increases client satisfaction, reduces maintenance, and builds brand credibility.</description>
+      <pubDate>Sun, 20 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Why Do We Need Blockchains?</title>
+      <link>https://docs.arthurlabs.net/blogs/blockchain/</link>
+      <guid>https://docs.arthurlabs.net/blogs/blockchain/</guid>
+      <description>Explore how blockchain technology enables peer-to-peer economies, transparency, and equal global opportunities for entrepreneurs and small players.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Integrating Claude CLI with Blockchain Development Workflows</title>
+      <link>https://docs.arthurlabs.net/blogs/claude-blockchain/</link>
+      <guid>https://docs.arthurlabs.net/blogs/claude-blockchain/</guid>
+      <description>Learn how to leverage AI for smart contract generation, automate technical documentation, and optimize code through AI assistance in blockchain development.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Automated Content Strategy for Web3 Projects</title>
+      <link>https://docs.arthurlabs.net/blogs/content-strategy/</link>
+      <guid>https://docs.arthurlabs.net/blogs/content-strategy/</guid>
+      <description>Learn how to set up AI-powered content generation across platforms, create blockchain-specific content templates, and measure engagement to optimize community outreach.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>What is Decentralized Commerce (DeCom)?</title>
+      <link>https://docs.arthurlabs.net/blogs/decom/</link>
+      <guid>https://docs.arthurlabs.net/blogs/decom/</guid>
+      <description>Discover how Decentralized Commerce (DeCom) is revolutionizing supply chains with transparency in deliveries, fulfillment, and product authenticity.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>EVM Chain Deployment: Technical Considerations and Best Practices</title>
+      <link>https://docs.arthurlabs.net/blogs/evm-chain-deployment/</link>
+      <guid>https://docs.arthurlabs.net/blogs/evm-chain-deployment/</guid>
+      <description>Explore key factors for different EVM environments, gas optimization strategies, and cross-chain compatibility techniques for successful smart contract deployment.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Corruption in Finance: How Blockchain Enables Transparent Governance</title>
+      <link>https://docs.arthurlabs.net/blogs/finance/</link>
+      <guid>https://docs.arthurlabs.net/blogs/finance/</guid>
+      <description>Explore how blockchain technology addresses corruption in financial systems by enforcing transparency in transactions and voting, eliminating closed-door authority, and creating sustainable bureaucratic structures.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Full-Stack Application Generation for Web3 Projects</title>
+      <link>https://docs.arthurlabs.net/blogs/full-stack-generation/</link>
+      <guid>https://docs.arthurlabs.net/blogs/full-stack-generation/</guid>
+      <description>Learn techniques for automating frontend and backend development, customizing templates for blockchain use cases, and configuring CI/CD pipelines for dApps.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Key Leaders in DePIN, DeCom, and RWA</title>
+      <link>https://docs.arthurlabs.net/blogs/leaders/</link>
+      <guid>https://docs.arthurlabs.net/blogs/leaders/</guid>
+      <description>Explore the influential projects and innovators building the future of Decentralized Physical Infrastructure Networks, Decentralized Commerce, and Real-World Assets on blockchain.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Mastering Web3 Development: A Complete Developer's Guide</title>
+      <link>https://docs.arthurlabs.net/blogs/mastering-web3-development/</link>
+      <guid>https://docs.arthurlabs.net/blogs/mastering-web3-development/</guid>
+      <description>Learn key frameworks, best practices for blockchain integration, and community-driven development approaches for Web3 development.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Model Context Providers: Building Smarter Blockchain Applications</title>
+      <link>https://docs.arthurlabs.net/blogs/model-context-providers/</link>
+      <guid>https://docs.arthurlabs.net/blogs/model-context-providers/</guid>
+      <description>Learn how Model Context Providers (MCPs) streamline blockchain development workflows, implementation strategies for different project types, and performance optimization techniques.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Multi-Chain Marketplace Creation: Technical Implementation Guide</title>
+      <link>https://docs.arthurlabs.net/blogs/multi-chain-marketplace/</link>
+      <guid>https://docs.arthurlabs.net/blogs/multi-chain-marketplace/</guid>
+      <description>Learn architecture patterns for cross-chain compatibility, solutions for seamless asset transfers, and performance optimization techniques for decentralized commerce.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How to Thrive as a Remote Developer</title>
+      <link>https://docs.arthurlabs.net/blogs/remote/</link>
+      <guid>https://docs.arthurlabs.net/blogs/remote/</guid>
+      <description>Discover the opportunities and challenges of remote software development, including global opportunities, cost-saving strategies, travel flexibility, and overcoming isolation as a digital nomad.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Automated Security Audit Processes for Smart Contracts</title>
+      <link>https://docs.arthurlabs.net/blogs/smart-contract-security/</link>
+      <guid>https://docs.arthurlabs.net/blogs/smart-contract-security/</guid>
+      <description>Learn how to set up continuous security testing pipelines, identify common vulnerabilities, and leverage tools for comprehensive blockchain security checks.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Automated Security Audit Processes for Smart Contracts</title>
+      <link>https://docs.arthurlabs.net/blogs/smart-contracts/</link>
+      <guid>https://docs.arthurlabs.net/blogs/smart-contracts/</guid>
+      <description>Learn how to set up continuous security testing pipelines, identify common vulnerabilities, and leverage tools for comprehensive blockchain security checks.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Combining Supabase with Web3: Building Secure, Scalable Backends</title>
+      <link>https://docs.arthurlabs.net/blogs/supabase-web3/</link>
+      <guid>https://docs.arthurlabs.net/blogs/supabase-web3/</guid>
+      <description>Learn database design patterns for blockchain applications, implementing RLS security for Web3 authentication, and performance optimization strategies for decentralized data.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Implementing Token-Gated Commerce in Web3 Applications</title>
+      <link>https://docs.arthurlabs.net/blogs/token-gated-commerce/</link>
+      <guid>https://docs.arthurlabs.net/blogs/token-gated-commerce/</guid>
+      <description>Learn the technical setup for NFT-based access systems, integration patterns with existing storefronts, and security considerations for digital ownership verification.</description>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>5 Upcoming Trends in Blockchain &amp; Web3 That Will Shape 2025</title>
+      <link>https://docs.arthurlabs.net/blogs/blockchain-web3-trends-2025/</link>
+      <guid>https://docs.arthurlabs.net/blogs/blockchain-web3-trends-2025/</guid>
+      <description>Explore the top blockchain and Web3 trends poised to reshape 2025: advanced Layer 2s &amp; modularity, the rise of DeCom/DeServ, and mature RWA tokenization with robust oracle validation.</description>
+      <pubDate>Fri, 22 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Transforming Midwest Manufacturing: A Blockchain Blueprint for Supply Chain Integrity</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-startup-funding/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-startup-funding/</guid>
+      <description>Discover how Nebraska and Midwest manufacturers can leverage blockchain and oracle validation to enhance supply chain transparency, combat counterfeiting, and build trust. A practical guide from Arthur Labs.</description>
+      <pubDate>Mon, 28 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Beyond Single-Chain Limits: Architecting a Multi-Chain DeCom Marketplace</title>
+      <link>https://docs.arthurlabs.net/blogs/ai-blockchain-automation/</link>
+      <guid>https://docs.arthurlabs.net/blogs/ai-blockchain-automation/</guid>
+      <description>Learn how to build a unified decentralized commerce (DeCom) experience across multiple EVM chains. A technical guide to state management, user identity, and contract architecture for scalable marketplaces.</description>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Tokenizing Real-World Assets: A Blueprint for Nebraska's Agricultural Sector</title>
+      <link>https://docs.arthurlabs.net/blogs/crypto-regulatory-updates/</link>
+      <guid>https://docs.arthurlabs.net/blogs/crypto-regulatory-updates/</guid>
+      <description>Discover how blockchain and oracle validation can tokenize real-world agricultural assets in Nebraska, enhancing supply chain transparency, creating new investment opportunities, and boosting the local economy.</description>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Beyond the Build: A Guide to DAO Governance for DeCom Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-lending-platforms/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-lending-platforms/</guid>
+      <description>Launching a decentralized marketplace is just the beginning. Learn how to establish robust DAO governance with tokenomics, voting, and treasury management to ensure long-term, community-driven success.</description>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Factory Pattern: Automating Smart Contract Deployment for Scalable Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-risks-rewards/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-risks-rewards/</guid>
+      <description>Learn how the smart contract factory pattern accelerates marketplace creation from months to days. A technical guide for developers on building scalable, multi-instance Web3 platforms with Arthur Labs' DEAN system.</description>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Decentralized Delivery (DeDe): Building Trust in the Last Mile with Blockchain Oracles</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-stablecoins-guide/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-stablecoins-guide/</guid>
+      <description>Explore how Decentralized Delivery (DeDe) leverages blockchain oracles and smart contracts to create a transparent, secure, and automated last-mile delivery ecosystem. A technical guide for marketplace builders.</description>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Smarter Than a Contract: How AI is Revolutionizing Smart Contract Development for DeCom</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-business-models/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-business-models/</guid>
+      <description>Explore the intersection of AI and blockchain. Learn how AI-powered tools can accelerate smart contract generation, enhance security auditing, and automate governance for decentralized commerce (DeCom) marketplaces.</description>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Gas-Efficient Solidity: Cost-Saving Patterns for High-Volume DeCom Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-marketing-strategies/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-marketing-strategies/</guid>
+      <description>Learn advanced Solidity patterns to dramatically reduce gas costs in your decentralized commerce marketplace. A technical guide for developers building scalable DeCom platforms on EVM chains.</description>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>From Farm to Fork: A Technical Guide to Oracle-Validated Supply Chains</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-yield-farming-basics/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-yield-farming-basics/</guid>
+      <description>Discover how to build a transparent, oracle-validated agricultural supply chain on the blockchain. A deep dive into smart contracts, IoT integration, and real-world asset verification.</description>
+      <pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Secure Escrow for Decentralized Commerce: A Deep Dive into Payment Proxy Contracts</title>
+      <link>https://docs.arthurlabs.net/blogs/secure-escrow-decentralized-commerce/</link>
+      <guid>https://docs.arthurlabs.net/blogs/secure-escrow-decentralized-commerce/</guid>
+      <description>Learn how Arthur Labs utilizes payment proxy contracts to create secure, trustless escrow systems for Web3 marketplaces, protecting both buyers and sellers in peer-to-peer transactions.</description>
+      <pubDate>Sat, 26 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Backbone of DeCom: Why Robust Blockchain Infrastructure is Essential for Next-Generation Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/decom-blockchain-infrastructure/</link>
+      <guid>https://docs.arthurlabs.net/blogs/decom-blockchain-infrastructure/</guid>
+      <description>Explore the critical role of blockchain infrastructure in building transparent, efficient, and secure decentralized commerce (DeCom) platforms. Learn about smart contracts, oracles, and scalable solutions.</description>
+      <pubDate>Thu, 15 Aug 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>5 Upcoming Trends in Blockchain &amp; Web3 That Will Shape 2025</title>
+      <link>https://docs.arthurlabs.net/blogs/blockchain-web3-trends-2025-part2/</link>
+      <guid>https://docs.arthurlabs.net/blogs/blockchain-web3-trends-2025-part2/</guid>
+      <description>Discover the top blockchain and Web3 trends poised to revolutionize the digital landscape in 2025, from advanced Layer 2 solutions and RWA tokenization to AI integration and decentralized identity.</description>
+      <pubDate>Wed, 31 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Gas-less Transactions: Removing Barriers to Web3 Adoption</title>
+      <link>https://docs.arthurlabs.net/blogs/gasless-transactions-web3/</link>
+      <guid>https://docs.arthurlabs.net/blogs/gasless-transactions-web3/</guid>
+      <description>Discover how gas-less transactions, enabled by account abstraction and meta-transactions, are revolutionizing the Web3 user experience. Learn how Arthur Labs is leveraging these innovations to build more accessible decentralized marketplaces, especially for businesses in Nebraska and the Midwest.</description>
+      <pubDate>Tue, 30 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Launch Your Web3 Marketplace in Days: A Deep Dive into the DEAN System</title>
+      <link>https://docs.arthurlabs.net/blogs/dean-system-deep-dive/</link>
+      <guid>https://docs.arthurlabs.net/blogs/dean-system-deep-dive/</guid>
+      <description>Discover how the DEAN System by Arthur Labs revolutionizes Web3 marketplace creation, enabling entrepreneurs and developers to deploy feature-rich, decentralized commerce platforms rapidly. Explore its core functionalities, benefits, and ideal use cases for building Real World Goods (RWG), Services (RWS), and Deliveries (RWD) marketplaces.</description>
+      <pubDate>Mon, 29 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Accelerating Marketplace Development: How Arthur Labs' DEAN System Empowers Web3 Entrepreneurs</title>
+      <link>https://docs.arthurlabs.net/blogs/dean-entrepreneurs-guide/</link>
+      <guid>https://docs.arthurlabs.net/blogs/dean-entrepreneurs-guide/</guid>
+      <description>Discover how Arthur Labs' DEAN system, a digital bazaar factory, rapidly deploys Web3 marketplaces for real-world goods, services, and deliveries, reducing development time from months to days.</description>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Ethereum L2s: Affordable Marketplace Development for Nebraska Businesses</title>
+      <link>https://docs.arthurlabs.net/blogs/ethereum-l2-nebraska/</link>
+      <guid>https://docs.arthurlabs.net/blogs/ethereum-l2-nebraska/</guid>
+      <description>Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum are making Web3 marketplace development accessible and affordable for small businesses in Nebraska and the Midwest. Learn how Arthur Labs leverages these technologies.</description>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How Ethereum Layer 2s Boost Nebraska's Small Business Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/ethereum-l2-nebraska-small-business/</link>
+      <guid>https://docs.arthurlabs.net/blogs/ethereum-l2-nebraska-small-business/</guid>
+      <description>Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum are making Web3 marketplace development affordable and accessible for small businesses in Nebraska, driving innovation in the Midwest with Arthur Labs.</description>
+      <pubDate>Sat, 27 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>React vs. Vue: The Ultimate Web Development Comparison Guide</title>
+      <link>https://docs.arthurlabs.net/blogs/react-vue-web/</link>
+      <guid>https://docs.arthurlabs.net/blogs/react-vue-web/</guid>
+      <description>An in-depth comparison of React and Vue.js, two leading frontend JavaScript frameworks, covering performance, learning curve, ecosystem, and use cases to help developers choose the right tool.</description>
+      <pubDate>Sat, 27 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>5 Compelling Reasons to Utilize Arthur Labs' Blockchain Infrastructure for Your Business</title>
+      <link>https://docs.arthurlabs.net/blogs/5-compelling-reasons-to-utilize-arthur-labs-blockchain-infrastructure-for-your-business/</link>
+      <guid>https://docs.arthurlabs.net/blogs/5-compelling-reasons-to-utilize-arthur-labs-blockchain-infrastructure-for-your-business/</guid>
+      <description>Discover the key benefits of leveraging Arthur Labs' blockchain infrastructure for your business, from enhanced transparency and security to accelerated marketplace deployment and robust smart contract standards.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Affordable Marketplace Development: Leveraging Ethereum Layer 2s for Nebraska Businesses</title>
+      <link>https://docs.arthurlabs.net/blogs/affordable-l2-nebraska-business/</link>
+      <guid>https://docs.arthurlabs.net/blogs/affordable-l2-nebraska-business/</guid>
+      <description>Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum, combined with Arthur Labs' expertise, make Web3 marketplace development accessible and cost-effective for small businesses in Nebraska and the Midwest.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Accelerating Web3 Marketplace Development with Arthur Labs' DEAN System</title>
+      <link>https://docs.arthurlabs.net/blogs/dean-marketplace-development/</link>
+      <guid>https://docs.arthurlabs.net/blogs/dean-marketplace-development/</guid>
+      <description>Discover how the DEAN system by Arthur Labs empowers developers to rapidly build and deploy Web3 marketplaces, reducing development time from months to days. Explore its features and benefits for decentralized commerce.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How to Successfully Onboard Decentralized Commerce (DeCom) Solutions to Your Small Business</title>
+      <link>https://docs.arthurlabs.net/blogs/decom-small-business-guide/</link>
+      <guid>https://docs.arthurlabs.net/blogs/decom-small-business-guide/</guid>
+      <description>A step-by-step guide for small businesses to integrate decentralized commerce (DeCom) solutions, leveraging blockchain for transparency, security, and reduced costs. Learn how Arthur Labs can help.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Building EVM-Compatible Smart Contracts for Commerce: A Developer's Guide to Arthur Labs' Contract Standards</title>
+      <link>https://docs.arthurlabs.net/blogs/evm-smart-contracts-commerce/</link>
+      <guid>https://docs.arthurlabs.net/blogs/evm-smart-contracts-commerce/</guid>
+      <description>A developer's guide to building secure and efficient EVM-compatible smart contracts for Web3 commerce using Arthur Labs' robust contract standards and patterns, focusing on Solidity, factory contracts, payment proxies, and upgradeability.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>L2s for Nebraska: Affordable Marketplaces with Optimism &amp; Arbitrum</title>
+      <link>https://docs.arthurlabs.net/blogs/l2-nebraska-marketplaces/</link>
+      <guid>https://docs.arthurlabs.net/blogs/l2-nebraska-marketplaces/</guid>
+      <description>Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum make Web3 marketplace development accessible and cost-effective for small businesses in Nebraska.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Launch Web3 Marketplaces in Days, Not Months: Inside Arthur Labs' DEAN System</title>
+      <link>https://docs.arthurlabs.net/blogs/launch-web3-marketplace-days/</link>
+      <guid>https://docs.arthurlabs.net/blogs/launch-web3-marketplace-days/</guid>
+      <description>Discover how Arthur Labs' DEAN System, a digital bazaar factory, drastically reduces Web3 marketplace development time. Build customizable, blockchain-integrated platforms for RWA, RWS, and RWD with unprecedented speed.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Rapidly Deploy Web3 Marketplaces with the DEAN System</title>
+      <link>https://docs.arthurlabs.net/blogs/rapid-web3-marketplace-deployment/</link>
+      <guid>https://docs.arthurlabs.net/blogs/rapid-web3-marketplace-deployment/</guid>
+      <description>Discover how Arthur Labs' DEAN System empowers entrepreneurs to launch custom Web3 marketplaces in days, not months. Explore its features, benefits, and ideal use cases for decentralized commerce.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>ROI Analysis: Web3 Marketplaces vs. Traditional E-commerce</title>
+      <link>https://docs.arthurlabs.net/blogs/roi-web3-vs-ecommerce/</link>
+      <guid>https://docs.arthurlabs.net/blogs/roi-web3-vs-ecommerce/</guid>
+      <description>Explore the comprehensive ROI of Web3 marketplace development compared to traditional e-commerce. Discover how blockchain, smart contracts, and EVM-compatible solutions can enhance efficiency, transparency, and profitability for your business. An Arthur Labs analysis for tech-forward entrepreneurs.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Evolving Landscape of Web3: Key Trends Shaping the Future</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-future-trends/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-future-trends/</guid>
+      <description>Explore the long-term trends in Web3, from DeCom and DeServ to advanced Layer 1 solutions and the rise of decentralized identity, and how these innovations are reshaping digital interaction and commerce.</description>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The DEAN System: Revolutionizing Marketplace Development from Months to Days</title>
+      <link>https://docs.arthurlabs.net/blogs/dean-system-revolution/</link>
+      <guid>https://docs.arthurlabs.net/blogs/dean-system-revolution/</guid>
+      <description>Discover how the DEAN System by Arthur Labs drastically reduces Web3 marketplace development time from months to mere days, empowering entrepreneurs with rapid deployment and configurable solutions for decentralized commerce.</description>
+      <pubDate>Tue, 23 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Beyond Escrow: Designing a Complete Decentralized Dispute Resolution System for DeCom Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/blockchain-gaming-nfts/</link>
+      <guid>https://docs.arthurlabs.net/blogs/blockchain-gaming-nfts/</guid>
+      <description>Explore the architecture of a robust Decentralized Dispute Resolution (DDR) system. Learn how to build trust in your DeCom marketplace by combining multi-sig escrows, oracle-validated evidence, and community-driven juries.</description>
+      <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>From Clicks to Chains: How Account Abstraction is Revolutionizing Web3 User Experience for Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-investing-beginners/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-investing-beginners/</guid>
+      <description>Discover how Account Abstraction (ERC-4337) removes Web3 friction points like seed phrases and gas fees, enabling seamless, Web2-like user experiences on your decentralized marketplace. A technical guide for developers and entrepreneurs.</description>
+      <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Holy Grail of DeCom: Combining Account Abstraction and Oracles for Seamless Real-World Transactions</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-portfolio-management/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-portfolio-management/</guid>
+      <description>Discover how integrating ERC-4337 Account Abstraction with real-world oracle validation creates a frictionless user experience for decentralized commerce, bridging the gap between Web2 usability and Web3 security.</description>
+      <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Affordable DeCom: How Layer 2s Like Arbitrum &amp; Optimism Empower Nebraska's Marketplace Builders</title>
+      <link>https://docs.arthurlabs.net/blogs/nebraska-blockchain-opportunities/</link>
+      <guid>https://docs.arthurlabs.net/blogs/nebraska-blockchain-opportunities/</guid>
+      <description>Discover how Ethereum Layer 2 solutions like Arbitrum and Optimism drastically reduce gas fees, making decentralized commerce (DeCom) marketplaces a viable and affordable option for Nebraska's small businesses and entrepreneurs.</description>
+      <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Migrating from Shopify to a Decentralized Marketplace: A Practical Guide</title>
+      <link>https://docs.arthurlabs.net/blogs/shopify-to-decentralized-marketplace/</link>
+      <guid>https://docs.arthurlabs.net/blogs/shopify-to-decentralized-marketplace/</guid>
+      <description>Learn the key steps, benefits, and technical considerations for migrating your e-commerce store from a centralized platform like Shopify to a decentralized, blockchain-powered marketplace with Arthur Labs.</description>
+      <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Private by Design: Leveraging Zero-Knowledge Proofs in DeCom Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/web3-career-opportunities/</link>
+      <guid>https://docs.arthurlabs.net/blogs/web3-career-opportunities/</guid>
+      <description>Explore the technical implementation of Zero-Knowledge Proofs (ZKPs) to build private and secure decentralized commerce marketplaces, protecting user data without sacrificing on-chain verification.</description>
+      <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Bridging Two Worlds: A Technical Blueprint for Hybrid Web2/Web3 Marketplaces</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-dex-trading/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-dex-trading/</guid>
+      <description>Explore the architecture of hybrid marketplaces that merge Web2's ease of use with Web3's trust. This guide covers fiat payment integration, off-chain data validation via oracles, and seamless user onboarding for decentralized commerce.</description>
+      <pubDate>Thu, 16 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Building Blockchain Marketplaces for Nebraska's Agricultural Sector</title>
+      <link>https://docs.arthurlabs.net/blogs/blockchain-nebraska-agriculture/</link>
+      <guid>https://docs.arthurlabs.net/blogs/blockchain-nebraska-agriculture/</guid>
+      <description>Discover how Arthur Labs is leveraging blockchain technology to create transparent and efficient marketplaces for Nebraska's vital agricultural industry, enhancing supply chains and empowering local producers.</description>
+      <pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Accelerate Your Web3 Marketplace Launch with the DEAN System</title>
+      <link>https://docs.arthurlabs.net/blogs/dean-system-launch-guide/</link>
+      <guid>https://docs.arthurlabs.net/blogs/dean-system-launch-guide/</guid>
+      <description>Discover how Arthur Labs' DEAN System, a digital bazaar factory, empowers entrepreneurs to rapidly deploy Web3-compatible marketplaces for commerce, services, or delivery, cutting development time from months to days.</description>
+      <pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Launch Your Web3 Marketplace in Days: A DEAN System Use Case</title>
+      <link>https://docs.arthurlabs.net/blogs/dean-use-case-guide/</link>
+      <guid>https://docs.arthurlabs.net/blogs/dean-use-case-guide/</guid>
+      <description>Discover how Arthur Labs' DEAN system empowers entrepreneurs to rapidly build and deploy custom Web3 marketplaces for goods, services, and deliveries, slashing development time and costs.</description>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Affordable Web3 Marketplaces: How Ethereum L2s Empower Nebraska Businesses</title>
+      <link>https://docs.arthurlabs.net/blogs/ethereum-l2-nebraska-business/</link>
+      <guid>https://docs.arthurlabs.net/blogs/ethereum-l2-nebraska-business/</guid>
+      <description>Discover how Ethereum Layer 2 solutions like Optimism and Arbitrum slash costs, making decentralized marketplace development accessible for Nebraska's small businesses. Arthur Labs explains.</description>
+      <pubDate>Wed, 15 Nov 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Beyond the Metaverse: Securing Real-World Commerce with Oracle-Validated NFTs</title>
+      <link>https://docs.arthurlabs.net/blogs/defi-passive-income-guide/</link>
+      <guid>https://docs.arthurlabs.net/blogs/defi-passive-income-guide/</guid>
+      <description>Discover how oracle validation systems bridge the gap between blockchain and physical goods, enabling secure, transparent, and automated Real-World Commerce (RWC) marketplaces.</description>
+      <pubDate>Thu, 26 Oct 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Launch Your Niche Web3 Marketplace in Days with Arthur Labs' DEAN System</title>
+      <link>https://docs.arthurlabs.net/blogs/launch-niche-web3-marketplace/</link>
+      <guid>https://docs.arthurlabs.net/blogs/launch-niche-web3-marketplace/</guid>
+      <description>Discover how entrepreneurs and developers can leverage Arthur Labs' DEAN system to rapidly deploy custom Web3 marketplaces, overcoming traditional development hurdles and tapping into the power of decentralized commerce.</description>
+      <pubDate>Thu, 26 Oct 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Smart Contract Factories: Automating Commerce Contract Deployment</title>
+      <link>https://docs.arthurlabs.net/blogs/smart-contract-factories/</link>
+      <guid>https://docs.arthurlabs.net/blogs/smart-contract-factories/</guid>
+      <description>Discover how smart contract factories streamline the creation of commerce contracts, reduce gas costs, and enable rapid marketplace deployment. Learn about Arthur Labs' expertise in factory patterns for decentralized commerce.</description>
+      <pubDate>Thu, 26 Oct 2023 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
