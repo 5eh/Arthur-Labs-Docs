@@ -230,7 +230,18 @@ export const navigation: Array<NavGroup> = [
     title: 'Main',
     links: [
       { title: 'Home', href: '/' },
-      { title: 'All Blogs (72)', href: '/blogs' },
+      { title: 'All Blogs (98)', href: '/blogs' },
+      { title: 'Guides', href: '/guides' },
+    ],
+  },
+  {
+    title: 'HIIE & AI Manufacturing',
+    links: [
+      { title: 'What Is HIIE?', href: '/blogs/what-is-hiie' },
+      { title: 'How AI Text-to-CAD Works', href: '/blogs/ai-text-to-cad-manufacturing' },
+      { title: 'Get Your Product Manufactured', href: '/blogs/get-product-manufactured-2026' },
+      { title: 'Arthur Labs Ecosystem 2026', href: '/blogs/arthur-labs-ecosystem-2026' },
+      { title: 'Form 1099-DA Guide 2026', href: '/blogs/form-1099-da-guide-2026' },
     ],
   },
   {

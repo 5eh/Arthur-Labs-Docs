@@ -1,0 +1,164 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/get-product-manufactured-2026/' },
+  title: 'From CAD File to Factory: How to Get Your Product Manufactured in 2026',
+  description:
+    'What factories actually need from you in 2026 — STEP CAD, drawings, tolerances — plus prototyping paths, manufacturer vetting, MOQ math, and real timelines.',
+  keywords:
+    'how to get a product manufactured, find a manufacturer, CAD to manufacturing, product prototype to production, STEP file, RFQ package, injection molding MOQ, CNC machining, 3D printing prototype, manufacturer directory, hardware startup, design for manufacturing',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-07-09',
+  category: 'Manufacturing',
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="From CAD File to Factory: How to Get Your Product Manufactured in 2026"
+  description="What factories actually need from you in 2026 — STEP CAD, drawings, tolerances — plus prototyping paths, manufacturer vetting, MOQ math, and real timelines."
+  slug="/blogs/get-product-manufactured-2026/"
+  datePublished="2026-07-09"
+/>
+
+# From CAD File to Factory: How to Get Your Product Manufactured in 2026
+
+Getting a physical product manufactured comes down to three things: a manufacturable CAD package, the right production process for your volume, and a vetted factory partner. This guide walks a first-time hardware founder through all three — including the unglamorous parts (MOQs, tooling invoices, freight math) that most "idea to product" content skips.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## What a Manufacturer Actually Needs From You
+
+A manufacturer needs a dimensioned CAD file — almost always STEP format — plus a 2D drawing with tolerances, a material specification, and a target quantity before they can quote your part. If your RFQ (request for quotation) is missing any of these, you will either get no reply, a padded "safety" price, or a part that technically matches your file and still doesn't work.
+
+Here is the minimum viable quote package:
+
+| Item | What it is | Why factories insist on it |
+|---|---|---|
+| **STEP file (.step/.stp)** | The neutral, solid-geometry CAD exchange format standardized as ISO 10303 | It carries exact boundary-representation (B-rep) geometry that CAM software can machine or mold from. Mesh formats like STL approximate surfaces with triangles and are fine for 3D printing, but they are not dimensioned engineering geometry |
+| **2D drawing (PDF)** | A dimensioned drawing calling out critical dimensions, tolerances, threads, and finishes | The CAD file says what the part looks like; the drawing says which dimensions actually matter and how much they may vary |
+| **Material spec** | Alloy or polymer grade (e.g. 6061-T6, ABS, PA12), not just "aluminum" or "plastic" | Material drives price, process, and whether the part survives its job |
+| **Tolerances** | How much deviation is acceptable, ideally only on the features that need it | Tighter tolerance means exponentially higher cost. Blanket ±0.01 mm on every face is the classic first-timer overspend |
+| **Quantity + annual volume** | Units for this order and a realistic yearly forecast | Quotes are volume-priced; a 100-unit and a 10,000-unit quote are different processes entirely |
+| **Surface finish + color** | Anodizing, powder coat, texture spec, Pantone reference | Finishing is often a separate operation with its own cost and lead time |
+
+The STEP format matters more than most founders expect. It is an open ISO standard ([ISO 10303-21](https://www.iso.org/standard/63141.html)), which means any factory's CAD/CAM system can open it without owning your design tool. If all you have is an STL from a 3D-modeling or sculpting app, expect factories to either decline or charge for remodeling the part as a proper solid.
+
+## Prototyping Paths: 3D Printing vs CNC vs Injection Molding
+
+Choose your process by volume and tooling cost: 3D printing wins at 1–100 units with zero tooling, CNC machining wins from one-offs up to roughly 1,000 units in real engineering materials, and injection molding wins beyond about 1,000–5,000 units once its tooling cost amortizes. Almost every successful hardware product moves through these stages in order rather than picking one.
+
+### 3D printing (additive)
+
+- **Volumes:** 1 to a few hundred units.
+- **Tooling cost:** none — that is the entire point.
+- **Strengths:** overnight iteration, complex internal geometry, near-zero setup cost per design change.
+- **Limits:** anisotropic strength (parts are weaker between layers), limited material selection versus molding, per-unit cost stays flat forever — it never gets cheaper at scale.
+
+Use it for form checks, fit checks, and functional prototypes. Iterating your design five times in plastic before cutting any metal is the cheapest insurance in hardware.
+
+### CNC machining (subtractive)
+
+- **Volumes:** 1 to ~1,000 units.
+- **Tooling cost:** minimal (fixturing), but programming/setup is charged per job.
+- **Strengths:** real production materials (aluminum, steel, engineering plastics), tight tolerances, production-grade surface finish.
+- **Limits:** per-unit cost drops only modestly with volume; internal geometry is constrained by what a cutting tool can reach.
+
+CNC is the standard bridge between "printed prototype works" and "we are ready to commit to a mold." It is also the end-state process for many low-volume, high-value products.
+
+### Injection molding
+
+- **Volumes:** ~1,000 units and up.
+- **Tooling cost:** significant — a simple single-cavity aluminum mold commonly runs in the low thousands of dollars, while complex multi-cavity hardened-steel production tooling can reach tens of thousands.
+- **Strengths:** per-unit cost falls to cents or a few dollars at volume; excellent repeatability and finish.
+- **Limits:** every design change after tooling is expensive or impossible; parts must respect molding rules (draft angles, uniform wall thickness, no undercuts without slides).
+
+The trap: committing to a mold before the design is validated. Tooling turns your CAD file into steel — get the design wrong and you pay for it twice.
+
+## How to Find and Vet a Manufacturer
+
+Find manufacturers through capability-based directories and RFQ platforms, then vet them with samples, references, and a small pilot order before committing real money. Discovery is the easy half; vetting is where first-timers get burned.
+
+Where to look:
+
+- **Capability directories.** Platforms like [Thomasnet](https://www.thomasnet.com/) index suppliers by process, material, and region. In the US, the [NIST Manufacturing Extension Partnership](https://www.nist.gov/mep) operates centers in every state that connect small businesses to local production resources — a genuinely underused public resource.
+- **The HIIE manufacturer directory.** HIIE maintains a directory of manufacturers searchable by region and capability, fed by a public intake at [hiie.arthurlabs.net/become-a-manufacturer](https://hiie.arthurlabs.net/become-a-manufacturer). Manufacturers submit their company, region, capabilities, and lead times; listings appear immediately as Unverified, and verification — a short review — adds a trust badge and priority placement. If you run a shop, the intake takes about two minutes; if you are a founder, it is a place to find partners whose stated capabilities match your part.
+- **RFQ marketplaces and trade shows.** Instant-quote platforms are useful for benchmarking price even if you ultimately buy elsewhere.
+
+How to vet, in order:
+
+1. **Send a complete RFQ** (the package from the first section) to 3–5 candidates. The quality of the questions they ask back is your first signal — a good shop asks about tolerances, use case, and volume; a bad one just says yes.
+2. **Order samples or a first article.** Pay for one or a handful of parts and measure them against your drawing before any volume commitment.
+3. **Check references and certifications.** Ask for customers making similar parts. ISO 9001 is a baseline quality-system signal, not a guarantee.
+4. **Run a pilot batch.** A small paid run of 50–200 units surfaces process problems that a single sample never will.
+5. **Plan inspection.** For overseas production, third-party inspection services will check a batch against your drawing before it ships — cheap relative to receiving a container of scrap.
+
+Communication red flags: quotes that come back suspiciously fast with no questions, "we can do any tolerance," refusal to produce samples, demands for full payment upfront, and vague answers about who actually owns the factory (trading companies reselling other factories' capacity are common and add margin plus a communication layer).
+
+## MOQs and Unit Economics: The Math Nobody Shows You
+
+A minimum order quantity (MOQ) exists because setup costs are fixed — and your real cost per unit is the landed cost, not the quoted price. Injection molders commonly quote MOQs of 500–5,000 units; CNC and 3D printing have effectively no MOQ, which is exactly why they dominate early-stage production.
+
+Landed cost per unit is roughly:
+
+- **Quoted unit price**, plus
+- **Tooling amortization** (tooling cost divided by realistic lifetime volume — not fantasy volume),
+- **Freight** (ocean freight from Asia typically adds weeks and meaningful cost; air freight is fast and multiples more expensive),
+- **Duties and tariffs** for your import lane,
+- **Defect allowance** (even good factories ship some percentage of rejects; budget for it),
+- **Payment cost** (deposits of 30–50% before production are standard, so your cash converts to inventory long before revenue).
+
+Two practical rules follow. First, never evaluate a single quote — the spread between the cheapest and most expensive credible quote for the same part is routinely 2–3x, and the outliers on both ends are telling you something. Second, resist the per-unit discount seduction: 5,000 units at a lower price is worse than 500 units at a higher price if the product needs a design revision after customer feedback. Inventory you cannot sell is the most expensive thing a hardware startup can own.
+
+## Realistic Timelines From Prototype to Production
+
+Plan on 4–9 months from a finished design to sellable inventory for a molded product, and weeks rather than months for CNC or printed production. First-timers consistently underestimate the serial nature of the chain — most of these steps cannot overlap:
+
+| Stage | Typical duration |
+|---|---|
+| Prototype iterations (3D print / CNC) | 1–6 weeks per loop, usually several loops |
+| Quoting and supplier selection | 2–4 weeks |
+| DFM review and design adjustments | 1–3 weeks |
+| Injection mold tooling fabrication | 4–12 weeks |
+| First articles + approval loop | 1–4 weeks |
+| Production run | 2–6 weeks |
+| Ocean freight + customs (if importing) | 4–6 weeks |
+
+The schedule killers are the loops, not the stages: every failed first article restarts a tooling-adjustment cycle, and every design change discovered late replays everything downstream of it. This is why the cheap, fast iteration at the prototype stage is not optional — it is where you are supposed to find the problems.
+
+## Common First-Timer Mistakes
+
+The most expensive first-timer mistake is committing to tooling before the design is validated; everything else on this list is a variation of spending big money before cheap information.
+
+- **Sending mesh files instead of solids.** STL is a 3D-printing format, not engineering geometry. Factories quoting machining or molding need STEP.
+- **Over-tolerancing.** Tolerance every feature at the tightest value your CAD tool displays and your quote doubles. Tolerance only what matters.
+- **Skipping DFM feedback.** Good manufacturers will review your design for manufacturability (draft, wall thickness, tool access) — founders who treat this as an insult instead of free engineering pay for it in tooling revisions.
+- **Ordering the full MOQ on the first run.** Negotiate a pilot batch, even at a worse unit price.
+- **No inspection plan.** "The factory said it passed" is not a quality system.
+- **Forgetting packaging, manuals, and certifications.** Electronics need regulatory testing (FCC/CE and battery certifications where applicable); packaging is its own supply chain with its own lead time.
+- **Ignoring cash-flow timing.** Deposits, tooling, freight, and duties are all paid before the first sale. Model it.
+
+## Where HIIE Fits in This Pipeline
+
+HIIE, Arthur Labs' idea-to-product platform at [hiie.arthurlabs.net](https://hiie.arthurlabs.net), helps most at the very start of this pipeline: turning a plain-language product description into factory-grade CAD and an initial sourcing plan. If you have read our overview of [what HIIE is](/blogs/what-is-hiie/), here is the manufacturing-specific slice, stated precisely:
+
+- **Description to STEP.** The HIIE Engine is a server-side CAD service that generates real B-rep solid parts from a text description and exports STEP, STL, and GLB together — STEP for factories and CAD tools, STL for 3D printing, GLB for in-browser inspection. It is the platform's default CAD path and the only one that produces the manufacturing-grade STEP a quote package needs. (The premium text-to-3D path produces textured, print-ready meshes — great for organic product forms, but no STEP.) We cover the generation pipeline in depth in [AI text-to-CAD for manufacturing](/blogs/ai-text-to-cad-manufacturing/).
+- **Built-in manufacturability checks.** Every generated part passes through a geometry gate that rejects degenerate output before you ever see it: walls thinner than 0.4 mm, aspect ratios beyond 150:1, near-zero volume, or empty solids all fail and are refined in a vision-driven quality loop. That is a first feasibility screen — not a substitute for your manufacturer's DFM review, but it catches the unmanufacturable-on-arrival class of geometry early.
+- **A sourcing head start, honestly labeled.** HIIE's manufacturing agent drafts a sourcing and BOM plan for your project. Part numbers in it are AI-suggested, not catalog-verified — HIIE is explicit about this — so treat it as a research-grade shortlist to confirm against real distributors, not a purchase order.
+- **A handoff package.** The Manufacturing Pack bundle zips your project's Design-folder CAD (including decoded, openable STEP files) together with BOM and sourcing documents — essentially the RFQ package from the first section of this article, assembled from your real project files.
+- **The manufacturer directory,** described above, closes the loop: builders search by region and capability, and manufacturers join via the free two-minute intake at [become-a-manufacturer](https://hiie.arthurlabs.net/become-a-manufacturer).
+
+What HIIE does not do is replace the human parts of this guide: vetting factories, negotiating MOQs, and validating physical samples remain your job.
+
+## Where to Go Next
+
+- [AI Text-to-CAD for Manufacturing](/blogs/ai-text-to-cad-manufacturing/) — how description-to-STEP generation actually works, and where it fits against traditional CAD.
+- [What Is HIIE?](/blogs/what-is-hiie/) — the full idea-to-product platform overview beyond the manufacturing slice.
+- [Web3 Business Models Guide](/guides/web3-business-models-guide/) — if your hardware product anchors a broader commerce or marketplace business, start here for the model.
+- Building something physical? Generate your first STEP file at [hiie.arthurlabs.net](https://hiie.arthurlabs.net), or list your shop in the directory at [hiie.arthurlabs.net/become-a-manufacturer](https://hiie.arthurlabs.net/become-a-manufacturer).
