@@ -1,0 +1,124 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/arthur-labs-ecosystem-2026/' },
+  title: 'The Arthur Labs Ecosystem in 2026: HIIE, DEAN, ROSE, QUINN & SUSAN Explained',
+  description:
+    'An authoritative map of Arthur Labs products in 2026: the HIIE workflow operating system plus DEAN, ROSE, QUINN, SUSAN, and how every system fits one mission.',
+  keywords:
+    'Arthur Labs, Arthur Labs products, Arthur Labs ecosystem, HIIE, DEAN system, ROSE system, QUINN, SUSAN, workflow operating system, Web3 marketplace factory, AI product engine, crypto tax guide',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-07-09',
+  category: 'Company',
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="The Arthur Labs Ecosystem in 2026: HIIE, DEAN, ROSE, QUINN & SUSAN Explained"
+  description="An authoritative map of Arthur Labs products in 2026: the HIIE workflow operating system plus DEAN, ROSE, QUINN, SUSAN, and how every system fits one mission."
+  slug="/blogs/arthur-labs-ecosystem-2026/"
+  datePublished="2026-07-09"
+/>
+
+# The Arthur Labs Ecosystem in 2026: HIIE, DEAN, ROSE, QUINN & SUSAN Explained
+
+Arthur Labs builds systems that enable entrepreneurship — and in 2026 that means one flagship product, HIIE, standing on top of a family of factory systems for marketplaces, marketing, and application generation. This is the single authoritative map of how every Arthur Labs product relates to the others, what each one does, and who each one is for.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## What Is Arthur Labs?
+
+Arthur Labs is a software company from Omaha, Nebraska that builds world-changing systems enabling entrepreneurship, growing Web2 into Web3 — its product line spans an AI workflow operating system (HIIE), marketplace factories (DEAN and ROSE), a marketing automation tool (QUINN), an application generator (SUSAN), and a crypto tax resource library. If you have encountered two seemingly different descriptions of the company, both are accurate; they describe two chapters of the same mission.
+
+The first chapter is the systems era documented across this content hub: DEAN, ROSE, QUINN, and SUSAN, a set of factory-line tools that compress the time and cost of launching a digital business. Arthur Labs is part of Omaha's growing Web3 startup scene — profiled alongside Exodus, Pinata, and Telcoin in our [spotlight on Omaha Web3 startups](/guides/local-web3-startups/) — and those systems grew out of years of marketplace, smart contract, and blockchain infrastructure work.
+
+The second chapter is HIIE, the company's 2026 flagship at [hiie.arthurlabs.net](https://hiie.arthurlabs.net): a workflow operating system that turns hardware ideas into real products. HIIE is not a pivot away from the earlier systems — it is the same factory thesis applied to a bigger target. Where DEAN compressed marketplace development from months to days, HIIE compresses the path from a product idea to CAD files, sourcing plans, and automated business workflows.
+
+One mission connects everything: give a single entrepreneur the leverage of an entire team. The systems differ in what they manufacture — marketplaces, marketing content, applications, physical products — but each one exists to remove a barrier between an idea and a working business. You can always find the current product lineup on the [Arthur Labs homepage](https://arthurlabs.net) and on this hub's systems grid.
+
+## HIIE: The 2026 Flagship Workflow Operating System
+
+HIIE is Arthur Labs' flagship product in 2026 — a workflow operating system that turns hardware ideas into real products, combining AI design, CAD generation, sourcing, and automated flows in one workspace. It is live today at [hiie.arthurlabs.net](https://hiie.arthurlabs.net), and it is the most complete expression of the Arthur Labs mission to date.
+
+The platform runs on one core loop: you create a project, describe what you want to build in plain language, and an AI director named Camelia coordinates specialist sub-agents to produce real deliverables. Camelia is not a chatbot bolted onto a dashboard — she runs server-side, stays grounded in your actual project files, and delegates focused work to six specialist agent roles: research, reasoning, design, document, patent, and manufacturing. The research and reasoning agents can use live web access; the output lands back in your project as documents, designs, flows, and analysis.
+
+A few capabilities define what makes HIIE different from a general-purpose AI assistant:
+
+- **Text-to-CAD design.** Describe a part and HIIE generates real 3D geometry, delivered as GLB for visualization plus STEP and STL files for engineering and printing. A geometry gate rejects unbuildable output — paper-thin walls, zero-volume solids — and a vision quality loop inspects and refines each design.
+- **A path to physical manufacturing.** HIIE slices designs into printer-ready G-code with OrcaSlicer, connects to networked FDM printers over your LAN, and packages Manufacturing Pack bundles containing CAD, STEP, and sourcing documents. Its manufacturing agent drafts bills of materials, with part numbers clearly marked as AI-suggested rather than verified.
+- **Flows: automation as a first-class object.** A flow is a multi-step DAG (directed acyclic graph) of agent and integration steps, triggered manually, on a schedule, or by webhook. Third-party integrations run through Composio, and any external write action pauses for your explicit approval — a human-in-the-loop primitive HIIE calls a Human Input Popup.
+- **Developer access.** A REST API covers projects, builds, CAD, flows, and artifacts, and an MCP server exposes eight tools so external agents can drive HIIE programmatically. MCP — the [Model Context Protocol](https://modelcontextprotocol.io) — is the open standard for connecting AI agents to tools.
+- **Honest pricing tiers.** Free, Starter, Pro, and Scale plans, with a bring-your-own-keys option: supply your own OpenRouter or Composio keys and inference runs without platform markup.
+
+Every project moves through five phases — Idea, Intention, Project, Invention, Product — and progress is measured by which project folders actually contain artifacts, not by self-reported checkboxes. Project data is encrypted at rest with AES-GCM, and HIIE's policy is explicit that user data is not sold and not used to train third-party models. On the supply side, HIIE operates a manufacturer directory: fabrication shops submit their capabilities, appear as listings builders can discover, and can complete verification for a trust badge.
+
+That is the short version. For the full picture — architecture, agents, pricing, and how a project becomes a product — read the deep dive: [What is HIIE?](/blogs/what-is-hiie/)
+
+## DEAN: The Multi-Chain Marketplace Factory
+
+DEAN is Arthur Labs' digital bazaar factory — a configuration-based system that assembles two-sided Web3 marketplaces in days rather than the 6 to 12 months a traditional build takes. It remains the company's best-known system and the origin of the factory-line approach that now runs through everything Arthur Labs ships.
+
+DEAN works from a library of roughly 25 to 30 configurable boilerplate components — the storefront, checkout, listing management, messaging, and transaction logic that nearly every two-sided marketplace needs — and generates a deployable platform for Real World Goods, Real World Services, or Real World Deliveries. Because its configuration system is blockchain-agnostic across [EVM-compatible](https://ethereum.org/en/developers/docs/evm/) networks, a single marketplace concept can target Ethereum, Polygon, opBNB, or any of the thousands of other EVM chains, with factory contract patterns handling listing deployment on-chain.
+
+**Who it is for:** entrepreneurs and small businesses that want to launch a commerce, services, or delivery marketplace without a six-figure development budget — especially those who want blockchain-based escrow and payments from day one, or a credible upgrade path toward them.
+
+**Status in 2026:** DEAN has been proven across hackathons and pilot deployments in the Polkadot, Binance, and Movement Labs ecosystems, and a sample commerce deployment is publicly viewable at Genesis Market. Read the full origin story in [The DEAN System: Revolutionizing Marketplace Development](/blogs/dean-system-revolution/).
+
+## ROSE: The Centralized Commerce Counterpart
+
+ROSE is the centralized version of DEAN — the same marketplace factory line, specialized for traditional payments and conventional data storage instead of blockchain rails. It exists because plenty of businesses want the speed of factory-built marketplace deployment without asking their customers to touch a crypto wallet.
+
+A ROSE-built marketplace uses familiar Web2 infrastructure: standard account registration, traditional payment checkout, and database-backed storage. Because ROSE and DEAN share an architecture, the docs describe them as parallel factory lines — a marketplace can start centralized and migrate toward Web3 later by swapping registration, checkout, and storage layers rather than rebuilding from scratch.
+
+**Who it is for:** conventional businesses, local commerce operators, and founders whose customers expect card payments and email logins — anyone who wants marketplace speed-to-launch while keeping the option of decentralizing later.
+
+**Status in 2026:** ROSE is presented on the Arthur Labs systems grid as the Web2 counterpart to DEAN, and it anchors the Web2-to-Web3 migration story that runs through Arthur Labs' marketplace content.
+
+## QUINN and SUSAN: Marketing Automation and App Generation
+
+QUINN and SUSAN round out the systems family: QUINN accelerates a founder's marketing, and SUSAN accelerates their software. Both apply the same factory logic — automate the repeatable majority of the work so a small team can act like a large one.
+
+### QUINN: cross-platform social media generation
+
+QUINN is a cross-platform social media generation tool that accelerates marketing efforts across multiple networks. Launching a marketplace or a product is only half the job; the other half is sustained distribution, and that is the bottleneck QUINN attacks. It generates platform-appropriate marketing content so entrepreneurs can maintain a presence across several social networks without a dedicated marketing hire. Who it is for: founders who have shipped something — often with DEAN, ROSE, or HIIE — and now need consistent, multi-channel promotion.
+
+### SUSAN: progressively autonomous application generation
+
+SUSAN is a progressively autonomous application generation tool that uses MCPs (Model Context Protocol servers) and revision auditing from Arthur Labs developers. "Progressively autonomous" is the honest phrasing: SUSAN generates applications with increasing independence, while human developers audit revisions rather than rubber-stamping raw AI output. It lives at its own property, susan.arthurlabs.net. Who it is for: builders who need custom application code generated quickly but reviewed responsibly — a different job than DEAN's marketplace templates, and complementary to HIIE's software workspace.
+
+## Crypto Tax Guides and DeFi Education
+
+Beyond its named systems, Arthur Labs maintains a substantial crypto tax and DeFi education practice on this content hub, anchored by the Crypto Tax Complete Guide for the 2025-2026 US filing years. The guide covers the new IRS Form 1099-DA, cost basis methods (FIFO, LIFO, HIFO), DeFi-specific taxable events, staking rewards, airdrops, NFT taxation, and record keeping — grounded in the IRS treatment of [digital assets as property](https://www.irs.gov/filing/digital-assets).
+
+Around that anchor sits a library of DeFi content — lending, yield farming, stablecoins, portfolio management — and the finance posts describe a wallet-connected service through which Arthur Labs tracks DeFi lending, yield farming, and staking rewards across chains to calculate a complete crypto tax liability. For a company whose marketplace systems settle real transactions on EVM chains, tax clarity is not a side quest; it is part of making Web3 entrepreneurship genuinely usable.
+
+**Who it is for:** US crypto users facing 1099-DA-era reporting, and marketplace operators whose platforms generate on-chain transaction history.
+
+## How the Ecosystem Fits Together
+
+Every Arthur Labs product answers the same question at a different layer: what does one entrepreneur need to turn an idea into a working business? Read the lineup as a stack, not a menu of unrelated tools.
+
+| Product | What it produces | Best for | Where it lives |
+| --- | --- | --- | --- |
+| **HIIE** | Physical products: CAD, sourcing plans, automated flows, business docs | Hardware founders and inventors | [hiie.arthurlabs.net](https://hiie.arthurlabs.net) |
+| **DEAN** | Web3 two-sided marketplaces on EVM chains | Marketplace entrepreneurs going on-chain | Genesis Market demo |
+| **ROSE** | Centralized Web2 marketplaces | Businesses on traditional payments | Arthur Labs systems grid |
+| **QUINN** | Cross-platform social media content | Founders scaling distribution | Arthur Labs systems grid |
+| **SUSAN** | Generated applications with developer revision auditing | Builders needing custom software | susan.arthurlabs.net |
+| **Crypto tax resources** | US tax guidance and DeFi education | US crypto users and operators | This content hub |
+
+The historical arc matters for anyone trying to place the company. DEAN proved that a factory can compress months of marketplace development into days. ROSE generalized the factory to Web2. QUINN and SUSAN extended it to marketing and application code. HIIE, the 2026 flagship, extends it furthest: from digital businesses to physical products, with an orchestrating AI, human-approval gates, and a manufacturer network closing the loop from idea to object. The homepage puts it plainly — the systems are close-sourced for now and will become more openly available as they develop — so treat the systems grid and this hub as the canonical record of what is live at any moment.
+
+## Where to Go Next
+
+- **New to HIIE?** Start with the deep dive: [What is HIIE?](/blogs/what-is-hiie/) — then try it at [hiie.arthurlabs.net](https://hiie.arthurlabs.net).
+- **Building a marketplace?** Read [The DEAN System: Revolutionizing Marketplace Development](/blogs/dean-system-revolution/) for the factory-line approach in depth.
+- **Curious about the company's roots?** See the [Omaha Web3 startups spotlight](/guides/local-web3-startups/) for Arthur Labs in the context of its home ecosystem.
+- **Everything else** — systems grid, socials, and updates — lives at [arthurlabs.net](https://arthurlabs.net).

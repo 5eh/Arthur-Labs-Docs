@@ -1,0 +1,133 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/ai-text-to-cad-manufacturing/' },
+  title: 'How AI Text-to-CAD Works: From Plain English to Manufacturing-Ready STEP Files',
+  description:
+    'How AI text-to-CAD turns plain English into dimensioned, manufacturing-ready STEP files: mesh vs parametric B-rep, vision quality loops, and honest limits.',
+  keywords:
+    'AI text to CAD, AI CAD generator, text to 3D model, STEP file AI, parametric CAD AI, B-rep CAD, build123d, mesh vs parametric CAD, ISO 10303, manufacturing-ready CAD files',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-07-09',
+  category: 'HIIE',
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="How AI Text-to-CAD Works: From Plain English to Manufacturing-Ready STEP Files"
+  description="How AI text-to-CAD turns plain English into dimensioned, manufacturing-ready STEP files: mesh vs parametric B-rep, vision quality loops, and honest limits."
+  slug="/blogs/ai-text-to-cad-manufacturing/"
+  datePublished="2026-07-09"
+/>
+
+# How AI Text-to-CAD Works: From Plain English to Manufacturing-Ready STEP Files
+
+Type "a 60 mm mounting bracket with four M4 holes and 3 mm walls" and an AI can now hand back a dimensioned, editable CAD file that a factory can actually quote. This article explains how that works under the hood — the difference between mesh generation and parametric CAD, how a quality loop verifies geometry before you ever see it, and where the technology honestly stands today.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## "Text-to-3D" hides two very different technologies
+
+AI text-to-CAD tools fall into two distinct families: **mesh generators**, which synthesize textured triangle models for visualization and 3D printing, and **parametric B-rep generators**, which produce exact, dimensioned, editable solids fit for manufacturing. Conflating the two is the single most common source of disappointment with AI CAD, so it is worth defining both precisely.
+
+A **mesh** is a shell of thousands of small triangles that approximates a surface — the format of game assets, renders, and 3D prints. A **B-rep** (boundary representation) solid describes geometry analytically: this face is a true plane, that face is a true cylinder of exactly 4.2 mm diameter. B-rep is what professional CAD packages and factory workflows are built on.
+
+| | Mesh generator | Parametric B-rep CAD |
+|---|---|---|
+| **Output formats** | GLB, STL (triangles) | STEP solid, plus STL and GLB exports |
+| **Geometry** | Approximate, fixed resolution | Exact analytic surfaces |
+| **Dimensions** | Implied by appearance | Explicit, in millimeters |
+| **Editability** | Sculpting tools only | Feature-level edits in any CAD package |
+| **Best for** | Visualization, organic shapes, printing | Machining, molding, quoting, engineering |
+| **Path in HIIE** | Meshy premium | HIIE Engine (build123d) |
+
+[HIIE](/blogs/what-is-hiie/), Arthur Labs' AI product-development platform, runs both paths side by side precisely because they solve different problems — and its Design section makes the trade-off explicit rather than papering over it.
+
+## How AI mesh generation works, and what it is good for
+
+An AI mesh generator produces a realistic, textured 3D model directly from a text description — ideal for organic and product-styled shapes, but without dimensions, tolerances, or an editable feature history. In HIIE this is the premium path, powered by Meshy text-to-3D.
+
+A Meshy generation runs as a background job of roughly five minutes, in two chained stages: a **preview** task builds the geometry, then a **refine** task textures it. The result is a textured GLB for viewing in the browser plus a printable STL, both archived automatically into the project's Design folder. Each generation models **one** physical object as a single fused mesh — a drone with arms and rotors works, but separate articulated parts should be generated one at a time.
+
+Mesh generation genuinely shines where parametric CAD struggles: figurines, sculpted enclosures, furniture, wearables, and any form that reads as organic or product-realistic. What it cannot produce is exactly what a factory asks for first:
+
+- **No STEP file.** Meshy outputs mesh formats, not parametric CAD.
+- **No exact tolerances.** The model is realistic, not dimensioned to the millimeter — never rely on it for press fits or machined features.
+- **No true multi-part assemblies.** One object per generation.
+
+On pricing, HIIE is deliberately transparent: a premium generation debits 75 credits, refunded automatically if the job fails, and the free plan includes two premium generations per month. Users who connect their own Meshy key under Connections run on their own account instead — no credit debit and no monthly cap.
+
+## Parametric AI CAD: the model writes code, not triangles
+
+Parametric AI CAD works by having a language model write CAD *code*, which a geometry kernel then executes into an exact B-rep solid — the AI never draws a single triangle. HIIE's default engine generates [build123d](https://build123d.readthedocs.io/) source, an open-source Python CAD library built on the [Open CASCADE Technology](https://dev.opencascade.org/) kernel, the same class of modeling kernel underneath established CAD packages.
+
+The distinction matters enormously. Instead of hallucinating a surface, the model writes a program — create a 60 by 40 by 8 mm plate, drill four 4.2 mm holes on a 50 by 30 mm pattern, fillet the corners at 5 mm — and the kernel guarantees the output is mathematically exact solid geometry. From that one solid, the engine exports three formats at once: **STEP** for CAD software and factories, **STL** for 3D printing, and **GLB** for the in-browser viewer.
+
+Because the part exists as code, it is also *refinable*. HIIE archives the build123d source with every design, and each Refine edits that exact source rather than starting from scratch — producing a V1, V2, V3 lineage where every version keeps its own downloadable STEP, STL, and GLB files.
+
+One honest engineering note from HIIE's own testing: authoring-model quality dominates outcomes. Live testing showed that the cheapest code-generation models reliably produced unusable geometry — flat plates with random spheres — making a "cheap" model that wastes 100 percent of generations the most expensive option there is. HIIE therefore uses a capable model even on the free tier, with paid plans authoring on a stronger one. Each user-visible generation meters a small flat rate (about 10 credits) that covers the entire quality loop described below, with no monthly count cap, and is charged on success only.
+
+## Inside HIIE's quality loop: generate, gate, look, refine
+
+Every HIIE Engine generation runs a closed quality loop — engineer a precise prompt, generate the part, gate the geometry structurally, render snapshots, review them visually, and refine — so the design that gets archived has actually been inspected, not just produced. The loop has five stages:
+
+1. **Prompt engineering.** A CAD-engineer step turns your rough idea into one manufacturable part described for the code generator: explicit dimensions in millimeters, wall thickness, holes, fillets, and orientation, plus a short name tag. Missing dimensions are filled in with disclosed assumptions rather than stopping to interrogate you — the system only asks when the description is too vague to identify a part at all.
+2. **Code generation.** The build123d service executes the generated source and returns the STEP, STL, and GLB files along with *measured* geometry: solid count, bounding box, and volume.
+3. **Structural geometry gate.** A cheap, deterministic check flags output that compiled but is not actually a part (details below). Degenerate geometry is never accepted.
+4. **Snapshot rendering and vision review.** The engine renders snapshots of the part, and a vision reviewer scores what the part actually *looks like* on a 0–10 scale, grounded in the measured geometry. The acceptance bar is a score of 7 — and the part must be genuinely recognizable as what was requested, not merely well-formed.
+5. **Auto-refine.** Below the bar, the reviewer rewrites the prompt and the loop tries again. The refinement strategy is telling: a part that is *genuine but flawed* gets its existing source edited, preserving the architecture that works; a part that is degenerate or does not read as the requested object gets regenerated fresh from the corrected spec, because minimally editing a wrong architecture cannot fix it.
+
+A fresh prompt gets up to three passes; a Refine of an existing version gets two, keeping edits snappy while still reviewed. The loop archives the **best** pass seen, and it stops early if a refinement fails to improve the score — burning another generation on the same feedback statistically will not help.
+
+### What the geometry gate rejects
+
+The gate exists because geometry can compile successfully and still be junk. It flags:
+
+- **No solids** in the model, or an **empty GLB** render.
+- **Paper-thin parts** — smallest dimension under 0.4 mm.
+- **Extreme aspect ratios** — 150:1 or worse, likely a sliver or wire rather than a part.
+- **Zero-size bounding boxes** and **near-zero volume** (under 1 cubic millimeter).
+
+Notably, the gate checks structure, not meaning — whether the output is *a* part, not whether it is *your* part. Semantic judgment is the vision review's job. This two-oracle design catches the failure class where an AI CAD pipeline happily archives a flat square as a "completed" gearbox housing.
+
+## Why a factory needs STEP, not a mesh
+
+A factory needs a STEP file because manufacturing workflows — CAM toolpaths, tolerance analysis, quoting, mold design — operate on exact surfaces and editable features, and a triangle mesh carries none of them. STEP is the neutral exchange format defined by [ISO 10303](https://en.wikipedia.org/wiki/ISO_10303), the international standard for product model data, and it is what every serious CAD/CAM system reads and writes.
+
+Concretely, the difference shows up at three points in the [journey from design to production](/blogs/get-product-manufactured-2026/):
+
+- **Toolpaths.** In a B-rep STEP, a 5 mm hole is a true cylinder that CAM software recognizes as a drillable feature. In a mesh, the same hole is a many-sided polygonal approximation — the machinist's software sees triangles, not intent.
+- **Engineering changes.** A factory's engineer can open a STEP in Fusion 360 or SolidWorks and thicken a wall or move a hole in minutes. Editing a mesh means digital sculpting or full remodeling.
+- **Quoting.** Quoting systems extract volumes, features, and machining operations from exact geometry. Meshes routinely get rejected at upload or quoted with a manual-review premium.
+
+None of this makes meshes useless — STL remains the lingua franca of 3D printing, and a textured GLB communicates product intent better than any engineering drawing. The point is fit: meshes for looking and printing, STEP for making. HIIE's Schematics view reflects this by offering each design's native deliverable — STEP downloads for HIIE Engine designs, STL for Meshy premium ones.
+
+## The honest limits of AI CAD today
+
+AI text-to-CAD is genuinely useful for single, well-described parts — and it is not a replacement for an engineer on anything toleranced, assembled, or safety-critical. Being clear-eyed about the boundary is the difference between a tool you trust and a demo you abandon:
+
+- **One part at a time.** Both paths model a single object per generation. True multi-part, articulated assemblies remain manual CAD territory.
+- **Prismatic and revolved shapes are the sweet spot.** Plates, brackets, housings, flanges, spacers — geometry built from extrusions, holes, and fillets. Complex freeform surfacing belongs to the mesh path or a human.
+- **Assumptions need checking.** When you omit dimensions, the system fills them in and discloses the assumption. That accelerates iteration, but every load-bearing dimension should be verified before money is spent.
+- **Vision review judges appearance, not engineering.** The quality loop confirms the part looks right and is structurally sane. It does not run tolerance stack-ups, fit checks, FEA, or design-for-manufacturing analysis.
+- **Generation can fail.** Loops have pass and time budgets. HIIE's mitigation is economic honesty: server-engine generations are charged on success only, and failed premium jobs are refunded and do not count against the monthly allowance.
+- **AI-suggested sourcing is a starting point.** Part numbers in generated BOM documents are AI-suggested, not checked against a live parts catalog — verify availability and pricing with suppliers.
+
+Used inside those boundaries, the leverage is real: describing a bracket in one sentence and downloading a factory-ready STEP minutes later collapses a workflow that used to require CAD proficiency or a contractor.
+
+## Where to go next
+
+If you want the wider context around AI-generated CAD and what it unlocks:
+
+- [What is HIIE?](/blogs/what-is-hiie/) — the platform overview: how Camelia and the specialist agents turn an idea into documents, designs, flows, and a business model.
+- [How to Get a Product Manufactured in 2026](/blogs/get-product-manufactured-2026/) — where the STEP file goes next: prototyping, quoting, and finding a manufacturer.
+- [AI and Web3 Integration Guide](/guides/ai-web3-integration-guide/) — the broader Arthur Labs perspective on integrating AI-driven automation into production systems.
+
+Or skip straight to generating: create a project at [hiie.arthurlabs.net](https://hiie.arthurlabs.net), open the Design section, and describe a part in plain English. The HIIE Engine path returns a STEP file you can hand to a factory; the premium path returns a textured model you can hold up to the light.

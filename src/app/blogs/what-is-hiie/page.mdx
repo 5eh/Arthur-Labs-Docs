@@ -1,0 +1,129 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/what-is-hiie/' },
+  title: 'What Is HIIE? The AI Engine That Turns Product Ideas Into Operating Businesses',
+  description: 'What HIIE is: the Arthur Labs AI engine where Camelia and specialist agents turn a plain idea into real CAD, feasibility scores, automations, and a business.',
+  keywords: 'what is HIIE, HIIE Arthur Labs, AI product engine, idea to product AI, Camelia AI orchestrator, text to CAD, build123d, STEP file generation, AI feasibility analysis, workflow automation, manufacturer directory',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-07-09',
+  category: 'HIIE',
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="What Is HIIE? The AI Engine That Turns Product Ideas Into Operating Businesses"
+  description="What HIIE is: the Arthur Labs AI engine where Camelia and specialist agents turn a plain idea into real CAD, feasibility scores, automations, and a business."
+  slug="/blogs/what-is-hiie/"
+  datePublished="2026-07-09"
+/>
+
+# What Is HIIE? The AI Engine That Turns Product Ideas Into Operating Businesses
+
+HIIE — the Hardware Innovation Intelligence Engine — is Arthur Labs' AI platform that takes a product idea described in plain language and produces the real artifacts a business needs to exist: manufacturing-grade CAD files, scored feasibility analysis, automation workflows, brand assets, and a website. This article explains exactly what HIIE is, how its AI orchestrator Camelia works, and what the engine actually delivers.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## What is HIIE?
+
+HIIE is a workflow operating system for building physical products: you create a project, describe what you want to build, and an AI director named Camelia coordinates specialist sub-agents to produce real, downloadable deliverables — documents, 3D CAD, automation flows, and business analysis. The name stands for **Hardware Innovation Intelligence Engine**, and the ambition behind it is straightforward: own the chain from human intent to engineered reality, rather than assisting with one fragment of it.
+
+The platform's core progression is *product → workflow → business*. First, HIIE helps you define and design the product itself — down to actual B-rep CAD geometry. Then it turns the operations around that product into repeatable automation flows (its Workflow-as-a-Service layer). Finally, it assembles the business shell around both: market analysis, a brand identity, a marketing site, and an executive synthesis that ties the engineering and commercial work together.
+
+Every HIIE project tracks its journey through five phases — **Idea, Intention, Project, Invention, and Product** — and phase completion is not self-reported. Each phase is marked done only when the corresponding project folder actually contains artifacts: context documents advance you to Intention, a working flow to Project, a generated 3D design to Invention, and a packaged output bundle to Product. Progress moves only when there is real work to show for it.
+
+You can try the engine directly at [hiie.arthurlabs.net](https://hiie.arthurlabs.net), and the full product documentation lives in the [HIIE knowledge base](https://hiie.arthurlabs.net/kb).
+
+## Who is Camelia, and how do the specialist agents work?
+
+Camelia is HIIE's per-user lead AI orchestrator — the director and copilot for every project, who takes real actions on your project data rather than just chatting about it. She runs server-side behind sign-in (Clerk-protected), is grounded in your actual encrypted project files, and works through an agent loop of model reasoning and tool calls (up to six turns per request). That grounding matters: her answers and actions reflect what is actually in your project, not generic guesses.
+
+For focused work, Camelia delegates to exactly **six specialist sub-agent roles**:
+
+| Role | What it does |
+|---|---|
+| Research | Investigates markets, materials, and prior art — with live web access |
+| Reasoning | Deep analysis and trade-off evaluation — with live web access |
+| Design | Drives 3D geometry and design specification work |
+| Document | Drafts and refines written deliverables |
+| Patent | Assesses patentability signals and flags items for human legal review |
+| Manufacturing | Produces sourcing plans and bills of materials |
+
+Camelia decides which role fits a task, hands it off, and folds the result back into your project. Every handoff is logged as an Agent-to-Agent envelope, so delegated work shows up as a readable conversation in the project's activity ledger — you can always audit what happened and why.
+
+Autonomy has hard limits. When an action could be destructive or reaches outside your project — deleting a document, or running a write action against an external integration — Camelia pauses and asks for approval through a Human Input Popup (HIP) before proceeding. Read actions flow freely; writes are gated. You stay at the level of intent while retaining control at the moments that matter.
+
+## What does HIIE actually produce?
+
+HIIE's autonomous build produces ten concrete deliverables per project: a project blueprint, a brand identity, a marketing website, a product definition, a 3D CAD design, scored feasibility metrics, an automation flow, a business and go-to-market analysis, a marketing visual, and an executive synthesis. When you choose "Build the complete project," the engine runs this plan step by step, and each artifact lands live on the project canvas as it completes.
+
+Two deliverables deserve a closer look, because they separate HIIE from idea-stage AI tools.
+
+### Real manufacturing CAD, not concept art
+
+The HIIE Engine is a server-side parametric CAD service built on [build123d](https://build123d.readthedocs.io/), an open-source Python framework for boundary-representation (B-rep) modeling. Each generation produces three file formats together:
+
+- **STEP** — the manufacturing-grade format factories, quoting services, and professional CAD tools such as Fusion 360 or SolidWorks require. STEP is the [ISO 10303 product-data standard](https://www.loc.gov/preservation/digital/formats/fdd/fdd000448.shtml), which is why it travels cleanly between engineering systems.
+- **STL** — the mesh format for 3D printing.
+- **GLB** — the web format that renders in HIIE's in-browser 3D viewer.
+
+Quality is enforced, not assumed. A vision quality loop renders snapshots of the generated part, inspects them, and refines the geometry across multiple passes. A separate geometry gate rejects structurally invalid output — paper-thin walls, zero-volume solids, and similar failures — before it ever reaches your Design folder. Designs are versioned (V1, V2, V3) with a refine flow for iterating on any version.
+
+For organic, sculpted, or product-realistic forms that parametric CAD struggles with, HIIE offers a premium path powered by [Meshy](https://www.meshy.ai) text-to-3D. It runs as a background job of roughly five minutes and returns a realistic, textured, print-ready model — a GLB plus a printable STL. The trade-off is explicit: Meshy output has no STEP file and no exact tolerances, so the HIIE Engine remains the default and the only path to dimensioned, manufacturable geometry. For a deeper dive into the CAD pipeline, see our companion article on [AI text-to-CAD for manufacturing](/blogs/ai-text-to-cad-manufacturing/).
+
+### Feasibility you can score, and a business you can operate
+
+The feasibility deliverable assesses the project across **four dimensions — technical, physical, commercial, and ethical — each scored 0 to 100**, with key risks and mitigations, written quantitatively against the actual generated design rather than in the abstract. This reflects a principle carried through from the HIIE whitepaper: physical feasibility is a hard constraint, and theoretical elegance without manufacturability is rejected.
+
+Around the product, the engine builds the operating layer:
+
+- **Automation flows** — multi-step directed acyclic graphs (DAGs) where each step is either one of the six specialist roles or an integration action against a connected external app (via Composio). Flows fire on manual, scheduled, or webhook triggers, and every step can save a labeled, encrypted artifact into the project.
+- **Business and go-to-market analysis** — market sizing (TAM/SAM/SOM with figures), a competitive landscape with named players and pricing, differentiation, and a pricing model.
+- **Brand assets and a website** — a logo/brand mark, a marketing hero image, and a marketing site built in HIIE's Studio canvas, seeded from the project.
+- **Sourcing plans and BOMs** — the manufacturing agent drafts bills of materials with suggested components. HIIE is deliberately honest here: part numbers in a generated BOM are AI-suggested starting points for sourcing research, not verified, orderable SKUs.
+
+## How does HIIE connect designs to real manufacturers?
+
+HIIE bridges design and production in two ways: a public manufacturer directory for sourcing at scale, and a direct path from a design to a networked 3D printer for prototyping. Because the engine outputs genuine STEP files, the handoff to a factory or quoting service does not require redrawing anything.
+
+The **manufacturer directory** works like this: a manufacturer submits company details, region, capabilities, and lead times through an intake form that takes about two minutes. The listing appears in the directory immediately as Unverified; a short review process (free, with an expedited option) adds a verification badge and priority placement. Teams building on HIIE then find manufacturers by region and capability and reach out for quotes. Manufacturers can join at any time via the "Become a Manufacturer" page on the HIIE site.
+
+For prototyping, HIIE closes the loop on your own hardware. A generated design — or any uploaded STL — can be sliced to printer-ready G-code with OrcaSlicer inside the platform, previewed layer by layer in the 3D viewer, and sent to a networked FDM printer on your LAN, with live status and temperature monitoring.
+
+## How does HIIE handle encryption and data privacy?
+
+HIIE encrypts project data at rest with AES-GCM, using a distinct derived key per project and per folder, so one tenant's key can never decrypt another tenant's data. Each 256-bit key is derived (PBKDF2, 100,000 iterations, SHA-256) from a server-only master key, with the storage bucket identifier bound into every encryption operation as authenticated data — a mismatched key or bucket fails to decrypt rather than returning garbled output. If the master key is missing, the system fails closed instead of falling back to weaker behavior.
+
+The platform is equally explicit about what this is *not*: it is operator-decryptable envelope encryption, not zero-knowledge or end-to-end encryption. The server decrypts just in time to serve your requests — that is what lets Camelia actually work on your files. Alongside the cryptography, HIIE commits to a plain policy: your data is not sold and is not used to train third-party models. Bring-your-own API keys and project secrets are encrypted in an account-scoped vault, used server-side only, and never returned to the browser.
+
+## What does HIIE cost?
+
+HIIE's core pricing idea is simple: bring your own provider API keys and the engine is free. If you add your own OpenRouter key (and optionally Composio), models run on your account, your runs show as $0 in the ledger, and no managed capacity is consumed. If you would rather skip key management, HIIE routes inference through managed infrastructure metered in credits.
+
+| Resource | Free plan | With your own keys |
+|---|---|---|
+| Managed inference | $2/month ceiling (200 credits) | Unmetered — runs on your OpenRouter key |
+| HIIE Engine CAD | No monthly count cap, ~10 credits per generation | Same flat rate (runs on HIIE infrastructure) |
+| Meshy premium 3D | 2 generations/month included (75 credits each, refunded on failure) | Uncapped on your own Meshy key |
+
+Paid plans (Starter, Pro, and Scale) add monthly credit grants, and one-time credit top-ups never expire. Checkout runs through Stripe, and HIIE never stores your payment card.
+
+## How does HIIE fit into the Arthur Labs ecosystem?
+
+HIIE is Arthur Labs' product-creation engine, and it sits alongside the company's marketplace and commerce infrastructure: where systems like DEAN generate the two-sided marketplaces that sell goods and services, HIIE generates the products and operating workflows behind them. The full picture of how these systems relate — and where each one is headed — is laid out in our [Arthur Labs ecosystem overview for 2026](/blogs/arthur-labs-ecosystem-2026/).
+
+The connective tissue is automation with accountability. HIIE's flows can read from and write to external services through connected integrations, with write actions gated behind human approval — the same philosophy of verifiable, auditable automation that runs through Arthur Labs' commerce work. If you are exploring how AI agents and decentralized infrastructure combine in practice, our [AI and Web3 integration guide](/guides/ai-web3-integration-guide/) covers the architectural patterns involved.
+
+## Where to go next
+
+- **Try HIIE** — create a project and run a build at [hiie.arthurlabs.net](https://hiie.arthurlabs.net); the free tier includes the full engine.
+- **Read the docs** — the [HIIE knowledge base](https://hiie.arthurlabs.net/kb) covers Camelia, CAD, flows, billing, and security in depth.
+- **Go deeper on CAD** — [AI text-to-CAD: from prompt to manufacturable STEP file](/blogs/ai-text-to-cad-manufacturing/) walks through the geometry pipeline.
+- **See the bigger picture** — the [Arthur Labs ecosystem in 2026](/blogs/arthur-labs-ecosystem-2026/) maps HIIE against DEAN and the rest of the stack.

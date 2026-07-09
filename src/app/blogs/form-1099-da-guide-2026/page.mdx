@@ -1,0 +1,155 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/form-1099-da-guide-2026/' },
+  title: 'Form 1099-DA in 2026: What Crypto Investors Actually Receive, and What to Do With It',
+  description:
+    'Learn what IRS Form 1099-DA reports for 2025 and 2026 crypto transactions, who sends it, what each box means, and how to reconcile it with your own records.',
+  keywords:
+    'Form 1099-DA, 1099-DA crypto, crypto tax form 2026, digital asset broker reporting, gross proceeds reporting, cost basis reporting, covered digital assets, Form 8949, IRS crypto reporting, crypto tax 2026',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-07-09',
+  category: 'Crypto Tax',
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Form 1099-DA in 2026: What Crypto Investors Actually Receive, and What to Do With It"
+  description="Learn what IRS Form 1099-DA reports for 2025 and 2026 crypto transactions, who sends it, what each box means, and how to reconcile it with your own records."
+  slug="/blogs/form-1099-da-guide-2026/"
+  datePublished="2026-07-09"
+/>
+
+# Form 1099-DA in 2026: What Crypto Investors Actually Receive, and What to Do With It
+
+Form 1099-DA is the first IRS information return built specifically for digital assets, and the first wave of forms — covering 2025 transactions — reached investors in early 2026. This article explains exactly what the form reports, what it deliberately leaves out, and how to reconcile it with your own records before you file.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## What Is Form 1099-DA?
+
+Form 1099-DA, titled "Digital Asset Proceeds From Broker Transactions," is the IRS information return that digital asset brokers use to report their customers' sales and exchanges of digital assets to both the customer and the IRS. It is the digital asset counterpart to Form 1099-B, the form stock brokerages have issued for securities transactions for decades. The form exists because of the [broker reporting regulations the IRS finalized in 2024](https://www.irs.gov/newsroom/final-regulations-and-related-irs-guidance-for-reporting-by-brokers-on-sales-and-exchanges-of-digital-assets) under section 6045 of the tax code, which extended securities-style information reporting to digital assets for the first time.
+
+Two things about the form are easy to misunderstand:
+
+- **It is an information return, not a bill.** Form 1099-DA does not itself calculate your tax. It reports transaction data. You still compute gains and losses on Form 8949 and Schedule D, using your own cost basis records where the form does not supply them.
+- **It changes visibility, not taxability.** The IRS has treated digital assets as property since 2014, so every sale, swap, and spend was already a reportable event. What Form 1099-DA changes is that the IRS now receives its own copy of your custodial transaction data and can match it against your return — the same automated matching that has applied to stock trades for years.
+
+The official form and its current instructions are published on the [IRS Form 1099-DA page](https://www.irs.gov/forms-pubs/about-form-1099-da). One practical consequence of matching is worth stating plainly: if a broker reports proceeds that you never report anywhere on your return, the IRS's automated systems can propose tax on the full proceeds amount — with zero basis — through an underreporter notice. Filing accurately protects you from that outcome.
+
+## Who Sends Form 1099-DA — and Who Does Not
+
+Custodial digital asset brokers send Form 1099-DA: the regulations cover operators of custodial trading platforms (centralized exchanges), hosted wallet providers, digital asset kiosks such as Bitcoin ATMs, and certain processors of digital asset payments. What these have in common is custody — the business holds or controls the assets it sells on your behalf, so it can see your transactions and identify you.
+
+Just as important is who does **not** send one:
+
+- **Self-custody wallet software and hardware wallets.** A wallet you control is not a broker.
+- **Non-custodial DeFi protocols and front-ends.** A separate December 2024 regulation would have treated certain DeFi trading front-ends as brokers, but Congress overturned it under the Congressional Review Act through [H.J. Res. 25](https://www.congress.gov/bill/119th-congress/house-joint-resolution/25), signed into law in April 2025. Under the Congressional Review Act, a disapproved rule cannot be reissued in substantially similar form without new legislation, so decentralized exchanges and non-custodial protocols do not currently issue Form 1099-DA.
+- **Peer-to-peer counterparties.** A private individual who buys crypto from you directly is not a broker.
+
+The critical caveat: not receiving a form does not mean not owing tax. Swaps on a decentralized exchange, sales from a self-custody wallet, and peer-to-peer trades are all still taxable dispositions that you must self-report. The repeal removed a reporting obligation from DeFi platforms; it removed nothing from taxpayers. The IRS's [digital assets page](https://www.irs.gov/filing/digital-assets) is explicit that all digital asset income must be reported whether or not an information return is issued.
+
+## The Reporting Timeline: Gross Proceeds First, Cost Basis Second
+
+The IRS phased Form 1099-DA in over two stages: brokers report gross proceeds for sales occurring on or after January 1, 2025, and add cost basis for "covered" assets acquired on or after January 1, 2026. Gross proceeds means the total value you received from a disposition, reduced by transaction costs. Cost basis is what you paid to acquire the asset, including fees.
+
+| Transactions during | What the broker reports | When the form arrives |
+| --- | --- | --- |
+| Calendar year 2025 | Gross proceeds only; basis reporting was optional | Early 2026 — the furnishing deadline was February 17, 2026 |
+| Calendar year 2026 | Gross proceeds for all dispositions, plus cost basis for covered assets | Early 2027 |
+
+The furnishing deadline for 1099-DA recipient statements follows the later mid-February schedule used for Form 1099-B, per the IRS [General Instructions for Certain Information Returns](https://www.irs.gov/instructions/i1099gi). In this first year, several large platforms told customers that statements could arrive into March, so if you filed early in 2026 and a form arrived afterward, compare it against what you reported and amend if the difference is material.
+
+### Covered versus noncovered assets
+
+The distinction that drives basis reporting is borrowed from securities rules. A **covered** digital asset is one you acquired on or after January 1, 2026, and held in the same broker account through the sale — the broker witnessed both ends of the transaction, so it can report your basis with confidence. A **noncovered** asset is anything else: units acquired before 2026, or units transferred into the account from an external wallet. For noncovered assets, basis reporting is voluntary, and the current [Form 1099-DA instructions](https://www.irs.gov/instructions/i1099da) provide a checkbox flagging the asset as noncovered so the IRS knows basis data may be absent.
+
+### Transition relief
+
+The IRS acknowledged that first-year systems would be rough. Notice 2024-56 provided good-faith penalty relief for brokers on 2025-year filings, and Notice 2025-33 extended transitional relief from backup withholding — brokers were not required to backup withhold on digital asset transactions in 2025 or 2026, with conditional relief continuing into 2027 for preexisting accounts that pass IRS TIN matching. In practice this means brokers began collecting certified taxpayer identification numbers on Form W-9 from new customers starting January 1, 2026, and customers who fail to provide a valid TIN will eventually face backup withholding (currently 24 percent) on their proceeds.
+
+## What the Boxes on Form 1099-DA Mean
+
+Each Form 1099-DA reports a single broker's view of your dispositions, organized into fields that identify the asset, the dates, the proceeds, and — where known — the basis. The key fields on the current form:
+
+| Field | What it shows | Why it matters |
+| --- | --- | --- |
+| Box 1a | Digital asset code | A standardized identifier for the asset sold |
+| Box 1b | Name of the digital asset | Human-readable asset name |
+| Box 1c | Number of units | Reported to as many as 18 decimal places |
+| Box 1d | Date acquired | Populated when the broker knows it; drives holding period |
+| Box 1e | Date sold or disposed | Fixes the tax year and holding period end |
+| Box 1f | Gross proceeds | Total received, reduced by transaction costs |
+| Box 1g | Cost or other basis | Populated for covered assets; often blank otherwise |
+| Box 2 | Basis-reported checkbox | Whether basis in 1g was also sent to the IRS |
+| Box 4 | Federal income tax withheld | Backup withholding, if any was applied |
+| Box 6 | Gain or loss character | Short-term, long-term, or ordinary |
+| Box 9 | Noncovered checkbox | Flags assets for which basis rules do not require reporting |
+| Boxes 12a-12b | Transfer-in units and date | Units that entered the account from an external wallet |
+
+A few details in the instructions matter more than they look:
+
+- **Proceeds are net of transaction costs.** Box 1f can differ slightly from your own gross numbers because the broker subtracts fees before reporting.
+- **The wash sale field applies narrowly.** The form includes a wash sale loss field, but it applies to tokenized securities reported on 1099-DA. The securities wash sale rule does not currently apply to most digital assets under the tax code — though Congress has repeatedly proposed extending it.
+- **De minimis and aggregate reporting exist for specific asset classes.** The instructions allow optional aggregate reporting for qualifying stablecoins and specified NFTs, with annual de minimis thresholds — aggregate stablecoin sales of 10,000 dollars or less and specified NFT sales of 600 dollars or less need not be reported at all. If your stablecoin activity seems missing from a form, this is often why. The transactions may still be reportable by you.
+
+## What to Do When You Receive a 1099-DA
+
+When a Form 1099-DA arrives, verify it against your own records before it goes anywhere near your return. A practical sequence:
+
+1. **Confirm it is yours and complete.** Check the account, the TIN, and that the transactions listed match activity you recognize on that platform.
+2. **Reconcile every line against your own transaction log.** Compare dates, units, and proceeds. Remember that Box 1f is net of fees.
+3. **Check whether Box 1g is populated.** For 2025-year forms, basis is usually blank — the broker reported proceeds only, and the gain calculation is entirely on you.
+4. **Report dispositions on Form 8949.** Transactions flow from Form 8949 to Schedule D. Where the form omits basis, supply your own documented basis; where the form's basis is wrong, report the correct figure using the appropriate Form 8949 adjustment code and keep the supporting records.
+5. **Answer the digital asset question on Form 1040.** Anyone who disposed of or received digital assets during the year answers "Yes," regardless of forms received.
+6. **Do not treat the form as your whole tax picture.** It covers one broker's account. Self-custody trades, DeFi activity, and other exchanges must be added from your own records.
+7. **Retain the form with your records** for at least as long as you keep the return it supports.
+
+## When the Form Does Not Match Your Records
+
+Mismatches between Form 1099-DA and self-tracked records are common in these first years, and in most cases your own documented records — not the broker's estimate — determine your reportable basis. The usual causes:
+
+- **Transferred-in assets.** If you moved coins from a hardware wallet onto an exchange and later sold, the exchange never saw your purchase. It reports proceeds with blank or estimated basis and may flag the units as noncovered or show them in the transfer-in boxes. A blank Box 1g does not mean your basis is zero — it means the broker does not know it.
+- **Per-wallet basis tracking.** Since January 1, 2025, cost basis must be tracked per wallet or account rather than pooled across all holdings, so a sale on one exchange must be matched against acquisitions in that same account. Records kept under the old universal-pooling approach will not line up with broker forms.
+- **Double counting in tax software.** If you import both exchange API data and a 1099-DA into a tax tool, the same disposition can appear twice. Deduplicate before generating forms.
+- **Proceeds-only optics.** A 2025-year form showing 80,000 dollars of proceeds says nothing about gain — your basis might be 78,000 dollars. Expect the IRS copy to show the same proceeds figure, and make sure your Form 8949 accounts for every dollar of it, even when the resulting gain is small or negative.
+
+If a form is simply wrong — transactions that are not yours, incorrect units, duplicated sales — request a corrected form from the broker, and document the request if filing season forces you to file with your own figures in the meantime.
+
+## What 1099-DA Does Not Cover
+
+Form 1099-DA reports dispositions effected by custodial brokers, which leaves large categories of taxable crypto activity entirely up to self-reporting. It does not cover:
+
+- **Self-custody and DeFi dispositions.** Swaps on decentralized exchanges and sales out of self-custody wallets generate no 1099-DA, for the reasons covered above.
+- **Income events.** Staking rewards, mining income, airdrops, and interest are income when received, not dispositions — they do not belong on 1099-DA. Some platforms report them on Form 1099-MISC; many report them nowhere.
+- **Carved-out transaction types.** IRS Notice 2024-57 relieved brokers from reporting certain transactions — including wrapping and unwrapping, liquidity provision, staking arrangements, and digital asset lending — until further guidance is issued. Relieved from broker reporting, not from taxation.
+
+Every one of these remains taxable under existing law. Our [DeFi lending tax guide](/blogs/defi-lending-tax-guide) walks through how lending interest and yield are taxed when no form arrives at all, and our [crypto tax complete guide](/guides/crypto-tax-complete-guide) covers the full landscape of taxable events, cost basis methods, and the per-wallet rules in depth.
+
+## Record-Keeping That Keeps You Ahead of the Form
+
+Because Form 1099-DA will not see your full activity for years — if ever, for self-custody and DeFi — your own records remain the authoritative source for basis and holding periods. For every transaction, keep the date, transaction type, units, fair market value in USD at the time, fees, wallet or account, and the transaction hash. Track each wallet's basis independently to satisfy the per-wallet requirement, and export your history from any platform before closing an account, since reconstructing records after the fact is far harder than capturing them in real time.
+
+Automation helps at scale. Arthur Labs provides crypto tax reporting at [crypto.arthurlabs.net](https://crypto.arthurlabs.net) with FIFO-based PDF reports at 7.50 dollars per wallet, covering trading, staking, airdrops, DeFi interactions, and cross-chain activity — a straightforward way to produce the basis records a proceeds-only 1099-DA leaves you to supply.
+
+## Where to Go Next
+
+- [Crypto Tax Complete Guide](/guides/crypto-tax-complete-guide) — cost basis methods, taxable events, DeFi, NFTs, and record keeping for 2025-2026
+- [DeFi Lending Tax Guide](/blogs/defi-lending-tax-guide) — reporting lending interest and yield when no information return exists
+- [The Arthur Labs Ecosystem in 2026](/blogs/arthur-labs-ecosystem-2026) — where crypto tax reporting fits among Arthur Labs' products
+- [Generate a report at crypto.arthurlabs.net](https://crypto.arthurlabs.net) — FIFO-based PDF tax reports per wallet
+
+This article is for educational purposes only and does not constitute tax, legal, or financial advice. Reporting requirements continue to evolve, and their application depends on your specific facts. Consult a qualified tax professional about your own situation before filing.
+
+<div className="not-prose mt-8 mb-16 flex gap-3">
+  <Button href="https://crypto.arthurlabs.net" target="_blank">
+    <>Generate Your Crypto Tax Report</>
+  </Button>
+</div>
