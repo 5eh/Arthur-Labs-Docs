@@ -1,0 +1,234 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/tailwind-v4-invisible-focus-ring/' },
+  title: 'Why outline-none Hides Your Tailwind v4 Focus Ring',
+  description:
+    'In Tailwind v4, outline-none sets --tw-outline-style to none, so focus-visible:outline-2 paints nothing. The compiled CSS, a Playwright check and the fix.',
+  keywords:
+    'Tailwind v4 focus ring, outline-none Tailwind v4, outline-hidden, focus-visible outline not showing, --tw-outline-style, Tailwind accessibility, WCAG 2.2 focus visible, focus indicator contrast, Playwright getComputedStyle',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Engineering',
+  shortTitle: 'Tailwind v4 focus ring',
+  openGraph: pageOg({
+    title: 'Why outline-none Hides Your Tailwind v4 Focus Ring',
+    description:
+      'In Tailwind v4, outline-none sets --tw-outline-style to none, so focus-visible:outline-2 paints nothing. The compiled CSS, a Playwright check and the fix.',
+    path: '/blogs/tailwind-v4-invisible-focus-ring/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Why outline-none Hides Your Tailwind v4 Focus Ring',
+    description:
+      'In Tailwind v4, outline-none sets --tw-outline-style to none, so focus-visible:outline-2 paints nothing. The compiled CSS, a Playwright check and the fix.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Why outline-none Hides Your Tailwind v4 Focus Ring"
+  description="In Tailwind v4, outline-none sets --tw-outline-style to none, so focus-visible:outline-2 paints nothing. The compiled CSS, a Playwright check and the fix."
+  slug="/blogs/tailwind-v4-invisible-focus-ring/"
+  datePublished="2026-11-05"
+/>
+
+# Why outline-none Hides Your Tailwind v4 Focus Ring
+
+In Tailwind CSS v4, a control styled `outline-none focus-visible:outline-2` shows no focus ring when a keyboard user reaches it. The class string says the ring is there, and the browser computes `outline-style: none`. We found it on every control of a registration path in the first build our audit ran against. Below is the mechanism, checked by compiling the utilities with Tailwind 4.1.3 and reading computed styles in Chrome 149, followed by a detection script and the fix.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## outline-2 takes its style from --tw-outline-style, and outline-none sets it to none
+
+Tailwind v4 does not write `outline-style: solid` into its width utilities. It writes a reference to a custom property, and `outline-none` sets that property. Compiling the four classes involved with Tailwind 4.1.3 gives this utilities layer, quoted exactly, with the property registration Tailwind emits alongside it:
+
+```css
+@layer utilities {
+  .outline-hidden {
+    --tw-outline-style: none;
+    outline-style: none;
+    @media (forced-colors: active) {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+  }
+  .outline-2 {
+    outline-style: var(--tw-outline-style);
+    outline-width: 2px;
+  }
+  .outline-none {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  .focus-visible\:outline-2 {
+    &:focus-visible {
+      outline-style: var(--tw-outline-style);
+      outline-width: 2px;
+    }
+  }
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+```
+
+The design is sensible on its own. `--tw-outline-style` starts as `solid` through `@property`, so `outline-2` by itself draws a solid outline, and a style utility such as `outline-dashed` can change the style without restating the width. The failure only appears when a reset and a focus width sit on the same element.
+
+The same declarations for both utilities appear in a production build of ours compiled with Tailwind 4.3.3, so this is not a quirk of one release. To reproduce the output in your own project, the compiler that `@tailwindcss/postcss` uses is a public package:
+
+```js
+// compile.mjs: print the CSS Tailwind v4 generates for the classes you pass.
+import { compile } from '@tailwindcss/node'
+
+const compiler = await compile('@import "tailwindcss";', { base: process.cwd(), onDependency() {} })
+const css = compiler.build(process.argv.slice(2))
+console.log(css.slice(css.indexOf('@layer utilities')))
+```
+
+```bash
+node compile.mjs outline-none outline-hidden outline-2 focus-visible:outline-2
+```
+
+## Specificity picks focus-visible:outline-2, and the variable still says none
+
+The cascade resolves in two steps, and the second is the one that catches people. Take a button with `outline-none focus-visible:outline-2 focus-visible:outline-blue-600` and focus it from the keyboard.
+
+1. **Two rules declare `outline-style`.** `.outline-none` says `none`, with the specificity of one class. `.focus-visible\:outline-2:focus-visible` says `var(--tw-outline-style)`, with the specificity of a class plus a pseudo-class. The focus rule wins. The order of classes in the `class` attribute plays no part, because specificity, and then order in the stylesheet, decide it.
+2. **One rule declares `--tw-outline-style`.** Only `.outline-none` sets the custom property on this element, and it sets `none`. The focus rule reads the variable but never redeclares it. The `@property` initial value of `solid` applies only when nothing sets the property, and something has.
+
+So the winning declaration is `outline-style: var(--tw-outline-style)`, the variable substitutes to `none` when the style is computed, and no outline paints. The width utility did its job and reports 2px. The colour utility did its job too. Nothing is drawn, because an outline whose style is `none` has nothing to draw.
+
+Browsers without `@property` support do not escape it. For them Tailwind sets `--tw-outline-style: solid` on every element inside a `properties` cascade layer, but it declares that layer before `theme`, `base`, `components` and `utilities`, which gives it the lowest priority of all. The utility's `none` still wins.
+
+## outline-hidden sets the same variable, so the v4 rename does not help
+
+Tailwind's [v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide#renamed-outline-utility) explains the rename that put two names on this behaviour. In v3, "the `outline-none` utility previously didn't actually set `outline-style: none`, and instead set an invisible outline that would still show up in forced colors mode for accessibility reasons." In v4 that utility was renamed `outline-hidden`, and "a new `outline-none` utility that actually sets `outline-style: none`" took the old name. The guide's migration step is to replace `focus:outline-none` with `focus:outline-hidden`.
+
+The same section says that "all `outline-<number>` utilities default `outline-style` to `solid`." That is true of the variable's starting value and false the moment any reset touches it. The compiled CSS above shows the gap: `outline-hidden` sets `--tw-outline-style: none` just as `outline-none` does, and keeps its transparent two-pixel outline inside `@media (forced-colors: active)` only. Following the migration step therefore preserves the bug exactly. The [outline-style reference](https://tailwindcss.com/docs/outline-style) summarises `outline-hidden` as `outline: 2px solid transparent; outline-offset: 2px;` and, for both utilities, says it is "highly recommended to apply your own focus styling for accessibility." The trap is that the focus styling most people apply reads the very variable the reset has just cleared.
+
+## Every reset that is active at focus time breaks the ring
+
+The combination is wider than one class string. We built a test page with one button per variant, focused each with a real Tab key press in Chrome 149, and read the settled computed style:
+
+| Classes on the button | `outline-style` | `outline-width` | Ring paints |
+| --- | --- | --- | --- |
+| `outline-none focus-visible:outline-2` | none | 2px | no |
+| `outline-hidden focus-visible:outline-2` | none | 2px | no |
+| `focus:outline-none focus-visible:outline-2` | none | 2px | no |
+| `focus-visible:outline-none focus-visible:outline-2` | none | 2px | no |
+| `outline-none focus-visible:outline` | none | 1px | no |
+| `outline-none focus-visible:outline-solid focus-visible:outline-2` | solid | 2px | yes |
+| `focus-visible:outline-2`, no reset | solid | 2px | yes |
+| no outline classes at all | auto | 1px | yes, the browser default |
+
+The third row matters because `focus:outline-none` looks safe: it only applies on focus. But `:focus-visible` implies `:focus`, so on keyboard focus both rules match, and the variable is `none` again. A reset is harmless only when it is not active at the moment the focus ring needs to draw.
+
+A ring made with `focus-visible:ring-2` is different. It draws with `box-shadow`, which does not read `--tw-outline-style`, so it survives `outline-none`. It has its own problem, which comes up in the fix below.
+
+## Detect it by pressing Tab, finishing transitions, then reading getComputedStyle
+
+No amount of reading source finds this, because the source says the ring is there. The detection has to focus the real element in a real browser and ask what it computes. Three details decide whether the answer is true:
+
+- **Press Tab rather than calling `.focus()`.** Chrome matches `:focus-visible` when it believes the keyboard is in use, and a scripted focus with no key press can leave every `focus-visible:` utility unapplied.
+- **Finish the transition before reading.** Tailwind v4's `transition-colors` includes `outline-color` in its property list. Read the instant after focus, our test button reported its unfocused colour, white, where the settled ring is blue. Calling `finish()` on each running transition lands on the settled value.
+- **Judge the style, not the width.** On the broken buttons Chrome reported `outline-width: 2px` with `outline-style: none`. A check that looks only at width passes every one of them.
+
+```js
+// focus-ring.mjs <url>: Tab through a page and list every focused element whose outline paints nothing.
+import { chromium } from 'playwright-core'
+
+const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome' })
+const page = await browser.newPage()
+await page.goto(process.argv[2])
+
+const rows = []
+for (let stop = 0; stop < 200; stop++) {
+  await page.keyboard.press('Tab') // a real key press, so :focus-visible matches
+  const row = await page.evaluate(() => {
+    const el = document.activeElement
+    if (!el || el === document.body || el.dataset.ringProbe) return null // back to the start
+    el.dataset.ringProbe = 'seen'
+    // transition-colors animates outline-color in Tailwind v4: read the settled value, not frame one.
+    for (const animation of el.getAnimations()) {
+      if (animation instanceof CSSTransition) animation.finish()
+    }
+    const style = getComputedStyle(el)
+    return {
+      element: `${el.tagName.toLowerCase()} "${el.textContent.trim().slice(0, 24)}"`,
+      outlineStyle: style.outlineStyle,
+      outlineWidth: style.outlineWidth,
+      outlineColor: style.outlineColor,
+      // Width alone proves nothing: Chrome reports 2px even when the style is none.
+      paints: style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) > 0,
+    }
+  })
+  if (!row) break
+  rows.push(row)
+}
+console.table(rows)
+await browser.close()
+process.exitCode = rows.some((row) => !row.paints) ? 1 : 0
+```
+
+Run against our test page, it listed four buttons. The two with a reset reported `none`, `2px`, `oklch(0.546 0.245 262.881)` and `paints: false`, and the process exited 1. The two fixed buttons reported `solid` with the same width and colour. This script only covers outlines. A control that relies on a `box-shadow` ring needs that shadow read and judged as well, which our audit's rendered tier does.
+
+## The fix: delete the reset, or restate the style with outline-solid
+
+There are two clean fixes, and both were measured in the table above.
+
+```html
+<!-- Broken: the reset clears the variable the focus width reads. -->
+<button class="outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+  Register
+</button>
+
+<!-- Fix 1: no reset. -->
+<button class="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+  Register
+</button>
+
+<!-- Fix 2: keep the reset, restate the style at focus. -->
+<button class="outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+  Register
+</button>
+```
+
+**Fix 1 removes the reset.** The usual reason for `outline-none` is to stop a ring appearing on mouse clicks, and the browser default already avoids that: the HTML Standard's [default stylesheet](https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3) draws focus with `:focus-visible { outline: auto; }`, the same selector the custom ring uses. Once a `focus-visible:` ring exists, the reset has no work left to do.
+
+**Fix 2 restates the style.** `focus-visible:outline-solid` compiles to a rule that sets `--tw-outline-style: solid` and `outline-style: solid` under `:focus-visible`, with the same specificity as the focus width and higher than the reset. It is the smaller change in a large codebase, because it can be added to a shared button variant without touching anything else.
+
+We prefer either of these to switching the indicator to `focus-visible:ring-2`. Rings are box shadows, and the [CSS Color Adjustment specification](https://www.w3.org/TR/css-color-adjust-1/#forced-colors-properties) says that in forced colors mode, which Windows contrast themes use, "box-shadow and text-shadow compute to none." An outline survives that mode with a system colour. That is the reason `outline-hidden` keeps a transparent outline under `forced-colors: active`, and it is a reason to keep the focus indicator an outline.
+
+## WCAG 2.2 asks for a visible indicator in 2.4.7 and 3:1 contrast in 1.4.11
+
+Two Level AA success criteria in [WCAG 2.2](https://www.w3.org/TR/WCAG22/) decide whether a focus ring is acceptable, and the broken pattern fails the first one outright.
+
+- **[2.4.7 Focus Visible](https://www.w3.org/TR/WCAG22/#focus-visible), Level AA:** "Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible." A button whose computed outline style is `none`, with no other indicator, has no visible indicator.
+- **[1.4.11 Non-text Contrast](https://www.w3.org/TR/WCAG22/#non-text-contrast), Level AA:** visual information "required to identify user interface components and states" needs at least 3:1 against adjacent colours. The [Understanding document](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html) applies this to focus: "the visual focus indicator for a component must have sufficient contrast against the adjacent background."
+- **[2.4.13 Focus Appearance](https://www.w3.org/TR/WCAG22/#focus-appearance), Level AAA,** goes further and asks for an indicator at least as large as a 2 CSS pixel perimeter of the component, with 3:1 between the same pixels in the focused and unfocused states.
+
+The same Understanding document says that "the default focus style is exempt from contrast requirements," but only while the author has not changed it. Adding `outline-none` is a change, so the exemption goes with it, and the replacement ring has to meet 3:1 on its own.
+
+Measured on our test page, the settled `blue-600` ring is rgb(21, 93, 252), which is 5.25:1 against the white page. With `outline-offset-2` a strip of page colour separates the ring from the button, so the page is the adjacent colour on both sides of the ring and 5.25:1 is the number that counts. With no offset, the ring would also border the `zinc-900` button fill, and that pair measures 3.38:1, just over the line. Offset is a contrast decision as much as a spacing one.
+
+Our own standard writes this as Accessibility 3, "Every focused element shows a visible focus ring with at least 3:1 contrast against its background. Never remove the outline without replacing it", and its launch rules measure focus rings again against the live URL, because deployment can change the pixels a local check read.
+
+## What to change in your own Tailwind v4 codebase
+
+- **Search for resets beside focus widths.** Any class string or variant holding `outline-none`, `outline-hidden`, `focus:outline-none` or `focus-visible:outline-none` together with a `focus-visible:outline-<number>` is suspect until a browser says otherwise.
+- **Pick one fix and put it in the shared variant.** Delete the reset, or add `focus-visible:outline-solid`, in the one place every button and link inherits from.
+- **Measure in a browser.** Press Tab, finish transitions, and read `outline-style`, not just width, then check the ring's contrast against what is actually painted behind it.
+- **Keep the indicator an outline,** so it survives forced colors mode.
+
+For how this bug shaped the way our audit records a pass, see [how we audit every build against 199 rules](/blogs/website-build-audit-199-rules/). For the checks that run again once a site is live, see [four Vercel launch failures a clean local build cannot show](/blogs/vercel-production-launch-checks/).

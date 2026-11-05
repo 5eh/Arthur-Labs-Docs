@@ -7,11 +7,12 @@ import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
 import { type Section } from '@/components/SectionProvider'
 import EcosystemBar from '@/components/EcosystemBar'
+import { SITE_ORIGIN } from '@/lib/seo'
 
 import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://docs.arthurlabs.net'),
+  metadataBase: new URL(SITE_ORIGIN),
   title: {
     // Pages already carry descriptive titles; one clean brand suffix (was double-branding
     // every page as "X | Arthur Labs | Arthur Labs Inc.").

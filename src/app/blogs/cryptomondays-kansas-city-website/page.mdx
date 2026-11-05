@@ -1,0 +1,225 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/cryptomondays-kansas-city-website/' },
+  title: 'CryptoMondays Kansas City: Dates From the Luma iCal Feed',
+  description:
+    'How we built the CryptoMondays Kansas City site: the next date from the Luma iCal feed, a seed-or-D1 content layer, R2 flyers via /media, and emailed-code sign-in.',
+  keywords:
+    'CryptoMondays Kansas City, Kansas City meetup website, Luma iCal feed, meetup website case study, Next.js meetup site, Cloudflare D1, Cloudflare R2, Kansas City web development',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Case Studies',
+  shortTitle: 'CryptoMondays Kansas City',
+  openGraph: pageOg({
+    title: 'CryptoMondays Kansas City: Dates From the Luma iCal Feed',
+    description:
+      'How we built the CryptoMondays Kansas City site: the next date from the Luma iCal feed, a seed-or-D1 content layer, R2 flyers via /media, and emailed-code sign-in.',
+    path: '/blogs/cryptomondays-kansas-city-website/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'CryptoMondays Kansas City: Dates From the Luma iCal Feed',
+    description:
+      'How we built the CryptoMondays Kansas City site: the next date from the Luma iCal feed, a seed-or-D1 content layer, R2 flyers via /media, and emailed-code sign-in.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="CryptoMondays Kansas City: Dates From the Luma iCal Feed"
+  description="How we built the CryptoMondays Kansas City site: the next date from the Luma iCal feed, a seed-or-D1 content layer, R2 flyers via /media, and emailed-code sign-in."
+  slug="/blogs/cryptomondays-kansas-city-website/"
+  datePublished="2026-11-05"
+/>
+
+# CryptoMondays Kansas City: Dates From the Luma iCal Feed
+
+CryptoMondays Kansas City is the local chapter of [CryptoMondays](https://www.cryptomondays.io), a network of monthly meetups, and describes itself as a free monthly meetup for anyone curious about crypto, Bitcoin and Web3 in the Kansas City metro. We built its site at [cryptomondays.arthurlabs.net](https://cryptomondays.arthurlabs.net). Its first job is to say when the next meetup is, from the chapter's own Luma calendar, or to say plainly that nothing is listed. This is how it is built, what we removed before launch, and why it never prints a date it worked out for itself.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## The home page runs six sections under one H1, "Crypto Mondays, Kansas City"
+
+The home page serves three readers: someone deciding whether to come, someone who wants to speak, sponsor or host, and an AI agent answering a question about the chapter. Most sections below the hero are drawn from the meetup records rather than written by hand.
+
+<PageWireframe
+  title="cryptomondays.arthurlabs.net, top to bottom"
+  sections={[
+    { kind: 'nav', name: 'Navigation', note: 'For agents at the left; Meetups, Community, Learn, Venues, Network, Contact; Upcoming on Luma outside the bar' },
+    { kind: 'hero', name: 'Crypto Mondays, Kansas City', note: 'Chapter photographs turning through a 2D ASCII glyph field; Every meetup and Get in touch' },
+    { kind: 'rail', name: 'Every meetup', note: 'No upcoming events box beside a drag rail of 22 meetups, newest first' },
+    { kind: 'list', name: 'Our community', note: '16 photographs in a masonry grid, each captioned with its meetup' },
+    { kind: 'map', name: 'Where we meet', note: 'Dark venue map with one pin per venue, a ruled list of 8 venues beside it' },
+    { kind: 'stats', name: 'Part of CryptoMondays', note: 'Network prose, then a fact row counted from the meetups' },
+    { kind: 'panel', name: 'Get in contact.', note: 'Contact form in a panel over a wave canvas, with the other channels' },
+    { kind: 'footer', name: 'Footer', note: 'Channel row, agent brief link, privacy, colophon' },
+  ]}
+  caption="The six content sections in render order, as the live page showed them in November 2026. Only the hero and the contact panel carry motion."
+/>
+
+The rail links to an archive at `/events` with a page per meetup. The venue section keeps the map's facts in a ruled list beside it (name, address, number of meetups, the months they ran), so choosing a row flies the map to its pin, and a browser without WebGL gets the list alone.
+
+## The next date comes from the Luma iCal feed, read at most once an hour
+
+The next meetup date comes from the chapter's Luma calendar through its public iCal subscription feed, the same file a calendar app reads. The server fetches it with a five-second timeout and keeps it in the Next.js fetch cache for 3,600 seconds under a `luma` tag, so the feed is read at most once an hour per region however many people visit.
+
+The feed was the only stable public surface. The chapter's events live on a free Luma calendar, and [Luma's documented API requires a Luma Plus subscription](https://docs.luma.com/reference/getting-started-with-your-api). An iCal feed is not a versioned API either, so the code treats it as a dependency, not a requirement: a failed request, an unexpected status or a body that is not a calendar logs a warning and returns nothing, and the page falls back to its stored records.
+
+The reader is a small [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545) parser written for what Luma actually sends. It accepts a start time only when it is a UTC instant and drops a floating or time-zoned one rather than guessing. Luma's events carry no `URL` property, so the reader takes each event page from the description's first line, "Get up-to-date information at:" and the link, with Luma's event-ID address as the fallback. The host's calendar carries other series too, so only events whose title names CryptoMondays, and which have not ended, count.
+
+## The site picks one of three answers and never computes a date
+
+When a page asks for the next meetup, the site returns one of three states in a fixed order: a meetup Luma lists right now, a future meetup in the site's own records, or none. In the none state the call to action links the host's Luma profile and the page shows the most recent meetup for context, with no `Event` structured data. A sketch of the order, written for this article:
+
+```ts
+type NextMeetup =
+  | { kind: 'upcoming'; title: string; startAt: string; url: string }
+  | { kind: 'none'; profileUrl: string }
+
+type StoredMeetup = { title: string; startAt: string; endAt: string; url: string }
+
+export function nextMeetup(
+  live: NextMeetup | null, // from the iCal feed; null on any failure
+  stored: StoredMeetup[],
+  profileUrl: string,
+  now = new Date(),
+): NextMeetup {
+  if (live?.kind === 'upcoming') return live
+
+  const future = stored
+    .filter((meetup) => Date.parse(meetup.endAt) > now.getTime())
+    .sort((a, b) => Date.parse(a.startAt) - Date.parse(b.startAt))
+  if (future[0]) return { kind: 'upcoming', ...future[0] }
+
+  // Nothing listed anywhere: point at the source, never at "second Monday, next month".
+  return { kind: 'none', profileUrl }
+}
+```
+
+A projected date was tempting. 21 of the chapter's 22 meetups through September 2026 fell on the second Monday of the month, usually from 5:30 to 7:30 PM Central. A "second Monday" rule would have been right almost every month, and wrong for the meetup of Monday, 17 February 2025, the third Monday. A visitor who turns up to an empty room on a computed date was told something false, so the site computes nothing.
+
+In November 2026 the live page showed the none state: "No upcoming events" with a Follow on Luma link. The plain-text brief at `/llms.txt` says it in a sentence an agent can quote: "No upcoming meetup is listed on Luma yet, and this site never guesses a date."
+
+## The archive is a committed seed, and D1 sits behind one flag
+
+Past meetups are not read live. A sync script we run by hand after each meetup pulls titles, descriptions, venues and flyers from the chapter's public Luma listings, applies a list of corrections, and writes committed JSON; at handoff it held 22 meetups, 8 venues and 6 organisations. The corrections are asserted by the script and re-checked by a test, and they are what a hand-typed site gets wrong: a weekday that contradicted the event's own start time, a same-month date that did not match it, an "[Insert Date]" placeholder left in a listing.
+
+Every page reads content through one function, `getRepository()`. By default it returns the static driver, which parses the seed through a zod schema at module load, so a malformed seed fails the build, not a visitor's request. `CMS_SOURCE=d1` selects the Cloudflare D1 driver, which answers every method from one batch of eight `SELECT` statements, cached for an hour, mapped into the same snapshot shape and parsed through the same schema and selectors. The drivers can disagree only about the rows themselves, and a test round-trips the seed through D1 to prove it arrives unchanged.
+
+If D1 is unconfigured, unreachable, refuses a statement, returns a row the schema rejects, or holds no meetups, every method answers from the seed and logs why. A comment in the code states the consequence: the fallback can be stale but never wrong, because the seed never holds an invented date. The first production deploy, on 27 September 2026, served the seed.
+
+The split is deliberate. The archive is only as current as the last sync, but the next-meetup check is live, because a missing past meetup is a gap and a wrong next date is a false promise. Every figure the page prints is counted from the records, never typed into copy: meetups since December 2024, how many fell on a second Monday, the usual hours, each venue's count and months.
+
+## R2 holds the flyers, and the /media route serves only two WebP sizes
+
+Meetup flyers live in a private Cloudflare R2 bucket with no public domain. Pages ask for `/media/events/<slug>/cover-640.webp` or `cover-1280.webp`, and a route handler streams the object from R2. The route accepts a key only if it matches that exact pattern, or the matching one for Learn's images, so it can never serve an original, another prefix, or a path that climbs out with `..`. Anything else gets the same 404 as a missing object, so responses do not reveal which keys exist.
+
+We checked it live. One flyer's 640 derivative returned `image/webp` with `cache-control: public, max-age=31536000, immutable` and a `content-security-policy` of `default-src 'none'; sandbox`; the same flyer's original returned a JSON 404.
+
+The seed script makes the derivatives with sharp and never enlarges an original. 19 of the 22 flyers are narrower than 1,280 pixels, so the page's `srcset` uses each file's real width rather than the requested one. If R2 is not configured, pages render no image rather than a broken one and the route answers 503. Because keys are cached for a year as immutable, a replaced flyer needs a new key.
+
+## We built a three.js terrain hero, then removed it on 26 September 2026
+
+The first hero was a live terrain-relief scene drawn with three.js, React Three Fiber and a postprocessing pass from USGS elevation exports. On 26 September 2026, before the first production deploy, we re-skinned the site to the arthurlabs.net design scheme and removed the relief completely: components, heightmap code, lab page, tests, and the three, @react-three/fiber, @react-three/postprocessing and postprocessing packages. The project's `package.json` lists none of them today.
+
+The replacement is cheaper and says more about the chapter. Behind the H1, a flat 2D canvas draws ASCII glyphs from a layered sine field: 9-pixel cells, 30 frames a second, device pixel ratio capped at 1.5, the loop stopped while the hero is off screen, one still frame under reduced motion. Since 29 September the chapter's photographs turn through that field five at a time, the centre one in colour in front of the glyphs, so a first visit sees people before copy.
+
+16 of the 51 photographs the chapter supplied ship, as Display P3 WebP at four widths, generated by a committed script with all metadata stripped; every HEIC original carried GPS coordinates. Each photo is matched to its meetup by capture date and captioned from the records, and a test fails if a date names no meetup. Photos from a meetup held at a private address were left out.
+
+The slideshow pauses while the pointer rests on it, while the tab is hidden or the hero is off screen, and while the viewer is open. It starts paused under reduced motion, and a pause button stops it for everyone else, as [WCAG 2.2.2](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html) requires of moving content.
+
+## Spanish, Mandarin and Hindi came out when 45 to 62 percent of their pages stayed English
+
+Our build standard has client sites ship in English, Spanish, Mandarin and Hindi, and this one did at first. The meetups were the problem: their titles, descriptions, venue names and flyer text come from Luma in English with no translation source. Measured on 29 September 2026, 45 to 62 percent of the visible text on a Spanish or Mandarin home page or meetup index was still English, and it was the main content.
+
+A page that switches its navigation to Spanish and leaves every listing in English promises something it cannot keep, so the site went English-only that day. The three translation files were archived, not deleted, and the locale machinery stayed: a language comes back by listing it in one constant and restoring its file. The departure from our standard is recorded in the project's handoff notes with the measurement that forced it.
+
+## Learn's lessons are public, and sign-in by emailed code runs only on its paths
+
+Learn is an education area added in October 2026: short lessons by the chapter's organisers, free to read without an account. In November 2026 one was published, a three-minute introduction to wallets, keys and seed phrases.
+
+A reader who wants to track progress signs in with an email address and types the one-time code the sign-in screen sends to it. There is no password to choose or store, and Google sign-in is off. The profile holds lessons completed, points, three badges, a display name and, optionally, one public Ethereum or Solana address, checked against its chain's format before it is stored: EIP-55 checksum for Ethereum, a 32-byte key for Solana. From the same page a reader can download their record or delete their account.
+
+The sign-in provider, Clerk, runs only on Learn's paths. Everywhere else the site loads no third-party script and sets no cookie. We checked both live: the home page response carries no `set-cookie` header and its HTML references no sign-in domain, while the Learn page's HTML does. A visitor who only wants the next date never meets the sign-in provider.
+
+## Vercel serves the site behind Cloudflare, and D1 and R2 are the only stores
+
+The site is a Next.js 16.3 App Router application on Vercel, and requests reach it through Cloudflare: every response we fetched carried both a `cf-ray` header and an `x-vercel-id`. A root `proxy.ts` keeps an explicit allowlist of public routes, hands Learn's paths to the sign-in provider, and makes the developer console at `/_dev` a real 404 unless a flag is set. `/api/health` sits outside the proxy's matcher, so nothing the proxy does can take the liveness probe down.
+
+<ArchitectureDiagram
+  title="Request path for cryptomondays.arthurlabs.net"
+  layers={[
+    {
+      name: 'Visitor',
+      nodes: [
+        { label: 'Phone or desktop browser', note: 'English, dark theme' },
+        { label: 'AI agent', note: 'reads /agents or /llms.txt' },
+      ],
+      via: 'HTTPS',
+    },
+    { name: 'Edge', nodes: [{ label: 'Cloudflare', note: 'DNS and proxy' }], via: 'origin request' },
+    {
+      name: 'Compute',
+      nodes: [
+        { label: 'Vercel', note: 'Next.js 16.3 App Router', emphasis: true },
+        { label: 'proxy.ts', note: 'public allowlist, sign-in on Learn paths only, /_dev gated' },
+      ],
+    },
+    {
+      name: 'Routes',
+      nodes: [
+        { label: '/ and /events', note: 'server components' },
+        { label: '/media/[...key]', note: 'two WebP sizes, allowlisted keys' },
+        { label: '/map/[...path]', note: 'tile proxy, forwards no cookies' },
+        { label: '/learn', note: 'public lessons, emailed-code sign-in' },
+        { label: '/api/contact', note: 'schema, honeypot, 503 without a store' },
+        { label: '/api/health', note: 'outside the matcher' },
+      ],
+      via: 'getRepository()',
+    },
+    {
+      name: 'Content',
+      nodes: [
+        { label: 'Static seed', note: 'committed JSON, the default' },
+        { label: 'D1 driver', note: 'CMS_SOURCE=d1, falls back to the seed' },
+      ],
+    },
+    {
+      name: 'Stores and feeds',
+      nodes: [
+        { label: 'Luma iCal feed', note: 'the next date, cached one hour', emphasis: true },
+        { label: 'Cloudflare D1', note: 'meetups, messages, lessons, learner records' },
+        { label: 'Cloudflare R2', note: 'flyers and lesson images, private' },
+        { label: 'OpenFreeMap', note: 'map tiles, through /map/' },
+        { label: 'Clerk', note: 'sign-in, Learn only' },
+      ],
+    },
+  ]}
+  caption="Every page reads meetups through one repository function, so the seed can answer whenever D1 cannot, and the live Luma check only ever adds a listing."
+/>
+
+Everything the site stores is in Cloudflare. Vercel has no D1 binding, so a small transport calls D1's documented REST endpoint with an eight-second timeout and one retry, and R2 is reached through its S3 API. The contact form follows the rule we hold every build to: a hidden honeypot, a schema check on every field, messages kept 12 months, and a 503 whenever the store is not configured, never a thank-you that writes to nothing. Preview deployments get no Cloudflare credentials, so a preview serves the seed and refuses messages rather than writing into production data.
+
+The venue map is MapLibre GL JS with OpenFreeMap's dark style, and every tile, font and sprite request goes through the site's own `/map/` route. It is a route rather than a plain rewrite because a rewrite forwards every request header upstream, cookies included. The route sends only a User-Agent and an Accept header, retries a 5xx or a timeout once, serves only the map's own paths, and passes OpenFreeMap's cache lifetimes to Vercel's CDN, so repeat requests never reach the function and OpenFreeMap never sees a visitor's address or cookies.
+
+## What another Kansas City or Omaha meetup can reuse
+
+Most of this transfers to any recurring event that already publishes a calendar:
+
+- **Read the feed you already publish.** A calendar's iCal subscription feed is a stable enough source for "what is next", provided a failure falls back quietly.
+- **Never compute a date.** A pattern that holds 21 times in 22 is still wrong once, and the once is the visitor who came.
+- **Count every figure from the records.** A typed-in total goes stale the day after the next meetup.
+- **Serve media through one allowlisted route.** One pattern, one cache header and one 404 cover every image.
+- **Load sign-in only where it is used.** A meetup page can stay cookie-free beside a lesson area with accounts.
+- **Cut what the content cannot support.** A translated menu over English listings is worse than an honest English page.
+
+The chapter's site is at [cryptomondays.arthurlabs.net](https://cryptomondays.arthurlabs.net). For the same claim-by-claim care applied to a donation page, see our [Omaha Well Project case study](/blogs/omaha-well-project-website/).

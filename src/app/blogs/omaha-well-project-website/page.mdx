@@ -1,0 +1,179 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/omaha-well-project-website/' },
+  title: 'Omaha Well Project: A Six-Section Site in Four Languages',
+  description:
+    'How we built the Omaha Well Project site: six sections, four languages, a $35,000 shower-trailer ledger, and a page that states plainly what it cannot claim yet.',
+  keywords:
+    'Omaha Well Project, Omaha nonprofit website, Omaha street outreach, nonprofit website case study, multilingual nonprofit website, Next.js nonprofit site, Cloudflare D1, Omaha web development',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Case Studies',
+  shortTitle: 'Omaha Well Project',
+  openGraph: pageOg({
+    title: 'Omaha Well Project: A Six-Section Site in Four Languages',
+    description:
+      'How we built the Omaha Well Project site: six sections, four languages, a $35,000 shower-trailer ledger, and a page that states plainly what it cannot claim yet.',
+    path: '/blogs/omaha-well-project-website/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Omaha Well Project: A Six-Section Site in Four Languages',
+    description:
+      'How we built the Omaha Well Project site: six sections, four languages, a $35,000 shower-trailer ledger, and a page that states plainly what it cannot claim yet.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Omaha Well Project: A Six-Section Site in Four Languages"
+  description="How we built the Omaha Well Project site: six sections, four languages, a $35,000 shower-trailer ledger, and a page that states plainly what it cannot claim yet."
+  slug="/blogs/omaha-well-project-website/"
+  datePublished="2026-11-05"
+/>
+
+# Omaha Well Project: A Six-Section Site in Four Languages
+
+The Omaha Well Project is a two-person street outreach effort in Omaha, Nebraska. It hands hot pizza and cold water to people living outside, with no intake form and no identification check, and it is raising $35,000 for a mobile shower trailer. We built its site at [omahawell.arthurlabs.net](https://omahawell.arthurlabs.net). This is how it is put together, what we cut, and why the page is careful about every claim it makes.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Eleven sections became six, and the copy fell from 1,340 words to 528
+
+The first version of the site had eleven sections: the hero, a ledger, what gets handed out, the trailer fund, the project's three rules, how it started, the two founders, giving, the four social accounts, where to get help tonight, and a signup for drop alerts. Every one of them was accurate. Four of them were saying the same thing in different words.
+
+The page has one job. It tells a visitor that this is a non-profit, that every dollar buys food and water, where the Venmo is, and where to follow along. Anything that did not serve that sentence went. The origin story, the founders section, the list of handouts and the accounts section collapsed into the sections around them, the trailer fund moved into the ledger band, and the page copy dropped from 1,340 words to 528. The rendered page went from 8,420 pixels tall to 4,815.
+
+The same edit caught a repetition problem. The Venmo button appeared three times within a screen and a half: in the navigation, in the hero, and again in the ledger. The navigation and hero keep it. The ledger repeat is gone. The giving table still lists Venmo four times, but those rows are a price list (what $5 buys, what $250 buys), not four separate asks.
+
+<PageWireframe
+  title="omahawell.arthurlabs.net, top to bottom"
+  sections={[
+    { kind: 'nav', name: 'Navigation', note: 'How we work, Giving, Get help; Donate on Venmo sits outside the bar' },
+    { kind: 'hero', name: 'Hot pizza. Cold water. No questions.', note: 'Full-viewport ASCII glyph field in green, centred type' },
+    { kind: 'stats', name: 'Ledger', note: '100% to food and water, $0 in salaries, $4,200 of $35,000 toward the trailer', progress: 12 },
+    { kind: 'list', name: 'Three rules: know their name, ask nothing, sit down', note: 'Ruled list with full-bleed rules' },
+    { kind: 'table', name: '$5 is a slice and a bottle. $250 is the trailer fund.', note: 'Giving table' },
+    { kind: 'table', name: 'If you need a shower, a meal or a bed tonight in Omaha', note: 'Referral table quoted from the outreach card' },
+    { kind: 'panel', name: 'Drop alerts', note: 'Signup form in a floating panel over a live wave canvas' },
+    { kind: 'footer', name: 'Footer', note: 'Mark, channels, language switcher, colophon' },
+  ]}
+  caption="The six content sections in render order. The two tables are the only adjacent pair that share a layout pattern; nothing else repeats."
+/>
+
+Reading down, the layout changes at almost every section: a glyph field, a full-bleed fact row, a ruled list, two tables, and a floating panel. We hold every build to a rule that no layout pattern may run for more than two consecutive sections, because six sections built from the same divider treatment read as one component repeated six times. The two tables are the one permitted pair.
+
+## The page is read on a phone, by neighbours and by people who need a shower tonight
+
+Before we drew anything we wrote down who would read the page, in one sentence: a donation and wayfinding page for a two-person outreach charity, read mostly on a phone by neighbours who saw a TikTok and by people who need a shower tonight. That second audience changed the page more than the first.
+
+A neighbour who wants to give needs the Venmo handle and a reason to trust it. A person living outside needs an address, and needs it to be right. The referral section therefore quotes the card the project hands out on the street, word for word: showers at Siena Francis House, food and a bed at Open Door Mission, and Nebraska 211 for everything else. Each row is labelled as another organisation's address, copied off the card, and never paraphrased. The README for the build puts the reason plainly: a wrong address on an outreach card costs somebody a night.
+
+The visual register follows from the same sentence. Our house system uses square surfaces and an engineering tone, which suits a developer tools site and would feel cold here. The brief asked for something rounder and warmer, so this build sets a single radius value of 0.75rem and every container rounds from it. That is a recorded departure from our own standard, and our audit flags it on every run on purpose. Changing that one line in the stylesheet returns the whole page to square.
+
+The colour came from the client's own artwork rather than from a palette. Their supplied lockups are navy and gold, and their fine-line "Much Love Omaha" seal is drawn in green. The site's accent is that green. Navy and gold stay inside their marks, and the cream from the lockups is not used as the page background.
+
+## What the site refuses to claim: tax status, an audit, and a trailer that does not exist yet
+
+A donation page is a set of claims about money, and three of them could easily have been overstated.
+
+**The 501(c)(3) determination is pending, not granted.** The site says so wherever it asks for money, and says that a gift is not tax-deductible until the determination arrives. The structured data types the organisation as an `NGO` and deliberately carries no `nonprofitStatus` property, because declaring one would assert a status the IRS has not given.
+
+**The $4,200 raised is the project's own figure.** The ledger shows $4,200 of a $35,000 goal, about 12 percent, and nothing on the page implies the number has been independently audited.
+
+**The trailer does not exist yet.** Every reference to it is in the future tense.
+
+This is a content decision more than a design one, and it is the part of the build we would point another non-profit to first. Search engines and answer engines lift sentences out of context. A sentence like "your gift is tax-deductible" on a page whose status is pending is a liability the moment it is quoted somewhere else.
+
+## Vercel serves the page and Cloudflare D1 holds drop-alert signups
+
+The site is a Next.js 16 App Router application on Vercel. Requests reach it through Cloudflare, and every response carries both a Cloudflare ray header and a Vercel request ID. A small `proxy.ts` at the root keeps an explicit allowlist of public routes and guards the developer console. The health check at `/api/health` sits outside that matcher entirely, so a fault in the guard cannot take the liveness probe down with it.
+
+<ArchitectureDiagram
+  title="Request path for omahawell.arthurlabs.net"
+  layers={[
+    { name: 'Visitor', nodes: [{ label: 'Phone or desktop browser', note: 'English, Spanish, Mandarin or Hindi' }], via: 'HTTPS' },
+    { name: 'Edge', nodes: [{ label: 'Cloudflare', note: 'DNS and proxy' }], via: 'origin request' },
+    {
+      name: 'Compute',
+      nodes: [
+        { label: 'Vercel', note: 'Next.js 16 App Router', emphasis: true },
+        { label: 'proxy.ts', note: 'public allowlist, /_dev guard' },
+      ],
+    },
+    {
+      name: 'Routes',
+      nodes: [
+        { label: '/', note: 'six sections, locale per request' },
+        { label: '/api/signup', note: 'validate, honeypot, rate limit' },
+        { label: '/api/privacy', note: 'export or delete request' },
+        { label: '/api/health', note: 'outside the matcher' },
+        { label: '/agents and /llms.txt', note: 'one constant module' },
+      ],
+      via: 'parameterised SQL',
+    },
+    { name: 'Data', nodes: [{ label: 'Cloudflare D1', note: 'signups, privacy requests, migration ledger' }] },
+  ]}
+  caption="There are no uploads or media to store, so the build has no object storage at all. Everything structured goes to D1."
+/>
+
+The signup path is short and conservative. A submission is rate limited, parsed against a schema, and checked against a hidden honeypot field; a filled honeypot is answered with a success response and nothing is written. If the database binding has not been configured, the endpoint answers 503 in production rather than accepting the input and dropping it. That last rule exists because the most common way small sites lose messages is a form that says "thanks" while writing to nothing.
+
+Each stored row carries a `retention_until` date written at insert time, two years out, and a purge script reports what is due and deletes it only when told to. Export and deletion requests go to their own table and are resolved by a person, because the email address on a request is unverified and acting on it automatically would let anyone erase anyone else's record.
+
+The only analytics the codebase loads wait for consent. Vercel Analytics is mounted inside the consent gate rather than beside it, so there is no code path where that script loads before a visitor answers. The consent cookie holds `granted` or `denied` and nothing else, and it expires after 180 days.
+
+That guarantee stops at the edge of the code. A proxying CDN with its own analytics switched on at the zone injects a beacon into the HTML after the response leaves the host, and no gate inside the page can prevent it. It only appears when a request asks for HTML, so a plain `curl` reports a clean page while a browser receives the script. Whether a site loads anything before consent is a question for a driven browser against the live origin, not for the source.
+
+## A glyph field in well-water green, sampled from a hue-rotated gradient
+
+The hero is not an image. It is a canvas that samples a gradient and redraws it as a grid of characters from a fixed ramp, `" ··:;+×*≡#%@"`, with each cell's weight following the brightness of the source beneath it. Our estate uses one dialect of this effect everywhere: cells of about nine to ten pixels, 30 frames per second, the loop paused when the canvas scrolls out of view, and a single still frame for visitors who ask for reduced motion.
+
+Every gradient in our shared pack was blue, and the field samples hue as well as brightness, so this project added a green entry: the first gradient rotated by minus 100 degrees, saved back into the shared library for the next green client.
+
+One bug from launch is worth recording because it is easy to repeat. The canvas had the house blue hardcoded as its fallback colour, and the fallback is what draws for the frames before the gradient image loads. On a cold load the green site flashed blue. The fix made the colour stops a prop, and this project passes three stops sampled from its own green gradient. We verified it by blocking the gradient request entirely: the average glyph colour measured rgb(109, 221, 205), against rgb(128, 215, 202) on a normal load, which is close enough that the swap cannot be seen.
+
+## Spanish, Mandarin and Hindi carry 207 strings each, resolved on the server
+
+Our build standard has client sites ship in English, Spanish, Mandarin and Hindi, with each language in its own content file and matching keys across all four. For this site, each translation carries 207 strings, and a check script confirms that every file's structure matches English. The visitor's language is resolved on the server from a cookie, falling back to the browser's `Accept-Language` header, and the switcher lives in the footer because a visitor changes language once and changes section many times.
+
+One surface stays in English, and the README says so: the 404 page. It is prerendered once for every unmatched path, so it cannot read the request to choose a language. Recording that gap is cheaper than pretending it is not there.
+
+## 34 tests passed and 8 audit failures remained at handoff, each one explained
+
+At handoff the build's own suite ran 34 tests, 14 of them exercising route handlers directly, with type checking, linting and the production build all clean. We also ran our configuration audit against it, which checks the build against our numbered standard and refuses to record a pass without a measurement behind it. The first run reported 25 failures. The handoff run reported 66 passes, 8 failures and 2 unchecked rules.
+
+The 8 remaining failures fall into two groups. Three are the rounded-corner departure described above, kept on purpose. The rest are either recorded gaps, like the English-only 404 and the client's original logo files keeping the names they arrived under, or limits of the checks themselves, which we wrote up so the harness could be fixed before the next project.
+
+Some numbers from the same pass, all measured in a driven browser rather than read from source:
+
+| Check | Result at handoff |
+| --- | --- |
+| Horizontal overflow at 320, 375, 414, 768, 1024 and 1440px | none on `/`, `/privacy` or `/agents` |
+| Body text contrast | 17.2:1 light, 17.4:1 dark |
+| Accent as link text | 7.0:1 light, 8.6:1 dark |
+| Interactive borders | 3.2:1 light, 3.5:1 dark, against a 3:1 floor |
+| Longest rendered line of body copy | 76 characters at 1440px, against an 80 cap |
+| Organisation name in page metadata | 2, against a cap of 2 |
+
+The handoff record also lists what nobody had verified yet: the database success path against a real D1 instance, a screen reader pass, and a Lighthouse run. A case study that lists only what passed tells you less than one that lists what was never tried.
+
+## The parts another Omaha non-profit could reuse
+
+Most of this build transfers to any small organisation that takes donations and points people to help:
+
+- **Write the one-sentence reader brief first.** Naming the person who needs a shower tonight is what put the referral table on the page and kept it verbatim.
+- **Cut until the page has one job.** Four sections went, and nothing the visitor needed went with them.
+- **State the claims you cannot make yet.** Pending tax status, unaudited totals and future equipment all appear in plain words, and the structured data matches the copy.
+- **Make every form fail loudly.** A form that cannot save answers with an error, never with a thank-you.
+
+The project itself is at [omahawell.arthurlabs.net](https://omahawell.arthurlabs.net). For more on the Omaha technology community this work sits in, see our [spotlight on Omaha Web3 startups](/guides/local-web3-startups/).

@@ -6,6 +6,104 @@
     <description>Arthur Labs articles on AI product engines (HIIE), Web3 development, digital marketplaces, and crypto compliance.</description>
     <language>en-us</language>
     <item>
+      <title>llms.txt, /agents and /api/health on Five Live Sites</title>
+      <link>https://docs.arthurlabs.net/blogs/agent-ready-websites-llms-txt/</link>
+      <guid>https://docs.arthurlabs.net/blogs/agent-ready-websites-llms-txt/</guid>
+      <description>The routes every build exposes to agents and crawlers, with real responses from five live sites, a commit field that reads local, and a robots.txt Cloudflare edits.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Building the ASCII Glyph-Field Hero: 10px Cells at 30fps</title>
+      <link>https://docs.arthurlabs.net/blogs/ascii-glyph-field-hero-canvas/</link>
+      <guid>https://docs.arthurlabs.net/blogs/ascii-glyph-field-hero-canvas/</guid>
+      <description>How we build the ASCII glyph-field hero canvas: a twelve-step glyph ramp, 10px cells, 30fps, a 1.5 pixel-ratio cap, and headline text held at 4.5:1 contrast.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Astralis Chain Hackathon: Ten Sections Built Like a Spec</title>
+      <link>https://docs.arthurlabs.net/blogs/astralis-hackathon-website/</link>
+      <guid>https://docs.arthurlabs.net/blogs/astralis-hackathon-website/</guid>
+      <description>How we built the Astralis Chain hackathon page: three tracks, a weighted rubric, an eight-row timeline, and the first build audited against our numbered standard.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Building Software in Omaha: Prices 8% Below the U.S. Level</title>
+      <link>https://docs.arthurlabs.net/blogs/build-software-in-omaha/</link>
+      <guid>https://docs.arthurlabs.net/blogs/build-software-in-omaha/</guid>
+      <description>Omaha prices run 8% below the U.S. level and its developers averaged $119,910 in 2025. Sourced figures on talent, incentives, venture capital and flights.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>CryptoMondays Kansas City: Dates From the Luma iCal Feed</title>
+      <link>https://docs.arthurlabs.net/blogs/cryptomondays-kansas-city-website/</link>
+      <guid>https://docs.arthurlabs.net/blogs/cryptomondays-kansas-city-website/</guid>
+      <description>How we built the CryptoMondays Kansas City site: the next date from the Luma iCal feed, a seed-or-D1 content layer, R2 flyers via /media, and emailed-code sign-in.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Kansas Hexagon Map: 105 Counties Cut Into 1,314 H3 Cells</title>
+      <link>https://docs.arthurlabs.net/blogs/kansas-county-hexagon-map-h3/</link>
+      <guid>https://docs.arthurlabs.net/blogs/kansas-county-hexagon-map-h3/</guid>
+      <description>How we built a hexagon map of Kansas: 105 counties cut into 1,314 Uber H3 cells at build time, a scroll-driven 2026 to 2036 roadmap, and approval county by county.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Four-Language Websites for Omaha, Where 11.6% Speak Spanish</title>
+      <link>https://docs.arthurlabs.net/blogs/multilingual-websites-omaha/</link>
+      <guid>https://docs.arthurlabs.net/blogs/multilingual-websites-omaha/</guid>
+      <description>Census data shows 11.6% of Omaha residents speak Spanish at home. How our sites ship English, Spanish, Mandarin and Hindi, and where the approach falls short.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Omaha and Nebraska Startup Resources: 27 Programs Checked</title>
+      <link>https://docs.arthurlabs.net/blogs/omaha-startup-resources/</link>
+      <guid>https://docs.arthurlabs.net/blogs/omaha-startup-resources/</guid>
+      <description>A verified directory of Omaha and Nebraska startup programs: state grants up to $150,000, seed funds, accelerators, free advisers and university programs.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Omaha Well Project: A Six-Section Site in Four Languages</title>
+      <link>https://docs.arthurlabs.net/blogs/omaha-well-project-website/</link>
+      <guid>https://docs.arthurlabs.net/blogs/omaha-well-project-website/</guid>
+      <description>How we built the Omaha Well Project site: six sections, four languages, a $35,000 shower-trailer ledger, and a page that states plainly what it cannot claim yet.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>RugPull News: Next.js 16 on Lambda Behind a Cloudflare Worker</title>
+      <link>https://docs.arthurlabs.net/blogs/rugpull-news-architecture/</link>
+      <guid>https://docs.arthurlabs.net/blogs/rugpull-news-architecture/</guid>
+      <description>How RugPull News publishes scored crypto scam reports and a daily briefing from Next.js 16 on AWS Lambda behind a Cloudflare Worker, and reached agent level 4.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Why outline-none Hides Your Tailwind v4 Focus Ring</title>
+      <link>https://docs.arthurlabs.net/blogs/tailwind-v4-invisible-focus-ring/</link>
+      <guid>https://docs.arthurlabs.net/blogs/tailwind-v4-invisible-focus-ring/</guid>
+      <description>In Tailwind v4, outline-none sets --tw-outline-style to none, so focus-visible:outline-2 paints nothing. The compiled CSS, a Playwright check and the fix.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Next.js on Vercel, SQL in D1 Over REST, Media in R2 Over S3</title>
+      <link>https://docs.arthurlabs.net/blogs/vercel-cloudflare-d1-r2-architecture/</link>
+      <guid>https://docs.arthurlabs.net/blogs/vercel-cloudflare-d1-r2-architecture/</guid>
+      <description>Next.js on Vercel, records in Cloudflare D1 over its REST API, media in R2 over S3: numbered migrations, bound parameters and a 503 when a store is missing.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Four Vercel Launch Failures a Clean Local Build Cannot Show</title>
+      <link>https://docs.arthurlabs.net/blogs/vercel-production-launch-checks/</link>
+      <guid>https://docs.arthurlabs.net/blogs/vercel-production-launch-checks/</guid>
+      <description>A 404 served as a 200, a framework preset of Other, a domain left on the old deployment and a CDN beacon ahead of consent, with the live check for each.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>199 Rules, Three Tiers: How We Audit Every Website Build</title>
+      <link>https://docs.arthurlabs.net/blogs/website-build-audit-199-rules/</link>
+      <guid>https://docs.arthurlabs.net/blogs/website-build-audit-199-rules/</guid>
+      <description>Every build we ship is checked against 199 numbered rules in three tiers, and a rule nobody measured fails the run exactly as a broken rule does.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>How AI Text-to-CAD Works: From Plain English to Manufacturing-Ready STEP Files</title>
       <link>https://docs.arthurlabs.net/blogs/ai-text-to-cad-manufacturing/</link>
       <guid>https://docs.arthurlabs.net/blogs/ai-text-to-cad-manufacturing/</guid>

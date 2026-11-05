@@ -16,6 +16,8 @@ const unboundedFont = Unbounded({
 export const a = Link
 export { Button } from '@/components/Button'
 export { CodeGroup, Code as code, Pre as pre } from '@/components/Code'
+export { ArchitectureDiagram } from '@/components/ArchitectureDiagram'
+export { PageWireframe } from '@/components/PageWireframe'
 
 export function wrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -25,6 +27,18 @@ export function wrapper({ children }: { children: React.ReactNode }) {
         <Feedback />
       </footer>
     </article>
+  )
+}
+
+// Wide tables scroll inside their own container instead of pushing the whole
+// document sideways at phone widths. No tabIndex: current browsers make a
+// scroll container keyboard-focusable only while it actually overflows, so a
+// table that fits adds no empty tab stop.
+export function table(props: React.ComponentPropsWithoutRef<'table'>) {
+  return (
+    <div className="overflow-x-auto">
+      <table {...props} />
+    </div>
   )
 }
 

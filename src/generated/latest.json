@@ -1,0 +1,29 @@
+{
+  "blogCount": 112,
+  "latest": [
+    {
+      "title": "Agent routes and llms.txt",
+      "href": "/blogs/agent-ready-websites-llms-txt"
+    },
+    {
+      "title": "ASCII Glyph-Field Hero",
+      "href": "/blogs/ascii-glyph-field-hero-canvas"
+    },
+    {
+      "title": "Astralis Chain Hackathon",
+      "href": "/blogs/astralis-hackathon-website"
+    },
+    {
+      "title": "Building Software in Omaha",
+      "href": "/blogs/build-software-in-omaha"
+    },
+    {
+      "title": "CryptoMondays Kansas City",
+      "href": "/blogs/cryptomondays-kansas-city-website"
+    },
+    {
+      "title": "Kansas H3 Hexagon Map",
+      "href": "/blogs/kansas-county-hexagon-map-h3"
+    }
+  ]
+}

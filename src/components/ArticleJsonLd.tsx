@@ -5,7 +5,9 @@
 //   <ArticleJsonLd
 //     title="…" description="…" slug="/blogs/my-post/"
 //     datePublished="2026-07-09" dateModified="2026-07-09" />
-const BASE = 'https://docs.arthurlabs.net'
+import { SITE_ORIGIN } from '@/lib/seo'
+
+const BASE = SITE_ORIGIN
 
 export default function ArticleJsonLd({
   title,

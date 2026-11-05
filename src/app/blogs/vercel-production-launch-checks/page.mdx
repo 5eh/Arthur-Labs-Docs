@@ -1,0 +1,272 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/vercel-production-launch-checks/' },
+  title: 'Four Vercel Launch Failures a Clean Local Build Cannot Show',
+  description:
+    'A 404 served as a 200, a framework preset of Other, a domain left on the old deployment and a CDN beacon ahead of consent, with the live check for each.',
+  keywords:
+    'Vercel launch checklist, Vercel framework preset Other, vercel.json framework nextjs, NextResponse.rewrite 404 status, Vercel domain alias, Cloudflare Web Analytics beacon, cookie consent, curl status code check, Next.js production deployment',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Engineering',
+  shortTitle: 'Vercel launch checks',
+  openGraph: pageOg({
+    title: 'Four Vercel Launch Failures a Clean Local Build Cannot Show',
+    description:
+      'A 404 served as a 200, a framework preset of Other, a domain left on the old deployment and a CDN beacon ahead of consent, with the live check for each.',
+    path: '/blogs/vercel-production-launch-checks/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Four Vercel Launch Failures a Clean Local Build Cannot Show',
+    description:
+      'A 404 served as a 200, a framework preset of Other, a domain left on the old deployment and a CDN beacon ahead of consent, with the live check for each.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Four Vercel Launch Failures a Clean Local Build Cannot Show"
+  description="A 404 served as a 200, a framework preset of Other, a domain left on the old deployment and a CDN beacon ahead of consent, with the live check for each."
+  slug="/blogs/vercel-production-launch-checks/"
+  datePublished="2026-11-05"
+/>
+
+# Four Vercel Launch Failures a Clean Local Build Cannot Show
+
+In August 2026 we took two Next.js builds to production on Vercel, behind Cloudflare: the Astralis Chain hackathon site and the Omaha Well Project site. Both passed typecheck, lint, their test suites, a production build and a full configuration audit. Four defects reached production on both sites anyway, because none of them lived in the repository. Here is each one: the symptom, the cause, the fix, and the command that proves it on the live origin, with what those commands returned on 5 November 2026.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Launch 1 to 11 run by hand, against the deployed origin
+
+The Launch section of our build standard has 11 rules and no automated check. Every other part of the audit runs against source or a local server; these run against the URL a visitor types, because, in the section's own words, the failures it exists for "come from the platform, the network, and settings held outside the repository."
+
+One rule frames the rest. Launch 4 says to verify every route by status code on the live origin, including the routes meant to fail, and to "read the number the server sends, never the page the browser draws." A browser renders a not-found page the same way whatever status arrived with it. A scanner, a crawler and an uptime monitor read only the status.
+
+<ArchitectureDiagram
+  title="Where each launch failure lived, relative to the repository"
+  layers={[
+    { name: 'Visitor', nodes: [{ label: 'Browser, crawler or scanner', note: 'reads the status code and the final HTML' }], via: 'HTTPS' },
+    { name: 'Edge', nodes: [{ label: 'Cloudflare proxy', note: 'failure 4: beacon added to the HTML', emphasis: true }], via: 'origin request' },
+    {
+      name: 'Platform',
+      nodes: [
+        { label: 'Domain alias', note: 'failure 3: which deployment the name serves' },
+        { label: 'Framework preset', note: 'failure 2: how the output is served' },
+      ],
+    },
+    {
+      name: 'Repository',
+      nodes: [
+        { label: 'vercel.json', note: 'pins the preset once committed' },
+        { label: 'proxy.ts', note: 'failure 1: the rewrite status' },
+        { label: 'App routes', note: 'pages and /api/health' },
+      ],
+    },
+  ]}
+  caption="Only the first failure lived in code. The second moved into the repository once vercel.json pinned the preset. The third and fourth live in dashboards, which is why the Launch checks read the live origin."
+/>
+
+## NextResponse.rewrite() served the not-found page with a 200 status
+
+**Symptom.** The developer console at `/_dev` is gated: with its flag off, it is meant not to exist. In a browser it looked right and showed the site's not-found page. The status line said 200, which tells anything that reads headers that the route is real and worth probing.
+
+**Why.** In Next.js, `NextResponse.rewrite()` is a routing instruction rather than an error. The [Next.js reference](https://nextjs.org/docs/app/api-reference/functions/next-response#rewrite) describes it as producing "a response that rewrites (proxies) the given URL while preserving the original URL." Our guard in `proxy.ts` rewrote gated requests to the internal not-found route and set nothing else, and on both sites the result was the not-found page under a 200.
+
+**Fix.** State the status on the rewrite. In Next.js 16 the method's second argument extends the standard `ResponseInit`, so it accepts `status`. Then call `notFound()` in the console page as well, so the route stays dead even if the proxy never runs.
+
+```ts
+// proxy.ts, simplified for this article
+import { NextResponse, type NextRequest } from 'next/server'
+
+export function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl
+  const isConsole = pathname === '/_dev' || pathname.startsWith('/_dev/')
+
+  if (isConsole && process.env.DEV_CONSOLE !== 'on') {
+    // A bare rewrite answers 200. Send the status the page claims.
+    return NextResponse.rewrite(new URL('/_not-found', request.url), { status: 404 })
+  }
+  return NextResponse.next()
+}
+```
+
+**Verify.** Ask for the status code, not the page.
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://omahawell.arthurlabs.net/_dev
+# 404
+curl -sI https://omahawell.arthurlabs.net/_dev | grep -i -E '^HTTP|^x-matched-path'
+# HTTP/2 404
+# x-matched-path: /_not-found
+```
+
+On 5 November both sites answered `/_dev` with 404 and `x-matched-path: /_not-found`, which is the rewrite landing where it should with the status it should. With a trailing slash, `/_dev/` answers 308 to `/_dev` and then 404, so a scanner following redirects gets the same answer. An invented path returned 404 on both as well.
+
+## A CLI-created project defaulted to framework preset "Other" and 404'd every route
+
+**Symptom.** The deployment reported success, and every route, the home page included, returned 404. Nothing in the codebase explained it, because nothing in the codebase was wrong.
+
+**Why.** Vercel serves a deployment according to the project's framework preset. Its [build configuration docs](https://vercel.com/docs/builds/configure-a-build#framework-preset) say that "if no framework is detected, 'Other' will be selected", and that choosing Other "sets the output directory as `public` if it exists". A Next.js project keeps icons and static files in `public/`, so the deployment served that folder as the entire site. Both projects had been created from the command line, and both came up set to Other.
+
+**Fix.** Commit the preset. The [`framework` property in `vercel.json`](https://vercel.com/docs/project-configuration/vercel-json#framework) "can be used to override the Framework Preset in the Project Settings dashboard", and our Launch 1 requires it next to the build and install commands:
+
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install --frozen-lockfile"
+}
+```
+
+The same documentation notes that `null` selects Other, so the value is worth reading in review rather than assuming. Once the file is committed, the preset travels with the code and survives a project being deleted and recreated.
+
+**Verify.** Request a route that only a running Next.js server can answer. A static output folder has no route handlers, so a JSON body from `/api/health` proves the framework is serving the deployment.
+
+```bash
+curl -s https://astralis.arthurlabs.net/api/health
+# {"status":"ok","name":"Astralis Chain Hackathon","version":"3.1.0","commit":"local","env":"production"}
+```
+
+## A domain attached during a build kept serving the previous deployment
+
+**Symptom.** The domain was added while a production build was running. It was accepted and showed as configured. When the build finished, the domain still served the deployment before it.
+
+**Why.** Vercel's [domain documentation](https://vercel.com/docs/domains/working-with-domains/deploying-and-redirecting) says a configured domain "is automatically applied to your latest production deployment." While a build is still running, the latest finished production deployment is the previous one. On both sites the domain was aliased there and stayed there after the new build completed. The dashboard showed the domain as valid the whole time, which was true and beside the point.
+
+**Fix.** Deploy again after attaching the domain, which is Launch 3, or point the domain at the new deployment explicitly with `vercel alias`, which the [CLI documentation](https://vercel.com/docs/cli/deploy) shows taking a deployment URL and a domain. Then confirm by requesting the domain, never by reading the dashboard.
+
+**Verify.** The domain has to answer with something only the new build carries. Every project we build returns its version and commit from `/api/health` for this reason, and the live check exposed a gap of our own: both sites report `"commit":"local"`. Their deployments are not triggered by a Git push, so Vercel's `VERCEL_GIT_COMMIT_SHA` arrives empty and the route falls back to a placeholder, and a placeholder cannot tell two deployments apart. Passing the commit in at build time closes the gap:
+
+```bash
+# Bake the commit into the build, then ask the domain which commit it is serving.
+sha=$(git rev-parse --short HEAD)
+vercel deploy --prod --build-env NEXT_PUBLIC_COMMIT_SHA="$sha"
+curl -s https://omahawell.arthurlabs.net/api/health | grep -o '"commit":"[^"]*"'
+# expect "commit":"<the same sha>"
+```
+
+The route reads that variable as its second choice after Vercel's own. The [`--build-env` flag](https://vercel.com/docs/cli/deploy#build-env) passes environment variables to the build step.
+
+## Cloudflare's proxy injected an analytics beacon ahead of the consent gate
+
+**Symptom.** Both sites hold analytics behind a consent bar, and the only analytics the code loads is mounted inside that gate. A clean browser profile still fetched `static.cloudflareinsights.com/beacon.min.js` on first load, then sent a `POST` to `/cdn-cgi/rum` on the site's own host, before anyone had answered the bar. Neither codebase contains the string `cloudflareinsights`.
+
+**Why.** Both hosts resolve through Cloudflare with the proxy on, and Cloudflare's [Web Analytics setup](https://developers.cloudflare.com/web-analytics/get-started/) for proxied sites is automatic: "Your website is now using Web Analytics through the automatic setup, which is enabled by default." The proxy adds the script to the HTML after it leaves Vercel, where no consent gate in the application can reach it. This is Launch 9, and the reason it is a manual check: "A proxying CDN can inject analytics into the response after it leaves the host, where no code change reaches it."
+
+**Fix.** Two settings, both in Cloudflare rather than the repository. Turn the proxy off for the host, so DNS stays at Cloudflare and traffic goes straight to Vercel, or set Web Analytics for the site to Disable. Our Backend 2 already requires the first, on the grounds that "proxying a Vercel host breaks its certificate automation", and Vercel's [guidance on reverse proxies](https://vercel.com/kb/guide/can-i-use-a-proxy-on-top-of-my-vercel-deployment) says "We recommend connecting directly where possible" and "You can keep Cloudflare as your DNS provider without enabling its reverse proxy." Cloudflare documents one header-level exception: with `Cache-Control: public, no-transform`, the beacon is not injected. We have not tested it on these hosts, and `public` would let shared caches store pages the sites deliberately mark `private, no-store`.
+
+**Verify.** Two commands, and the second one has a trap in it.
+
+```bash
+# Is the host proxied? A Cloudflare server header and a cf-ray mean yes.
+curl -sI https://omahawell.arthurlabs.net/ | grep -i -E '^server|^cf-ray'
+# server: cloudflare
+# cf-ray: <a ray id>
+
+# Is the beacon in the HTML? Ask for HTML the way a browser does.
+curl -s -H 'Accept: text/html' https://omahawell.arthurlabs.net/ | grep -c cloudflareinsights
+# 1
+```
+
+Plain curl sends `Accept: */*`, and on 5 November every host we tested returned its page to that request with no beacon in it at all. With `Accept: text/html`, every one of them included the beacon. A launch check written as a bare `curl | grep` would have reported the problem fixed. The safer measurement is the one Launch 9 names: load the page in a clean browser profile and list every request made before consent.
+
+```js
+// preconsent.mjs <origin>: every request a first visit makes before anyone answers the consent bar.
+import { chromium } from 'playwright-core'
+
+const origin = new URL(process.argv[2])
+const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome' })
+const context = await browser.newContext() // a clean profile: no cookies, no storage
+const page = await context.newPage()
+const requests = []
+page.on('request', (request) => {
+  const url = new URL(request.url())
+  const thirdParty = url.host !== origin.host
+  const edge = url.pathname.startsWith('/cdn-cgi/')
+  if (thirdParty || edge) requests.push(`${request.method()} ${url.host}${url.pathname.slice(0, 40)}`)
+})
+await page.goto(origin.href, { waitUntil: 'load' })
+await page.waitForTimeout(5000) // let late scripts fire, and click nothing
+await page.goto('about:blank') // leaving the page flushes beacons, as closing a tab would
+await page.waitForTimeout(1000)
+console.log(requests.length ? requests.join('\n') : 'no third-party or edge requests before consent')
+await browser.close()
+```
+
+Against the Omaha Well site it printed two lines: a `GET` of the beacon script from `static.cloudflareinsights.com`, then a `POST` to `/cdn-cgi/rum`.
+
+## On 5 November 2026 every host was still proxied and still served the beacon
+
+We ran the same checks against the two launch sites and three other production sites we built.
+
+| Check | Astralis | Omaha Well | Three other sites |
+| --- | --- | --- | --- |
+| `server: cloudflare` and `cf-ray` | present | present | present on all three |
+| Beacon in HTML, plain `curl` | 0 | 0 | 0 on all three |
+| Beacon in HTML, `Accept: text/html` | 1 | 1 | 1 on all three |
+| Clean browser, before consent | beacon, then `POST /cdn-cgi/rum` | beacon, then `POST /cdn-cgi/rum` | beacon on all three, `POST` on two |
+
+The fix is recorded in both launch sites' READMEs, named by the exact Cloudflare setting, which is what Launch 11 asks for any fix that lives in someone else's dashboard. At the time of this measurement it had not been applied, and until it is, these sites load a third-party analytics script before a visitor has consented.
+
+The proxy changed one more thing. On the Astralis site, a contact address on the home page and on `/agents` reached clients as a link reading `[email protected]`, with an `email-decode.min.js` script added to the page. That is Cloudflare's [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/), which Cloudflare "enables ... automatically when you sign up." The `/agents` page exists so an agent can learn what a site is without a tour, and an agent that does not run JavaScript now reads a placeholder where the address was. The plain-text `/llms.txt` was untouched. This is the kind of injected markup Launch 8 has in mind when it asks for the rendered checks to be re-run against the live URL.
+
+## The shell half of the launch pass, in one script
+
+Everything above except the browser check fits in a short script we run against each origin after every production deploy:
+
+```bash
+#!/usr/bin/env bash
+# launch-check.sh <origin>: the Launch checks a shell can run.
+set -uo pipefail
+origin="${1:?origin required}"
+failed=0
+status() { curl -s -o /dev/null -w '%{http_code}' "$origin$1"; }
+expect() { # path, wanted status, which rule it guards
+  local got; got=$(status "$1")
+  if [ "$got" = "$2" ]; then echo "ok    $1 -> $got"
+  else echo "FAIL  $1 -> $got, wanted $2 ($3)"; failed=1; fi
+}
+
+expect /                        200 "Launch 4"
+expect /api/health              200 "Launch 1: is the framework preset serving?"
+expect /_dev                    404 "Launch 4: a gated console must not answer 200"
+expect "/no-such-route-$RANDOM" 404 "Launch 4"
+
+# Launch 3: which build does the domain serve? Needs a real commit in /api/health.
+want=$(git rev-parse --short HEAD 2>/dev/null || echo unknown)
+got=$(curl -s "$origin/api/health" | sed -n 's/.*"commit":"\([^"]*\)".*/\1/p')
+[ "$got" = "$want" ] && echo "ok    commit $got" || echo "warn  domain serves commit '$got', HEAD is '$want'"
+
+# Launch 9: ask for HTML the way a browser does, or the proxy may inject nothing.
+if curl -sI "$origin/" | grep -qi '^server: cloudflare'; then echo "warn  proxied through Cloudflare"; fi
+if curl -s -H 'Accept: text/html' "$origin/" | grep -q 'cloudflareinsights'; then
+  echo "FAIL  Cloudflare beacon in the HTML before consent (Launch 9)"; failed=1
+fi
+exit $failed
+```
+
+Run against the Omaha Well origin on 5 November, the four status checks passed, the commit check warned on `local`, the proxy check warned, and the beacon check failed the run, which is the correct result.
+
+## Five checks that transfer to any Vercel launch
+
+These checks cost minutes, and each one catches a failure that no local build, test or review can:
+
+- **Read status codes, including on routes meant to fail.** A gated route that answers 200 has announced itself, whatever page it draws.
+- **Commit the platform settings you can.** A `framework` line in `vercel.json` turns a dashboard default into reviewable code.
+- **Make the live origin say which build it is.** A health route that reports a commit only helps if the commit is real, so check for placeholders.
+- **Request what a browser requests.** Headers change what a proxy sends back, and a real browser profile is the only measurement of what a visitor's browser loads.
+- **Write dashboard fixes into the handoff record by exact setting name,** and re-measure until the setting has changed.
+
+For the rules behind these checks and the harness that runs the rest, see [how we audit every build against 199 rules](/blogs/website-build-audit-199-rules/). The hosting pattern these sites share is in the [Vercel and Cloudflare D1/R2 reference architecture](/blogs/vercel-cloudflare-d1-r2-architecture/), and the Omaha Well build is written up in its [case study](/blogs/omaha-well-project-website/).

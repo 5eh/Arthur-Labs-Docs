@@ -1,0 +1,185 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/astralis-hackathon-website/' },
+  title: 'Astralis Chain Hackathon: Ten Sections Built Like a Spec',
+  description:
+    'How we built the Astralis Chain hackathon page: three tracks, a weighted rubric, an eight-row timeline, and the first build audited against our numbered standard.',
+  keywords:
+    'Astralis Chain, hackathon website, developer tooling hackathon, EVM hackathon, hackathon judging rubric, MIT-licensed tooling, Next.js event page, Cloudflare D1, website audit, Omaha web development',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Case Studies',
+  shortTitle: 'Astralis Chain Hackathon',
+  openGraph: pageOg({
+    title: 'Astralis Chain Hackathon: Ten Sections Built Like a Spec',
+    description:
+      'How we built the Astralis Chain hackathon page: three tracks, a weighted rubric, an eight-row timeline, and the first build audited against our numbered standard.',
+    path: '/blogs/astralis-hackathon-website/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Astralis Chain Hackathon: Ten Sections Built Like a Spec',
+    description:
+      'How we built the Astralis Chain hackathon page: three tracks, a weighted rubric, an eight-row timeline, and the first build audited against our numbered standard.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Astralis Chain Hackathon: Ten Sections Built Like a Spec"
+  description="How we built the Astralis Chain hackathon page: three tracks, a weighted rubric, an eight-row timeline, and the first build audited against our numbered standard."
+  slug="/blogs/astralis-hackathon-website/"
+  datePublished="2026-11-05"
+/>
+
+# Astralis Chain Hackathon: Ten Sections Built Like a Spec
+
+Astralis Chain is a proof-of-authority EVM chain, and its hackathon is an eight-week program meant to leave behind 20 to 30 MIT-licensed repositories of developer tooling. We built the event's site at [astralis.arthurlabs.net](https://astralis.arthurlabs.net), a single page for EVM developers deciding whether to enter. This is how the page is organised, what it declines to promise, and what auditing it changed in our own build standard.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Three tracks, a five-row rubric and an eight-row timeline set the page's shape
+
+A developer deciding whether to enter a hackathon is comparing terms: what to build, how it is scored, when it closes and what it pays. The page gives each term its own section, and each section heading states the term instead of naming the topic. The build's README records the reasoning in one line: the content "is a spec: tracks, a weighted rubric, an eight-row timeline, a prize table."
+
+That is what the live page carries:
+
+- **Three tracks**: Smart Contract Factory, Boilerplate dApps and Agentic Resources, each with what to build and what it is judged on.
+- **Five eligibility requirements**, screened in week seven before scoring, ending with contract addresses verified on the Astralis testnet.
+- **One weighted rubric** for all three tracks: technical execution 30%, usefulness to the ecosystem 25%, UX and completeness 20%, documentation 15% and longevity 10%, each scored one to five.
+- **An eight-row timeline**: weeks one to three prepare, four to six build, seven and eight judge and wrap up. Registration opens on DoraHacks in week three, and submissions close at the end of week six.
+- **The prize figures**: $2,500, $1,500 and $1,000 per track, plus a $2,000 maintenance pool for repositories still being committed to more than 60 days after the event ends.
+
+The headings carry the numbers. The rubric section is titled "Thirty percent of your score is whether the code works." The prize section is "$17,000 of $29,080 goes to builders." The section after the hero leads with the outcome the program is measured on, "Six repos still under commit sixty days after it ends", not with registrations. The previous version of the site used "Prizes", "Questions", "The panel" and "How submissions are scored" as headings, and the changelog records all four being replaced. A test now checks every section heading in all four languages for a number, a proper noun or a named mechanism, so a bare label cannot return through a translation.
+
+Because entry happens on DoraHacks from week three, the form at the bottom is a waiting list for the listing link, and its heading says so: "Leave an email, get the DoraHacks link in week three."
+
+<PageWireframe
+  title="astralis.arthurlabs.net, top to bottom"
+  sections={[
+    { kind: 'nav', name: 'Navigation', note: 'Tracks, Rules, Judging, Timeline, Prizes, Questions; Register sits outside the bar' },
+    { kind: 'hero', name: 'Twenty to thirty MIT repos, built on Astralis in eight weeks.', note: 'Full-viewport ASCII glyph field in the house blue, centred type' },
+    { kind: 'stats', name: 'Six repos still under commit sixty days after it ends.', note: 'Full-bleed fact row, then baseline and stretch targets' },
+    { kind: 'list', name: 'Developer tooling and infrastructure. Not consumer dApps.', note: 'Ruled list of the three tracks' },
+    { kind: 'rail', name: 'Five requirements, screened before a judge opens your repository.', note: 'Horizontal rail' },
+    { kind: 'table', name: 'Thirty percent of your score is whether the code works.', note: 'Five-row weighted rubric' },
+    { kind: 'table', name: 'Three weeks to build. Most of it lands in the last seventy-two hours.', note: 'Eight-row timeline, then four week-two dependencies' },
+    { kind: 'panel', name: '$17,000 of $29,080 goes to builders.', note: 'Contained panel, labelled Recommended tier, unconfirmed' },
+    { kind: 'rail', name: 'Five proposed judges, none confirmed until week two.', note: 'Horizontal rail' },
+    { kind: 'accordion', name: 'Identity checks, tax forms and sanctions screening happen before any prize moves.', note: 'Eight questions' },
+    { kind: 'panel', name: 'Leave an email, get the DoraHacks link in week three.', note: 'Registration form in a floating panel over a live wave canvas' },
+    { kind: 'footer', name: 'Footer', note: 'Channels, agent brief, section links, language switcher, colophon' },
+  ]}
+  caption="Ten content sections in render order. The rubric and the timeline are the only adjacent pair that share a layout pattern."
+/>
+
+## The layout family changes at eight of the nine section boundaries
+
+Reading down the page, the pattern changes almost every time: a glyph field, a full-bleed fact row, a ruled list, a rail, two tables, a contained panel, a second rail, an accordion and a floating panel. Our standard caps any one pattern at two consecutive sections, because a page built from one divider treatment reads as a single component repeated, however different the words inside it are. The rubric and the timeline are the one permitted pair, and both are genuinely tabular.
+
+A second rule decided which sections became rails. Four or more parallel prose blocks scroll sideways, so the five requirements and the five judges each get a rail, while the three tracks stay a vertical list, because a rail of three cards reads as an unfinished carousel. The rail loops by rendering its set three times, and only the middle copy is exposed to assistive technology, so a screen reader announces each card once.
+
+The judges were a genuine judgement call, and the README records it as one. Five judges in prose call for a rail, but the client's proposal presented them as a table, which our tabular exemption also allows. The build chose the rail and noted that the rule did not say which reading wins.
+
+## The prize tier, the judging panel and the start date are marked as proposals
+
+Three things in the client's proposal were still open at handoff, and the README lists them under the heading "What this site does not claim". The page states each caveat where the figure is, not in a footnote.
+
+**The prize figures are the Recommended tier, which nobody has confirmed.** Every amount on the page comes from one budget option in the proposal, and the tier itself was a decision still owed. The first sentence under the prize heading says so and asks the reader to treat every number "as the recommendation rather than the contract."
+
+**The judging panel is a proposal until week two.** The heading itself reads "Five proposed judges, none confirmed until week two." A code comment explains the placement: a card can be scrolled past and a heading cannot. Below the rail, the page also says every proposed judge is internal, calls that a problem worth fixing, and recommends adding one external EVM developer.
+
+**The start date was proposed, not fixed.** The timeline is therefore anchored on week numbers, which the page calls firm, while the calendar date appears only as a proposal. The Event structured data follows the copy: it carries a start date and the scheduled status, and no end date it could not support.
+
+The plain-text brief at `/llms.txt` repeats all three under "What is not settled", ahead of the prize figures. That ordering matters for the same reason the headings do. An answer engine that lifts "$2,500 for first place" out of context has made an offer on the client's behalf, and a caveat in a footnote does not travel with the quote.
+
+## The accent is the house blue, and the client's cyan #00e6e4 stays inside the mark
+
+The README's design read asks for the house system: square surfaces, an ASCII glyph backdrop, the house blue and a monospace data register.
+
+**Colour.** Our standard uses the house blue, `oklch(0.45 0.15 262)` on light and `oklch(0.70 0.13 258)` on dark, unless a client brand supplies its own. Astralis does supply one, a cyan of `#00e6e4`, and our design review separately bans cyan on dark surfaces. The build resolved the contradiction by reading the client's dominant brand surface, the deep navy of its own site's theme colour, as the brand, and keeping the cyan inside the mark, which ships unmodified, extracted path for path from the logo the client publishes in its own structured data. The next revision of the standard rewrote the colour rule to carry a cyan brand on light surfaces or darken it.
+
+**Surfaces.** The radius token is zero, so structural surfaces are square. Rounding is opt-in, and the build's design review lists every case: the navigation bar, the registration panel and the select dropdown scope a small overlay radius because they float, and the footer's brand plate is a true circle.
+
+**Type.** Manrope sets headings, Geist sets body copy and Geist Mono sets data: column heads, units, rubric weights, week numbers, and the baseline and stretch targets. A monospace face lines figures up in columns and marks them as data to compare rather than prose to read. Labels sit at an 11px floor. The reference build sets its colophon at 10px; this build followed the rule instead, recorded the conflict, and the standard now pins the colophon at 11px.
+
+## The glyph field was damped from 2.54:1 to 9.91:1 behind the headline
+
+The hero is a canvas, not an image. It samples a blue gradient from our shared pack and redraws it as characters from the ramp `" ··:;+×*≡#%@"`, in 10px cells at 30 frames per second, each glyph following the brightness beneath it. It fills the viewport and carries four elements: the headline, the lede and two actions.
+
+Our standard requires the headline and lede to hold 4.5:1 against the brightest pixel the backdrop puts behind them. The first measurement failed at 2.54:1 behind the headline. The fix damped the field rather than decorating the type: the renderer cuts the field's opacity in an elliptical well under the text, and a masked scrim sized to the type column sits on top. Nothing carries a text shadow. The README records the result, measured in a driven browser: headline 9.91:1 and lede 16.05:1 in dark mode, 13.11:1 and 16.78:1 in light.
+
+The design review also caught the field running through the transparent "Read the tracks" button in dark mode, so that button now carries its own translucent ground. Visitors who ask for reduced motion get one still frame and no loop.
+
+## Four locale files of 372 strings each, and an em-dash count that drifted
+
+The site ships its full copy in English, Spanish, Mandarin and Hindi. The README's locale check reports 372 strings in each translation with a structure matching English, and our own count of the four content files agrees. The language is resolved on the server from a cookie, falling back to the browser's `Accept-Language` header ranked by quality value, so the first paint is already in the right language. The switcher lives in the footer, with a second one in the mobile menu.
+
+The README also records zero em-dashes and zero en-dashes across all four files, a stricter line than our own limit of two per paragraph. When we recounted for this article, three em-dashes were present, all in copy added in version 3.1.0: one in the English privacy page, which renders on the live `/privacy`, and two in Hindi. The home page renders none. The README count is a measurement, and nothing in the test suite repeats it, while the heading rules above are enforced by a test and have held. A copy rule that matters belongs in a test.
+
+## Cloudflare proxies requests to Vercel, and registrations reach D1 over its REST API
+
+The site is a Next.js 16 App Router application on Vercel. Requests reach it through Cloudflare: every response we fetched on 5 November 2026, from the home page, `/api/health` and `/llms.txt`, carried `server: cloudflare`, a `cf-ray` header and an `x-vercel-id`. The architecture diagram committed in the repository still draws the host as unproxied, which is a useful reminder to read the live headers rather than the diagram.
+
+<ArchitectureDiagram
+  title="Request path for astralis.arthurlabs.net"
+  layers={[
+    { name: 'Visitor', nodes: [{ label: 'Phone or desktop browser', note: 'English, Spanish, Mandarin or Hindi' }], via: 'HTTPS' },
+    { name: 'Edge', nodes: [{ label: 'Cloudflare', note: 'proxy, cf-ray on every response' }], via: 'origin request' },
+    {
+      name: 'Compute',
+      nodes: [
+        { label: 'Vercel', note: 'Next.js 16 App Router', emphasis: true },
+        { label: 'proxy.ts', note: 'public allowlist, /_dev guard' },
+      ],
+    },
+    {
+      name: 'Routes',
+      nodes: [
+        { label: '/', note: 'ten sections, locale per request' },
+        { label: '/privacy', note: 'what is kept, and for how long' },
+        { label: '/agents and /llms.txt', note: 'one brief builder' },
+        { label: '/api/register', note: 'schema, honeypot, rate limit' },
+        { label: '/api/privacy', note: 'export or delete request' },
+        { label: '/api/health', note: 'outside the matcher' },
+      ],
+      via: 'D1 REST API, SQL plus a parameter array',
+    },
+    { name: 'Data', nodes: [{ label: 'Cloudflare D1', note: 'registrations, privacy requests, migration ledger' }] },
+  ]}
+  caption="Vercel functions have no D1 binding, so both write routes call Cloudflare's REST API. There are no files to store, so the build has no object storage."
+/>
+
+Every branch of the registration path answers honestly. The form and the route handler import one schema module, so the browser and the server cannot disagree about what is valid. On the server, a request is rate limited per caller, parsed, and checked against a hidden honeypot field; a filled honeypot gets a success response and nothing is written. Missing fields come back as a 422 with a code per field. If the database credentials are absent, production answers 503 and the visitor sees the failure message, while any other environment answers 202 and logs that nothing was saved. A configured store receives a parameterised insert, and an upstream failure returns 502 with "Nothing was recorded." The upstream error body is logged and never returned, because it can carry account identifiers.
+
+Each row is written with its own expiry date, 365 days out, which the privacy page states as twelve months, and the purge script is a dry run unless told otherwise. At handoff the README recorded that the client had no D1 database yet, so only the refusal path had been exercised; the success path against a real database is listed as unverified. We did not submit the live form for this article.
+
+`/agents` and `/llms.txt` render from one builder, so the human and machine versions of the brief cannot drift. `/_dev` is gated and answers 404. `/api/health` sits outside the proxy's matcher and reports version 3.1.0, matching the changelog.
+
+## 187 rules checked and 31 violations upheld, six of them traced to the rules
+
+This was the first build audited against our numbered standard, and the standard changed because of it. Its changelog dates the first revision, v1.1, to 23 August 2026 and records that it was driven by building this site's third version against v1.0 and auditing the result. In the changelog's words, "187 rules were checked, 34 violations claimed, 31 survived independent refutation." Six of those survived "only because a rule admitted two readings, which made them config defects rather than build defects."
+
+The changelog names six resolved ambiguities. Two are worth knowing for any project. Frontend 17 now counts rendered elements rather than occurrences in source, because a class string written in two files and rendered on eight elements had passed a source check. Frontend 44 now measures the rendered line rather than CSS `ch` units: `ch` is the width of a zero, so `max-w-[68ch]` lands near 100 characters in a typical sans face, and the remedy the rule used to prescribe missed its own target by 26%.
+
+The build's README fed the same revision. Its nine configuration findings include the cyan conflict and the colophon size above, a rule that put the language switcher in the navigation bar while another put it in the footer, and an accessibility rule that cited the wrong rule number; v1.1 corrects all four. The README also lists what nobody had verified at handoff: a screen reader pass, a Lighthouse run, the database success path, and Sentry against a real DSN.
+
+## What another hackathon organiser can reuse from the Astralis page
+
+Most of this transfers to any event or launch page:
+
+- **Put the terms in the headings.** A developer comparing events wants the scoring weight, the deadline and the prize split first.
+- **Write the caveat where the number is.** An unconfirmed prize tier, a proposed panel and a proposed date each carry their status in the heading or the sentence beside it, and in the machine-readable brief.
+- **Make the form fail loudly.** A registration form with no database behind it answers with an error, never with a thank-you.
+- **Turn copy rules into tests.** The heading rule the suite enforces held through a version bump; the dash count recorded in the README did not.
+
+The page itself is at [astralis.arthurlabs.net](https://astralis.arthurlabs.net). For the same audit and the same glyph-field hero applied to a very different client, see our [Omaha Well Project case study](/blogs/omaha-well-project-website/).

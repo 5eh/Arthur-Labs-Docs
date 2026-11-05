@@ -1,0 +1,262 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/kansas-county-hexagon-map-h3/' },
+  title: 'Kansas Hexagon Map: 105 Counties Cut Into 1,314 H3 Cells',
+  description:
+    'How we built a hexagon map of Kansas: 105 counties cut into 1,314 Uber H3 cells at build time, a scroll-driven 2026 to 2036 roadmap, and approval county by county.',
+  keywords:
+    'Kansas county map, H3 hexagon map, Uber H3, h3-js, d3-geo, polygon-clipping, d3-zoom, scrollytelling map, county map case study, Kansas City web development',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Case Studies',
+  shortTitle: 'Kansas H3 Hexagon Map',
+  openGraph: pageOg({
+    title: 'Kansas Hexagon Map: 105 Counties Cut Into 1,314 H3 Cells',
+    description:
+      'How we built a hexagon map of Kansas: 105 counties cut into 1,314 Uber H3 cells at build time, a scroll-driven 2026 to 2036 roadmap, and approval county by county.',
+    path: '/blogs/kansas-county-hexagon-map-h3/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Kansas Hexagon Map: 105 Counties Cut Into 1,314 H3 Cells',
+    description:
+      'How we built a hexagon map of Kansas: 105 counties cut into 1,314 Uber H3 cells at build time, a scroll-driven 2026 to 2036 roadmap, and approval county by county.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Kansas Hexagon Map: 105 Counties Cut Into 1,314 H3 Cells"
+  description="How we built a hexagon map of Kansas: 105 counties cut into 1,314 Uber H3 cells at build time, a scroll-driven 2026 to 2036 roadmap, and approval county by county."
+  slug="/blogs/kansas-county-hexagon-map-h3/"
+  datePublished="2026-11-05"
+/>
+
+# Kansas Hexagon Map: 105 Counties Cut Into 1,314 H3 Cells
+
+We built the site for Kansans for an Affordable Future (KFAF) at [kcfutures.arthurlabs.net](https://kcfutures.arthurlabs.net): a hexagon map of Kansas, a roadmap told year by year from 2026 to 2036, and a workflow in which each county approves its own content before it reaches the map. The site describes itself as the public site of "a nonpartisan Kansas organization, now focused on Wyandotte County utilities", and its footer carries a paid-for line. This article covers the build, the data visualisation and the governance workflow. It takes no position on the program the site sets out.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Kansas has 105 counties, and the map cuts them into 1,314 H3 cells
+
+Kansas has 105 counties in the [Census Bureau's 2020 county code list](https://www2.census.gov/geo/docs/reference/codes2020/cou/st20_ks_cou2020.txt), and the map's boundaries come from the Census Bureau's TIGERweb service at its January 1, 2026 vintage. The grid build throws unless the boundary file holds exactly 105 counties with unique FIPS codes and slugs.
+
+From those boundaries the build cuts 1,314 cells on Uber's [H3](https://h3geo.org/) grid: 827 at resolution 5 across 100 counties, 138 at resolution 6 in Leavenworth, Douglas and Miami, and 349 at resolution 7 in Wyandotte and Johnson. Each cell is a hexagon clipped to its county line, and a county's cells cover it with no gap and no overlap. The database stores no geometry at all, only five-digit FIPS codes and H3 indexes, and the server checks every index it is sent against the committed cell file before writing. Each of the 105 counties has its own page, and the Wyandotte page's first section heading reads "Parcels of about 5.2 km², clipped to the county line".
+
+## Hexagons give every parcel six neighbours at one distance and a stable index
+
+An organization on the map does not sit on a county. It sits on between 1 and 12 cells inside its county, which the site calls parcels, and that placement is the job the grid does.
+
+Counties alone are too coarse and too unequal for it. Sedgwick County covers 2,613.6 km² including water and Wyandotte 404.5 km², so a pin on a county says little about where the work happens. A square grid would fix the size problem but not the neighbour problem. H3's documentation puts it plainly: [squares have neighbours at two different distances, while for hexagons all neighbours are equidistant](https://h3geo.org/docs/highlights/aggregation). The build relies on that when it merges border fragments into an adjacent cell, because "adjacent" means the same thing in all six directions. Every H3 cell also has a fixed 15-character index, which is the only thing the database needs to store.
+
+The trade-offs are real, and the code handles each one explicitly:
+
+- **Hexagons ignore county lines.** Every border hexagon is cut, so some cells start as slivers and some absorb a neighbour's fragment. At handoff the cells ran from 0.06 of a hexagon to 2.02 hexagons.
+- **H3 cell areas vary with position on the globe.** The [resolution table](https://h3geo.org/docs/core-library/restable) gives averages, so "about 5.2 km²" on a county page is an average, not a survey.
+- **Resolutions do not nest exactly.** H3's docs note that [geographic containment between parent and child cells is approximate](https://h3geo.org/docs/highlights/indexing). The build never mixes resolutions inside a county; each county is filled at exactly one.
+
+## Resolution 5 statewide, 7 in Wyandotte and Johnson, 6 in three neighbours
+
+H3 hexagons average 252.9 km² at resolution 5, 36.13 km² at resolution 6 and 5.16 km² at resolution 7, per H3's resolution table. Resolution 5 suits most of Kansas: Geary County, with the fewest cells, still gets three.
+
+It does not suit Kansas City. At resolution 5 Wyandotte County would be about 1.6 hexagons, which is not a map. The roadmap is told closest in the metro, so Wyandotte and Johnson are drawn at resolution 7, where Wyandotte has 90 cells and Johnson 259. Leavenworth, Douglas and Miami, which border them, are drawn at resolution 6.
+
+Every county's resolution lives in one JSON config file read by both the build script and the application, so the grid and the app cannot disagree about which county uses which size. Changing a resolution means editing that file and running the grid build again.
+
+## A hexagon belongs to the county that holds its centre, and its other pieces merge
+
+Assigning hexagons to counties is the hard part. Centre containment alone leaves the outer part of every border hexagon uncovered, which would draw a gap along every county line. The build applies four rules instead:
+
+1. **Fill and clip.** Each county gets every hexagon at its resolution that touches it, and each hexagon is clipped to the county.
+2. **One owner per hexagon.** The owner is the county at that resolution holding the centre. Where none does, because the centre is outside Kansas or in a county drawn at another resolution, the owner is the county holding the largest share. 165 hexagons were assigned that way, and no two counties ever claimed the same centre.
+3. **Merge the pieces.** A hexagon's piece in a county other than its owner cannot use that index, since an index names exactly one parcel. It is merged into an adjacent cell of its own county: of the neighbours sharing at least half the longest shared edge, the smallest. Always taking the longest edge produced 101 cells of 1.5 hexagons or more; the balanced rule leaves 43. The build made 768 such merges.
+4. **Absorb the specks.** Cells under 5 percent of a hexagon after clipping are merged the same way. There were 35, and nothing was dropped.
+
+The build then checks its own work. It fails if a county's cells miss more than one part in ten thousand of its area, if two cells in a county overlap, or if any index repeats; the worst coverage error on the current grid is 3.8 × 10⁻¹¹ of a county's area. Vertices are snapped to a billionth of a degree first, because two neighbouring H3 cells can disagree about a shared corner in the last bits.
+
+One consequence matters to anyone extending the code: the cell at a point is not always what `h3.latLngToCell` returns, because merged pieces answer to a neighbour's index. The app resolves a point through its prebuilt cells and validates an organization's cells against its county's own list. Nothing computes H3 from coordinates at runtime.
+
+## scripts/build-grid.mjs runs h3-js, d3-geo and polygon-clipping before the build
+
+All of that runs on a developer's machine, in one Node script, and the three libraries that do it are development dependencies. The script reads the Census boundaries, builds the cells, projects everything into a fixed 1,000 by 531 unit view box with Web Mercator fitted to the state, rounds coordinates to a tenth of a unit, and writes four committed JSON files: counties, cells, the state outline, and metadata holding the counts, the merge report and the SHA-256 of each source file. Two runs give byte-identical geometry; only the metadata's timestamp moves.
+
+The core of the step, simplified and written for this article:
+
+```js
+// The shape of the build-time grid step. It runs under Node before `next build`;
+// none of these imports ships to the browser.
+import { writeFile } from 'node:fs/promises'
+import { geoMercator } from 'd3-geo'
+import * as h3 from 'h3-js'
+import polygonClipping from 'polygon-clipping'
+
+// Resolution 5 by default, finer around Kansas City (keys are county FIPS codes).
+const FINER = { '20209': 7, '20091': 7, '20103': 6, '20045': 6, '20121': 6 }
+const resolutionOf = (fips) => FINER[fips] ?? 5
+
+// Even-odd ray cast over every ring of a [lng, lat] multipolygon.
+function contains(multiPolygon, [x, y]) {
+  let inside = false
+  for (const ring of multiPolygon.flat()) {
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i]
+      const [xj, yj] = ring[j]
+      if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside
+    }
+  }
+  return inside
+}
+
+// Every hexagon that touches the county, clipped to it, flagged by whether the
+// county holds the hexagon's centre. Ownership and merging run on this list.
+export function piecesOf(county) {
+  const resolution = resolutionOf(county.fips)
+  const pieces = []
+  for (const polygon of county.multiPolygon) {
+    const touching = h3.polygonToCellsExperimental(
+      polygon,
+      resolution,
+      h3.POLYGON_TO_CELLS_FLAGS.containmentOverlapping,
+      true, // GeoJSON order: [lng, lat]
+    )
+    for (const index of touching) {
+      const hexagon = [h3.cellToBoundary(index, true)]
+      const clipped = polygonClipping.intersection(hexagon, county.multiPolygon)
+      if (clipped.length === 0) continue
+      const [lat, lng] = h3.cellToLatLng(index)
+      pieces.push({ index, fips: county.fips, clipped, holdsCentre: contains(county.multiPolygon, [lng, lat]) })
+    }
+  }
+  return pieces
+}
+
+// After ownership and merging (not shown), project once and write plain JSON.
+export async function writeCells(stateOutline, cells) {
+  const projection = geoMercator().fitWidth(1000 - 32, stateOutline)
+  const tenth = (value) => Math.round(value * 10) / 10
+  const records = cells.map(({ index, fips, rings }) => ({
+    h3: index,
+    countyFips: fips,
+    rings: rings.map((ring) => ring.map((point) => projection(point).map(tenth))),
+  }))
+  // One record per line, so a regenerated grid reads as a reviewable diff.
+  await writeFile('data/geo/cells.json', `[\n${records.map((r) => JSON.stringify(r)).join(',\n')}\n]\n`)
+}
+```
+
+The real script adds the ownership and merge passes, the coverage checks, and an interior point for every cell where hit tests land, guaranteed to sit inside the drawn shape, which a clipped hexagon's own centre is not.
+
+## The browser receives d3-zoom, d3-selection and 97 KB of gzipped geometry
+
+In the shipped bundle the map is two small d3 modules and a canvas. We checked the live site's JavaScript: the chunk holding the geometry carries all 1,314 cell records and weighs 416 KB raw, about 97 KB gzipped; d3-zoom is present; and none of the chunks the home page loads contains h3-js or polygon-clipping code. The map component loads lazily, so the first paint does not wait for it.
+
+The map draws on a 2D canvas with the device pixel ratio capped at 1.5, and only on demand: a loop runs only during a camera move, and nothing is drawn while the map is off screen or the tab is hidden. The wheel zooms only with Ctrl or Cmd held, which is also how a trackpad pinch arrives, so a plain wheel scrolls the page and the map never traps the story.
+
+On the public map the grid itself is mostly invisible. Kansas is drawn as plain land with its Interstates and U.S. highways and county borders on top. A cell whose milestones are due by the year on screen rises as a short prism, taller with more milestones, and a cell whose first milestone is still to come is outlined flat. The cells still decide what a pointer lands on. The full grid is drawn only when a member is choosing cells for an organization, because there the grid is the control. Each of the eleven organization categories has its own colour and its own glyph, so no category is identified by colour alone.
+
+## An IntersectionObserver on a reading line sets the year from 2026 to 2036
+
+The home page tells the roadmap as eleven chapters, one per year from 2026 to 2036, beside a map that stays put while the chapters scroll. Nothing listens to scroll events. An IntersectionObserver watches a two-pixel reading line a third of the way down the visible chapters, and whichever chapter crosses it sets the active year. The map, the statistics panel and the organization dialog all follow that one value.
+
+<PageWireframe
+  title="kcfutures.arthurlabs.net, top to bottom"
+  sections={[
+    { kind: 'nav', name: 'Navigation', note: 'Roadmap, Counties, Organizations, Election; Request a county seat outside the bar' },
+    { kind: 'hero', name: '105 Kansas counties, one roadmap to 2036', note: 'The live map fills the first screen, damped under the headline and lede' },
+    { kind: 'map', name: 'Year by year, 2026 to 2036', note: 'Sticky map, statistics panel, year scrubber, eleven chapters' },
+    { kind: 'list', name: 'Our Commitments', note: 'Four prose blocks with photographs, in a grid' },
+    { kind: 'list', name: 'How this program works', note: 'Three steps, then all 105 counties A to W with search' },
+    { kind: 'list', name: 'Share your organization', note: 'Published organizations, then 10 labelled samples' },
+    { kind: 'list', name: 'Kansas general election, Tuesday, November 3, 2026', note: 'Dated deadlines, each with its source' },
+    { kind: 'panel', name: 'Request a county seat or list your organization', note: 'Contact form with four subjects, over a wave canvas' },
+    { kind: 'footer', name: 'Footer', note: 'Channels, agent brief, console sign-in, paid-for line' },
+  ]}
+  caption="The home page in render order, as fetched in November 2026. The map is the hero and then the backdrop of the roadmap; everything after the roadmap is ordinary flow."
+/>
+
+On a wide screen the panel floats along the top of the map, a year rail runs down its left edge, and the camera eases each chapter's counties into the space the chapters column leaves. On a phone the map keeps the top 45 percent of the screen. Under reduced motion the camera cuts instead of easing.
+
+The statistics panel shows nine measures, from electricity prices to broadband access, each as two lines from 2026 to 2036. One is the roadmap's target line. The other, the current path, continues what published data did over up to ten recent annual observations: an ordinary least-squares line, fitted to the log-odds of the value for measures that are shares, so a percentage can approach 100 but never pass it. Both lines start at the latest published figure, and the site labels everything after that baseline as a projection or a scenario target rather than reported fact. A Sources and method sheet repeats every figure the panel shows as a table. When all nine measures would take more than 45 percent of the window, the panel shows the current chapter's three and puts the rest behind one button.
+
+## Staff seat presidents, presidents invite members, and each county approves its pages
+
+Nothing reaches the map without an approval from inside its county. The home page states the model in three steps, and the code enforces each one:
+
+1. **Staff seat a county president.** KFAF staff invite a president for one or more counties. Accounts exist only by invitation; there is no public sign-up.
+2. **The president invites members.** Each member belongs to exactly one county. The page lists who they might be: "residents, nonprofits, cooperatives, businesses and agencies."
+3. **Each organization page is approved per county.** Members submit pages through one uniform form, choosing their cells from that county's parcels on the map. Each submission is a pending revision, and the county's president or staff approve it, or reject it with a note. Only approved revisions reach the public feed.
+
+Three details make the workflow safe to run with volunteers. An edit to a published page is a new pending revision, and the published version stays live until the edit is approved. Every decision goes into an activity record naming who approved what in which county, and that record survives even if the approver's account is later erased. And the public feed's short cache is expired the moment a revision is approved, so the map shows the change on its next request. Sessions are stored in Cloudflare D1, beside the accounts, seats and revisions.
+
+When we checked the live feed in November 2026 it reported 0 seated counties and 0 published organizations. The ten entries on the map are samples, each named and badged as one, written to describe no real organization, and never counted in the totals.
+
+## Vercel serves the site behind Cloudflare, with D1 for records and R2 for images
+
+The site's foundation was forked from our [CryptoMondays Kansas City build](/blogs/cryptomondays-kansas-city-website/), so the two share a shape: Next.js 16.3 on Vercel, requests arriving through Cloudflare (every response we fetched carried both a `cf-ray` header and an `x-vercel-id`), a root `proxy.ts` with an explicit public allowlist, `/api/health` outside its matcher, and a developer console at `/_dev` that is a real 404 unless a flag is set.
+
+<ArchitectureDiagram
+  title="Request path for kcfutures.arthurlabs.net"
+  layers={[
+    {
+      name: 'Visitor',
+      nodes: [
+        { label: 'Browser', note: 'canvas map, d3-zoom and d3-selection' },
+        { label: 'Invited president or member', note: 'signed-in console' },
+      ],
+      via: 'HTTPS',
+    },
+    { name: 'Edge', nodes: [{ label: 'Cloudflare', note: 'DNS and proxy' }], via: 'origin request' },
+    {
+      name: 'Compute',
+      nodes: [
+        { label: 'Vercel', note: 'Next.js 16.3 App Router' },
+        { label: 'proxy.ts', note: 'public allowlist, console needs a session, /_dev gated' },
+      ],
+    },
+    {
+      name: 'Routes',
+      nodes: [
+        { label: '/', note: 'roadmap over the map' },
+        { label: '/counties/[slug]', note: '105 county pages' },
+        { label: '/api/map', note: 'public feed, approved revisions only' },
+        { label: 'Console', note: 'seats, invitations, review per county' },
+        { label: '/media/[...key]', note: 'organization images, allowlisted keys' },
+        { label: '/api/health', note: 'outside the matcher' },
+      ],
+    },
+    {
+      name: 'Data',
+      nodes: [
+        { label: 'data/geo/*.json', note: '105 counties, 1,314 cells, built by pnpm grid', emphasis: true },
+        { label: 'Cloudflare D1', note: 'accounts, sessions, seats, revisions, activity record' },
+        { label: 'Cloudflare R2', note: 'organization images, private' },
+      ],
+    },
+  ]}
+  caption="The geometry is a committed file built before deployment; the database holds only FIPS codes and H3 indexes that point into it."
+/>
+
+The public feed at `/api/map` never fails a visitor. If D1 cannot be read, it answers with the samples and a source marked unavailable, and the pages treat its zeros as unknown rather than as facts, so a county shows "Not available" instead of claiming no organizations.
+
+## What transfers to a map of Nebraska's 93 counties
+
+Nebraska has 93 counties in the [same Census list](https://www2.census.gov/geo/docs/reference/codes2020/cou/st31_ne_cou2020.txt), and little in this build is specific to Kansas beyond its config file and its boundaries. What transfers:
+
+- **Do the geometry at build time.** h3-js, d3-geo and polygon-clipping are heavy and deterministic; run them once, commit the output and ship JSON.
+- **Pick a resolution per county, not per state.** One resolution buries rural counties in cells or reduces urban ones to two.
+- **Clip to the boundary, then merge fragments on purpose.** Centre containment alone leaves a gap along every county line, and the merge rule decides what the map looks like.
+- **Never compute an index at runtime.** Once cells are clipped and merged, the committed file is the only truth about which parcel a point is in.
+- **Let one reading line drive the story.** A single IntersectionObserver and one active-year value keep a sticky map, a panel and a dialog in step without a scroll listener.
+- **Approve per county.** A pending revision that cannot touch the published page lets volunteers publish safely.
+
+For the build this one was forked from, see our [CryptoMondays Kansas City case study](/blogs/cryptomondays-kansas-city-website/). For the same care about claims applied to a donation page, see the [Omaha Well Project](/blogs/omaha-well-project-website/).

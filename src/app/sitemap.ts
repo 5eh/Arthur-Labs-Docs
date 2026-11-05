@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import pages from '@/generated/pages.json'
+import { SITE_ORIGIN } from '@/lib/seo'
 
 // The manifest is generated at build time by scripts/generate-page-manifest.mjs
 // (prebuild) and imported statically — the old runtime fast-glob returned EMPTY on
@@ -11,7 +12,7 @@ import pages from '@/generated/pages.json'
 // timestamps teach crawlers to distrust lastmod entirely.
 export const dynamic = 'force-static'
 
-const BASE = 'https://docs.arthurlabs.net'
+const BASE = SITE_ORIGIN
 
 const PRIORITY: Record<string, number> = {
   main: 0.8,

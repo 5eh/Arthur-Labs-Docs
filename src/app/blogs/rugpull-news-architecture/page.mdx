@@ -1,0 +1,203 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/rugpull-news-architecture/' },
+  title: 'RugPull News: Next.js 16 on Lambda Behind a Cloudflare Worker',
+  description:
+    'How RugPull News publishes scored crypto scam reports and a daily briefing from Next.js 16 on AWS Lambda behind a Cloudflare Worker, and reached agent level 4.',
+  keywords:
+    'RugPull News, crypto scam analysis, rug pull prevention, Next.js on AWS Lambda, Cloudflare Worker, Markdown for agents, isitagentready, llms.txt, news engine language model, case study',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Case Studies',
+  shortTitle: 'RugPull News',
+  openGraph: pageOg({
+    title: 'RugPull News: Next.js 16 on Lambda Behind a Cloudflare Worker',
+    description:
+      'How RugPull News publishes scored crypto scam reports and a daily briefing from Next.js 16 on AWS Lambda behind a Cloudflare Worker, and reached agent level 4.',
+    path: '/blogs/rugpull-news-architecture/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'RugPull News: Next.js 16 on Lambda Behind a Cloudflare Worker',
+    description:
+      'How RugPull News publishes scored crypto scam reports and a daily briefing from Next.js 16 on AWS Lambda behind a Cloudflare Worker, and reached agent level 4.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="RugPull News: Next.js 16 on Lambda Behind a Cloudflare Worker"
+  description="How RugPull News publishes scored crypto scam reports and a daily briefing from Next.js 16 on AWS Lambda behind a Cloudflare Worker, and reached agent level 4."
+  slug="/blogs/rugpull-news-architecture/"
+  datePublished="2026-11-05"
+/>
+
+# RugPull News: Next.js 16 on Lambda Behind a Cloudflare Worker
+
+RugPull News at [rugpullnews.org](https://rugpullnews.org) is an independent crypto scam analysis and rug-pull prevention site. It publishes a risk report on each rug pull, exploit or scam it covers, a Daily Check-in briefing, a free contract scanner, and guides to spotting, leaving and reporting scams. We maintain the stack underneath: a Next.js 16 server on AWS Lambda behind a Cloudflare Worker, a daily news engine, and the files that let AI agents read the site. This is how content and data move through it, and what we measured on 5 November 2026.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Every risk report carries a 0 to 100 rug-pull score, a risk level, red flags and sources
+
+A RugPull News risk report is one article per incident: a written analysis, a rug-pull score from 0 to 100 shown with a LOW, MEDIUM or HIGH risk level, a list of red flags, and the numbered sources the analysis rests on. Each report page renders those parts under its own headings: Our Analysis, Sources, Rug Pull Score and Red Flags Identified, followed by More Stories.
+
+The site's introductory guide defines a rug pull as a scam in which a project's developers abandon it and leave with the money people put in. The reports are written for someone deciding whether a token they hold, or one they have been pitched, looks like that. The site states plainly that everything it publishes is analysis for information and education, not financial advice, and this article follows the same rule.
+
+Four other surfaces sit around the reports:
+
+- **The Daily Check-in** at `/check-ins`, a once-a-day briefing on the incidents worth knowing about, led by that day's risk reports. The page shows the state of today's run, then every past check-in, newest first.
+- **The Rug Pull Scanner** at `/scanner`, an on-chain risk check of an Ethereum, BSC, Polygon or Solana contract address, with recent scans listed below it.
+- **Investigation requests.** A reader can ask for a contract to be investigated, and the result is published as a risk report.
+- **Education guides** on what a rug pull is, the warning signs that come before one, leaving a project safely, and documenting and reporting a scam.
+
+There are no accounts. Subscribing to the email alerts keeps an address and the IP address it came from, and the privacy page says for how long.
+
+<PageWireframe
+  title="rugpullnews.org home page, top to bottom"
+  sections={[
+    { kind: 'nav', name: 'Navigation', note: 'Ecosystem bar, market ticker, video logo with "Helping you not get rugged.", a scrolling headline ticker, then links including Scanner, Check-ins, Education, Submit Investigation, Subscribe and Donate' },
+    { kind: 'text', name: 'RugPull News', note: 'The page h1, with "Independent crypto scam analysis and rug pull prevention."' },
+    { kind: 'hero', name: 'Latest Headlines', note: 'The newest risk report at two-thirds width with its risk level and red flags; a dated headline list fills the right third' },
+    { kind: 'panel', name: 'Daily Check-in', note: 'The latest briefing as one wide card' },
+    { kind: 'rail', name: 'Featured Reports', note: 'Three report cards, each with its banner, risk level and summary' },
+    { kind: 'form', name: 'Stay Informed', note: 'Email signup for scam alerts and analysis' },
+    { kind: 'list', name: 'More Stories', note: 'Eight more reports, then an infinite list that loads further pages' },
+    { kind: 'footer', name: 'Footer', note: 'Site links, Privacy Policy, Terms of Service, Unsubscribe and the contact address' },
+  ]}
+  caption="The home page as it rendered on 5 November 2026. The design predates our house standard and was kept by the owner's choice: a dark theme, a gold accent and rounded cards."
+/>
+
+## A daily engine runs eight stages with a language model and keeps a quote only if it appears word for word on its source page
+
+Most of what the site publishes is written by a news engine that runs once a day inside the same Lambda function as the site. A scheduled event starts it, and it works through eight stages: gather, triage, research, write, check, illustrate, publish and briefing. A ninth step deletes stored source pages after 30 days.
+
+At the level a reader needs, the stages do this. Gather collects candidate incidents from public reporting. Triage groups them into distinct incidents and sets aside the ones a recent report already covers. Research reads the source pages and copies out facts, each with the quote that supports it, and a quote survives only if it appears word for word in that page's text. Write drafts one report per incident from those facts, with every paragraph and red flag citing the facts it rests on. Check tests the draft against its facts; a draft that fails gets one rewrite and, if it fails again, is stored unpublished rather than published. Illustrate makes the banner, publish writes the reports, and briefing assembles that day's check-in from them. A smaller language model does the gathering, extraction and checking, and a larger one does the writing.
+
+Three design choices in the engine apply to any scheduled job that spends money and publishes in public:
+
+- **The database allows one check-in per day.** Each run first claims the day with a row that a unique index permits only once, and a run that died part-way through is recognised as stale and set aside. A scheduler that fires twice cannot publish twice.
+- **Every stage has a deadline inside Lambda's 15-minute limit.** A stage stops starting new work when its time is up, so a slow day publishes what has been verified instead of timing out with nothing.
+- **Every paid call is budgeted before it is made.** The run reserves each call's worst-case cost against a per-run cap. A call that would break the cap is not made, later paid stages are skipped, and what was already verified still publishes. If the account's credit runs out, the run pauses so the day can be run again.
+
+A second job runs every ten minutes and gives a banner to any published report that lacks one. The home page and the other card lists show a report only once it has its own banner, so no card ever shows a placeholder image.
+
+Scans and investigations belong to a separate Python intelligence service on its own Lambda function. A new scan or investigation is saved as a pending row, the site hands it to the service asynchronously, and the visitor goes to a status page that polls for the result. If that hand-off fails, the visitor notices nothing, because the service's regular sweep picks up any pending row the direct call missed.
+
+## A Cloudflare Worker answers first, so only pages and API calls reach Lambda
+
+rugpullnews.org answers from a Cloudflare Worker. The Worker serves the build files and the site's public files as static assets, serves banner images from Cloudflare's cache, answers common secret-hunting probes itself, and forwards everything else to a Next.js 16 standalone server running on AWS Lambda. A live page response carries both a Cloudflare ray header and an AWS request ID.
+
+Keeping the build files at the edge is what makes per-request compute affordable. The repo's notes put a page at one or two function requests, rather than the twenty it would cost if every script and stylesheet went through Lambda. Banners are kept at the edge and in browsers for a year, so a changed image is written under a new name. Public API answers are kept for the cache lifetime they declare. Pages are never kept, and neither is anything that failed. Lambda runs only when someone visits or a schedule fires, and a keep-warm ping means few visitors wait for a cold start.
+
+Images were the hardest part to fit into that model. Next.js's image optimizer resizes on request, and on Lambda each resize is a function invocation; the changelog records first fetches of 0.8 to 2.9 seconds per banner. The optimizer is now off. The engine makes every banner once at 1536 by 1024 pixels in WebP, plus copies 960 and 480 pixels wide, and a custom loader points each card at the copy it needs. Each banner also has a 24-by-16 blurred preview, a few hundred bytes, drawn in the page's own HTML before any image arrives. If a smaller copy has not been made yet, the Worker answers with the full banner instead of a broken image.
+
+<ArchitectureDiagram
+  title="Request path for rugpullnews.org"
+  layers={[
+    {
+      name: 'Visitor',
+      nodes: [
+        { label: 'Browser', note: 'HTML pages, WebMCP tools where supported' },
+        { label: 'Agents and crawlers', note: 'Markdown, OpenAPI, RSS, sitemaps' },
+      ],
+      via: 'HTTPS',
+    },
+    {
+      name: 'Edge',
+      nodes: [{ label: 'Cloudflare Worker', note: 'build files, cached banners, probe answers', emphasis: true }],
+      via: 'origin request',
+    },
+    {
+      name: 'Compute',
+      nodes: [
+        { label: 'AWS Lambda', note: 'Next.js 16 standalone server', emphasis: true },
+        { label: 'News engine', note: 'same function; daily check-in, banners every 10 minutes' },
+        { label: 'Intelligence service', note: 'Python, its own function; scans and investigations' },
+        { label: 'EventBridge', note: 'the schedules that start both' },
+      ],
+      via: 'SQL over TLS, S3 API, HTTPS',
+    },
+    {
+      name: 'Data',
+      nodes: [
+        { label: 'PostgreSQL', note: 'articles, scans, engine runs and sources' },
+        { label: 'S3', note: 'WebP banners in three sizes' },
+      ],
+    },
+    {
+      name: 'Services',
+      nodes: [
+        { label: 'Language model API', note: 'research, writing and checks' },
+        { label: 'OpenRouter', note: 'banner image models' },
+      ],
+    },
+  ]}
+  caption="Nothing static touches Lambda. The Worker serves files and banners, and the function only renders pages, answers the API and runs the jobs."
+/>
+
+The records live in Amazon RDS for PostgreSQL 17, with the schema versioned in four numbered migrations and every connection verifying the server's TLS certificate. The application's database login can read and write rows but cannot change the schema; only migrations can. Our house default for a build like this is Vercel with Cloudflare D1 and R2, set out in our [reference architecture](/blogs/vercel-cloudflare-d1-r2-architecture/), and this site uses none of the three. Its queries were written for Postgres and its Python services talk to Postgres directly, so D1 would have meant rewriting both. The owner chose AWS, and the decision is recorded in the repo with the reasons.
+
+## Agent surfaces took isitagentready.com from level 2 to level 4 on 5 November 2026
+
+On 5 November 2026, [isitagentready.com](https://isitagentready.com) rated the site level 2, "Bot-Aware". After the changes below were deployed the same day, it rated it level 4, "Agent-Integrated".
+
+- **Markdown at the same address.** The home page, `/check-ins`, `/agents` and every `/article/<id>` answer a request sent with `Accept: text/markdown` in Markdown, with an `x-markdown-tokens` estimate; browsers still get HTML. The Markdown is written from the same queries as each page, not converted from its rendered HTML, so it lists what the page lists without banners or buttons.
+- **A Link header on the home page**, following RFC 8288, naming the API catalog, the OpenAPI document, `/agents`, `/llms.txt` and the Markdown version.
+- **`/openapi.json`**, an OpenAPI 3.1 description of the seven read-only API routes, none of which needs a key.
+- **`/.well-known/api-catalog`** under RFC 9727, an agent skill index, and an Agentic Resource Discovery manifest.
+- **WebMCP.** In a browser that supports it, every page registers four read-only tools, each marked as returning untrusted content. The forms are deliberately not tools, so an agent in a visitor's browser cannot subscribe, report, submit or start a scan.
+
+You can check the first two from a terminal:
+
+```bash
+curl -sI https://rugpullnews.org/ | grep -i '^link:'
+curl -s -H 'Accept: text/markdown' https://rugpullnews.org/ | head -n 3
+```
+
+`/agents` and `/llms.txt` render from one module, so the two cannot disagree, which is the same pattern we used on the [Omaha Well Project site](/blogs/omaha-well-project-website/). robots.txt, with Cloudflare's managed content signals above it, lets search and answer engines read the site and keeps training crawlers out. Level 5 asks for auth.md, an MCP Server Card and an A2A Agent Card. The site has no accounts, no MCP server and no agent endpoint, so there is nothing yet for those files to describe.
+
+## 1,609 of 3,860 requests in one day were 404s, almost all from secret-hunting bots
+
+Cloudflare's analytics for the 24 hours to 5 November 2026 counted 3,860 requests, 1,609 of which were answered 404. About 97 percent of those 404s came from bots running common secret-hunting probes for files the site has never had. None was a real broken link.
+
+A 404 for an address that never existed costs a site nothing in search. The cost was elsewhere: every probe woke the Lambda function. The Worker now recognises those probes and answers them at the edge, still with a 404, so they never reach the server.
+
+The real search work was in the pages themselves. Every one of the 217 URLs in the sitemap was fetched and read, before and after the fixes:
+
+| Check across 217 sitemap URLs | Before | After |
+| --- | --- | --- |
+| Descriptions over 160 characters | 122 | 0 |
+| Article social images on the wrong host, declaring the wrong size | 202 | 0 |
+| Pages with two h1 headings | 2 | 0 |
+| Pages sharing a duplicate description | 3 | 0 |
+
+The same change added an RSS feed at `/feed.xml` with the newest 30 reports and check-ins, linked from every page's head, and a Google News sitemap at `/news-sitemap.xml` covering the last two days, listed in robots.txt. After each daily run, the engine submits what it published through IndexNow, which passes new addresses to Bing, Yandex and the other engines that take part.
+
+## 456 tests pass, and the house audit still records 16 failures and 16 unchecked rules
+
+On 5 November 2026 the Vitest suite ran 456 tests across 55 files, and all 456 passed. The engine's tests run a whole check-in against an in-memory database and fake versions of the language model, the intelligence service, the image API and storage, with no network, covering cases such as invented quotes being dropped, a draft held after a failed rewrite, the spending cap, and a run finding its day already claimed.
+
+The tier-1 run of our configuration audit recorded 18 passes, 16 failures and 16 unchecked rules. Our standard counts an unchecked rule as a failure, so the run does not pass, and we do not present it as passing. Most of the failures are deliberate and recorded. The owner chose to keep the site's existing look, so rules about radius tokens, copy files and derived brand assets fail or stay unchecked on purpose, and the site stays in English only. Every failing or unchecked rule is listed in the repo with what was done instead and who decided.
+
+One measurement is missing: no Lighthouse run has been recorded on this architecture, so this article quotes no performance scores.
+
+## Practices that transfer to any site that publishes risk information
+
+- **Check quotes mechanically before a model's prose goes out.** A word-for-word match against the fetched page is cheap and catches invented quotes before a reader does.
+- **Make the daily job claim its day in the database.** A unique row per day turns a double-fired schedule into a no-op.
+- **Budget every paid call before it is made.** Reserving the worst case keeps a bad day from becoming an expensive one, and publishing what is already verified keeps it from becoming an empty one.
+- **Answer probes at the edge.** A flood of 404s from bots is a compute bill, not a search problem.
+- **Pre-size images when compute is billed per request.** Three files made once beat a resize on every visit.
+- **Write agent Markdown from data, not from HTML**, and publish only the agent files the site can back.
+
+The site and its guides are at [rugpullnews.org](https://rugpullnews.org). For the house standard this build departs from, and how we record each departure, see the [Omaha Well Project case study](/blogs/omaha-well-project-website/).

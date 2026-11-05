@@ -1,0 +1,154 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/build-software-in-omaha/' },
+  title: 'Building Software in Omaha: Prices 8% Below the U.S. Level',
+  description:
+    'Omaha prices run 8% below the U.S. level and its developers averaged $119,910 in 2025. Sourced figures on talent, incentives, venture capital and flights.',
+  keywords:
+    'build software in Omaha, Omaha software company, Omaha startup costs, Omaha software developer salary, Omaha tech talent, ImagiNE Nebraska Act, Nebraska venture capital, Omaha cost of living, Regional Price Parities Omaha, Omaha web development',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Omaha',
+  shortTitle: 'Building Software in Omaha',
+  openGraph: pageOg({
+    title: 'Building Software in Omaha: Prices 8% Below the U.S. Level',
+    description:
+      'Omaha prices run 8% below the U.S. level and its developers averaged $119,910 in 2025. Sourced figures on talent, incentives, venture capital and flights.',
+    path: '/blogs/build-software-in-omaha/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Building Software in Omaha: Prices 8% Below the U.S. Level',
+    description:
+      'Omaha prices run 8% below the U.S. level and its developers averaged $119,910 in 2025. Sourced figures on talent, incentives, venture capital and flights.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Building Software in Omaha: Prices 8% Below the U.S. Level"
+  description="Omaha prices run 8% below the U.S. level and its developers averaged $119,910 in 2025. Sourced figures on talent, incentives, venture capital and flights."
+  slug="/blogs/build-software-in-omaha/"
+  datePublished="2026-11-05"
+/>
+
+# Building Software in Omaha: Prices 8% Below the U.S. Level
+
+Omaha is a cheaper place to build software than the coastal metros, and federal statistics say by how much. We are a software studio in Omaha, and this is the case for building a software company or product here, made only from figures a reader can check: price levels, developer pay, graduates, employers, infrastructure and state incentives. It also gives the two numbers that cut the other way, venture capital and flights. Every published figure links to the agency or organisation that released it, and the few calculations of our own are labelled as ours.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Omaha prices ran 8.1% below the U.S. level in 2024, and housing rents 13.6% below
+
+The Omaha metro's price level was 91.9 against a national 100 in 2024, according to the Bureau of Economic Analysis. Its housing rents scored 86.4. San Francisco scored 115.6 overall and 194.7 for rents.
+
+BEA publishes these [Regional Price Parities](https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area) for every metropolitan area. The current release is dated February 19, 2026, covers 2024, and is the source for every figure in this table. The next release, adding 2025, is scheduled for December 10, 2026.
+
+| Metro area (BEA definition) | All items | Housing rents |
+| --- | --- | --- |
+| Omaha, NE-IA | 91.9 | 86.4 |
+| Kansas City, MO-KS | 92.5 | 86.6 |
+| Boston-Cambridge-Newton, MA-NH | 108.3 | 148.4 |
+| San Jose-Sunnyvale-Santa Clara, CA | 110.4 | 211.9 |
+| Seattle-Tacoma-Bellevue, WA | 111.1 | 151.3 |
+| New York-Newark-Jersey City, NY-NJ | 112.6 | 148.6 |
+| San Francisco-Oakland-Fremont, CA | 115.6 | 194.7 |
+
+Read the housing column first. It measures residential rents, so it covers a founder's own rent and every employee's, and it is where the gap is widest: Omaha's rents index at well under half of San Jose's. Goods differ far less, 94.1 in Omaha against 108.5 in San Francisco, and many of a software company's costs are priced nationally anyway. Cloud hosting, software subscriptions and laptops cost the same in Omaha as anywhere else. The saving is mostly in people, so it grows with headcount.
+
+## A software developer in Omaha averaged $119,910 in May 2025, against $193,430 in San Francisco
+
+The Bureau of Labor Statistics put the mean annual wage for software developers in the Omaha-Council Bluffs metro at $119,910 in its May 2025 [Occupational Employment and Wage Statistics](https://www.bls.gov/oes/current/oes_36540.htm). The figures below are occupation code 15-1252, software developers, for each metro.
+
+| Metro area (BLS, May 2025) | Software developers employed | Mean annual wage | Median annual wage |
+| --- | --- | --- | --- |
+| Omaha-Council Bluffs | 3,920 | $119,910 | $125,220 |
+| New York-Newark-Jersey City | 121,000 | $165,870 | $166,830 |
+| Seattle-Tacoma-Bellevue | 92,770 | $174,920 | $167,280 |
+| San Francisco-Oakland-Fremont | 69,030 | $193,430 | $186,640 |
+| San Jose-Sunnyvale-Santa Clara | 87,350 | $221,710 | $213,110 |
+
+For an employer, the gap between means is $73,520 a year per developer against San Francisco and $45,960 against New York. Across a team of ten, the San Francisco gap is $735,200 a year, which is why the cost case for Omaha is mostly a payroll case.
+
+For the developer, the gap is smaller than it looks, and it does not close. Dividing each mean by its metro's price parity gives a rough price-adjusted wage. That is our arithmetic, not a published BLS series: about $130,000 in Omaha, $147,000 in New York, $157,000 in Seattle and $167,000 in San Francisco. Coastal developers stay ahead after adjusting for prices. The saving holds for people hired at local rates and shrinks for anyone recruited away from a coastal salary.
+
+The same table shows the first trade-off. Omaha's 3,920 software developers are about one-eighteenth of San Francisco's 69,030. A search for a specific specialist draws on a much smaller pool, and a team that needs several senior people in one niche should expect some of them to work remotely.
+
+## UNO conferred 189 computing bachelor's degrees in 2024–25, and UNL 140 in computer science
+
+The University of Nebraska Omaha awarded 189 bachelor's degrees in computer and information sciences in 2024–25, along with 105 master's degrees and 8 doctorates, according to the federal [College Navigator](https://nces.ed.gov/collegenavigator/?id=181394) completions data.
+
+UNO's computing programs sit in its [College of Information Science & Technology](https://www.unomaha.edu/college-of-information-science-and-technology/index.php), housed in the Peter Kiewit Institute building on South 67th Street. The college lists programs in artificial intelligence, computer science, cybersecurity, management information systems, applied computing and informatics, data science and human-centred computing. UNO describes its artificial intelligence bachelor's degree as Nebraska's first. The college also [reports](https://www.unomaha.edu/college-of-information-science-and-technology/about/index.php) that more than 80% of its students hold internships in their field.
+
+| Institution | Program, first majors, 2024–25 | Bachelor's | Master's | Doctoral |
+| --- | --- | --- | --- | --- |
+| [University of Nebraska Omaha](https://nces.ed.gov/collegenavigator/?id=181394) | Computer and information sciences, all programs | 189 | 105 | 8 |
+| [University of Nebraska–Lincoln](https://nces.ed.gov/collegenavigator/?id=181464) | Computer science | 140 | 21 | 10 |
+| University of Nebraska–Lincoln | Computer software engineering | 31 | not offered | not offered |
+| University of Nebraska–Lincoln | Computer engineering | 24 | not offered | not offered |
+| [Creighton University](https://nces.ed.gov/collegenavigator/?id=181002) | Computer science | 15 | not offered | not offered |
+
+That is 399 bachelor's degrees in 2024–25 across the programs listed, which is a pipeline measured in hundreds rather than thousands. It suits a product team that hires a few graduates each year and builds a relationship with one department, through internships or a capstone project, well before it needs them.
+
+## Berkshire Hathaway, Union Pacific, Kiewit and Mutual of Omaha are on the 2026 Fortune 500
+
+The Omaha-headquartered companies on the 2026 Fortune 500 include [Berkshire Hathaway](https://fortune.com/company/berkshire-hathaway/) at 7th, [Union Pacific](https://fortune.com/company/union-pacific/) at 187th, [Peter Kiewit Sons'](https://fortune.com/company/peter-kiewit-sons/) at 242nd and [Mutual of Omaha](https://fortune.com/company/mutual-of-omaha-insurance/) at 288th.
+
+Fortune files them under property and casualty insurance, railroads, engineering and construction, and life and health insurance. For a software business, that describes the local enterprise market. Insurance, freight and construction buyers have their own regulatory and procurement demands, and a firm that learns to meet them nearby has learned something it can sell elsewhere.
+
+## Google and Meta have built data centers on both sides of the Missouri River
+
+Google lists data centers in [Papillion, Omaha and Lincoln](https://datacenters.google/locations/nebraska/), built in 2019, built in 2022, and brought online in 2026 respectively, and says it has invested more than $15 billion in Nebraska. Across the river, its [Council Bluffs, Iowa](https://datacenters.google/locations/iowa/) campus dates from 2007.
+
+Two details matter to a software team. Google Cloud's documentation places the [zones of its us-central1 region](https://cloud.google.com/compute/docs/regions-zones) in Council Bluffs, so that region's machines sit across the river from downtown Omaha. And Meta lists its [Sarpy County data center](https://datacenters.atmeta.com/all-locations/) at more than $2.5 billion of investment, with ground broken in 2017 and more than 300 operational jobs once complete. The investment is large and the direct jobs are few, so treat data centers as infrastructure next door rather than as employers of software engineers.
+
+## Central Time gives an Omaha workday seven hours with New York and six with San Francisco
+
+Omaha sits in the Central zone defined in [49 CFR 71.6](https://www.ecfr.gov/current/title-49/subtitle-A/part-71/section-71.6), one hour behind New York and two ahead of San Francisco, and all three observe daylight saving time together.
+
+A nine-to-five day in Omaha shares seven hours with a nine-to-five day in New York and six with one in San Francisco. All three overlap from 11:00 to 16:00 Central, five hours. San Francisco and New York share five hours with each other, so the advantage of a Central base is one or two extra hours each day with each coast, not a transformation. It is most useful to a studio or a support team serving clients on both coasts, which can schedule a call with either side without anyone starting early or staying late.
+
+## ImagiNE Nebraska lists computer systems design, NAICS 5415, as a qualifying activity
+
+The [ImagiNE Nebraska Act](https://imagine.nebraska.gov/qualified-location-activities/) is the incentive program the state describes as its redesigned portfolio, run by the Department of Economic Development with credits administered by the [Department of Revenue](https://revenue.nebraska.gov/incentives/imagine-nebraska-act). The older Nebraska Advantage Act no longer accepts applications. A location qualifies when most of its employees work in a listed activity, and the list includes computer systems design and related services (NAICS 5415) and data processing and hosting (NAICS 518210).
+
+The levels reward hiring. The [Quality Jobs level](https://imagine.nebraska.gov/about-the-program/) asks for 20 new full-time-equivalent employees paid at least the Nebraska average wage and sets no investment minimum, which suits a software company better than the levels built around capital spending. The Growth and Expansion level asks for 10 new employees and $1 million of investment. A two-person studio qualifies for neither, and the program is worth reading only once a company plans to add a team.
+
+The rules move. In April 2026, LB1165 raised several credit rates, and the program's [legislative changes page](https://imagine.nebraska.gov/legislative-changes/) lists amendments passed in 2021, 2022, 2023, 2025 and 2026. Read the current level table rather than a summary from a year ago.
+
+For earlier stages, the state's Business Innovation Act programs fit better. The Department of Economic Development's [prototype grants](https://opportunity.nebraska.gov/programs/business/nif-prototype-grants/) reach $150,000 per project against a 50% cash match, and its [seed investment program](https://opportunity.nebraska.gov/programs/business/nebraska-seed-investment-program/) places up to $500,000 through Invest Nebraska against a 1:1 match.
+
+## Nebraska drew $468 of venture capital per $1 million of GDP in 2024; the U.S. drew $7,447
+
+Venture capital is the clearest cost of building here. The National Science Foundation's [state indicator](https://ncses.nsf.gov/indicators/states/indicator/venture-capital-per-1-million-state-gdp) for venture capital disbursed per $1 million of GDP, updated in July 2026 from PitchBook data, gives Nebraska $468 for 2024, against $7,447 for the United States, $28,866 for California and $19,491 for Massachusetts.
+
+The indicator swings with individual deals in a small state, and a single large round moves it. Nebraska's figure was $7,130 in 2021 and fell in each year after: $2,959 in 2022, $988 in 2023 and $468 in 2024. Even so, the planning lesson is steady: fund the early stages from revenue, grants or the state's seed program, and expect later rounds to come mostly from investors based elsewhere.
+
+## Eppley Airfield lists 37 nonstop destinations, 25 of them year-round and none international
+
+Omaha's airport [lists nonstop service](https://www.flyoma.com/flight-information/non-stop-destinations/) to 37 airports, 12 of them seasonal only, and no international destinations. The year-round list includes the main coastal tech metros: San Francisco on United, Seattle on Alaska, Los Angeles on American, Newark on United, LaGuardia on Delta and Southwest, and Washington National on Delta and Southwest.
+
+The gaps are just as specific. Boston is not on the list, Austin is seasonal, and anywhere abroad means a connection. A team whose customers are mostly in Boston or overseas should price that time into every visit.
+
+## We ship from Omaha to clients in Omaha and the Kansas City metro
+
+Our own client work runs from here. In Omaha we built the [Omaha Well Project](https://omahawell.arthurlabs.net) site for a street outreach charity. In the Kansas City metro we built [CryptoMondays Kansas City](https://cryptomondays.arthurlabs.net), the site for a monthly meetup series, and [Kansans for an Affordable Future](https://kcfutures.arthurlabs.net), a county-by-county Kansas roadmap. Kansas City's price level of 92.5 is close to Omaha's 91.9, so the region's cost base is shared rather than a single-city quirk.
+
+None of those projects needed a coastal office. The facts above are the ones we would check first for any team weighing a Midwest base:
+
+- **Price the payroll, not the rent.** The BLS wage table decides most of the saving. Check it for the exact occupations you hire.
+- **Count the pool before you count the saving.** 3,920 developers is enough for a small team and thin for a specialist one.
+- **Read ImagiNE only at the hiring stage.** Its smallest level asks for 5 new employees in a designated redevelopment area, and the general levels ask for 10 to 20.
+- **Plan capital from outside the state.** At $468 per $1 million of GDP, local venture money is a supplement, not a plan.
+- **Map your customers against the nonstop list.** Coastal tech hubs are mostly covered; Boston and international clients are not.
+
+For a walkthrough of a finished Omaha project, see our [Omaha Well Project case study](/blogs/omaha-well-project-website/). For entity formation and the state's digital-asset statutes, see the [Nebraska blockchain business guide](/guides/nebraska-blockchain-business-guide/).

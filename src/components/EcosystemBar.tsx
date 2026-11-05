@@ -25,6 +25,37 @@ const ECOSYSTEM_LINKS = [
   { label: "Links", href: "https://links.arthurlabs.net", key: "links" },
 ] as const;
 
+const ECOSYSTEM_BAR_CSS = `
+        .ecosystem-bar {
+          --_eb-bg: #ffffff;
+          --_eb-fg: #0a0a0a;
+          --_eb-muted: #6b7280;
+          --_eb-border: #e5e7eb;
+          --_eb-accent: #f3f4f6;
+        }
+        @media (prefers-color-scheme: dark) {
+          .ecosystem-bar {
+            --_eb-bg: #0a0a0a;
+            --_eb-fg: #ededed;
+            --_eb-muted: #9ca3af;
+            --_eb-border: #27272a;
+            --_eb-accent: #1f1f23;
+          }
+        }
+        .dark .ecosystem-bar,
+        html.dark .ecosystem-bar,
+        [data-theme="dark"] .ecosystem-bar {
+          --_eb-bg: #0a0a0a;
+          --_eb-fg: #ededed;
+          --_eb-muted: #9ca3af;
+          --_eb-border: #27272a;
+          --_eb-accent: #1f1f23;
+        }
+        .ecosystem-bar-scroll::-webkit-scrollbar {
+          display: none;
+        }
+`
+
 /** Minimum upward scroll velocity (px per event) to trigger reveal */
 const SCROLL_UP_THRESHOLD = 30;
 /** How long (ms) after the user stops scrolling up before we hide */
@@ -260,36 +291,11 @@ export default function EcosystemBar() {
         </a>
       </div>
 
-      <style>{`
-        .ecosystem-bar {
-          --_eb-bg: #ffffff;
-          --_eb-fg: #0a0a0a;
-          --_eb-muted: #6b7280;
-          --_eb-border: #e5e7eb;
-          --_eb-accent: #f3f4f6;
-        }
-        @media (prefers-color-scheme: dark) {
-          .ecosystem-bar {
-            --_eb-bg: #0a0a0a;
-            --_eb-fg: #ededed;
-            --_eb-muted: #9ca3af;
-            --_eb-border: #27272a;
-            --_eb-accent: #1f1f23;
-          }
-        }
-        .dark .ecosystem-bar,
-        html.dark .ecosystem-bar,
-        [data-theme="dark"] .ecosystem-bar {
-          --_eb-bg: #0a0a0a;
-          --_eb-fg: #ededed;
-          --_eb-muted: #9ca3af;
-          --_eb-border: #27272a;
-          --_eb-accent: #1f1f23;
-        }
-        .ecosystem-bar-scroll::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      {/* Injected raw: as a text child, the server HTML-escapes the quotes in
+          [data-theme="dark"] to &quot;, browsers do not decode entities inside
+          <style>, and the mismatch failed hydration for the whole root on every
+          page, forcing a full client re-render. */}
+      <style dangerouslySetInnerHTML={{ __html: ECOSYSTEM_BAR_CSS }} />
     </div>
   );
 }

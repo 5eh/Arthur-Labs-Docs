@@ -58,3 +58,10 @@
     display: none;
   }
 }
+
+/* Inline code in articles carries long unbroken strings (API paths, URLs,
+   header values). Letting it wrap anywhere keeps it from pushing the document
+   past the viewport at 320px; code blocks scroll in their own container. */
+.prose :where(:not(pre) > code) {
+  overflow-wrap: anywhere;
+}

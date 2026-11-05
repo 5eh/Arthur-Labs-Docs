@@ -1,0 +1,256 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/ascii-glyph-field-hero-canvas/' },
+  title: 'Building the ASCII Glyph-Field Hero: 10px Cells at 30fps',
+  description:
+    'How we build the ASCII glyph-field hero canvas: a twelve-step glyph ramp, 10px cells, 30fps, a 1.5 pixel-ratio cap, and headline text held at 4.5:1 contrast.',
+  keywords:
+    'ASCII canvas hero, glyph field animation, HTML canvas hero, React canvas component, prefers-reduced-motion, IntersectionObserver, devicePixelRatio, canvas performance, hero text contrast, Next.js hero section',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Engineering',
+  shortTitle: 'ASCII Glyph-Field Hero',
+  openGraph: pageOg({
+    title: 'Building the ASCII Glyph-Field Hero: 10px Cells at 30fps',
+    description:
+      'How we build the ASCII glyph-field hero canvas: a twelve-step glyph ramp, 10px cells, 30fps, a 1.5 pixel-ratio cap, and headline text held at 4.5:1 contrast.',
+    path: '/blogs/ascii-glyph-field-hero-canvas/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Building the ASCII Glyph-Field Hero: 10px Cells at 30fps',
+    description:
+      'How we build the ASCII glyph-field hero canvas: a twelve-step glyph ramp, 10px cells, 30fps, a 1.5 pixel-ratio cap, and headline text held at 4.5:1 contrast.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Building the ASCII Glyph-Field Hero: 10px Cells at 30fps"
+  description="How we build the ASCII glyph-field hero canvas: a twelve-step glyph ramp, 10px cells, 30fps, a 1.5 pixel-ratio cap, and headline text held at 4.5:1 contrast."
+  slug="/blogs/ascii-glyph-field-hero-canvas/"
+  datePublished="2026-11-05"
+/>
+
+# Building the ASCII Glyph-Field Hero: 10px Cells at 30fps
+
+The hero on the Astralis Chain hackathon site and on the Omaha Well Project site is not an image. It is a canvas that samples a gradient and redraws it, thirty times a second, as a grid of characters whose weight follows the brightness underneath and which shifts away from the cursor. This is how it works, the rules that keep it identical across our builds, the bug it shipped with on a green site, and a 100-line React component you can adapt.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Six rules in our build standard fix one canvas dialect for every hero
+
+Six numbered rules in our build standard govern the hero backdrop and together define a single dialect. In plain words:
+
+| Rule | What it requires |
+| --- | --- |
+| Frontend 19 | The hero is a live render, not a picture. A gradient is material the renderer consumes, never a flat image behind the text. |
+| Frontend 20 | The render fills the viewport, runs under the navigation, and has no visible edge. |
+| Frontend 21 | Glyph weight follows the source's brightness, the field moves with the pointer, and it visibly moves when nobody touches it. |
+| Frontend 22 | The ramp `" ··:;+×*≡#%@"`, 9 to 10 pixel cells, 30 frames per second, a pixel ratio capped at 1.5, a paused loop off screen, one still frame under reduced motion. No second dialect. |
+| Frontend 23 | A 3D hero object is allowed, from a committed model or procedural geometry, under the same rules, and never generated at request time. |
+| Frontend 24 | Headline and lede hold 4.5:1 against the brightest pixel behind them, by damping the backdrop, not by shadowing the text. |
+
+Fixing the dialect is a maintenance decision as much as a visual one. When every copy shares the same constants and lifecycle, a defect found in one copy is a defect to check in all of them, and the blue-flash bug below is that case.
+
+## Twelve ramp steps map luminance to glyph, size and brightness
+
+The ramp `" ··:;+×*≡#%@"` has twelve positions. The first is a space, which draws nothing. The next two are the same middle dot, so the faintest visible glyph covers two steps. Three of the characters are not ASCII at all: the middle dot, the multiplication sign and the identical-to sign, so whatever face `ui-monospace, monospace` resolves to has to carry them.
+
+Each cell computes one value between 0 and 1 and uses it four ways:
+
+1. **Glyph.** The value times twelve, rounded down, indexes the ramp.
+2. **Size.** Production sets the glyph at `0.72 + value × 0.75` of the cell, so bright cells draw larger and the grid stops looking like one stamp repeated.
+3. **Opacity.** The value is the glyph's alpha, before the legibility well described below.
+4. **Brightness.** The renderer keeps the source pixel's hue and sets its own brightness: each channel is divided by the pixel's largest channel and multiplied by `96 + 150 × value`. Raw colour, as a code comment notes, would draw a gradient's dark regions as near-black glyphs on a dark page.
+
+The value starts as Rec. 601 luma of the sampled pixel. Production stretches it across the darkest and brightest luma the source contains, because gradients are mostly dark with one bright region and raw luma would leave much of the canvas under the draw threshold. A floor of 0.26 lifts every cell, and three sine waves at different scales drift the value so the motion never reads as one repeating frequency.
+
+## The gradient is sampled once, one offscreen pixel per 10px cell
+
+The renderer never reads the image during a frame. When the canvas is sized, it creates an offscreen canvas of exactly one pixel per cell, calls `drawImage` to scale the gradient into it, and reads the result once with `getImageData`, from a context created with `willReadFrequently: true`. The browser does the averaging, and each frame afterwards is an array lookup per cell. A resample happens only when the canvas changes size or the image finishes loading.
+
+If the image has not arrived, or fails, the renderer synthesises a three-stop linear gradient and samples that instead. The production file explains why in one line: "A backdrop that silently disappears because an image 404'd is worse than a generated one."
+
+The sources come from a shared pack of nine 600 by 600 gradients. Seven are blue; the other two are hue rotations of the first, added because the field takes its hue from the source. Astralis samples a blue entry and the Omaha Well Project the green rotation.
+
+One constraint catches people porting this. Reading pixels back from a canvas that has drawn a cross-origin image without CORS approval throws an exception, because the canvas is [tainted](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/CORS_enabled_image). Serve the gradient from your own origin, or with CORS headers and `crossOrigin` set on the image.
+
+## Pointer displacement pushes glyphs up to 19px away from the cursor
+
+Frontend 21 asks for a field that moves rather than one that only brightens, and the code comment uses the same words: "glyphs move rather than only brighten." A passive `pointermove` listener on the window records the cursor's position relative to the hero, and production eases a tracked point toward it by 6 percent per drawn frame, so the disturbance trails the hand instead of snapping to it.
+
+For every cell, the renderer measures the distance to that point and turns it into a pull that decays exponentially with distance. The glyph is pushed along the line from the cursor outward by the pull times 1.9 cells, which is 19 pixels at the cursor and close to nothing a short distance away. The same pull drives a ripple: a sine of distance minus time adds rings of brightness that travel outward from the pointer and also nudge glyph size. Under reduced motion, none of this runs and no listener is attached.
+
+## Text holds 4.5:1 against the brightest pixel because the field is damped beneath it
+
+Frontend 24 measures against the brightest pixel behind the type, not the average. The Astralis hero failed its first measurement at 2.54:1 behind the headline. The fix has three layers, and none of them touches the text:
+
+- **A well inside the renderer.** Inside an ellipse at the centre of the canvas, each glyph's opacity is multiplied by `1 − depth × (1 − d²)`, where `d` is the normalised distance from the centre. Both heroes pass a radius of 0.62, an ellipse spanning 62 percent of the canvas on each axis, and a depth of 0.94, which cuts the field's opacity by 94 percent at the centre.
+- **A masked scrim.** A layer of the page background at 90 percent opacity sits over the canvas, masked by a radial-gradient ellipse with radii of 46 and 40 percent of the hero, solid to 55 percent and then fading. Its code comment describes it as sized to the type column rather than the viewport.
+- **A fade at the bottom.** A 10rem gradient into the page background dissolves the field into the next section, which meets Frontend 20's "no visible edge".
+
+The README records the result on Astralis, measured in a driven browser against the brightest backdrop pixel behind each line: the headline at 9.91:1 in dark mode and 13.11:1 in light, the lede at 16.05:1 and 16.78:1. The well is kept deliberately tight. As the hero's own comment puts it, "A wide well reads as a hole in the render rather than as a backdrop that yields to the words on top of it."
+
+## A 30fps throttle, a 1.5 pixel-ratio cap and a loop that stops off screen
+
+**The throttle.** The loop runs on `requestAnimationFrame` and returns early unless 1000/30 milliseconds have passed since the last draw, so a 60Hz display aims to draw every second frame.
+
+**The pixel-ratio cap.** The canvas backing store is its CSS size times the device pixel ratio, capped at 1.5, and `setTransform` scales the context so all drawing code works in CSS pixels. On a phone with a ratio of 3, the cap means the canvas holds a quarter of the pixels it otherwise would.
+
+**The off-screen pause.** An `IntersectionObserver` watches the hero. In production it sets a flag, and the loop keeps requesting frames but returns before drawing while the flag is false. The sample below cancels the frame request instead, so nothing is scheduled at all while the hero is out of view.
+
+**Reduced motion.** Both production copies read `prefers-reduced-motion` once at mount. When it is set, there is no loop and no pointer listener; the field draws when it is sized and again when the image lands. A visitor who changes the setting mid-visit sees the change on the next load.
+
+The canvas itself is `aria-hidden` and has `pointer-events: none`, so it is invisible to screen readers and never intercepts a click meant for the buttons above it.
+
+## A 100-line GlyphField component for a React hero
+
+The component below is written for this article rather than copied from a client build. It keeps the dialect and the legibility well, and makes the fallback stops a required prop, which is the blue-flash fix designed in from the start. It differs from production in four places: it cancels the frame request off screen; it quantises glyph size to the ramp index so the font changes only when the level does; it drops the luma-range stretch and uses two drift waves instead of three; and it gives the throttle a millisecond of slack.
+
+```tsx
+"use client"
+import { useEffect, useRef } from "react"
+
+const RAMP = " ··:;+×*≡#%@" // twelve steps; index 0 draws nothing
+const CELL = 10 // px per cell; the dialect allows 9 or 10
+const FRAME_MS = 1000 / 30
+const MAX_DPR = 1.5
+
+type Props = {
+  src: string // same origin or CORS-enabled, or getImageData throws
+  fallback: readonly [string, string, string] // stops sampled from src, kept as a module constant
+  wellRadius?: number // quiet ellipse under the type, as a share of each axis
+  wellDepth?: number // 0 leaves the field alone, 1 empties the well
+}
+
+export function GlyphField({ src, fallback, wellRadius = 0.62, wellDepth = 0.9 }: Props) {
+  const ref = useRef<HTMLCanvasElement>(null)
+  useEffect(() => {
+    const canvas = ref.current
+    const ctx = canvas?.getContext("2d")
+    if (!canvas || !ctx) return
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const img = new Image()
+    const ptr = { x: -1e4, y: -1e4 }
+    let cols = 0, rows = 0, raf = 0, last = 0
+    let px = new Uint8ClampedArray(0)
+    const sample = () => { // one pixel per cell: drawImage downsamples once, frames read the array
+      const off = Object.assign(document.createElement("canvas"), { width: cols, height: rows })
+      const o = off.getContext("2d", { willReadFrequently: true })!
+      const g = o.createLinearGradient(0, 0, cols, rows)
+      fallback.forEach((stop, i) => g.addColorStop(i / 2, stop))
+      o.fillStyle = g
+      o.fillRect(0, 0, cols, rows) // what draws until the image arrives, or if it never does
+      if (img.complete && img.naturalWidth > 0) o.drawImage(img, 0, 0, cols, rows)
+      px = o.getImageData(0, 0, cols, rows).data
+    }
+    const draw = (t: number) => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      let level = -1
+      for (let n = 0; n < cols * rows; n++) {
+        const c = n % cols, r = (n - c) / cols, i = n * 4
+        // Rec. 601 luma, lifted so the darkest region still draws the faintest glyph
+        let v = 0.26 + (0.74 * (0.299 * px[i] + 0.587 * px[i + 1] + 0.114 * px[i + 2])) / 255
+        let x = c * CELL, y = r * CELL
+        if (!still) {
+          v += 0.12 * Math.sin(c * 0.07 + t / 2000) + 0.08 * Math.sin(r * 0.11 - t / 2500)
+          const dx = x - ptr.x, dy = y - ptr.y, d = Math.hypot(dx, dy) || 1, pull = Math.exp(-d / 110)
+          x += (dx / d) * pull * CELL * 1.9 // pushed away from the cursor, up to 19px
+          y += (dy / d) * pull * CELL * 1.9
+          v += 0.5 * pull * Math.sin(d / 9 - t / 300) // with a ripple around it
+        }
+        v = Math.min(1, Math.max(0, v))
+        const k = Math.min(RAMP.length - 1, Math.floor(v * RAMP.length))
+        const q = Math.hypot(c / cols - 0.5, r / rows - 0.5) / (wellRadius / 2)
+        const alpha = v * (q < 1 ? 1 - wellDepth * (1 - q * q) : 1) // the well under the type
+        if (k === 0 || alpha < 0.02) continue
+        const size = CELL * (0.72 + k * 0.065) // brighter glyphs draw larger
+        if (k !== level) ctx.font = `${size.toFixed(1)}px ui-monospace, monospace`
+        level = k
+        const m = (96 + 150 * v) / Math.max(px[i], px[i + 1], px[i + 2], 1) // keep hue, set brightness
+        ctx.fillStyle = `rgba(${(px[i] * m) | 0},${(px[i + 1] * m) | 0},${(px[i + 2] * m) | 0},${alpha.toFixed(2)})`
+        ctx.fillText(RAMP[k], x + (CELL - size) / 2, y + (CELL + size) / 2)
+      }
+    }
+    const resize = () => {
+      const w = canvas.clientWidth, h = canvas.clientHeight
+      if (!w || !h) return
+      const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
+      canvas.width = Math.round(w * dpr)
+      canvas.height = Math.round(h * dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0) // resizing the canvas resets the transform
+      cols = Math.ceil(w / CELL)
+      rows = Math.ceil(h / CELL)
+      sample()
+      draw(performance.now()) // under reduced motion, this is the one still frame
+    }
+    const loop = (t: number) => {
+      raf = requestAnimationFrame(loop)
+      if (t - last >= FRAME_MS - 1) draw((last = t)) // 1ms of slack: two 60Hz frames sum to ~33.3ms
+    }
+    const io = new IntersectionObserver((entries) => {
+      cancelAnimationFrame(raf) // off screen, nothing stays scheduled
+      if (!still && entries.some((e) => e.isIntersecting)) raf = requestAnimationFrame(loop)
+    })
+    const ro = new ResizeObserver(resize)
+    const onMove = (e: PointerEvent) => {
+      const box = canvas.getBoundingClientRect()
+      Object.assign(ptr, { x: e.clientX - box.left, y: e.clientY - box.top })
+    }
+    img.onload = resize // resample from the real image once it lands
+    img.src = src
+    ro.observe(canvas); io.observe(canvas) // both fire once on observe: first frame, then the loop
+    if (!still) window.addEventListener("pointermove", onMove, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf); io.disconnect(); ro.disconnect()
+      window.removeEventListener("pointermove", onMove); img.onload = null
+    }
+  }, [src, fallback, wellRadius, wellDepth])
+  return <canvas ref={ref} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />
+}
+```
+
+Three things decide whether it behaves in your page. The parent needs `position: relative` and a real height, because the canvas sizes itself from its own CSS box. The `fallback` array must be a module-level constant, since a new array on every render re-runs the effect. And the headline still needs a scrim; the well thins the field, and the Astralis ratios above were measured with both in place. We type-checked the component in TypeScript's strict mode and ran it against a mocked canvas: one draw at mount under reduced motion, 60 draws in two simulated seconds at 60Hz, and nothing scheduled once the observer reported the hero off screen.
+
+## The blue flash: a hardcoded fallback painted a green site blue on every cold load
+
+The fallback is not only for failures. It is what the field draws for the frame or two before the image arrives, on every cold load. The Omaha Well Project changelog for version 1.1.0 records the consequence: the component had the house blue hardcoded as its fallback, so a green site flashed blue on every refresh.
+
+The fix made the stops a prop. The project passes three colours read off its own green gradient, its lightest, median and darkest pixels: `#82ab9d`, `#014844` and `#012f2d`. With the gradient request blocked outright, the changelog records an average glyph colour of rgb(109, 221, 205), against rgb(128, 215, 202) on a normal load, close enough that the swap cannot be seen. The site's production bundle carried those three stops when we checked in November 2026.
+
+The fix works because of the brightness rule above. The renderer keeps each pixel's hue and sets its own brightness, so the stops only need the right hue, and a near-black stop such as `#012f2d` still draws as a mid-teal glyph. The Astralis copy has no such prop and falls back to the house blue, correct for a blue site. The sample makes `fallback` required because a default is a colour that will eventually be wrong for somebody.
+
+## A 1440 by 900 hero draws up to 12,960 glyphs per frame
+
+These are counts from the code and the mocked run, not timings. Both projects' handoff records list Lighthouse as not run, and we have not profiled frame time on a low-end phone.
+
+| Quantity | Value |
+| --- | --- |
+| Cells at 1440 by 900 | 144 by 90, so 12,960 glyphs at most per frame |
+| Glyph draws per second at 30fps | up to 388,800 at that size |
+| Cells on a 390 by 844 phone | 39 by 85, so 3,315 |
+| Offscreen sample at 1440 by 900 | 12,960 pixels, about 52 KB of RGBA, read once per resize |
+| Backing store on a 390 by 844 phone at ratio 3 | 740,610 pixels with the 1.5 cap, against 2,962,440 without it |
+
+Three observations follow. First, `ctx.font` takes a string in [CSS font syntax](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font). Production computes a continuous size per cell and skips the assignment only on an exact match with the previous cell, which is rare. The sample quantises size to the ramp index; in the mocked run with a synthetic gradient, font assignments fell to about one per six glyphs drawn. Second, both versions build a new `rgba()` string per glyph, and quantising colour is the next saving. Third, two frames at 60Hz sum to almost exactly the 33.3ms threshold, so a timestamp landing a fraction early pushes the draw to the third frame. In a simulated timeline with sub-millisecond jitter, a strict comparison drew 40 frames in two seconds instead of 60; the millisecond of slack in the sample removes that risk.
+
+## What carries over to a canvas hero outside our estate
+
+The parts of this that transfer to any React or Next.js project:
+
+- **Sample once, draw many.** Downscale the source to one pixel per cell on resize, and keep frames to array reads and `fillText`.
+- **Damp the backdrop, and measure against its brightest pixel.** A well inside the renderer plus a scrim sized to the type leaves the text itself untouched.
+- **Put the fallback in the API.** Whatever draws before the image loads is what every first-time visitor sees.
+- **Gate the loop on visibility and preference.** Off screen means no drawing, and reduced motion means one frame and no listeners.
+
+To see the field in context, read our case studies on the [Astralis Chain hackathon site](/blogs/astralis-hackathon-website/) and the [Omaha Well Project](/blogs/omaha-well-project-website/), which uses the green variant described above.

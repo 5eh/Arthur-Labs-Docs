@@ -1,0 +1,260 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/vercel-cloudflare-d1-r2-architecture/' },
+  title: 'Next.js on Vercel, SQL in D1 Over REST, Media in R2 Over S3',
+  description:
+    'Next.js on Vercel, records in Cloudflare D1 over its REST API, media in R2 over S3: numbered migrations, bound parameters and a 503 when a store is missing.',
+  keywords:
+    'Cloudflare D1 REST API, Cloudflare R2 S3 API, Vercel Cloudflare D1, Next.js D1 without Workers, D1 migrations, parameterized SQL, R2 media route, Vercel behind Cloudflare proxy, serverless SQLite',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Engineering',
+  shortTitle: 'Vercel + D1/R2 architecture',
+  openGraph: pageOg({
+    title: 'Next.js on Vercel, SQL in D1 Over REST, Media in R2 Over S3',
+    description:
+      'Next.js on Vercel, records in Cloudflare D1 over its REST API, media in R2 over S3: numbered migrations, bound parameters and a 503 when a store is missing.',
+    path: '/blogs/vercel-cloudflare-d1-r2-architecture/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Next.js on Vercel, SQL in D1 Over REST, Media in R2 Over S3',
+    description:
+      'Next.js on Vercel, records in Cloudflare D1 over its REST API, media in R2 over S3: numbered migrations, bound parameters and a 503 when a store is missing.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Next.js on Vercel, SQL in D1 Over REST, Media in R2 Over S3"
+  description="Next.js on Vercel, records in Cloudflare D1 over its REST API, media in R2 over S3: numbered migrations, bound parameters and a 503 when a store is missing."
+  slug="/blogs/vercel-cloudflare-d1-r2-architecture/"
+  datePublished="2026-11-05"
+/>
+
+# Next.js on Vercel, SQL in D1 Over REST, Media in R2 Over S3
+
+Most of the small sites we build share one shape: a Next.js application on Vercel, structured records in Cloudflare D1, files and images in Cloudflare R2, and DNS at Cloudflare. A Vercel function has no binding to either Cloudflare store, so it reaches D1 through Cloudflare's REST API and R2 through its S3-compatible API. This is the code that does it on two live sites, the rules behind it, where Cloudflare's own documentation cuts against it, and one thing we measured on 2026-11-05 that our standard says should not be true.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Compute on Vercel, records in D1, objects in R2, DNS on Cloudflare
+
+Four rules in the numbered standard every project is audited against decide this architecture. In plain words:
+
+- **Use the default stack unless there is a written reason not to.** Vercel runs the application. Images, uploads and other media go to R2; rows and key-value pairs go to D1. DNS lives at Cloudflare, with Vercel hosts left unproxied. Anything else needs a sentence in the README saying why.
+- **Keep an architecture folder.** `docs/` holds a system diagram, the schema, a route-protection map and a deployment runbook.
+- **Change the schema only through numbered files** in `db/migrations/`, applied and checked by script, never at runtime.
+- **Bind every value.** No query is assembled from input.
+
+A fixed default means the next developer, ours or the client's, finds the same shape in every repository. The written-reason clause matters as much: RugPull News, another of our builds, runs on AWS Lambda behind a Cloudflare Worker, with PostgreSQL and S3. Not every build fits the default.
+
+<ArchitectureDiagram
+  title="Request path for a default build (kcfutures.arthurlabs.net, cryptomondays.arthurlabs.net)"
+  layers={[
+    { name: 'Visitor', nodes: [{ label: 'Browser', note: 'HTTPS' }], via: 'HTTPS' },
+    { name: 'Edge', nodes: [{ label: 'Cloudflare', note: 'DNS, and today also the proxy' }], via: 'origin request' },
+    {
+      name: 'Compute',
+      nodes: [
+        { label: 'Vercel function', note: 'Next.js 16.3, region iad1', emphasis: true },
+        { label: '/media/[...key]', note: 'allowlisted keys only' },
+      ],
+    },
+    {
+      name: 'Transport',
+      nodes: [
+        { label: 'lib/server/d1.ts', note: 'POST /query, bearer token' },
+        { label: 'lib/server/r2.ts', note: 'AWS SDK v3, region auto' },
+      ],
+      via: 'public HTTPS APIs',
+    },
+    {
+      name: 'Data',
+      nodes: [
+        { label: 'Cloudflare D1', note: 'rows and the migration ledger' },
+        { label: 'Cloudflare R2', note: 'private bucket, no public domain' },
+      ],
+    },
+    { name: 'Operator', nodes: [{ label: 'pnpm db:migrate --remote', note: 'the only path that changes schema' }] },
+  ]}
+  caption="Both stores sit outside Vercel, so every query and every uncached image is a second trip across the public internet. The operator layer reaches D1 by the same REST endpoint the site uses, but only from a developer machine."
+/>
+
+## A Vercel function has no D1 binding, so every query is a POST to /query
+
+Cloudflare documents three ways to talk to a D1 database: the Workers binding, the REST API, and the Wrangler command line, which uses the REST API underneath ([Cloudflare, Query a database](https://developers.cloudflare.com/d1/best-practices/query-d1/)). A binding exists only inside a Worker, so a route handler on Vercel uses REST.
+
+The endpoint is `POST /accounts/{account_id}/d1/database/{database_id}/query` on `api.cloudflare.com/client/v4`, authorised with an API token that holds D1 Read or D1 Write ([Cloudflare API, Query D1 Database](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/query/)). The body is either `{ sql, params }` for one statement or `{ batch: [{ sql, params }, ...] }` for several. The response is an envelope with its own `success` flag, an `errors` array, and one `result` entry per statement, each with its own `success`, its rows and a count of rows changed.
+
+Here is a minimal helper, written for this article. The transport we ship on the Kansans for an Affordable Future and CryptoMondays Kansas City sites adds batches, an opt-in read cache, one retry on a timeout or a 5xx, and a local SQLite stand-in for development.
+
+```ts
+// lib/server/d1.ts: a minimal client for D1's REST query endpoint, for code
+// that runs outside Workers. A Vercel function has no D1 binding.
+const D1_API = 'https://api.cloudflare.com/client/v4'
+const TIMEOUT_MS = 8_000
+
+export type SqlValue = string | number | null
+export type Row = Record<string, SqlValue>
+
+/** No credentials on this deployment. Routes turn this into a 503. */
+export class StoreUnavailableError extends Error {
+  readonly code = 'store_unavailable'
+}
+
+/** D1 refused the statement or could not be reached. Carries no SQL. */
+export class QueryFailedError extends Error {
+  constructor(readonly status: number, readonly upstreamCode: number | null) {
+    super(`D1 query failed (${status}, code ${upstreamCode ?? 'none'})`)
+  }
+}
+
+type Envelope = {
+  success?: boolean
+  errors?: { code?: number }[]
+  result?: { success?: boolean; results?: Row[]; meta?: { changes?: number } }[]
+}
+
+// Read on every call, never at import, so `next build` needs no secrets.
+function settings() {
+  const accountId = process.env.CLOUDFLARE_ACCOUNT_ID?.trim()
+  const databaseId = process.env.CLOUDFLARE_D1_DATABASE_ID?.trim()
+  const token = process.env.CLOUDFLARE_API_TOKEN?.trim()
+  return accountId && databaseId && token ? { accountId, databaseId, token } : null
+}
+
+/** One statement: fixed SQL with `?` placeholders, every value in `params`. */
+export async function query<T extends Row = Row>(sql: string, params: SqlValue[] = []) {
+  const config = settings()
+  if (!config) throw new StoreUnavailableError('D1 is not configured')
+  const url = `${D1_API}/accounts/${config.accountId}/d1/database/${config.databaseId}/query`
+
+  let response: Response
+  try {
+    response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${config.token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'User-Agent': 'ExampleSite/1.0 (+https://example.org)',
+      },
+      body: JSON.stringify({ sql, params }),
+      cache: 'no-store',
+      signal: AbortSignal.timeout(TIMEOUT_MS),
+    })
+  } catch {
+    console.error('[d1] the D1 API could not be reached')
+    throw new QueryFailedError(0, null)
+  }
+
+  const envelope = (await response.json().catch(() => null)) as Envelope | null
+  const result = envelope?.result?.[0]
+  // The envelope and the statement each carry a success flag. Reading only
+  // the outer one lets a refused statement pass as an empty result.
+  if (!response.ok || envelope?.success !== true || !result || result.success === false) {
+    const code = envelope?.errors?.[0]?.code ?? null
+    console.error(`[d1] query failed (${response.status}, code ${code ?? 'none'})`)
+    throw new QueryFailedError(response.status, code)
+  }
+  return { rows: (result.results ?? []) as T[], changes: result.meta?.changes ?? 0 }
+}
+
+// app/api/contact/route.ts, the part that matters here
+export async function POST(request: Request) {
+  const { email, message } = await validContact(request) // schema check, elided
+  try {
+    await query(
+      'INSERT INTO contact_messages (id, email, message, created_at) VALUES (?, ?, ?, ?) ON CONFLICT (id) DO NOTHING',
+      [crypto.randomUUID(), email, message, new Date().toISOString()],
+    )
+  } catch (error) {
+    if (error instanceof StoreUnavailableError || error instanceof QueryFailedError) {
+      return Response.json(
+        { error: { code: 'store_unavailable', message: 'Messages cannot be accepted right now.' } },
+        { status: 503 },
+      )
+    }
+    throw error
+  }
+  return Response.json({ ok: true }, { status: 201 })
+}
+```
+
+Three details in it are there for specific reasons. The double success check exists because the envelope and each statement report success separately, and code that reads only the outer flag can mistake a refused statement for an empty result. The log line carries the HTTP status and Cloudflare's numeric code and nothing else, because D1's own error message can quote a table name or a fragment of the statement. And the insert uses an id minted by the application with `ON CONFLICT (id) DO NOTHING`: D1 documents no idempotency header, so a retry after a lost answer is made safe by the write itself rather than by the transport.
+
+One mismatch is worth knowing. Cloudflare's reference types `params` as an array of strings. Our transport also sends numbers, nulls and a `LIMIT ?` placeholder, which we checked against a real D1 database on 2026-09-24 before relying on them. Check your own.
+
+## Cloudflare describes the REST API as the control plane, rate-limited to 1,200 requests per five minutes
+
+Cloudflare's guidance points elsewhere for application traffic. Its D1 documentation says the Workers binding "primarily interacts with the data plane" and the REST API "primarily interacts with the control plane, and allows you to create/manage your D1 database" ([Cloudflare, Query a database](https://developers.cloudflare.com/d1/best-practices/query-d1/)). We are using a management API as a data path, which has three costs.
+
+**The global API limit is shared.** Cloudflare's API allows 1,200 requests per five minutes per user, counted across the dashboard, API keys and API tokens together, and a caller that exceeds it is blocked from every API call for the next five minutes ([Cloudflare, Rate limits](https://developers.cloudflare.com/fundamentals/api/reference/limits/)). Every integration on the account draws from that budget, so our transport caches reads in Next.js's data cache under a tag; a cached read costs no API request. When the CryptoMondays content driver reads from D1, it makes one batched read and caches it for an hour; the Kansas county map feed is cached for a minute. Writes are never cached.
+
+**Every request has a time ceiling.** D1's limits page states that requests to the Cloudflare API must resolve in 30 seconds and that the ceiling applies to a whole batch, and that a single query takes at most 100 bound parameters ([Cloudflare, D1 limits](https://developers.cloudflare.com/d1/platform/limits/)). Our transport abandons an attempt after eight seconds, so a form fails as a 503 well before the function's own time limit.
+
+**There is an extra network hop.** The `x-vercel-id` header on our responses names the edge region the request entered and the region the function ran in ([Vercel, response headers](https://vercel.com/docs/headers/response-headers)); every function response we checked on 2026-11-05 ran in `iad1`, Washington, D.C. From there each query leaves Vercel for Cloudflare's API and the database behind it. We sent five requests each to the county map feed, which reads D1, and to the health check, which reads nothing. The first map request took 6.96 seconds to its first byte; the next four, served inside the feed's one-minute cache, took 0.23 to 0.56 seconds, against 0.20 to 0.36 for the health check. From outside we cannot separate a cold function from a slow database in that first number.
+
+For a contact form and a few hundred rows these costs are small. If uncached traffic ever approached the shared budget, we would put a Worker with a real D1 binding between Vercel and the database, and record why in the README.
+
+## Schema changes ship as numbered SQL files, applied by db:migrate and never at runtime
+
+Each repository keeps its schema in `db/migrations/`, one `NNNN_snake_case.sql` file per change: two files and twelve tables on the Kansas county site, four files on CryptoMondays. One script handles `pnpm db:migrate`, `pnpm db:status` and `pnpm db:purge`, which deletes rows past retention. Each targets a local SQLite file unless given `--remote`, so a mistyped command cannot reach production.
+
+The script keeps a ledger table, `schema_migrations`, holding each applied file's version, a SHA-256 checksum of its contents, and when it was applied. `db:status` changes nothing. It lists each file as applied or pending and reports drift: a file edited after it was applied, a ledger row with no file, a declared table that does not exist, or a table no file declares. `db:migrate` refuses to run while any drift exists. A file is sent to D1 whole, because D1 runs a multi-statement `sql` as one batch; it is never retried, and a lost answer is settled by running `db:status`. Every file uses `IF NOT EXISTS`, so an interrupted run re-applies harmlessly.
+
+Why never at runtime: a site that creates tables on first request has a schema nobody reviewed, two cold functions racing to create the same table, and previews able to alter production. The runbooks add two habits: never edit an applied file, and migrate the real database before deploying code that needs the new schema.
+
+## Every value travels in params, and a list travels as one JSON parameter
+
+Every statement in these codebases is fixed text with `?` placeholders, and every value goes in `params`, where D1 binds it. The awkward case is a list, such as the organisations in six counties. Rather than build `IN (?, ?, ?, ?, ?, ?)` from the list's length, our code passes one JSON-encoded parameter and reads it with SQLite's `json_each()`:
+
+`WHERE county_fips IN (SELECT value FROM json_each(?))`
+
+The statement text never changes shape, and a long list cannot run into D1's ceiling of 100 bound parameters per query. The same rule also requires stripping `%` and `_` from any input that reaches a `LIKE` clause, so a visitor cannot turn a search into a wildcard scan, and escapes user content before it is rendered.
+
+## An unprovisioned store answers 503 store_unavailable, never a thank-you
+
+When a store has not been set up, the right answer is an error that says so. The helper above throws `StoreUnavailableError` when its variables are missing, and the route turns that into a 503 with the code `store_unavailable`. Nothing reads the environment at import, so a missing credential fails a request, not a build.
+
+The Kansas county runbook notes a side effect: previews get no Cloudflare variables, so a preview's forms answer 503 instead of writing test submissions into production, and its public map falls back to sample data.
+
+The Omaha Well Project's signup route adds one branch. In production with no credentials it answers 503, "Registrations cannot be accepted right now." Outside production it answers 202 with `persisted: false`, so local development works and says so. If D1 refuses the insert, the answer is 502: "Nothing was recorded." At handoff no database existed for that site yet, and the 503 branch kept its form from pretending otherwise.
+
+## Media is streamed through /media/[...key] from a private R2 bucket
+
+R2 implements the S3 API at `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`, with the bucket region set to `auto` ([Cloudflare, R2 S3 API compatibility](https://developers.cloudflare.com/r2/api/s3/api/)). Our builds use the AWS SDK for JavaScript v3 with that endpoint, following Cloudflare's own example ([Cloudflare, aws-sdk-js-v3 with R2](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/)). We also set the SDK's request checksums to "when required": SDK 3.729 and later sign a CRC32 checksum into requests by default, R2 does not need one, and in an earlier build a checksum signed over a body the browser later replaced made R2 answer 403.
+
+The bucket has no public domain. Every uploaded image a page shows is fetched by a route handler at `/media/[...key]` and streamed to the visitor. The route accepts only keys that match an exact pattern: on the CryptoMondays site, a meetup cover's 640 or 1280 pixel WebP; on the Kansas county site, an organisation's upload filed under its organisation id and a fresh media id. Anything else, including a path that tries to climb out with `..`, gets the same 404 as a missing object, so the response never reveals which keys exist. On the Kansas county site the content type comes from the key's extension, which the upload chose from the file's actual first bytes, not from whatever the browser declared.
+
+We fetched one cover on 2026-11-05. It answered 200 with `image/webp`, 99,044 bytes, `cache-control: public, max-age=31536000, immutable` and `content-security-policy: default-src 'none'; sandbox`, so a browser that opens it alone treats it as an image and nothing more. A key outside the pattern answered 404 with `{"error":{"code":"not_found","message":"No such media."}}`.
+
+Routing media through a function costs a function call and an R2 read on the first request for each object. Keys are never rewritten, so the one-year immutable header makes that a one-time cost per cache. In exchange there is one place to enforce the allowlist, originals are never served, and `next/image` can optimise from a local path.
+
+## Our live hosts answer through Cloudflare's proxy, although the standard says DNS only
+
+The standard says Vercel hosts stay unproxied, "because proxying a Vercel host breaks its certificate automation". The runbooks for both sites above say their DNS records stay unproxied. The live sites disagree. On 2026-11-05, `curl -sI` against omahawell, cryptomondays, kcfutures and astralis on `arthurlabs.net` returned `server: cloudflare`, a `cf-ray` header and an `x-vercel-id` header on every one: each request passed through Cloudflare's proxy before it reached Vercel. The certificate a visitor receives on the Omaha Well Project host covers `*.arthurlabs.net`: Cloudflare's edge certificate, not one issued for that single host.
+
+Vercel's own guidance is more specific than our rule. It recommends connecting directly, and lists reduced security visibility, extra network overhead, two independently managed caches and a changed client IP as the costs of a proxy in front ([Vercel, Using Cloudflare and other reverse proxies](https://vercel.com/kb/guide/can-i-use-a-proxy-on-top-of-my-vercel-deployment)). On certificates, it says issuance and renewal keep working if `/.well-known/acme-challenge/*` is reachable over plain HTTP on port 80, without a forced redirect or a bot challenge. We requested that path with a made-up token on the Omaha Well Project host, and the 404 came back carrying an `x-vercel-id`: the validation path reaches Vercel today.
+
+So the failure our rule names is not visible from outside, and the other costs are. The cover image above came from Cloudflare's cache (`cf-cache-status: HIT`). For immutable media that is harmless; for HTML it would be the stale-deployment risk Vercel describes, and our pages currently answer `cf-cache-status: DYNAMIC`. Zone features also change responses after they leave Vercel: on the Astralis host, Cloudflare's email address obfuscation rewrote a contact address in the `/agents` page into a link to `/cdn-cgi/l/email-protection`. If you keep Cloudflare's proxy in front of Vercel, check three things: that the certificate validation path reaches Vercel over plain HTTP, that HTML answers `cf-cache-status: DYNAMIC` rather than being held at the edge, and which zone features rewrite your responses. Whichever way you choose, write it in the runbook, because a runbook that describes the wrong configuration sends the next person to debug the wrong thing.
+
+## Five habits from this stack that carry to any host
+
+- **Treat a missing store as an error.** A 503 beats a form that thanks people while writing nowhere.
+- **Read both success flags.** An envelope can say yes while an item inside says no.
+- **Keep the schema in numbered files with a checksum ledger.** Drift you can list is drift you can fix.
+- **Bind lists as one JSON value.** The statement keeps its shape and the parameter count stays at one.
+- **Measure the request path, not the plan.** Two headers from `curl -sI` showed a proxy the runbooks said was not there.
+
+For the sites this architecture serves, see the [Omaha Well Project case study](/blogs/omaha-well-project-website/), the [CryptoMondays Kansas City site](/blogs/cryptomondays-kansas-city-website/) and the [Kansas county hexagon map](/blogs/kansas-county-hexagon-map-h3/).

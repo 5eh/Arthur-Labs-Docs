@@ -1,0 +1,200 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/agent-ready-websites-llms-txt/' },
+  title: 'llms.txt, /agents and /api/health on Five Live Sites',
+  description:
+    'The routes every build exposes to agents and crawlers, with real responses from five live sites, a commit field that reads local, and a robots.txt Cloudflare edits.',
+  keywords:
+    'llms.txt, agent-ready website, /agents page, health check endpoint, robots.txt AI crawlers, GPTBot robots.txt, Content-Signal, isitagentready, Next.js robots.ts, sitemap.ts production',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Engineering',
+  shortTitle: 'Agent routes and llms.txt',
+  openGraph: pageOg({
+    title: 'llms.txt, /agents and /api/health on Five Live Sites',
+    description:
+      'The routes every build exposes to agents and crawlers, with real responses from five live sites, a commit field that reads local, and a robots.txt Cloudflare edits.',
+    path: '/blogs/agent-ready-websites-llms-txt/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'llms.txt, /agents and /api/health on Five Live Sites',
+    description:
+      'The routes every build exposes to agents and crawlers, with real responses from five live sites, a commit field that reads local, and a robots.txt Cloudflare edits.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="llms.txt, /agents and /api/health on Five Live Sites"
+  description="The routes every build exposes to agents and crawlers, with real responses from five live sites, a commit field that reads local, and a robots.txt Cloudflare edits."
+  slug="/blogs/agent-ready-websites-llms-txt/"
+  datePublished="2026-11-05"
+/>
+
+# llms.txt, /agents and /api/health on Five Live Sites
+
+An agent that lands on one of our sites can learn what the site is, which build is running, what it may read and where every public page lives in four requests, without rendering anything. Every build exposes the same fixed routes for that. We fetched them on five live sites on 2026-11-05: the Omaha Well Project, the Astralis Chain hackathon, CryptoMondays Kansas City, Kansans for an Affordable Future and RugPull News. This is what came back, including the fields that look wrong and what they mean.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## Seven routes sit at the same path on every build, and five of them are for machines
+
+Our build standard fixes seven routes so that any project can be checked without a guided tour:
+
+| Route | What it answers |
+| --- | --- |
+| `/api/health` | 200 with `{ status, name, version, commit, env }`, never behind auth |
+| `/agents` | A plain brief of the project for agents, linked in the footer |
+| `/llms.txt` | The same brief as plain text |
+| `/robots.txt` | Generated from `app/robots.ts` |
+| `/sitemap.xml` | Generated from `app/sitemap.ts` |
+| `/opengraph-image` | A generated 1200 by 630 social card |
+| `/_dev` | The developer console, behind a flag and a session |
+
+The point of fixing the paths is that nobody has to discover them. A deploy script, an uptime monitor, a search crawler and an answer engine each know where to ask before they arrive, and a person checking our work can do it with `curl`. Four further rules govern the machine-facing routes: the brief and the plain-text file come from one constant module, robots rules name crawler families separately, the sitemap is generated and production-only, and each build is scanned for agent readiness before launch.
+
+<ArchitectureDiagram
+  title="Who reads which fixed route"
+  layers={[
+    {
+      name: 'Readers',
+      nodes: [
+        { label: 'Deploy check or monitor', note: 'which build is live' },
+        { label: 'Search crawler', note: 'Googlebot, Bingbot' },
+        { label: 'Answer engine', note: 'OAI-SearchBot, PerplexityBot' },
+        { label: 'Training crawler', note: 'GPTBot, CCBot' },
+        { label: 'Person', note: 'follows the footer link' },
+      ],
+      via: 'HTTPS',
+    },
+    { name: 'Edge', nodes: [{ label: 'Cloudflare zone', note: 'can prepend to robots.txt and rewrite HTML' }], via: 'origin request' },
+    {
+      name: 'Routes',
+      nodes: [
+        { label: '/robots.txt', note: 'rules per crawler family' },
+        { label: '/sitemap.xml', note: 'public routes, production only' },
+        { label: '/llms.txt', note: 'text/plain brief', emphasis: true },
+        { label: '/agents', note: 'the same brief as HTML', emphasis: true },
+        { label: '/api/health', note: 'five fields, no auth, no store' },
+      ],
+    },
+    {
+      name: 'Source',
+      nodes: [
+        { label: 'lib/agents-brief.ts', note: 'one builder for both briefs' },
+        { label: 'BUILD constant', note: 'version, commit, env' },
+        { label: 'robots.ts, sitemap.ts', note: 'gated on production' },
+      ],
+    },
+  ]}
+  caption="The brief and the health check are built from constants, so neither depends on a database. The edge layer is the one the repository does not control, and two of the findings below come from it."
+/>
+
+## /api/health returns five fields, and four of five sites report commit local
+
+A health route should answer one question, "is this up, and which build is it", without credentials and without touching anything that can fail. Ours returns five fields with `cache-control: no-store`. It sits outside the route-protection matcher, so an authentication outage cannot take the probe down, and it reads no database, so a D1 outage does not make a working site look dead. Here is what the five sites answered:
+
+```bash
+$ curl -s https://omahawell.arthurlabs.net/api/health
+{"status":"ok","name":"The Omaha Well Project","version":"1.1.0","commit":"local","env":"production"}
+$ curl -s https://astralis.arthurlabs.net/api/health
+{"status":"ok","name":"Astralis Chain Hackathon","version":"3.1.0","commit":"local","env":"production"}
+$ curl -s https://cryptomondays.arthurlabs.net/api/health
+{"status":"ok","name":"CryptoMondays Kansas City","version":"0.1.0","commit":"local","env":"production"}
+$ curl -s https://kcfutures.arthurlabs.net/api/health
+{"status":"ok","name":"kcfutures","version":"0.1.0","commit":"local","env":"production"}
+$ curl -s https://rugpullnews.org/api/health
+{"status":"ok","name":"rugpullnews","version":"0.1.0","commit":"01fb1401f26a-dirty","env":"production"}
+```
+
+**`commit: "local"` in production is a gap, not a bug in the route.** On the four Vercel sites the field reads `VERCEL_GIT_COMMIT_SHA`, then `NEXT_PUBLIC_COMMIT_SHA`, and falls back to `"local"`. Vercel fills the first with "the git SHA of the commit the deployment was triggered by" ([Vercel, system environment variables](https://vercel.com/docs/environment-variables/system-environment-variables)). These four deployments were not triggered by a git push, so Vercel had no commit to fill in, and nothing passed the second variable at build time. The route is telling the truth: there is no commit to report.
+
+That matters because `version` alone does not identify a build. CryptoMondays reports `0.1.0`, but its changelog carries an unreleased Learn section dated 2026-10-08 above the 0.1.0 entry, and `/learn` answers 200 on the live site. The health route cannot tell 0.1.0 from 0.1.0 plus Learn. The Astralis handoff records the same `"local"` response in its verification table without comment, which shows how easily the field gets read as present rather than useful. The fix is to deploy from a git push, or to pass the hash at build time with `vercel --build-env NEXT_PUBLIC_COMMIT_SHA=...` ([Vercel CLI, deploy](https://vercel.com/docs/cli/deploy)), and to bump the changelog version with each release. Our [production launch checks](/blogs/vercel-production-launch-checks/) use the same field to confirm which deployment a domain is serving.
+
+**RugPull News reports a hash with `-dirty` on the end.** Its packaging script reads the short commit and appends `-dirty` when the working tree had uncommitted changes. That is the honest answer for an image built from a tree no commit fully describes, and it tells whoever reads it to look harder. Its `env` comes from `NODE_ENV`, which is `production` in any production build; on Vercel the other four read `VERCEL_ENV`, which also distinguishes a preview.
+
+**`name` is not consistent.** Three sites return a display name and two return a machine identifier. Either works, but a script reading several sites has to handle both.
+
+## /agents and /llms.txt come from one module, and matched byte for byte on four of five sites
+
+The brief an agent reads should be the brief a person reads. Each build writes it once, in a module such as `lib/agents-brief.ts`. The `/llms.txt` route returns that string as `text/plain`, and the `/agents` page renders the same string inside a `<pre>` within the normal site shell, with a link to `/llms.txt` beside it. Because there is one source, the two cannot drift apart in the repository.
+
+We tested whether they had drifted in delivery. For each site we extracted the `<pre>` text from `/agents` and compared it with `/llms.txt`. On the Omaha Well Project, CryptoMondays, Kansans for an Affordable Future and RugPull News they were identical, to the character. On the Astralis site one line differed: the contact address in the HTML had become `[email protected]`, wrapped in a link to `/cdn-cgi/l/email-protection`, with Cloudflare's `email-decode.min.js` script injected into the page.
+
+That is Cloudflare's Email Address Obfuscation, which rewrites addresses in HTML and which Cloudflare turns on automatically when a zone signs up ([Cloudflare, Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)). The plain-text `/llms.txt` was untouched. A crawler that does not run JavaScript now reads a placeholder where the address should be. The constant module guaranteed the source; it could not guarantee what a proxy did afterwards. Cloudflare documents the ways out: wrap the address in `<!--email_off-->` comments, disable the feature on that path with a configuration rule, or switch it off for the zone.
+
+What goes in the brief matters as much as where it lives. Most of ours cover what the site is, who it is for, its pages and endpoints, contact, where its data comes from, and its languages. Two add a section we would now put in every brief, "What is not settled". The Omaha Well Project's says its 501(c)(3) status is pending and its $4,200 figure is unaudited. The Astralis site's says the budget tier, the judging panel and the start date are proposals. If an answer engine quotes the brief, the uncertainty travels with the quote.
+
+RugPull News is the one site whose footer does not link `/agents`. Its decision log records that as a known gap. It does advertise the page another way, in an HTTP `Link` header on the homepage with `rel="service-doc"`.
+
+## Our briefs follow llmstxt.org's H1 and summary, not its file lists
+
+The llms.txt proposal, now at version 2 and last modified on 2026-08-10, specifies an order ([llmstxt.org](https://llmstxt.org/)). An H1 with the site's name is the only required part. Then a blockquote summary, then any number of non-heading sections, then H2 sections containing "file lists": Markdown lists of `[name](url)` links with optional notes, where the detail lives. A section titled "Optional" marks links an agent can skip.
+
+Our files match the first two parts exactly: an H1 and a one-paragraph blockquote. After that they put prose under H2 headings and list pages as bare paths or URLs, such as `/privacy : What is stored, how long...`, rather than as `[name](url)` links under H2 file lists. A person or a language model reads them without trouble. A parser written to the proposal's format would find prose where it expects links. The proposal also recommends a `Link` header with `rel="describedby"` pointing at the file; of our five sites, only RugPull News sends one. Both are worth fixing, and neither is urgent for briefs that measured between 2,072 and 10,222 bytes.
+
+## robots.ts names search, answer-engine and training crawlers in separate groups
+
+A robots.txt that treats every bot the same cannot express the decision site owners now face: be found in search, be quoted by answer engines, be used for training, or some mix. The crawler operators have split their agents along those lines. OpenAI says each of its settings "is independent of the others", so a site can allow OAI-SearchBot for search while disallowing GPTBot for training ([OpenAI, crawlers](https://developers.openai.com/api/docs/bots)).
+
+So each `robots.ts` declares four groups: search crawlers, answer-engine and user-triggered agents, training crawlers, and everyone else. Every group disallows `/api/`, `/_dev` and `/_next/`, and on anything other than production the file returns a single disallow-all. The groups exist so that each family's access is a visible line that can change on its own. On 2026-11-05 the five sites had made three different choices:
+
+- **Omaha Well Project and Astralis** allow all three families and state no other preference.
+- **CryptoMondays and Kansans for an Affordable Future** allow all three and add `Content-Signal: search=yes, ai-input=yes, ai-train=no` to every group.
+- **RugPull News** disallows the training crawlers outright.
+
+The middle choice deserves a plain description. It lets a training crawler fetch every page while asking it not to train on what it fetched. Content signals are a policy Cloudflare publishes for exactly that kind of statement ([Cloudflare, robots.txt setting](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/)), but a `Disallow` is the stronger request if the answer really is no. One more caveat applies to user-triggered agents: OpenAI notes that because ChatGPT-User acts for a person, "robots.txt rules may not apply".
+
+## Cloudflare's managed block on rugpullnews.org disallows agents its own block allows
+
+The robots.txt a crawler receives is not always the one the framework generated. RugPull News's file opens with a block marked `# BEGIN Cloudflare Managed content`. Cloudflare prepends that block when the zone's bot preference sync is on and a crawler policy is set to block ([Cloudflare, robots.txt setting](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/)). Trimmed to the lines that conflict:
+
+```txt
+# BEGIN Cloudflare Managed content
+# (one more user-agent group, same pattern, omitted here)
+
+User-agent: ChatGPT-User
+Disallow: /
+# END Cloudflare Managed Content
+
+User-Agent: OAI-SearchBot
+User-Agent: ChatGPT-User
+# (two more user agents omitted here)
+Allow: /
+Disallow: /api/
+```
+
+The file now says two things about the same agents. RFC 9309, the robots exclusion standard, settles which one wins: groups that match the same user agent "MUST be combined into one group", the most specific matching rule wins, and when an allow and a disallow are equally specific, the allow rule "SHOULD be used" ([RFC 9309](https://www.rfc-editor.org/rfc/rfc9309)). `Allow: /` and `Disallow: /` are equally specific, so a compliant parser lets those agents in. The repository's own `robots.ts` records the same reasoning for training crawlers: its first version allowed them and quietly overrode the zone's block, so the group was changed to match. The answer-engine group still overrides the zone. If that is intended, the zone setting should say so too; as it stands, the zone and the repository disagree in public. The lesson transfers: fetch the robots.txt the world sees, not the one your framework writes.
+
+## The sitemap lists every public route, and only in production
+
+On the four Vercel sites, `sitemap.ts` builds its list from the project's route inventory, so a removed route cannot survive in the sitemap, and returns an empty list unless `VERCEL_ENV` is `production`. The developer console is excluded. On 2026-11-05 the Omaha Well Project and Astralis listed 3 URLs each, CryptoMondays 28, Kansans for an Affordable Future 108 (the home page, privacy, the brief and one page per Kansas county), and RugPull News 216, plus a separate Google News sitemap. Every one lists `/agents`. RugPull News gates on `NODE_ENV` instead, because its Lambda has no other production signal. The gating itself can only be observed on a preview deployment, which is why the launch checklist fetches both.
+
+## isitagentready.com rated rugpullnews.org level 2, then level 4, on 2026-11-05
+
+The last rule is to scan each build with [isitagentready.com](https://isitagentready.com), a scanner Cloudflare publishes, and record the result in the README. Its own llms.txt says it checks 23 standards across five categories. On 2026-11-05 it rated RugPull News level 2, "Bot-Aware": robots.txt, the sitemap, AI bot rules and content signals passed. After a change deployed the same day it rated the site level 4, "Agent-Integrated".
+
+We checked the new surfaces ourselves. A request to the homepage with `Accept: text/markdown` returns `text/markdown` with an `x-markdown-tokens` estimate of 1,923; the same works for `/check-ins`, `/agents` and each article. The Markdown is written from the same queries as each page rather than converted from its HTML, so it lists what the page lists without banners or buttons. `/.well-known/api-catalog` answers as an RFC 9727 linkset, `/openapi.json` describes the seven read-only API routes, and an agent skill index and an ARD manifest sit under `/.well-known/`. The homepage `Link` header points at the catalog, the OpenAPI file, `/agents`, `/llms.txt` and the Markdown version. Four read-only WebMCP tools register in browsers that support that draft. RSS lives at `/feed.xml`.
+
+Seven checks still fail, on purpose: OAuth discovery, OAuth protected-resource metadata, auth.md, an MCP server card, an A2A agent card, DNS-AID and the Personal Agent Protocol. The site has no accounts, no protected API, no MCP server and no agent. Publishing metadata for an authorisation server that does not exist would send agents to endpoints that answer 404. A score is a list of claims about a site, and a claim the site cannot back is worse than a missing point.
+
+## Four requests to run against your own origin
+
+None of this needs our stack. Run these against your production domain and read what comes back:
+
+- **`/api/health`**: does `commit` name a commit, and would the version change if you shipped tomorrow?
+- **`/robots.txt`**: is it the file you wrote, or has a CDN prepended something?
+- **`/agents` against `/llms.txt`**: do they still match after your proxy has handled the HTML?
+- **The homepage with `Accept: text/markdown`**: does an agent get something better than your navigation?
+
+For the audit these routes belong to, see [how we audit every build against 199 rules](/blogs/website-build-audit-199-rules/). The hosting behind four of these sites is in [our Vercel, D1 and R2 reference architecture](/blogs/vercel-cloudflare-d1-r2-architecture/), and the fifth is the subject of the [RugPull News case study](/blogs/rugpull-news-architecture/).

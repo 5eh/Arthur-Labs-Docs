@@ -1,0 +1,239 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/website-build-audit-199-rules/' },
+  title: '199 Rules, Three Tiers: How We Audit Every Website Build',
+  description:
+    'Every build we ship is checked against 199 numbered rules in three tiers, and a rule nobody measured fails the run exactly as a broken rule does.',
+  keywords:
+    'website build audit, web development standards, accessibility audit, Playwright audit, getComputedStyle focus ring, Tailwind v4 focus ring, WCAG 2.2 audit, Next.js quality checklist, Omaha web development',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Engineering',
+  shortTitle: 'How we audit every build',
+  openGraph: pageOg({
+    title: '199 Rules, Three Tiers: How We Audit Every Website Build',
+    description:
+      'Every build we ship is checked against 199 numbered rules in three tiers, and a rule nobody measured fails the run exactly as a broken rule does.',
+    path: '/blogs/website-build-audit-199-rules/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: '199 Rules, Three Tiers: How We Audit Every Website Build',
+    description:
+      'Every build we ship is checked against 199 numbered rules in three tiers, and a rule nobody measured fails the run exactly as a broken rule does.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="199 Rules, Three Tiers: How We Audit Every Website Build"
+  description="Every build we ship is checked against 199 numbered rules in three tiers, and a rule nobody measured fails the run exactly as a broken rule does."
+  slug="/blogs/website-build-audit-199-rules/"
+  datePublished="2026-11-05"
+/>
+
+# 199 Rules, Three Tiers: How We Audit Every Website Build
+
+Every site we hand over is checked against one document, a configuration of 199 numbered rules, by a harness that will not record a pass without the measurement that earned it. This is how the configuration is organised, how the three tiers of the audit divide the work, and why a rule nobody checked fails the run exactly as a broken rule does.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## 199 numbered rules in ten sections, each answerable yes or no
+
+The configuration is a single Markdown file of 454 lines. It opens with an introduction that fixes the stack (Next.js, React, TypeScript, Tailwind, shadcn, pnpm, Vercel and Cloudflare) and seven routes every project serves at the same paths, including `/api/health` and `/llms.txt`. The ten sections after it hold the rules.
+
+| Section | Rules |
+| --- | --- |
+| Tooling | 6 |
+| Frontend | 56 |
+| Copy | 15 |
+| Accessibility | 13 |
+| Localization | 8 |
+| Backend | 27 |
+| SEO | 12 |
+| Assets | 11 |
+| Design Review | 40 |
+| Launch | 11 |
+
+Each rule is numbered so a reviewer can cite it in a sentence, as "Frontend 44" or "Launch 4", and each is written so that whether a build followed it has a yes-or-no answer. Four of them, quoted as written, show the register:
+
+- **Frontend 6.** "No horizontal scrollbar on the document at 320px, 375px, or 414px."
+- **Accessibility 3.** "Every focused element shows a visible focus ring with at least 3:1 contrast against its background."
+- **Backend 22.** "Route protection lives in `proxy.ts` at the repo root."
+- **Launch 4.** "Read the number the server sends, never the page the browser draws."
+
+Where a number may have moved between versions, the citation carries the version too: "Frontend 44 (v1.2)". The original brief sits beside the configuration and is never edited, because rewriting it to match a later understanding would destroy the only record of what was actually asked for. Every revision goes to the audited copy, and the two are meant to differ.
+
+Breaking a rule is allowed. Not recording it is not. A project that departs from a rule names it by number in its README, says what was done instead, and says who decided. A deviation nobody wrote down reads as a defect at the next audit, and the harness cannot tell the two apart, which is the point.
+
+## The first audited build's own report was wrong three times
+
+The harness exists because of what the first audit found in a build's paperwork. Three of the defects were the project's own report being wrong. Its README recorded a fix that had never been applied. Its design-review document asserted that no animation targeted a box property, while the accordion animated `height`. It claimed a clean layout at six breakpoints, and the page overflowed at 320px.
+
+The pattern was consistent. Everything a test could check had been caught by the project's own tests. Everything that needed a judgement call had been marked Pass without anyone running it.
+
+The sharpest case was a focus ring. Every control on the site's registration path had one in its class string, `focus-visible:outline-2`, and none of them painted. The same class string also carried `outline-none`, and in Tailwind v4 that sets a custom property, `--tw-outline-style`, to `none`. The focus utility reads its outline style from that property, so the ring resolved to nothing. Reading the source finds a ring every time, because the source says it is there. Only `getComputedStyle` on a focused element, in a real browser, reports `outline-style: none`.
+
+## pass() throws without a measurement, and UNCHECKED fails the run
+
+The harness makes an unmeasured pass impossible to write. Every check builds its results with four functions, and the one that records success refuses to run without evidence:
+
+```js
+pass('Frontend 6')
+// Error: pass("Frontend 6") called with no artifact.
+// A rule with no measurement is UNCHECKED, not passing.
+```
+
+The artifact can be a measured number, a captured string or a command's real output, and it is printed beside the result. `fail()` carries one too. `notApplicable()` throws unless it is given a reason. `unchecked()` is what a check returns when it could not measure, and the runner treats it as a failure: the process exits 0 only when nothing failed and nothing went unchecked.
+
+The runner holds its own faults to the same rule. A check that throws is recorded as UNCHECKED against its first rule, with the error as the detail, and if Chrome will not launch the whole rendered tier is recorded as UNCHECKED instead of being skipped. A harness that turned its own crash into a green run would reproduce the defect it was written to prevent.
+
+A check is one file exporting `meta` and `run`. This one is a simplified illustration of the shape, written for this article rather than copied from the shipped overflow check:
+
+```js
+import { pass, fail, unchecked } from '../lib/report.mjs'
+
+export const meta = {
+  id: 'phone-overflow',
+  tier: 2,
+  rules: ['Frontend 6'],
+  title: 'No document scrollbar at phone widths',
+}
+
+const PHONES = [320, 375, 414]
+
+export async function run(ctx) {
+  const widths = {}
+  for (const width of PHONES) {
+    widths[width] = await ctx.at(width, 800, () =>
+      ctx.eval(() => ({
+        scrollWidth: document.documentElement.scrollWidth,
+        clientWidth: document.documentElement.clientWidth,
+      })),
+    )
+  }
+  if (PHONES.some((width) => !widths[width].clientWidth)) {
+    return [unchecked('Frontend 6', 'the page did not lay out at every phone width')]
+  }
+  const overflowing = PHONES.filter((width) => widths[width].scrollWidth > widths[width].clientWidth)
+  return overflowing.length
+    ? [fail('Frontend 6', widths, `document scrolls sideways at ${overflowing.join(', ')}px`)]
+    : [pass('Frontend 6', widths)]
+}
+```
+
+The runner discovers the file on its own. A check returns exactly one result for each rule in `meta.rules`, none dropped, and the pass carries the same `widths` object a failure would: the evidence is identical either way, and only the verdict differs.
+
+## Tier 1 reads the source tree and tier 2 drives Chrome at six widths
+
+The two automated tiers see different things, and neither is allowed to see the other's.
+
+**Tier 1 is static.** It walks the project's files, skipping build output and the plain directory names in the project's own `.gitignore`, and checks what source can decide: banned header phrases in all four locale files, matching keys across those files, how many times the studio is named, corner-radius classes that compute to zero, asset naming and manifests, parameterised queries, committed secrets, and the real exit codes of the typecheck, lint and build commands. It is cheap enough to run on every commit.
+
+**Tier 2 is rendered.** It drives the installed Chrome through Playwright against the project's running server and measures pixels and computed styles: focus rings, contrast ratios, document overflow at 320, 375, 414, 768, 1024 and 1440 pixels, which properties actually animate, rendered characters per line, cards nested inside cards, landmarks and tab order. It runs before every handoff.
+
+The separation is deliberate, and a comment at the top of the harness's context module gives the reason: a check that can fall back to reading source when the browser is inconvenient will do exactly that, and reading source is what missed the focus ring.
+
+The rendered checks also carry the lessons of their own false results. The focus-ring check presses Tab once before measuring, because Chrome only matches `:focus-visible` once it believes a keyboard is in use, and without that key press every control reads as ringless. It then finishes every running CSS transition before reading the style, because Tailwind v4's `transition-colors` includes `outline-color`, and a snapshot taken the instant after focus returns the unfocused colour: a white ring on a white page, where the settled ring is blue. Colours are converted to sRGB through a one-pixel canvas, because Tailwind v4 emits `oklch()` and a regular expression written for `rgb()` would drop every colour on the page.
+
+<ArchitectureDiagram
+  title="One run of the configuration audit"
+  layers={[
+    {
+      name: 'Inputs',
+      nodes: [
+        { label: 'CONFIG_AUDITED.md', note: 'parsed into 199 addressable rules' },
+        { label: '--project', note: 'the source tree' },
+        { label: '--url', note: 'the running server, localhost by default' },
+      ],
+    },
+    { name: 'Runner', nodes: [{ label: 'bin/audit.mjs', note: 'loads every check that exports meta and run', emphasis: true }] },
+    {
+      name: 'Tiers',
+      nodes: [
+        { label: 'Tier 1, static', note: '9 check files over source and content' },
+        { label: 'Tier 2, rendered', note: '8 check files in Chrome at six widths' },
+      ],
+      via: 'one result per rule: pass, fail, unchecked or not applicable',
+    },
+    {
+      name: 'Report',
+      nodes: [
+        { label: 'Failures', note: 'the rule text plus the measurement' },
+        { label: 'Coverage line', note: 'how many rules have a check at all' },
+        { label: 'Exit code', note: '0 only with no fail and no unchecked' },
+      ],
+    },
+    {
+      name: 'Outside the runner',
+      nodes: [
+        { label: 'Tier 3 panel', note: '13 auditors and their refuters, at onboarding' },
+        { label: 'Launch, by hand', note: '11 rules against the deployed origin' },
+      ],
+    },
+  ]}
+  caption="The runner executes tiers 1 and 2 only. Tier 3 and the Launch rules sit outside it, and the coverage line states how many rules are left to them."
+/>
+
+## Tier 3 is a panel of 13 auditors, and every claim goes to a refuter
+
+Some rules no script can decide: whether a heading carries information, whether six sections are one component repeated six times, whether a visual earns its place. Tier 3 handles those with a panel of AI agents, run once when a client project starts rather than on every commit.
+
+Thirteen auditors run in parallel, one per section, with Frontend and Design Review split into chunks because they are long. Each reads the rules verbatim and reports only what it can evidence with a `file:line` reference or a command it ran. Every claimed violation then goes to a separate agent whose only job is to refute it: to confirm that the rule says what the claim says it says, that the cited evidence shows what is claimed, that no exemption elsewhere in the configuration applies, and that the project README does not already record it as a deliberate deviation.
+
+The auditors are told that most rules will pass and that zero findings in a section is an acceptable result, because an auditor that believes it must find something will find something. Where a rule admits two readings, they apply the one most favourable to the build and report the ambiguity.
+
+The first full run used 48 agents and 3.7 million tokens over 35 minutes. It checked 187 rules and claimed 34 violations, and 31 survived refutation. That is a sensible price for onboarding a client and the wrong price for a commit hook, which is why the two cheaper tiers exist.
+
+## 75 of the 199 rules have an automated check, and every run says so
+
+Every run prints how many of the configuration's rules have an automated check behind them. Counted with the harness's own rule parser in November 2026, the 17 check files in tiers 1 and 2 cover 75 of the 199 rules, about 38 percent. Of the 124 left, 11 are Launch rules that need a deployed origin, and the other 113 belong to the panel or a reviewer.
+
+Printing that line matters more than the number in it. A rule with no check is not a rule that passed, and a report that lists 75 green results and says nothing about the other 124 invites exactly the inference the harness was built to stop.
+
+Each failure prints with the rule's own text, resolved from the configuration at run time, and the measurement that failed it. On the [Omaha Well Project build](/blogs/omaha-well-project-website/), the first run reported 25 failures. The handoff run reported 66 passes, 8 failures and 2 unchecked rules, and that project's README explains each of the 8: a deliberate departure, a recorded gap, or a limit of the check itself, written up so the harness could be corrected before the next project.
+
+## Version 1.1 came from one build: 187 rules checked, 31 violations upheld
+
+The configuration's history is three versions long, and every entry names the build that forced it.
+
+**v1.0, 22 August 2026,** was an audit of the original brief. It kept the structure and fixed what came out of it: a `rounded-md` class that could never render a corner because the radius token was zero, a Backend list numbered entirely "1.", an empty item 12, and four typos. A list where every rule is number one cannot be cited.
+
+**v1.1, 23 August 2026,** came from building the Astralis Chain hackathon site against v1.0 and auditing the result with the panel. Six of the 31 upheld violations survived only because a rule admitted two readings. Those were defects in the configuration rather than the build, and fixing six rules once costs less than re-arguing them on every future project. Three of the six show the kind of ambiguity a numbered rule can hide:
+
+- **Frontend 44** now measures rendered characters, not `ch`. CSS `ch` is the width of a zero, so `max-w-prose` and `max-w-[68ch]` both land near 100 characters a line in a typical sans, and the remedy the rule used to prescribe missed its own 80-character target by 26 percent.
+- **Frontend 17** counts rendered elements rather than source occurrences. A class string written in two files and rendered on eight elements broke the rule while passing a check that counted source.
+- **Accessibility 9** now covers motion driven from JavaScript. A `scrollTo` call passing `behavior: "smooth"` overrides the `scroll-behavior: auto` that the reduced-motion media query sets.
+
+The same version added the Tooling section and 15 Copy rules that ban generic headers, and it grew Design Review from 33 items to 40.
+
+## Version 1.2 added 11 Launch rules after two builds reached production
+
+**v1.2, 24 August 2026,** came from taking two builds to production: the Astralis hackathon site and the Omaha Well Project site. Every rule it added corresponds to a failure that survived a clean local build, a passing test suite and a full audit, because nothing in the repository could have shown it.
+
+It added a Launch section of 11 rules, which runs after Design Review and checks the deployed origin rather than the build. Four of the 11 exist because the same defect appeared on both sites. A rewrite in the routing proxy served the not-found page with a 200 status, so the gated developer console at `/_dev` advertised that it existed. A Vercel project created from the command line defaulted to the framework preset "Other" and returned 404 on every route. A domain attached while a build was running stayed pointed at the previous deployment. And the CDN proxying both sites injected an analytics beacon into the responses ahead of the consent gate, after the response had already left the host.
+
+The Launch rules have no automated check, and the coverage line says so on every run. They are verified by hand against the live URL, with status codes, response headers and a clean browser profile.
+
+A rule and the check that decides it change in the same commit, which is why the harness lives beside the configuration rather than inside any one project.
+
+## Five practices that transfer to any build pipeline
+
+Most of this works at any size, with or without our configuration:
+
+- **Make an unmeasured result impossible to record as a pass.** One guard in the function that records success removes the commonest audit failure, which is a reviewer ticking a box nobody ran.
+- **Count UNCHECKED as a failure.** A run that exits green while half its checks could not execute is reporting the harness's comfort, not the build's state.
+- **Measure rendered output for anything visual.** Focus rings, contrast, overflow and line length are properties of pixels and computed styles, and source review gets them wrong in both directions.
+- **Print coverage on every run.** Say how many rules have no check, so nobody reads a short green list as a complete one.
+- **Treat an ambiguous rule as a defect in the rule.** Fix it once, record the build that exposed it, and stop re-arguing it.
+
+The two builds that shaped the current version are written up in full: the [Omaha Well Project site](/blogs/omaha-well-project-website/) and the [Astralis Chain hackathon site](/blogs/astralis-hackathon-website/). For the case for doing this work from Nebraska, see [building software in Omaha](/blogs/build-software-in-omaha/).

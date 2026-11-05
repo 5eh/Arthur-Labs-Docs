@@ -1,0 +1,193 @@
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+import ArticleJsonLd from '@/components/ArticleJsonLd'
+import { pageOg, pageTwitter } from '@/lib/seo'
+
+export const metadata = {
+  alternates: { canonical: '/blogs/multilingual-websites-omaha/' },
+  title: 'Four-Language Websites for Omaha, Where 11.6% Speak Spanish',
+  description:
+    'Census data shows 11.6% of Omaha residents speak Spanish at home. How our sites ship English, Spanish, Mandarin and Hindi, and where the approach falls short.',
+  keywords:
+    'multilingual website Omaha, Spanish website Omaha, Omaha languages spoken at home, Census S1601 Omaha, Next.js localization, Accept-Language locale resolver, hreflang cookie locale, lang attribute accessibility, translation key parity, Omaha web development',
+  author: 'Arthur Labs Team',
+  publishDate: '2026-11-05',
+  category: 'Omaha',
+  shortTitle: 'Four-Language Omaha Sites',
+  openGraph: pageOg({
+    title: 'Four-Language Websites for Omaha, Where 11.6% Speak Spanish',
+    description:
+      'Census data shows 11.6% of Omaha residents speak Spanish at home. How our sites ship English, Spanish, Mandarin and Hindi, and where the approach falls short.',
+    path: '/blogs/multilingual-websites-omaha/',
+    publishedTime: '2026-11-05',
+  }),
+  twitter: pageTwitter({
+    title: 'Four-Language Websites for Omaha, Where 11.6% Speak Spanish',
+    description:
+      'Census data shows 11.6% of Omaha residents speak Spanish at home. How our sites ship English, Spanish, Mandarin and Hindi, and where the approach falls short.',
+  }),
+}
+
+<HeroPattern />
+
+<ArticleJsonLd
+  title="Four-Language Websites for Omaha, Where 11.6% Speak Spanish"
+  description="Census data shows 11.6% of Omaha residents speak Spanish at home. How our sites ship English, Spanish, Mandarin and Hindi, and where the approach falls short."
+  slug="/blogs/multilingual-websites-omaha/"
+  datePublished="2026-11-05"
+/>
+
+# Four-Language Websites for Omaha, Where 11.6% Speak Spanish
+
+Our client sites ship in four languages: English, Spanish, Mandarin and Hindi. This article checks that choice against Census Bureau data for Omaha, which supports one of the three translations far more strongly than the other two. Then it walks through how the [Omaha Well Project](https://omahawell.arthurlabs.net) site implements all four, including what a search crawler cannot see and the one page that stays in English.
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/blogs" arrow="left">
+    <>All Blogs</>
+  </Button>
+</div>
+
+## 11.6% of Omaha residents speak Spanish at home, according to ACS table S1601
+
+In the Census Bureau's 2020–2024 American Community Survey five-year estimates, 52,943 of Omaha's 456,348 residents aged five and over speak Spanish at home. That is 11.6%, from [table S1601](https://data.census.gov/table/ACSST5Y2024.S1601?g=160XX00US3137000) for Omaha city. In all, 81,593 residents, or 17.9%, speak a language other than English at home.
+
+The more useful number for a website is the next one. Of Omaha's Spanish speakers, 44.4%, or 23,523 people, report speaking English less than "very well". For that reader, the Spanish version is the site.
+
+The detailed table, [C16001](https://data.census.gov/table/ACSDT5Y2024.C16001?g=160XX00US3137000), breaks the other languages into groups. These are selected rows for Omaha city, same survey and vintage:
+
+| Language spoken at home, Omaha city | Speakers aged 5+ | Margin of error | Share |
+| --- | --- | --- | --- |
+| English only | 374,755 | ±2,175 | 82.1% |
+| Spanish | 52,943 | ±1,395 | 11.6% |
+| Other Asian and Pacific Island languages | 7,711 | ±890 | 1.7% |
+| Other Indo-European languages, which include Hindi | 5,611 | ±847 | 1.2% |
+| Other and unspecified languages | 4,023 | ±1,032 | 0.9% |
+| French, Haitian or Cajun | 2,980 | ±597 | 0.7% |
+| Arabic | 2,656 | ±672 | 0.6% |
+| Chinese, including Mandarin and Cantonese | 1,624 | ±442 | 0.4% |
+| Vietnamese | 1,106 | ±328 | 0.2% |
+
+Two cautions on reading it. Douglas County as a whole is a little lower, 10.2% Spanish in the [county's S1601](https://data.census.gov/table/ACSST5Y2024.S1601?g=050XX00US31055), because the part of the county outside the city is about 3% Spanish-speaking by subtraction. And the newer one-year survey for 2025 puts Omaha's Spanish speakers at 60,209, about 13.2%, but with a margin of ±5,955 in [its C16001](https://data.census.gov/table/ACSDT1Y2025.C16001?g=160XX00US3137000). The five-year figure is the steadier one to plan with.
+
+## ACS tables give no Hindi figure for Omaha, and Nebraska counts 1,721 speakers
+
+In the survey tables on data.census.gov, Hindi has no row of its own for Omaha or Douglas County. It sits inside "Other Indo-European languages" with Urdu, Gujarati, Bengali, Persian and others. The detailed table that does list Hindi, [B16001](https://data.census.gov/table/ACSDT5Y2024.B16001?g=040XX00US31), is published for the state but not for the county or the city.
+
+For Nebraska as a whole, the 2020–2024 estimates count 1,721 Hindi speakers aged five and over, with a margin of ±393. The same table counts 4,799 speakers of Chinese, a figure that still combines Mandarin and Cantonese, 7,674 of Vietnamese and 6,691 of Arabic.
+
+That settles what the four-language set is and is not. Our build standard names the same four languages for every client, wherever the client is, and it does not rest on any one city's data. For an Omaha audience, the Spanish file does most of the local work. The Mandarin and Hindi files serve smaller communities. An Omaha organisation whose readers speak Vietnamese, Arabic, or one of the languages the Census Bureau groups as "other Asian and Pacific Island" should add that language. The structure described below makes that a translation task rather than an engineering one.
+
+The standard itself comes down to eight rules, which apply on every build:
+
+- All visible copy lives in content files, never inline in components.
+- Each language has its own file with exactly the same keys as English.
+- The files cover everything: navigation, every section, form labels and errors, the footer, page metadata and the brief written for AI agents.
+- Translations read as connected prose in the target language, translated for meaning rather than string by string.
+- A language switcher sits in the footer, the first visit follows the browser's language, and a choice is remembered.
+- The page declares its language and lists alternates for all four.
+- No sentence is ever assembled from translated pieces.
+- Every copy change ships in all four files at once, and a missing translation falls back to English instead of rendering blank.
+
+## Each language is one file of 207 strings with keys that must match English
+
+The Omaha Well Project keeps its copy in `content/en.json`, `content/es.json`, `content/zh.json` and `content/hi.json`. Each holds the same 17 top-level keys, from `meta` and `nav` through `rules`, `giving`, `privacy` and `agents` to `notFound`, and each resolves to 207 leaf strings. We counted them for this article in November 2026: no key is missing from, or extra to, any of the three translations.
+
+A check script, run as `pnpm i18n:check`, does the same comparison mechanically. It flattens each file into dotted key paths, compares every translation against English, prints up to twenty missing and twenty extra paths, and exits with an error if any file is out of step. That catches a common localization bug, a key added to English and forgotten everywhere else, before it reaches a visitor.
+
+The runtime has a second line of defence. When the page loads a language, it merges that file over English key by key, so a string that is missing or empty falls back to the English text. The first version merged only one level deep, and because almost every key is nested two or three levels down, a missing nested string rendered as a blank. The merge is now recursive. Lists are the deliberate exception: a translated list with fewer items than English is taken whole, because interleaving translated and English items would read as neither language.
+
+## The server picks the language from a cookie first and Accept-Language second
+
+The visitor's language is decided on the server before the first byte of HTML is sent. A saved choice in a cookie wins. Without one, the server ranks the browser's `Accept-Language` header and takes the first language the site publishes. With neither, it serves English.
+
+We checked the live site with plain requests in November 2026. A browser sending `es-MX` gets `lang="es"` and the headline "Pizza caliente. Agua fría. Sin preguntas." A browser sending `pt-BR` first and Spanish second gets Spanish rather than English, because the resolver walks the whole ranked list. A cookie set to Hindi overrides a Spanish `Accept-Language`.
+
+Two details make this work. The same resolver runs for the page body and for the metadata, which Next.js generates in a separate pass, so the `<title>` and description can never disagree with the page about which language it is in. And the footer switcher changes the page at once, writes the cookie with a one-year lifetime and asks the router to refresh, so the server-rendered parts and every later visit follow the choice. A first visit never paints English and then corrects itself.
+
+The cost is caching. Every page response we checked carries `cache-control: private, no-cache, no-store`, which means no shared cache can hand one visitor's Spanish page to the next visitor, and also means every page view is rendered on the server. For a single-page charity site that trade is cheap. For a high-traffic site it is worth weighing against language-prefixed URLs.
+
+This is a resolver written fresh for this article, in the same shape:
+
+```ts
+// Locale resolution for a site that keeps the language in a cookie.
+// Order: the visitor's saved choice, then the browser's ranked
+// preferences, then English.
+const LOCALES = ['en', 'es', 'zh', 'hi'] as const
+type Locale = (typeof LOCALES)[number]
+const FALLBACK: Locale = 'en'
+
+// Accepts "es", "es-MX" or "ES-mx"; rejects anything the site does not publish.
+function match(tag: string): Locale | null {
+  const lower = tag.trim().toLowerCase()
+  const exact = LOCALES.find((code) => code === lower)
+  if (exact) return exact
+  const base = lower.split('-')[0]
+  return LOCALES.find((code) => code === base) ?? null
+}
+
+export function rankAcceptLanguage(header: string | null): string[] {
+  if (!header) return []
+  return header
+    .split(',')
+    .map((part, index) => {
+      const [tag, ...params] = part.trim().split(';')
+      const q = params.map((p) => p.trim()).find((p) => p.startsWith('q='))
+      const weight = q ? Number(q.slice(2)) : 1
+      return { tag: tag.trim(), weight: Number.isFinite(weight) ? weight : 0, index }
+    })
+    // RFC 9110: a weight of 0 means "not acceptable", so it never matches.
+    .filter((entry) => entry.tag !== '' && entry.weight > 0)
+    // Highest weight first; ties keep the order the browser sent.
+    .sort((a, b) => b.weight - a.weight || a.index - b.index)
+    .map((entry) => entry.tag)
+}
+
+export function resolveLocale(
+  cookieValue: string | undefined,
+  acceptLanguage: string | null,
+): Locale {
+  // The cookie is user input. Validate it like any other.
+  const saved = cookieValue ? match(cookieValue) : null
+  if (saved) return saved
+  for (const tag of rankAcceptLanguage(acceptLanguage)) {
+    const found = match(tag)
+    if (found) return found
+  }
+  return FALLBACK
+}
+```
+
+The `q=0` filter follows [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110#section-12.4.2), where a weight of zero means the language is not acceptable at all. Note what the base-tag match does to Chinese: a browser asking for `zh-TW` gets the Simplified file. A site with readers in Taiwan or Hong Kong needs a separate Traditional file, tagged `zh-Hant`.
+
+## Every page sets lang on html and four hreflang alternates that share one URL
+
+The live site sets `lang` on the `<html>` element to `en`, `es`, `zh-Hans` or `hi`, matching the language served. That attribute is for people more than for search engines. The W3C's guidance for [WCAG success criterion 3.1.1](https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html) explains that it lets screen readers load the correct pronunciation rules and lets browsers display characters and scripts correctly. Each button in the footer switcher also carries its own `lang`, so "Español" and "हिन्दी" are pronounced as words in their own languages, which is the separate [language-of-parts criterion](https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html).
+
+The head and the sitemap both list four `hreflang` alternates: `en`, `es`, `zh-Hans` and `hi`. All four point at the same URL, because the language lives in a cookie rather than in the path. Google's documentation on [locale-adaptive pages](https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages) is direct about the consequence: its crawler sends requests without an `Accept-Language` header and may not index every language version, and it recommends separate URLs per locale annotated with hreflang. Its [hreflang guide](https://developers.google.com/search/docs/specialty/international/localized-versions) adds that Google detects a page's language algorithmically and does not use hreflang or `lang` for that.
+
+So on this site, the Spanish copy reaches people whose browser asks for Spanish or who choose it in the footer. A request with no cookie and no `Accept-Language`, which is how Google says its crawler arrives, gets the English page. For a donation page whose visitors arrive from social posts and a printed outreach card, that is an acceptable trade. A site that wants to rank in Spanish search results should put each language at its own path, such as `/es/`, and keep the cookie only as a remembered preference.
+
+## Spanish says $35,000 "compran" the trailer: translate sections, not strings
+
+The ledger on the page shows a figure above a short label. In English the last item reads "$35,000" over "buys the trailer". The Spanish label is "compran el tráiler", plural, because the subject is thirty-five thousand dollars. The Mandarin reads "可以买下拖车", "can buy the trailer". The Hindi, "में ट्रेलर आ जाती है", begins with the postposition that attaches to the number itself. None of those labels could have been translated correctly from the English string alone.
+
+That is the practical meaning of translating for meaning rather than string by string. Each translation is written with its section in view, so it reads as one passage in the target language. Even the quotation marks change. The rule about never calling someone "a homeless person" uses straight quotes in English, «guillemets» in Spanish, 「corner brackets」 in Mandarin and single quotes in Hindi.
+
+It is also why no sentence is ever built from parts. Joining translated fragments at runtime fixes English word order into every language. The build's changelog records one case the audit caught: the accessible name of the footer's link to the agent brief was two keys joined with a full stop. It is now one key, `agentsAccessibleName`, written as a single sentence in each language. The ledger is the closest the page comes to assembling a sentence, and it works only because the figure is a number rather than translated text and each label was written for its figure.
+
+## The 404 page stays in English, and on a Spanish browser its lang attribute says Spanish
+
+One surface does not follow the visitor's language. The 404 page reads the English file directly, and the project's README records why: it is prerendered once for every unmatched path, so it cannot read the request. The Spanish, Mandarin and Hindi files already contain translations of its text.
+
+When we requested a missing page with a Spanish `Accept-Language` in November 2026, the response returned English text inside `<html lang="es">`, because the root layout still resolves the language for the document. A screen reader following that attribute would apply Spanish pronunciation rules to an English heading. The fix is one attribute: mark the 404's content `lang="en"` so the declared language matches the text. The README records the English-only page, but not the mismatched attribute, which showed up only when we requested the deployed site. That is the case for checking the live response as well as the source.
+
+The other limit is one no script catches. Key parity proves that every file has the same shape. It says nothing about whether the Spanish reads naturally. Before launch, have a fluent reader of each language go through each file as a whole page, not as a spreadsheet of strings.
+
+## Four checks for an Omaha organisation planning a translated site
+
+- **Read your own Census rows first.** Table S1601 for your city or county shows which languages your neighbours speak and how many of them read English less than very well. Plan from that, not from a fixed list.
+- **Put Spanish first in Omaha.** It is the one translation the local data supports at scale.
+- **Choose URLs by what you need from search.** A cookie keeps one URL and serves the visitor; language paths are what get a translation indexed.
+- **Check the parity and the language attribute.** A key-parity script and a `lang` that matches the text on every page, including the error page, catch most of what goes wrong.
+
+The site discussed here is covered in full in our [Omaha Well Project case study](/blogs/omaha-well-project-website/). For the cost, talent and incentive figures behind building in the city, see [building software in Omaha](/blogs/build-software-in-omaha/).

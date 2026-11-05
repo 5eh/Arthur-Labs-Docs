@@ -20,10 +20,10 @@ const BASE = 'https://docs.arthurlabs.net'
 
 function walk(dir) {
   const out = []
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, e.name)
-    if (e.isDirectory()) out.push(...walk(p))
-    else if (e.name === 'page.mdx') out.push(p)
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const entryPath = path.join(dir, entry.name)
+    if (entry.isDirectory()) out.push(...walk(entryPath))
+    else if (entry.name === 'page.mdx') out.push(entryPath)
   }
   return out
 }
@@ -55,6 +55,7 @@ const pages = walk(APP).map((file) => {
     description: field(src, 'description'),
     publishDate: field(src, 'publishDate'),
     category: field(src, 'category'),
+    shortTitle: field(src, 'shortTitle'),
   }
 })
 
@@ -65,6 +66,31 @@ fs.mkdirSync(path.join(ROOT, 'src/generated'), { recursive: true })
 fs.writeFileSync(
   path.join(ROOT, 'src/generated/pages.json'),
   JSON.stringify(pages, null, 2),
+)
+
+// ── latest.json (the navigation's generated group) ──
+// Navigation is a client component, so it gets the few entries it renders and a
+// count rather than the whole manifest in the browser bundle.
+const blogPosts = pages
+  .filter((p) => p.section === 'blog' && p.route !== '/blogs/')
+  .sort((a, b) => (b.publishDate || '').localeCompare(a.publishDate || '') || a.route.localeCompare(b.route))
+fs.writeFileSync(
+  path.join(ROOT, 'src/generated/latest.json'),
+  JSON.stringify(
+    {
+      blogCount: blogPosts.length,
+      // Only posts written with a shortTitle: the nav truncates at about 32
+      // characters, and the older posts' full SEO titles read as fragments there.
+      // Hrefs drop the trailing slash to match the hand-written groups, because
+      // the active-link marker compares hrefs to the pathname as exact strings.
+      latest: blogPosts
+        .filter((p) => p.shortTitle)
+        .slice(0, 6)
+        .map((p) => ({ title: p.shortTitle, href: p.route.replace(/\/$/, '') })),
+    },
+    null,
+    2,
+  ),
 )
 
 // ── rss.xml (blogs, newest first; posts without a parseable date sort last) ──
@@ -105,7 +131,7 @@ const guides = pages.filter((p) => p.section === 'guide' && p.route !== '/guides
 const marketplace = pages.filter((p) => p.section === 'marketplace' && p.route !== '/marketplace/')
 const main = pages.filter((p) => p.section === 'main')
 const blogsByCategory = {}
-for (const p of blogs) (blogsByCategory[p.category || 'General'] ??= []).push(p)
+for (const post of blogs) (blogsByCategory[post.category || 'General'] ??= []).push(post)
 
 fs.writeFileSync(
   path.join(ROOT, 'public/llms.txt'),
