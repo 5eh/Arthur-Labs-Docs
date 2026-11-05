@@ -99,6 +99,10 @@ export const sections = [
 
 This site includes a global search powered by the [FlexSearch](https://github.com/nextapps-de/flexsearch) library. It automatically scans all content pages to build its search index.
 
+## Authorship
+
+Some articles may have been written by Claude.
+
 ## License
 
 This site template is a commercial product and is licensed under the [Tailwind Plus license](https://tailwindcss.com/plus/license).
@@ -180,8 +184,7 @@ sites that do not credit Arthur Labs publicly were not written about.
 
 This site is a Tailwind Plus Protocol template from April 2025 and predates
 `System Prompts/CONFIG_AUDITED.md`. The 2026-11-05 change added the article queue
-and 14 articles. A fifteenth, on the QuantumEVM Marketplace, was written and then
-removed at the owner's request on 2026-11-05. It did not attempt site-wide compliance.
+and 14 articles. It did not attempt site-wide compliance.
 
 **Audit, Tier 1:** 5 pass, 20 fail, 22 unchecked, 3 n/a (50 of 199 rules have
 an automated check). Two failures were fixed in this change: Frontend 56 now has
